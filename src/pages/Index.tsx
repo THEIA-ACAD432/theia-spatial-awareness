@@ -1,7 +1,9 @@
 import Nav from "@/components/theia/Nav";
 import Hero from "@/components/theia/Hero";
-import Challenge from "@/components/theia/Challenge";
+import Marquee from "@/components/theia/Marquee";
+import Product from "@/components/theia/Product";
 import HowItWorks from "@/components/theia/HowItWorks";
+import Challenge from "@/components/theia/Challenge";
 import Footer from "@/components/theia/Footer";
 
 const Index = () => {
@@ -10,8 +12,10 @@ const Index = () => {
       <Nav />
       <main>
         <Hero />
-        <Challenge />
+        <Marquee />
+        <Product />
         <HowItWorks />
+        <Challenge />
       </main>
       <Footer />
     </div>
