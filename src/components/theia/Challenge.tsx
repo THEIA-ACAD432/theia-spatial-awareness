@@ -1,50 +1,47 @@
 const Challenge = () => {
   return (
-    <section id="challenge" className="relative py-28 lg:py-36 border-t border-hairline bg-ivory-deep">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
-            <div className="sticky top-28">
-              <div className="font-mono-tag text-signal mb-4">01 — The challenge</div>
-              <h2 className="font-serif-display text-4xl md:text-5xl text-graphite leading-tight text-balance">
-                Above the waist, the world goes dark.
-              </h2>
-            </div>
+    <section id="challenge" className="relative py-24 lg:py-32 border-t border-hairline bg-graphite text-ivory overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
+
+      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
+        <div className="grid lg:grid-cols-12 gap-8 mb-16">
+          <div className="lg:col-span-5">
+            <div className="font-mono-tag text-signal mb-4">03 / The why</div>
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-ivory leading-[0.92] tracking-[-0.035em]">
+              Above the waist,
+              <br />
+              <span className="italic font-light text-ivory/50">the world goes dark.</span>
+            </h2>
           </div>
 
-          <div className="lg:col-span-8 space-y-10">
-            <p className="text-xl md:text-2xl text-graphite leading-relaxed font-serif-display">
-              The white cane is one of the most effective mobility tools ever designed — providing essential tactile navigation and physical obstacle detection. But it only protects from the ground up.
+          <div className="lg:col-span-6 lg:col-start-7 lg:pt-6 space-y-6">
+            <p className="text-lg md:text-xl text-ivory/90 leading-relaxed text-pretty">
+              The white cane is one of the most effective mobility tools ever
+              designed. But it only protects from the ground up — leaving
+              overhead obstacles, approaching people, and spatial hazards above
+              waist height completely invisible.
             </p>
-            <p className="text-base md:text-lg text-graphite-soft leading-relaxed text-pretty">
-              Overhead obstacles, approaching people, and spatial hazards above waist height remain completely invisible. Beyond physical navigation, users also lack access to social interpretation, digital interaction, and environmental context.
+            <p className="text-base text-ivory/60 leading-relaxed text-pretty">
+              Theia exists to close that gap. Not as a replacement, but as a
+              quiet companion that gives users back the air above their reach.
             </p>
+          </div>
+        </div>
 
-            {/* Citation card */}
-            <figure className="relative mt-12 p-8 md:p-10 bg-ivory border border-hairline shadow-soft">
-              <div className="absolute -top-px left-8 right-8 h-px bg-gradient-signal" />
-              <div className="font-mono-tag text-graphite-soft mb-6">Citation · Katzschmann et al.</div>
-
-              <blockquote className="font-serif-display text-2xl md:text-3xl text-graphite leading-snug mb-8 text-balance">
-                &ldquo;Overhead hazards are the real gap.&rdquo;
-              </blockquote>
-
-              <div className="space-y-5 text-sm md:text-base text-graphite-soft leading-relaxed border-l-2 border-signal pl-5">
-                <p>
-                  &ldquo;Upward-pointing sensors see chest- and face-level obstacles, such as branches and overhanging ledges, that are even more of a danger to a blind person.&rdquo;
-                  <span className="block font-mono-tag mt-2 text-graphite/50">— Page 10</span>
-                </p>
-                <p>
-                  &ldquo;White canes have several flaws. They are often stigmatized, require physical exertion, occupy one hand, need physical contact with the environment, and can only detect obstacles by point contact at heights up to the users&apos; chests.&rdquo;
-                  <span className="block font-mono-tag mt-2 text-graphite/50">— Page 1</span>
-                </p>
-                <p>
-                  &ldquo;A key problem for white cane users is their inability to detect high obstacles hanging above the ground, e.g. tree branches.&rdquo;
-                  <span className="block font-mono-tag mt-2 text-graphite/50">— Page 10</span>
-                </p>
+        {/* Stats / contrast row */}
+        <div className="grid sm:grid-cols-3 gap-px bg-ivory/10 border border-ivory/10">
+          {[
+            { k: "0%", v: "Of overhead hazards detected by a traditional cane" },
+            { k: "Waist-high", v: "Maximum point-contact range of a cane" },
+            { k: "Daily", v: "Frequency of overhead hazard encounters in urban areas" },
+          ].map((s, i) => (
+            <div key={i} className="bg-graphite p-7 lg:p-10">
+              <div className="font-display text-5xl md:text-6xl text-signal tracking-[-0.03em] mb-4">
+                {s.k}
               </div>
-            </figure>
-          </div>
+              <div className="text-sm text-ivory/60 leading-relaxed max-w-[20ch]">{s.v}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -16,7 +16,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
-        serif: ['Instrument Serif', 'serif'],
+        display: ['Inter Tight', 'Inter', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-signal': 'var(--gradient-signal)',
@@ -110,6 +110,10 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-8px)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-33.333%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -117,6 +121,7 @@ export default {
         "fade-up": "fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both",
         "radar-sweep": "radar-sweep 3s ease-out infinite",
         "float-gentle": "float-gentle 6s ease-in-out infinite",
+        marquee: "marquee 40s linear infinite",
       },
     },
   },
