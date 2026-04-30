@@ -8,8 +8,8 @@ const features = [
   },
   {
     n: "B",
-    title: "On-device interpretation",
-    body: "Proximity, velocity, and elevation are classified locally. Only relevant threats produce a signal — never noise.",
+    title: "Proximity-triggered feedback",
+    body: "When sensor readings cross a distance threshold, the belt responds. No app, no phone — the hardware reacts directly.",
   },
   {
     n: "C",

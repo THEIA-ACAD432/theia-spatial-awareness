@@ -102,7 +102,7 @@ const metrics = [
 
 const risks = [
   { risk: "Over-reliance on automation", mitigation: "Cane-first design — Halo augments, never leads" },
-  { risk: "Privacy concerns", mitigation: "On-device processing — no data leaves the unit" },
+  { risk: "Privacy concerns", mitigation: "Sensor-only detection — no cameras, no data stored or transmitted" },
   { risk: "Clinical liability", mitigation: "No real-time decision-making — alerts only, user acts" },
   { risk: "Adoption barriers", mitigation: "Institutional deployment through clinicians and OTs" },
 ];
@@ -344,7 +344,7 @@ const Business = () => {
                   <ul className="space-y-2 text-graphite-soft leading-relaxed">
                     {[
                       "Hardware manufacturing",
-                      "Sensors & on-device computation",
+                      "Sensors & embedded microcontroller",
                       "Testing & validation",
                       "Accessibility compliance",
                     ].map((item) => (

@@ -10,7 +10,7 @@ const steps = [
   {
     n: "02",
     title: "Interpret",
-    body: "On-device processing classifies threats by proximity, velocity, and elevation. Signal — not noise.",
+    body: "Distance readings from the sensor array are compared against proximity thresholds in real time. When something enters the detection zone, a signal fires.",
   },
   {
     n: "03",

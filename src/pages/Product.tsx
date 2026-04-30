@@ -423,7 +423,7 @@ const Product = () => {
                 <h3 className="font-display text-3xl md:text-4xl text-ivory tracking-[-0.03em] mb-3">
                   Approaching Object
                 </h3>
-                <p className="text-sm text-ivory/50 mb-2">velocity-aware</p>
+                <p className="text-sm text-ivory/50 mb-2">proximity-triggered</p>
                 <p className="text-ivory/60 leading-relaxed text-sm mb-10">
                   Haptic frequency accelerates as an object closes distance. The faster the approach, the faster the buzz — an instinctive urgency signal.
                 </p>
