@@ -39,7 +39,7 @@ const Product = () => {
           </div>
           <div className="lg:col-span-6 lg:col-start-7 lg:pt-8">
             <p className="text-lg md:text-xl text-graphite leading-relaxed text-pretty">
-              Theia clips to a belt and sits where the body naturally carries weight.
+              Halo clips to a belt and sits where the body naturally carries weight.
               No screens. No earpieces. No additional cognitive load. Just a quiet
               extension of the user&apos;s own spatial awareness.
             </p>
@@ -53,7 +53,7 @@ const Product = () => {
             <div className="relative aspect-[4/5] overflow-hidden bg-ivory sticky top-24">
               <img
                 src={deviceImg}
-                alt="Detail view of the Theia device showing sensor array and amber indicator"
+                alt="Detail view of the Halo device showing sensor array and amber indicator"
                 width={1280}
                 height={1600}
                 loading="lazy"
@@ -73,7 +73,7 @@ const Product = () => {
               </div>
 
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between font-mono-tag text-ivory mix-blend-difference">
-                <span>THEIA / UNIT 001</span>
+                <span>HALO / UNIT 001</span>
                 <span className="opacity-70">SCALE 1:1</span>
               </div>
             </div>

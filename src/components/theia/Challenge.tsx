@@ -22,7 +22,7 @@ const Challenge = () => {
               waist height completely invisible.
             </p>
             <p className="text-base text-ivory/60 leading-relaxed text-pretty">
-              Theia exists to close that gap. Not as a replacement, but as a
+              Halo exists to close that gap. Not as a replacement, but as a
               quiet companion that gives users back the air above their reach.
             </p>
           </div>

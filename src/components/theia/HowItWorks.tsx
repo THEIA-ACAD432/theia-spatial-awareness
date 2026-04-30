@@ -35,7 +35,7 @@ const HowItWorks = () => {
           </div>
           <div className="lg:col-span-4 lg:col-start-9 lg:pt-6">
             <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-              Theia doesn&apos;t replace the cane. It extends it — silently, in the
+              Halo doesn&apos;t replace the cane. It extends it — silently, in the
               background, through the language the body already understands.
             </p>
           </div>

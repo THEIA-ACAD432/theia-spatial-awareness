@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Nav from "@/components/theia/Nav";
 import Footer from "@/components/theia/Footer";
 
@@ -24,7 +25,7 @@ const Overview = () => {
                 <h1 className="font-display text-[11vw] sm:text-[8vw] lg:text-[6.5vw] text-graphite leading-[0.88] tracking-[-0.04em]">
                   The case
                   <br />
-                  for <span className="text-signal italic font-light">Theia.</span>
+                  for <span className="text-signal italic font-light">Halo.</span>
                 </h1>
               </div>
               <div className="lg:col-span-4 lg:pb-4">
@@ -143,8 +144,14 @@ const Overview = () => {
                   The white cane is irreplaceable for ground-level navigation, but leaves a clear gap above waist height. A belt-worn camera and haptic system can cover what the cane can't — detecting hazards above ground and communicating them passively, in real time, without disrupting existing routines or requiring a new tool to learn.
                 </p>
                 <p className="text-lg md:text-xl text-graphite font-medium leading-relaxed border-l-2 border-signal pl-4">
-                  Theia doesn't replace the white cane. It completes it.
+                  Halo doesn't replace the white cane. It completes it.
                 </p>
+                <Link
+                  to="/product"
+                  className="inline-flex items-center gap-2 mt-6 px-4 py-2.5 bg-graphite text-ivory text-sm font-medium hover:bg-signal hover:text-graphite transition-all duration-300"
+                >
+                  See the device <span aria-hidden>→</span>
+                </Link>
               </div>
 
               <div className="lg:col-span-6 lg:col-start-7 space-y-6">
@@ -196,7 +203,7 @@ const Overview = () => {
                   <span className="text-signal italic font-light">One system.</span>
                 </h2>
                 <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty">
-                  Theia is a belt-worn wearable built around three core functions, each addressing a distinct failure mode of the white cane in the spatial layer above the ground.
+                  Halo is a belt-worn wearable built around three core functions, each addressing a distinct failure mode of the white cane in the spatial layer above the ground.
                 </p>
               </div>
             </div>

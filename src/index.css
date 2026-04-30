@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-
-/* Theia design system — off-white + graphite + signal amber.
+/* Halo design system — off-white + graphite + signal amber.
    All colors HSL.
 */
 
@@ -42,7 +42,7 @@
 
     --radius: 0.25rem;
 
-    /* Theia tokens */
+    /* Halo tokens */
     --graphite: 220 15% 14%;
     --graphite-soft: 220 12% 28%;
     --ivory: 42 33% 97%;
@@ -173,4 +173,9 @@
 @keyframes float-gentle {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+@keyframes haptic-bar {
+  0%, 100% { transform: scaleY(0.2); opacity: 0.25; }
+  50% { transform: scaleY(1); opacity: 1; }
 }

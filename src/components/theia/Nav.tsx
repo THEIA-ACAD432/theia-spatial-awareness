@@ -11,19 +11,43 @@ const Nav = () => {
             <span className="absolute inset-0 rounded-full bg-signal" />
             <span className="absolute inset-0 rounded-full bg-signal animate-radar-sweep" />
           </div>
-          <span className="font-display text-lg text-graphite">Theia</span>
+          <span className="font-display text-lg text-graphite">Halo</span>
           <span className="font-mono-tag text-graphite-soft/60 ml-1 hidden sm:inline">/ v0.1</span>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm text-graphite-soft">
           <Link
-            to="/overview"
-            className={`hover:text-graphite transition-colors ${pathname === "/overview" ? "text-graphite font-medium" : ""}`}
+            to="/product"
+            className={`hover:text-graphite transition-colors ${pathname === "/product" ? "text-graphite font-medium" : ""}`}
+          >
+            Product
+          </Link>
+          <Link
+            to="/process"
+            className={`hover:text-graphite transition-colors ${pathname === "/process" ? "text-graphite font-medium" : ""}`}
+          >
+            Process
+          </Link>
+          <Link
+            to="/team"
+            className={`hover:text-graphite transition-colors ${pathname === "/team" ? "text-graphite font-medium" : ""}`}
+          >
+            Team
+          </Link>
+          <Link
+            to="/business"
+            className={`hover:text-graphite transition-colors ${pathname === "/business" ? "text-graphite font-medium" : ""}`}
+          >
+            Business
+          </Link>
+          <Link
+            to="/challenge"
+            className={`hover:text-graphite transition-colors ${pathname === "/challenge" ? "text-graphite font-medium" : ""}`}
           >
             Research
           </Link>
         </nav>
         <Link
-          to="/overview"
+          to="/challenge"
           className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium font-mono uppercase tracking-wider text-ivory bg-graphite hover:bg-signal hover:text-graphite transition-all duration-300"
         >
           Read the case

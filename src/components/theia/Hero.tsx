@@ -33,7 +33,7 @@ const Hero = () => {
 
           <div className="lg:col-span-4 lg:pb-6 animate-fade-up" style={{ animationDelay: "0.15s" }}>
             <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty max-w-md">
-              Theia is a belt-worn wearable that detects overhead and approaching
+              Halo is a belt-worn wearable that detects overhead and approaching
               hazards — the persistent blind spot above the cane — and translates
               them into <span className="text-signal font-medium">haptic vibration</span> in real time.
             </p>
@@ -42,7 +42,7 @@ const Hero = () => {
                 href="#product"
                 className="inline-flex items-center gap-2 px-4 py-2.5 bg-graphite text-ivory text-sm font-medium hover:bg-signal hover:text-graphite transition-all duration-300"
               >
-                Meet Theia <span aria-hidden>→</span>
+                Meet Halo <span aria-hidden>→</span>
               </a>
               <a
                 href="#how"
@@ -60,7 +60,7 @@ const Hero = () => {
           <figure className="col-span-12 md:col-span-7 relative aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-ivory-deep group">
             <img
               src={contextImg}
-              alt="Person using Theia belt device while walking with a white cane on an urban sidewalk"
+              alt="Person using Halo belt device while walking with a white cane on an urban sidewalk"
               width={1280}
               height={1600}
               className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
@@ -79,7 +79,7 @@ const Hero = () => {
             <figure className="relative aspect-square md:aspect-auto overflow-hidden bg-ivory-deep group">
               <img
                 src={deviceImg}
-                alt="Theia belt-worn spatial awareness device clipped to a black leather belt"
+                alt="Halo belt-worn spatial awareness device clipped to a black leather belt"
                 width={1280}
                 height={1280}
                 className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
