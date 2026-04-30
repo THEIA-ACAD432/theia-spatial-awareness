@@ -1,5 +1,5 @@
 import deviceImg from "@/assets/theia-device-hero.jpg";
-import contextImg from "@/assets/theia-context.jpg";
+import contextImg from "@/assets/halobelt.png";
 import diagramImg from "@/assets/theia-diagram.jpg";
 
 const Hero = () => {

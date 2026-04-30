@@ -7,7 +7,7 @@ import kenImg from "@/assets/team-ken.jpg";
 import kenzieImg from "@/assets/team-kenzie.jpg";
 import joseImg from "@/assets/team-jose.jpg";
 import estherImg from "@/assets/team-esther.jpg";
-import christineImg from "@/assets/team-christine.jpg";
+import christineImg from "@/assets/team-christine.png";
 
 const lnk = "text-signal underline decoration-signal/40 underline-offset-2 hover:decoration-signal transition-colors";
 
@@ -70,11 +70,11 @@ const members = [
   {
     n: "06",
     name: "Christine Lai",
-    role: "Product & Industrial Design",
+    role: "Design Engineer",
     initials: "C",
     img: christineImg,
     bio: [
-      <>Christine focused on the <Link to="/product" className={lnk}>physical user experience</Link>, analyzing cane ergonomics such as weight distribution, balance, and grip to ensure comfort and usability. She identified key integration zones within the cane — handle, shaft, and tip — and defined the physical constraints that shaped how components could be embedded.</>,
+      <>Christine focused on the <Link to="/product" className={lnk}>physical user experience</Link>, analyzing belt ergonomics such as weight distribution, balance, and grip to ensure comfort and usability. She identified key integration zones within the cane — handle, shaft, and tip — and defined the physical constraints that shaped how components could be embedded.</>,
       <>Through low-fidelity mockups and iterative prototyping, she explored modular attachment concepts and evaluated durability in real-world conditions. Her work led to an improved <Link to="/product" className={lnk}>enclosure design</Link> that balanced function, usability, and manufacturability, ensuring the product could withstand everyday use while maintaining a seamless form.</>,
     ],
   },

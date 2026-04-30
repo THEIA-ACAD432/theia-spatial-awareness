@@ -5,7 +5,7 @@ import deviceImg from "@/assets/theia-device.jpg";
 import deviceHeroImg from "@/assets/theia-device-hero.jpg";
 import hapticImg from "@/assets/theia-haptic.jpg";
 import diagramImg from "@/assets/theia-diagram.jpg";
-import contextImg from "@/assets/theia-context.jpg";
+import contextImg from "@/assets/halobelt.png";
 
 const Citation = ({ quote, source }: { quote: string; source: string }) => (
   <blockquote className="border-l-2 border-signal pl-4 py-0.5">
