@@ -189,7 +189,7 @@ const Product = () => {
                 <figure className="relative aspect-square md:aspect-auto overflow-hidden bg-ivory-deep group">
                   <img
                     src={deviceHeroImg}
-                    alt="Halo device clipped to belt"
+                    alt="Halo belt — sensor array front view"
                     className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
                   />
                   <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-ivory mix-blend-difference">
@@ -225,7 +225,7 @@ const Product = () => {
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-6">
                 <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-4">
-                  The design brief was simple: something you'd forget you were wearing. Halo clips to any standard belt and sits flush at the hip — invisible to onlookers, unobtrusive in motion.
+                  The design brief was simple: something you'd forget you were wearing. Halo is the belt — sensors and haptic motors are built directly into the band, which wraps the waist and fastens with a buckle. No add-ons, no clip points, nothing to mount or remove.
                 </p>
                 <p className="text-base text-graphite-soft leading-relaxed text-pretty">
                   Form followed function at every stage. The enclosure was sized around the sensor array and PCB footprint, with the haptic motors distributed to provide directional clarity across the waist.

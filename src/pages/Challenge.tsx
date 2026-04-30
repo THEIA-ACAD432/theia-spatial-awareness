@@ -141,7 +141,7 @@ const Overview = () => {
                   <span className="text-graphite-soft italic font-light">Don't replace it.</span>
                 </h2>
                 <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  The white cane is irreplaceable for ground-level navigation, but leaves a clear gap above waist height. A belt-worn camera and haptic system can cover what the cane can't — detecting hazards above ground and communicating them passively, in real time, without disrupting existing routines or requiring a new tool to learn.
+                  The white cane is irreplaceable for ground-level navigation, but leaves a clear gap above waist height. Halo is a belt with sensors and haptic motors built in — it covers what the cane can't, detecting hazards above ground and communicating them passively, in real time, without disrupting existing routines or requiring a new tool to learn.
                 </p>
                 <p className="text-lg md:text-xl text-graphite font-medium leading-relaxed border-l-2 border-signal pl-4">
                   Halo doesn't replace the white cane. It completes it.

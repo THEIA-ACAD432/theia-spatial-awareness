@@ -79,7 +79,7 @@ const Hero = () => {
             <figure className="relative aspect-square md:aspect-auto overflow-hidden bg-ivory-deep group">
               <img
                 src={deviceImg}
-                alt="Halo belt-worn spatial awareness device clipped to a black leather belt"
+                alt="Halo — a belt with sensors and haptic feedback built in, worn at the waist"
                 width={1280}
                 height={1280}
                 className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"

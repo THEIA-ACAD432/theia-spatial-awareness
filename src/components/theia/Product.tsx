@@ -39,7 +39,7 @@ const Product = () => {
           </div>
           <div className="lg:col-span-6 lg:col-start-7 lg:pt-8">
             <p className="text-lg md:text-xl text-graphite leading-relaxed text-pretty">
-              Halo clips to a belt and sits where the body naturally carries weight.
+              Halo is the belt — sensors and haptic motors built directly into the band, sitting where the body naturally carries weight.
               No screens. No earpieces. No additional cognitive load. Just a quiet
               extension of the user&apos;s own spatial awareness.
             </p>
