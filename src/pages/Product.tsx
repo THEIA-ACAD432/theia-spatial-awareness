@@ -32,108 +32,96 @@ const HapticBar = ({ duration, delay, height }: { duration: number; delay: numbe
 );
 
 const SensorField = () => {
-  const W = 520, H = 285;
-  const cx = W / 2;
-  const cy = H - 28;
-  const s = 25;
+  const W = 700, H = 312;
+  const cy = 252; // belt y
+  const s  = 20;  // px per meter
 
-  const polar = (deg: number, r: number) => {
-    const rad = (deg - 90) * Math.PI / 180;
-    return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
-  };
-
-  const fan = (a0: number, a1: number, r: number, n = 60) => {
+  const fan = (ox: number, oy: number, deg: number, half: number, r: number, n = 60) => {
     const pts = Array.from({ length: n + 1 }, (_, i) => {
-      const { x, y } = polar(a0 + (a1 - a0) * i / n, r);
-      return `${x},${y}`;
+      const a = ((deg - half) + 2 * half * i / n - 90) * Math.PI / 180;
+      return `${(ox + r * Math.cos(a)).toFixed(1)},${(oy + r * Math.sin(a)).toFixed(1)}`;
     });
-    return `M ${cx},${cy} L ${pts.join(" L ")} Z`;
+    return `M ${ox},${oy} L ${pts.join(" L ")} Z`;
   };
 
-  const arc = (a0: number, a1: number, r: number, n = 60) => {
+  const arc = (ox: number, oy: number, deg: number, half: number, r: number, n = 60) => {
     const pts = Array.from({ length: n + 1 }, (_, i) => {
-      const { x, y } = polar(a0 + (a1 - a0) * i / n, r);
-      return `${x},${y}`;
+      const a = ((deg - half) + 2 * half * i / n - 90) * Math.PI / 180;
+      return `${(ox + r * Math.cos(a)).toFixed(1)},${(oy + r * Math.sin(a)).toFixed(1)}`;
     });
     return `M ${pts.join(" L ")}`;
   };
 
-  const lbl8x8  = polar(0, 4 * s + 18);
-  const lblLeft  = polar(-67.5, 6 * s + 14);
-  const lblRight = polar( 67.5, 6 * s + 14);
-  const lbl90   = polar(0, 2 * s);
-  const lbl45L  = polar(-67.5, 4.6 * s);
-  const lbl45R  = polar( 67.5, 4.6 * s);
+  const mono = "'JetBrains Mono', monospace";
+  const fgFaint  = "hsl(220 12% 28% / 0.38)";
+  const fgMid    = "hsl(220 12% 28% / 0.62)";
+  const amber    = "hsl(35 95% 52%)";
+  const amberMid = "hsl(35 95% 52% / 0.65)";
+  const graphite = "hsl(220 15% 14%)";
 
   return (
-    <svg
-      viewBox={`0 0 ${W} ${H}`}
-      className="w-full h-auto"
-      aria-label="Sensor field coverage diagram — top-down view at hip level"
-    >
-      {/* Range rings */}
-      {([2, 4, 6, 8] as const).map(m => (
-        <path
-          key={m}
-          d={arc(-90, 90, m * s)}
-          fill="none"
-          stroke={m === 4 ? "hsl(35 95% 52% / 0.35)" : "hsl(220 15% 14% / 0.1)"}
-          strokeWidth={m === 4 ? 1.5 : 1}
-          strokeDasharray={m === 4 ? "5 3" : "3 5"}
-        />
-      ))}
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" aria-label="Sensor field coverage — top-down belt view">
 
-      {/* Side sensor fill zones */}
-      <path d={fan(-90, -45, 6 * s)} fill="hsl(220 15% 14% / 0.05)" />
-      <path d={fan( 45,  90, 6 * s)} fill="hsl(220 15% 14% / 0.05)" />
+      {/* DETECTION FILLS */}
+      {/* Side lunas — point 90° left / right along belt */}
+      <path d={fan(72,  cy, -90, 8, 8 * s)} fill="hsl(220 15% 14% / 0.04)" />
+      <path d={fan(628, cy,  90, 8, 8 * s)} fill="hsl(220 15% 14% / 0.04)" />
+      {/* Angled ToF linears — ±45° forward */}
+      <path d={fan(196, cy, -45, 14, 2 * s)} fill="hsl(220 15% 14% / 0.08)" />
+      <path d={fan(504, cy,  45, 14, 2 * s)} fill="hsl(220 15% 14% / 0.08)" />
+      {/* Center 8×8 — 45° FOV, 4 m */}
+      <path d={fan(350, cy, 0, 22.5, 4 * s)} fill="hsl(35 95% 52% / 0.10)" />
+      {/* Center Luna-tf — narrow forward, 8 m */}
+      <path d={fan(350, cy, 0,    8, 8 * s)} fill="hsl(35 95% 52% / 0.06)" />
 
-      {/* 8×8 fill zone */}
-      <path d={fan(-45, 45, 4 * s)} fill="hsl(35 95% 52% / 0.1)" />
+      {/* ARC OUTLINES */}
+      <path d={arc(72,  cy, -90,  8, 8 * s)} fill="none" stroke="hsl(220 15% 14% / 0.28)" strokeWidth={1.5} />
+      <path d={arc(628, cy,  90,  8, 8 * s)} fill="none" stroke="hsl(220 15% 14% / 0.28)" strokeWidth={1.5} />
+      <path d={arc(196, cy, -45, 14, 2 * s)} fill="none" stroke="hsl(220 15% 14% / 0.48)" strokeWidth={1.5} />
+      <path d={arc(504, cy,  45, 14, 2 * s)} fill="none" stroke="hsl(220 15% 14% / 0.48)" strokeWidth={1.5} />
+      <path d={arc(350, cy,   0, 22.5, 4 * s)} fill="none" stroke={amber} strokeWidth={2} />
+      <path d={arc(350, cy,   0,  8,   8 * s)} fill="none" stroke={amberMid} strokeWidth={1.5} strokeDasharray="5 3" />
 
-      {/* ±45° divider lines */}
-      {([-45, 45] as const).map(deg => {
-        const p = polar(deg, 6 * s);
-        return <line key={deg} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="hsl(35 95% 52% / 0.4)" strokeWidth={1} strokeDasharray="4 3" />;
-      })}
+      {/* RANGE LABELS — near each arc tip */}
+      {/* Luna-tf forward: tip at y = 252-160 = 92 */}
+      <text x={358} y={98}  fontSize={7.5} fontFamily={mono} fill={amberMid} letterSpacing="0.07em">8M</text>
+      {/* 8×8 forward: tip at y = 252-80 = 172 */}
+      <text x={358} y={178} fontSize={7.5} fontFamily={mono} fill={amber}    letterSpacing="0.07em">4M</text>
+      {/* Left linear: arc tip ≈ (168, 224) */}
+      <text x={155} y={221} fontSize={7}   fontFamily={mono} fill={fgMid}    letterSpacing="0.06em">2M</text>
+      {/* Right linear: arc tip ≈ (532, 224) */}
+      <text x={537} y={221} fontSize={7}   fontFamily={mono} fill={fgMid}    letterSpacing="0.06em">2M</text>
 
-      {/* ±90° boundary lines */}
-      {([-90, 90] as const).map(deg => {
-        const p = polar(deg, 6 * s);
-        return <line key={deg} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="hsl(220 15% 14% / 0.2)" strokeWidth={1} strokeDasharray="3 4" />;
-      })}
+      {/* BELT LINE */}
+      <line x1={22} y1={cy} x2={W - 22} y2={cy} stroke="hsl(220 15% 14% / 0.4)" strokeWidth={2.5} />
 
-      {/* 8×8 arc */}
-      <path d={arc(-45, 45, 4 * s)} fill="none" stroke="hsl(35 95% 52% / 0.9)" strokeWidth={2} />
+      {/* SENSOR DOTS */}
+      <circle cx={72}  cy={cy} r={5}   fill={graphite} />
+      <circle cx={196} cy={cy} r={4.5} fill="hsl(220 15% 14% / 0.65)" />
+      <circle cx={350} cy={cy} r={6}   fill={amber} />
+      <circle cx={504} cy={cy} r={4.5} fill="hsl(220 15% 14% / 0.65)" />
+      <circle cx={628} cy={cy} r={5}   fill={graphite} />
 
-      {/* Side sensor arcs */}
-      <path d={arc(-90, -45, 6 * s)} fill="none" stroke="hsl(220 15% 14% / 0.4)" strokeWidth={1.5} />
-      <path d={arc( 45,  90, 6 * s)} fill="none" stroke="hsl(220 15% 14% / 0.4)" strokeWidth={1.5} />
+      {/* FORWARD LABEL */}
+      <text x={350} y={13} fontSize={7} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.1em">↑ FORWARD</text>
 
-      {/* Device */}
-      <circle cx={cx} cy={cy} r={10} fill="hsl(35 95% 52% / 0.15)" />
-      <circle cx={cx} cy={cy} r={4}  fill="hsl(35 95% 52%)" />
+      {/* SENSOR LABELS BELOW BELT */}
+      {/* Luna Left */}
+      <text x={72}  y={cy + 15} fontSize={7}   fontFamily={mono} fill={fgMid}   textAnchor="middle" letterSpacing="0.06em">LUNA-TF</text>
+      <text x={72}  y={cy + 25} fontSize={6.5} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.06em">8M · ← SIDE</text>
+      {/* Linear Left */}
+      <text x={196} y={cy + 15} fontSize={7}   fontFamily={mono} fill={fgMid}   textAnchor="middle" letterSpacing="0.06em">TOF LINEAR</text>
+      <text x={196} y={cy + 25} fontSize={6.5} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.06em">2M · -45°</text>
+      {/* Center */}
+      <text x={350} y={cy + 15} fontSize={7}   fontFamily={mono} fill={amber}   textAnchor="middle" letterSpacing="0.06em">8×8 · 4M + LUNA-TF · 8M</text>
+      <text x={350} y={cy + 25} fontSize={6.5} fontFamily={mono} fill={amberMid} textAnchor="middle" letterSpacing="0.06em">FORWARD</text>
+      {/* Linear Right */}
+      <text x={504} y={cy + 15} fontSize={7}   fontFamily={mono} fill={fgMid}   textAnchor="middle" letterSpacing="0.06em">TOF LINEAR</text>
+      <text x={504} y={cy + 25} fontSize={6.5} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.06em">2M · +45°</text>
+      {/* Luna Right */}
+      <text x={628} y={cy + 15} fontSize={7}   fontFamily={mono} fill={fgMid}   textAnchor="middle" letterSpacing="0.06em">LUNA-TF</text>
+      <text x={628} y={cy + 25} fontSize={6.5} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.06em">8M · SIDE →</text>
 
-      {/* Distance labels */}
-      {([2, 4, 6, 8] as const).map(m => {
-        const { x, y } = polar(7, m * s);
-        return (
-          <text key={m} x={x + 4} y={y + 3} fontSize={8} fontFamily="'JetBrains Mono', monospace" fill="hsl(220 12% 28% / 0.5)" letterSpacing="0.08em">
-            {m}M
-          </text>
-        );
-      })}
-
-      {/* Angle labels */}
-      <text x={lbl90.x} y={lbl90.y + 3} fontSize={8} fontFamily="'JetBrains Mono', monospace" fill="hsl(35 95% 52% / 0.9)" textAnchor="middle" letterSpacing="0.06em">90°</text>
-      <text x={lbl45L.x} y={lbl45L.y + 3} fontSize={7} fontFamily="'JetBrains Mono', monospace" fill="hsl(220 12% 28% / 0.6)" textAnchor="middle" letterSpacing="0.06em">45°</text>
-      <text x={lbl45R.x} y={lbl45R.y + 3} fontSize={7} fontFamily="'JetBrains Mono', monospace" fill="hsl(220 12% 28% / 0.6)" textAnchor="middle" letterSpacing="0.06em">45°</text>
-
-      {/* Sensor labels */}
-      <text x={lbl8x8.x}  y={lbl8x8.y}  fontSize={8} fontFamily="'JetBrains Mono', monospace" fill="hsl(35 95% 52%)"           textAnchor="middle" letterSpacing="0.07em">VL53L8CX 8×8</text>
-      <text x={lblLeft.x} y={lblLeft.y}  fontSize={7} fontFamily="'JetBrains Mono', monospace" fill="hsl(220 12% 28% / 0.65)"   textAnchor="middle" letterSpacing="0.06em">VL53L1X</text>
-      <text x={lblRight.x} y={lblRight.y} fontSize={7} fontFamily="'JetBrains Mono', monospace" fill="hsl(220 12% 28% / 0.65)"  textAnchor="middle" letterSpacing="0.06em">VL53L1X</text>
-
-      <text x={cx} y={cy + 20} fontSize={7} fontFamily="'JetBrains Mono', monospace" fill="hsl(35 95% 52%)" textAnchor="middle" letterSpacing="0.08em">DEVICE</text>
     </svg>
   );
 };
@@ -265,13 +253,13 @@ const Product = () => {
                 <div className="bg-ivory border border-hairline p-6">
                   <div className="font-mono-tag text-signal mb-4">SOFTWARE LOGIC</div>
                   <p className="text-sm text-graphite-soft leading-relaxed mb-5">
-                    Sensor distance readings are translated directly into haptic intensity. Each motor maps 1:1 to its paired sensor — no shared state, no latency stacking.
+                    Sensor distance readings are translated directly into haptic pulse speed. Each motor maps 1:1 to its paired sensor — no shared state, no latency stacking.
                   </p>
                   <div className="space-y-2">
                     {[
-                      { label: "Near object", value: "Strong motor response", fill: "w-full" },
-                      { label: "Mid-range", value: "Moderate buzz", fill: "w-3/5" },
-                      { label: "Out of range", value: "Low / no signal", fill: "w-1/5" },
+                      { label: "Near object", value: "Fast pulse", fill: "w-full" },
+                      { label: "Mid-range", value: "Moderate pulse", fill: "w-3/5" },
+                      { label: "Out of range", value: "Slow / silent", fill: "w-1/5" },
                     ].map((row) => (
                       <div key={row.label} className="flex items-center gap-4">
                         <span className="font-mono-tag text-graphite-soft/60 w-24 shrink-0">{row.label}</span>
@@ -295,7 +283,17 @@ const Product = () => {
                       <span className="font-mono-tag text-signal shrink-0 mt-0.5">5×</span>
                       <div>
                         <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">Vibration Motor Drivers</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed">ERM motors + 2N2222 transistor + 1N4001 flyback diode. Each independently PWM-controlled for variable intensity.</p>
+                        <p className="text-sm text-graphite-soft leading-relaxed">ERM motors + 2N2222 transistor + 1N4001 flyback diode. Each independently PWM-controlled for variable pulse speed.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="flex items-start gap-4 mb-3">
+                      <span className="font-mono-tag text-signal shrink-0 mt-0.5">3×</span>
+                      <div>
+                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">Benewake TF-Luna — LiDAR</div>
+                        <p className="text-sm text-graphite-soft leading-relaxed">Two on the far ends of the belt pointing directly sideways (8m lateral). One at center pointing forward alongside the 8×8 for long-range (8m) obstacle detection.</p>
                       </div>
                     </div>
                   </div>
@@ -304,8 +302,8 @@ const Product = () => {
                     <div className="flex items-start gap-4 mb-4">
                       <span className="font-mono-tag text-signal shrink-0 mt-0.5">2×</span>
                       <div>
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">VL53L1X — Single-Zone ToF</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed mb-4">Left and right sensors. Detects objects in a narrow cone at hip level, covering lateral approach vectors.</p>
+                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">TOF Linear — Single-Zone</div>
+                        <p className="text-sm text-graphite-soft leading-relaxed mb-4">Positioned at ±45° from center. Short-range (2m) angled coverage bridging between the forward sensors and the side-facing Lunas.</p>
                         <Citation
                           quote="Time-of-Flight sensors are more precise and quicker in measuring the distances."
                           source="Bala et al., 2023, p. 7"
@@ -392,7 +390,7 @@ const Product = () => {
 
             <div className="grid md:grid-cols-3 gap-px bg-ivory/10 border border-ivory/10">
 
-              {/* Mode 1: Forward Static */}
+              {/* Mode 1: Forward / Static */}
               <div className="bg-graphite p-7 lg:p-10 group hover:bg-graphite-soft/20 transition-colors duration-500">
                 <div className="flex items-start justify-between mb-10">
                   <span className="font-mono-tag text-signal">01</span>
@@ -403,15 +401,19 @@ const Product = () => {
                 </h3>
                 <p className="text-sm text-ivory/50 mb-2">e.g. wall, post, door</p>
                 <p className="text-ivory/60 leading-relaxed text-sm mb-10">
-                  Sustained pulsing at an intensity proportional to object proximity. Slow, even rhythm — no urgency, just presence.
+                  Pulse speed reflects distance — slow rhythm for a far object, faster pulses as it draws nearer. The forward-center sensor activates the center motor only.
                 </p>
-                {/* Visualization: 5 bars pulsing in unison */}
-                <div className="flex items-end gap-2 h-12">
-                  {[36, 28, 44, 28, 36].map((h, i) => (
-                    <HapticBar key={i} height={h} duration={900} delay={0} />
+                {/* Visualization: slow pulse (far) → fast pulse (near) */}
+                <div className="flex items-end gap-1.5 h-12">
+                  {[28, 44, 28].map((h, i) => (
+                    <HapticBar key={i} height={h} duration={1000} delay={0} />
+                  ))}
+                  <span className="font-mono-tag text-ivory/20 self-center px-1.5">→</span>
+                  {[28, 44, 28].map((h, i) => (
+                    <HapticBar key={`f${i}`} height={h} duration={380} delay={0} />
                   ))}
                 </div>
-                <div className="mt-4 font-mono-tag text-ivory/30">PULSE — UNIFORM</div>
+                <div className="mt-4 font-mono-tag text-ivory/30">FAR — SLOW &nbsp;→&nbsp; NEAR — FAST</div>
               </div>
 
               {/* Mode 2: Approaching */}
@@ -423,17 +425,21 @@ const Product = () => {
                 <h3 className="font-display text-3xl md:text-4xl text-ivory tracking-[-0.03em] mb-3">
                   Approaching Object
                 </h3>
-                <p className="text-sm text-ivory/50 mb-2">proximity-triggered</p>
+                <p className="text-sm text-ivory/50 mb-2">speed-aware</p>
                 <p className="text-ivory/60 leading-relaxed text-sm mb-10">
-                  Haptic frequency accelerates as an object closes distance. The faster the approach, the faster the buzz — an instinctive urgency signal.
+                  Pulse rate escalates as the object closes. If approach speed exceeds the threshold, pulsing gives way to a sustained hold at maximum — a continuous signal that demands attention.
                 </p>
-                {/* Visualization: same pattern as forward, faster */}
-                <div className="flex items-end gap-2 h-12">
-                  {[36, 28, 44, 28, 36].map((h, i) => (
-                    <HapticBar key={i} height={h} duration={420} delay={0} />
+                {/* Visualization: fast pulse → sustained hold */}
+                <div className="flex items-end gap-1.5 h-12">
+                  {[28, 44, 28].map((h, i) => (
+                    <HapticBar key={i} height={h} duration={260} delay={0} />
+                  ))}
+                  <span className="font-mono-tag text-ivory/20 self-center px-1.5">→</span>
+                  {[44, 44, 44].map((h, i) => (
+                    <div key={`s${i}`} className="w-2.5 rounded-sm bg-signal" style={{ height: `${h}px` }} />
                   ))}
                 </div>
-                <div className="mt-4 font-mono-tag text-ivory/30">PULSE — FAST</div>
+                <div className="mt-4 font-mono-tag text-ivory/30">FAST PULSE &nbsp;→&nbsp; HOLD — MAX</div>
               </div>
 
               {/* Mode 3: Overhead */}
@@ -447,13 +453,13 @@ const Product = () => {
                 </h3>
                 <p className="text-sm text-ivory/50 mb-2">e.g. branch, awning, beam</p>
                 <p className="text-ivory/60 leading-relaxed text-sm mb-10">
-                  8×8 multi-zone ToF identifies objects in the upper arc. The two center-top motors activate, localizing the signal to the upper belt.
+                  The 8×8 multi-zone sensor detects objects above waist height. The center motors — physically elevated on the belt — activate to communicate vertical position, distinct from forward or side detections.
                 </p>
                 {/* Visualization: belt motor map */}
                 <div className="space-y-3">
                   <div className="font-mono-tag text-ivory/30 mb-2">MOTOR MAP — BELT VIEW</div>
                   <div className="flex items-center gap-2">
-                    {[false, true, true, false, false].map((active, i) => (
+                    {[false, false, true, true, false].map((active, i) => (
                       <div key={i} className="flex flex-col items-center gap-1.5">
                         <div
                           className={`w-5 h-5 rounded-full border transition-colors ${
@@ -461,7 +467,7 @@ const Product = () => {
                               ? "bg-signal border-signal"
                               : "bg-transparent border-ivory/20"
                           }`}
-                          style={active ? { animation: "haptic-bar 700ms ease-in-out infinite", animationName: "signal-pulse" } : undefined}
+                          style={active ? { animationName: "signal-pulse", animationDuration: "700ms", animationTimingFunction: "ease-in-out", animationIterationCount: "infinite" } : undefined}
                         />
                         <span className="font-mono-tag text-ivory/20" style={{ fontSize: "0.55rem" }}>
                           {["L", "ML", "C", "MR", "R"][i]}
@@ -473,6 +479,15 @@ const Product = () => {
                 </div>
               </div>
 
+            </div>
+
+            {/* Spatial mapping principle */}
+            <div className="border border-t-0 border-ivory/10 bg-ivory/5 px-7 lg:px-10 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
+              <div className="font-mono-tag text-signal shrink-0">SPATIAL MAPPING</div>
+              <div className="w-px h-4 bg-ivory/10 shrink-0 hidden sm:block" />
+              <p className="text-ivory/45 text-sm leading-relaxed">
+                Each sensor maps directly to the motor at its belt position. A right-side detection activates only the right motor. An overhead detection activates only the elevated center motors. Direction is felt, not interpreted.
+              </p>
             </div>
 
             {/* Haptic image + principle */}
