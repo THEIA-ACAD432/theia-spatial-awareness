@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Challenge from "./pages/Challenge.tsx";
-import Product from "./pages/Product.tsx";
+import Product from "./components/theia/Product";
 import Process from "./pages/Process.tsx";
 import Team from "./pages/Team.tsx";
 import Business from "./pages/Business.tsx";
