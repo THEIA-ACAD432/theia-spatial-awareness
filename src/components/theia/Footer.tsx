@@ -15,6 +15,7 @@ const sections = [
       { label: "The Challenge", to: "/challenge" },
       { label: "Process & Validation", to: "/process" },
       { label: "Business Model", to: "/business" },
+      { label: "References", to: "/references" },
     ],
   },
   {

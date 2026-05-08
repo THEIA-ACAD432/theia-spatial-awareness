@@ -29,6 +29,7 @@ const stakeholders = [
 ];
 
 const testingPlan = [
+  "Wizard-of-Oz testing — simulating responses pre-hardware",
   "Cognitive load testing",
   "Alert usefulness validation",
   "Wearability — stairs, crowds, sitting",
@@ -184,6 +185,15 @@ const Process = () => {
                 <p className="text-base text-graphite-soft leading-relaxed text-pretty">
                   By engaging with a range of stakeholders early, we established a clear problem space and ensured that our project direction was grounded in real-world context rather than assumptions.
                 </p>
+
+                <div className="border-l-2 border-signal pl-5 py-1 mt-8">
+                  <p className="text-graphite-soft italic leading-relaxed text-pretty">
+                    "User comfort and ease of integration into daily routines significantly impact usability and adoption."
+                  </p>
+                  <div className="mt-3 font-mono-tag text-graphite-soft/50">
+                    NAIDOO & GHAZIASGAR · 2025
+                  </div>
+                </div>
               </div>
 
               {/* Stakeholder grid */}
@@ -210,6 +220,80 @@ const Process = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+
+            {/* Stakeholder Engagement deep-dive */}
+            <div className="mt-20 lg:mt-24 pt-16 border-t border-hairline">
+              <div className="grid lg:grid-cols-12 gap-8 mb-12">
+                <div className="lg:col-span-5">
+                  <div className="font-mono-tag text-graphite-soft/60 mb-4">STAKEHOLDER ENGAGEMENT</div>
+                  <h3 className="font-display text-3xl md:text-4xl text-graphite leading-[0.95] tracking-[-0.03em]">
+                    Different needs,
+                    <br />
+                    <span className="text-graphite-soft italic font-light">engaged on their terms.</span>
+                  </h3>
+                </div>
+                <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+                  <p className="text-base text-graphite-soft leading-relaxed text-pretty">
+                    The map above names the players. This is how Theia actually meets each one — what they need, and the design choice that earns their trust.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+                {[
+                  {
+                    role: "Visually Impaired Users",
+                    tier: "PRIMARY",
+                    needs: "Safety, independence, low cognitive load.",
+                    response: "Theia is built cane-first — it augments existing behavior rather than introducing new complexity. Haptic alerts inform, never overwhelm.",
+                    primary: true,
+                  },
+                  {
+                    role: "Clinicians & Mobility Specialists",
+                    tier: "PROVIDERS",
+                    needs: "Clinical validity and workflow fit.",
+                    response: "Theia supports — not replaces — clinical expertise. The goal is a product providers can confidently recommend without undermining their role in care.",
+                    primary: false,
+                  },
+                  {
+                    role: "Insurance & Payers",
+                    tier: "PAYERS",
+                    needs: "Cost containment and outcome evidence.",
+                    response: "Fewer collisions means fewer injury-related healthcare costs. Reduced caregiver dependency lowers long-term utilization. Theia frames itself as preventive infrastructure, not elective technology.",
+                    primary: false,
+                  },
+                  {
+                    role: "Designers & Innovators",
+                    tier: "INNOVATORS",
+                    needs: "Buildability now, expandability later.",
+                    response: "Modular architecture and realistic material costs make Theia buildable today and extensible as the platform matures.",
+                    primary: false,
+                  },
+                ].map((s) => (
+                  <div key={s.role} className={`p-7 lg:p-9 ${s.primary ? "bg-graphite text-ivory" : "bg-ivory"}`}>
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="font-mono-tag text-signal">{s.tier}</span>
+                      {s.primary && <span className="font-mono-tag text-signal/70">PRIMARY</span>}
+                    </div>
+                    <h4 className={`font-display text-xl tracking-[-0.025em] mb-5 leading-tight ${s.primary ? "text-ivory" : "text-graphite"}`}>
+                      {s.role}
+                    </h4>
+                    <div className={`font-mono-tag mb-2 ${s.primary ? "text-ivory/40" : "text-graphite-soft/50"}`}>
+                      WHAT THEY NEED
+                    </div>
+                    <p className={`text-sm leading-relaxed mb-5 ${s.primary ? "text-ivory/70" : "text-graphite-soft"}`}>
+                      {s.needs}
+                    </p>
+                    <div className={`font-mono-tag mb-2 ${s.primary ? "text-ivory/40" : "text-graphite-soft/50"}`}>
+                      HOW THEIA RESPONDS
+                    </div>
+                    <p className={`text-sm leading-relaxed text-pretty ${s.primary ? "text-ivory/85" : "text-graphite"}`}>
+                      {s.response}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -241,6 +325,27 @@ const Process = () => {
                   <p className="text-ivory/60 italic leading-relaxed">
                     "The barrier isn't physical navigation — it's the invisible layer of context that surrounds every journey."
                   </p>
+                  <div className="mt-3 font-mono-tag text-ivory/30">
+                    INTERNAL — DESIGN BRIEF
+                  </div>
+                </div>
+
+                <div className="border-l-2 border-signal/40 pl-5 py-1 mt-5">
+                  <p className="text-ivory/60 italic leading-relaxed">
+                    "Solutions must respect users' individuality and contribute to empowerment and inclusion."
+                  </p>
+                  <div className="mt-3 font-mono-tag text-ivory/30">
+                    DUCKETT & PRATT
+                  </div>
+                </div>
+
+                <div className="border-l-2 border-signal/40 pl-5 py-1 mt-5">
+                  <p className="text-ivory/60 italic leading-relaxed">
+                    "The assistive device should be light and easy to use."
+                  </p>
+                  <div className="mt-3 font-mono-tag text-ivory/30">
+                    BOUTERAA · 2021
+                  </div>
                 </div>
               </div>
 
@@ -318,38 +423,40 @@ const Process = () => {
                 </tbody>
               </table>
             </div>
+
+            <div className="mt-10 max-w-3xl border-l-2 border-signal pl-5 py-2">
+              <p className="text-graphite italic leading-relaxed text-pretty">
+                "93.1% recognition accuracy with a false positive rate under 3%."
+              </p>
+              <div className="mt-3 font-mono-tag text-graphite-soft/60">
+                CHAI & LAU — VALIDATING SCENARIO-SPECIFIC DETECTION IS ACHIEVABLE IN PRACTICE
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* 04 / Process Innovation Variables */}
+        {/* 04 / Process Innovation Analysis */}
         <section className="py-20 lg:py-28 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">04 / Process Innovation Variables</div>
+            <div className="font-mono-tag text-signal mb-12">04 / Process Innovation Analysis</div>
 
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+            {/* Framework + Sigma formula */}
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-20">
               <div className="lg:col-span-5">
                 <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
-                  Measuring
+                  The framework
                   <br />
-                  <span className="text-graphite-soft italic font-light">what matters.</span>
+                  <span className="text-graphite-soft italic font-light">behind every decision.</span>
                 </h2>
-                <div className="space-y-6">
-                  <div>
-                    <div className="font-mono-tag text-signal mb-3">INPUT VARIABLES</div>
-                    <ul className="space-y-2 text-graphite-soft leading-relaxed">
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Number of users</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Classes of stakeholders (CS)</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Number of sessions</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="font-mono-tag text-signal mb-3">POPULATION FACTORS</div>
-                    <ul className="space-y-2 text-graphite-soft leading-relaxed">
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Individual readiness</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Interoperability</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Market penetration</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Population</li>
-                    </ul>
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
+                  Theia's process innovation is measured across four variables — every design and business decision is held against the same equation.
+                </p>
+                <div className="border-l-2 border-signal pl-5 py-1 mt-6">
+                  <p className="font-display text-xl text-graphite italic leading-snug tracking-[-0.02em]">
+                    Does Theia improve health outcomes faster than it adds cost?
+                  </p>
+                  <div className="mt-3 font-mono-tag text-graphite-soft/50">
+                    THE CORE QUESTION
                   </div>
                 </div>
               </div>
@@ -382,6 +489,54 @@ const Process = () => {
                 </div>
               </div>
             </div>
+
+            {/* Four variables */}
+            <div className="font-mono-tag text-graphite-soft/60 mb-4">FOUR VARIABLES</div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline mb-20">
+              {[
+                { n: "01", label: "Users", body: "Visually impaired individuals — the primary unit of study." },
+                { n: "02", label: "Stakeholder Classes", body: "VI users, clinicians and mobility specialists, insurance and payers, designers and innovators." },
+                { n: "03", label: "Unit of Service", body: "One mobility event — a single trip to the grocery store." },
+                { n: "04", label: "Success Signal", body: "Fewer collisions, reduced injury costs, less caregiver dependency over time." },
+              ].map((v) => (
+                <div key={v.n} className="bg-ivory p-6 lg:p-7">
+                  <div className="font-mono-tag text-signal mb-4">{v.n}</div>
+                  <div className="font-display text-xl text-graphite tracking-[-0.025em] mb-3 leading-tight">{v.label}</div>
+                  <p className="text-sm text-graphite-soft leading-relaxed text-pretty">{v.body}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Managing Competing Needs */}
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+              <div className="lg:col-span-4">
+                <div className="font-mono-tag text-graphite-soft/60 mb-4">MANAGING COMPETING NEEDS</div>
+                <h3 className="font-display text-3xl md:text-4xl text-graphite leading-[0.95] tracking-[-0.03em]">
+                  Every tradeoff
+                  <br />
+                  <span className="text-graphite-soft italic font-light">is a stated choice.</span>
+                </h3>
+              </div>
+              <div className="lg:col-span-7 lg:col-start-6">
+                <div className="border border-hairline bg-ivory divide-y divide-hairline">
+                  {[
+                    { left: "Autonomy", right: "Safety", body: "Theia assists, it doesn't control. The user stays in charge." },
+                    { left: "Cost", right: "Functionality", body: "MVP prioritizes essential sensors and haptics. Nothing extraneous at launch." },
+                    { left: "Innovation", right: "Adoption", body: "Aligns with existing cane behavior. No new habits required." },
+                    { left: "Clinical Validation", right: "Speed to Market", body: "Incremental validation allows early deployment while evidence builds over time." },
+                  ].map((t, i) => (
+                    <div key={i} className="px-6 py-6 flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+                      <div className="md:w-[44%] flex items-center gap-3 shrink-0">
+                        <span className="font-display text-lg text-graphite tracking-[-0.02em]">{t.left}</span>
+                        <span className="font-mono-tag text-signal">VS</span>
+                        <span className="font-display text-lg text-graphite tracking-[-0.02em]">{t.right}</span>
+                      </div>
+                      <p className="text-sm text-graphite-soft leading-relaxed flex-1 text-pretty">{t.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -399,6 +554,30 @@ const Process = () => {
                   <span className="text-signal italic font-light">behind Halo.</span>
                 </h2>
               </div>
+              <div className="lg:col-span-6 lg:col-start-7">
+                <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty">
+                  Every scenario, threshold, and feedback pattern in this system is anchored to peer-reviewed work — the bar Theia's validation is designed to meet or exceed.
+                </p>
+              </div>
+            </div>
+
+            {/* Benchmark callout */}
+            <div className="grid md:grid-cols-2 gap-px bg-ivory/10 border border-ivory/10 mb-4">
+              <div className="bg-graphite p-7 lg:p-9">
+                <div className="font-display text-5xl md:text-6xl text-signal mb-3 tracking-[-0.03em]">93%</div>
+                <p className="text-ivory/70 text-sm leading-relaxed text-pretty">
+                  of users found vibratory feedback easy to understand.
+                </p>
+              </div>
+              <div className="bg-graphite p-7 lg:p-9">
+                <div className="font-display text-5xl md:text-6xl text-signal mb-3 tracking-[-0.03em]">91%</div>
+                <p className="text-ivory/70 text-sm leading-relaxed text-pretty">
+                  familiarized themselves with the system quickly.
+                </p>
+              </div>
+            </div>
+            <div className="font-mono-tag text-ivory/30 mb-16">
+              KATZSCHMANN ET AL. — VALIDATION BENCHMARK
             </div>
 
             <div className="grid md:grid-cols-3 gap-px bg-ivory/10 border border-ivory/10">

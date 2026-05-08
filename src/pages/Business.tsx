@@ -212,10 +212,123 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 02 / Market Landscape */}
+        {/* 02 / Business Model */}
+        <section className="py-20 lg:py-28 border-b border-hairline">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">02 / Business Model</div>
+
+            <div className="grid lg:grid-cols-12 gap-12 mb-16">
+              <div className="lg:col-span-6">
+                <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em] mb-6">
+                  Membership,
+                  <br />
+                  <span className="text-graphite-soft italic font-light">not a transaction.</span>
+                </h2>
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-4">
+                  Theia follows the Whoop model: the hardware is included with the membership. No large upfront purchase, no obsolete device sitting in a drawer two years later — the relationship is ongoing.
+                </p>
+                <p className="text-base text-graphite-soft leading-relaxed text-pretty">
+                  Subscription aligns the business with the user's outcome. As long as Theia keeps earning the wear, the membership renews. If it stops being useful, it stops being paid for. That's the discipline assistive health deserves.
+                </p>
+              </div>
+
+              <div className="lg:col-span-5 lg:col-start-8">
+                <div className="bg-graphite text-ivory border border-hairline p-8 lg:p-9 h-full flex flex-col">
+                  <div className="font-mono-tag text-signal mb-5">MEMBERSHIP MODEL</div>
+                  <div className="flex items-baseline gap-1 mb-2">
+                    <span className="font-display text-6xl md:text-7xl text-ivory tracking-[-0.03em] leading-none">$</span>
+                    <span className="font-display text-6xl md:text-7xl text-ivory tracking-[-0.03em] leading-none">—</span>
+                    <span className="font-display text-3xl text-signal italic font-light leading-none ml-1">/mo</span>
+                  </div>
+                  <div className="font-mono-tag text-ivory/40 mb-4">PRICE TBD · TIERED BY CHANNEL</div>
+                  <p className="text-sm text-ivory/60 leading-relaxed text-pretty">
+                    Recurring membership includes the device, software, replacements, and ongoing clinician support. Cancel and the hardware returns — no stranded users, no e-waste.
+                  </p>
+                  <div className="mt-auto pt-6 border-t border-ivory/10">
+                    <div className="font-mono-tag text-ivory/30">
+                      MODEL REFERENCE — WHOOP, MEMBERSHIP INCLUDES HARDWARE
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Why subscription */}
+            <div className="grid md:grid-cols-3 gap-px bg-hairline border border-hairline mb-16">
+              {[
+                {
+                  n: "01",
+                  title: "Lower entry barrier",
+                  body: "A monthly fee makes the device accessible to users who'd never sign off on a four-figure purchase — and to insurers who prefer recurring billing codes.",
+                },
+                {
+                  n: "02",
+                  title: "Always-current hardware",
+                  body: "Members get hardware refreshes as the platform improves. No one is stuck on Gen 1 sensors three years into the relationship.",
+                },
+                {
+                  n: "03",
+                  title: "Continuous software value",
+                  body: "Detection models, haptic patterns, and clinician dashboards keep evolving — paid for by the recurring revenue they're funded by.",
+                },
+              ].map((item) => (
+                <div key={item.n} className="bg-ivory p-6 lg:p-7">
+                  <div className="font-mono-tag text-signal mb-4">{item.n}</div>
+                  <div className="font-display text-lg text-graphite tracking-[-0.02em] mb-2">{item.title}</div>
+                  <p className="text-sm text-graphite-soft leading-relaxed text-pretty">{item.body}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Distribution channels */}
+            <div className="font-mono-tag text-graphite-soft/60 mb-4">DISTRIBUTION CHANNELS</div>
+            <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+              <div className="bg-ivory p-7 lg:p-9">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-mono-tag text-signal">PRIMARY</span>
+                  <span className="font-mono-tag text-graphite-soft/40">01</span>
+                </div>
+                <h3 className="font-display text-2xl text-graphite tracking-[-0.025em] mb-3 leading-tight">
+                  Direct memberships via
+                  <br />
+                  <span className="text-graphite-soft italic font-light">healthcare providers.</span>
+                </h3>
+                <p className="text-sm text-graphite-soft leading-relaxed mb-5 text-pretty">
+                  Memberships are introduced prescriptively — the user enrolls through the clinician already coaching them on mobility, with the subscription billed individually or through insurance.
+                </p>
+                <ul className="space-y-2 text-sm text-graphite leading-relaxed">
+                  <li className="flex gap-3"><span className="text-signal shrink-0">—</span> Rehabilitation centers</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">—</span> Occupational therapists</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">—</span> Mobility specialists</li>
+                </ul>
+              </div>
+              <div className="bg-ivory-deep/40 p-7 lg:p-9">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-mono-tag text-signal">SECONDARY</span>
+                  <span className="font-mono-tag text-graphite-soft/40">02</span>
+                </div>
+                <h3 className="font-display text-2xl text-graphite tracking-[-0.025em] mb-3 leading-tight">
+                  Bulk seat licenses for
+                  <br />
+                  <span className="text-graphite-soft italic font-light">institutions.</span>
+                </h3>
+                <p className="text-sm text-graphite-soft leading-relaxed mb-5 text-pretty">
+                  Volume membership contracts — institutions pay per active user per month, putting the device in the hands of users who'd otherwise be priced out of assistive innovation.
+                </p>
+                <ul className="space-y-2 text-sm text-graphite leading-relaxed">
+                  <li className="flex gap-3"><span className="text-signal shrink-0">—</span> Schools for the blind</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">—</span> VA programs</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">—</span> Insurers</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 03 / Market Landscape */}
         <section className="py-20 lg:py-28 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-4">02 / Market Landscape</div>
+            <div className="font-mono-tag text-signal mb-4">03 / Market Landscape</div>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
               <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em]">
                 What exists,
@@ -250,11 +363,11 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 03 / Roadmap */}
+        {/* 04 / Roadmap */}
         <section className="relative py-20 lg:py-28 border-b border-hairline bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">03 / 25-Year Roadmap</div>
+            <div className="font-mono-tag text-signal mb-12">04 / 25-Year Roadmap</div>
 
             <div className="mb-16">
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory leading-[0.92] tracking-[-0.035em]">
@@ -294,10 +407,10 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 04 / Success Metrics */}
+        {/* 05 / Success Metrics */}
         <section className="py-20 lg:py-28 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">04 / Success Metrics</div>
+            <div className="font-mono-tag text-signal mb-12">05 / Success Metrics</div>
 
             <div className="grid lg:grid-cols-12 gap-8 mb-12">
               <div className="lg:col-span-5">
@@ -327,10 +440,10 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 05 / Feasibility & Risks */}
+        {/* 06 / Feasibility & Risks */}
         <section className="py-20 lg:py-28 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">05 / Feasibility & Risks</div>
+            <div className="font-mono-tag text-signal mb-12">06 / Feasibility & Risks</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-5">
@@ -378,53 +491,245 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 06 / Future Iterations */}
+        {/* 07 / Future Iterations */}
         <section className="relative py-20 lg:py-28 bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">06 / Future Iterations</div>
+            <div className="font-mono-tag text-signal mb-12">07 / Future Iterations</div>
 
-            <div className="grid lg:grid-cols-12 gap-12">
-              <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl md:text-5xl text-ivory leading-[0.92] tracking-[-0.035em] mb-8">
-                  What we haven't
+            {/* Header */}
+            <div className="grid lg:grid-cols-12 gap-8 mb-16">
+              <div className="lg:col-span-7">
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory leading-[0.92] tracking-[-0.035em] mb-6">
+                  A foundation,
                   <br />
-                  <span className="text-signal italic font-light">solved yet.</span>
+                  <span className="text-signal italic font-light">not a finish line.</span>
                 </h2>
-                <p className="text-base text-ivory/70 leading-relaxed text-pretty">
-                  Every edge case is a design problem. The current detection model works well for clear hazards, but real-world navigation is full of contextual ambiguity — objects the user wants to interact with vs. objects to avoid.
+              </div>
+              <div className="lg:col-span-5 lg:pt-4">
+                <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty">
+                  The first iteration of Theia is a strong foundation — but it's just that. The roadmap below is what turns the device from a reactive assistant into a system that reads the environment the way a cat navigates a dark room.
                 </p>
               </div>
+            </div>
 
-              <div className="lg:col-span-6 lg:col-start-7">
-                <div className="font-mono-tag text-ivory/40 mb-5">OPEN EDGE CASES</div>
-                <div className="space-y-4">
+            {/* Four future pillars */}
+            <div className="font-mono-tag text-ivory/40 mb-4">FUTURE PILLARS</div>
+            <div className="grid md:grid-cols-2 gap-px bg-ivory/10 border border-ivory/10 mb-20">
+              {[
+                {
+                  n: "01",
+                  title: "Full 360° coverage",
+                  tag: "FROM 180° → 360°",
+                  body: "The current build covers 180 degrees. Full 360 wraps the user completely, closing the blind spot behind them — where a lot of real-world hazards actually come from.",
+                },
+                {
+                  n: "02",
+                  title: "Layered output channels",
+                  tag: "HAPTIC + BONE CONDUCTION",
+                  body: "Haptics remain the primary feedback — silent, private, no learning curve. Bone conduction as a paired wearable adds a second layer for nuanced alerts without blocking ambient sound. The user hears the world and Theia at the same time.",
+                },
+                {
+                  n: "03",
+                  title: "Spatial intelligence",
+                  tag: "REACTION → COMPREHENSION",
+                  body: "LiDAR + ToF generates a continuous 3D point cloud around the user. A cloud-assisted ML model trained on millions of pedestrian samples labels that geometry — not just \"obstacle close, left,\" but \"person approaching from behind\" or \"doorway ahead, step up.\"",
+                },
+                {
+                  n: "04",
+                  title: "Modular design philosophy",
+                  tag: "FIXED CORE / EVOLVING SHELL",
+                  body: "Sensors, compute, and haptics live in a fixed core layer. The outer shell sits on top and evolves independently. Pockets, materials, fashion finishes — the belt starts looking like something you'd wear anyway, not something you have to wear.",
+                },
+              ].map((p) => (
+                <div key={p.n} className="bg-graphite p-7 lg:p-9">
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="font-mono-tag text-signal">{p.n}</span>
+                    <span className="font-mono-tag text-ivory/30">{p.tag}</span>
+                  </div>
+                  <h3 className="font-display text-2xl text-ivory tracking-[-0.025em] mb-4 leading-tight">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-ivory/65 leading-relaxed text-pretty">{p.body}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* System architecture diagram */}
+            <div className="font-mono-tag text-ivory/40 mb-4">SYSTEM ARCHITECTURE</div>
+            <h3 className="font-display text-2xl md:text-3xl text-ivory tracking-[-0.025em] mb-10 leading-tight">
+              How all the pieces
+              <span className="text-signal italic font-light"> connect.</span>
+            </h3>
+
+            <div className="space-y-2 mb-20">
+              {/* Cloud layer */}
+              <div className="border border-ivory/15 bg-ivory/[0.02] p-6 lg:p-7">
+                <div className="font-mono-tag text-signal mb-5">CLOUD INTELLIGENCE LAYER</div>
+                <div className="grid md:grid-cols-3 gap-3">
                   {[
-                    {
-                      title: "Intentional objects",
-                      body: "How does the system distinguish a chair the user wants to sit in from an obstacle to avoid? Proximity alone is insufficient.",
-                    },
-                    {
-                      title: "Crosswalk crowds",
-                      body: "Dense pedestrian environments create sensor noise. Multiple moving objects at varying velocities can produce conflicting alerts.",
-                    },
-                    {
-                      title: "Semantic context",
-                      body: "Rule-based alerts don't understand intent or environment. A doorway is an opening, not an obstacle — but the sensor doesn't know the difference yet.",
-                    },
-                  ].map((item, i) => (
-                    <div key={i} className="border-l-2 border-signal/40 pl-5 py-1">
-                      <div className="font-mono-tag text-signal/80 mb-1">{item.title}</div>
-                      <p className="text-sm text-ivory/60 leading-relaxed">{item.body}</p>
+                    { name: "Spatial ML model", detail: "Scene understanding" },
+                    { name: "Federated learning", detail: "Model weights only" },
+                    { name: "Pedestrian dataset", detail: "Millions of samples" },
+                  ].map((item) => (
+                    <div key={item.name} className="border border-ivory/10 bg-graphite/60 p-4">
+                      <div className="font-display text-sm md:text-base text-ivory tracking-[-0.02em] mb-1">{item.name}</div>
+                      <div className="text-xs text-ivory/50">{item.detail}</div>
                     </div>
                   ))}
                 </div>
+              </div>
 
-                <div className="mt-10 pt-8 border-t border-ivory/10">
-                  <div className="font-mono-tag text-ivory/30 mb-3">NEXT STEP</div>
-                  <p className="text-sm text-ivory/50 leading-relaxed">
-                    Diagrams and scenario breakdowns for edge case handling are in progress and will be added here as the detection model matures.
+              {/* Connector */}
+              <div className="flex flex-col items-center py-2">
+                <div className="w-px h-4 bg-ivory/30" />
+                <span className="font-mono-tag text-ivory/40 my-1">SEMANTIC MAP ↕ WEIGHT UPDATES</span>
+                <div className="w-px h-4 bg-ivory/30" />
+              </div>
+
+              {/* Belt layer */}
+              <div className="border border-signal/40 bg-signal/[0.04] p-6 lg:p-7">
+                <div className="font-mono-tag text-signal mb-5">THEIA BELT — INFRASTRUCTURE LAYER</div>
+                <div className="grid md:grid-cols-3 gap-4 items-stretch">
+                  {[
+                    { name: "360° LiDAR + ToF", detail: "Full surround sensing" },
+                    { name: "On-device compute", detail: "Preprocess, compress" },
+                    { name: "Haptic motor array", detail: "Directional + intensity" },
+                  ].map((item, i, arr) => (
+                    <div key={item.name} className="relative border border-signal/30 bg-graphite/70 p-4">
+                      <div className="font-display text-sm md:text-base text-ivory tracking-[-0.02em] mb-1">{item.name}</div>
+                      <div className="text-xs text-ivory/50">{item.detail}</div>
+                      {i < arr.length - 1 && (
+                        <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 text-signal text-sm">→</div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Connector */}
+              <div className="flex flex-col items-center py-2">
+                <div className="w-px h-4 bg-ivory/30" />
+                <span className="font-mono-tag text-ivory/40 my-1">BLUETOOTH LE</span>
+                <div className="w-px h-4 bg-ivory/30" />
+              </div>
+
+              {/* Bone conduction (optional) */}
+              <div className="grid md:grid-cols-12 gap-4 items-center">
+                <div className="md:col-span-7 border border-ivory/15 bg-ivory/[0.02] p-6 lg:p-7">
+                  <div className="font-mono-tag text-ivory/50 mb-3">BONE CONDUCTION — PAIRED WEARABLE</div>
+                  <p className="text-sm text-ivory/70">High-priority alerts, directional audio cues.</p>
+                </div>
+                <div className="md:col-span-5 px-1">
+                  <div className="font-mono-tag text-ivory/30 mb-2">OPTIONAL — USER'S CHOICE</div>
+                  <p className="text-xs text-ivory/40 leading-relaxed">No ambient sound blocked.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Belt anatomy */}
+            <div className="font-mono-tag text-ivory/40 mb-4">BELT ANATOMY</div>
+            <h3 className="font-display text-2xl md:text-3xl text-ivory tracking-[-0.025em] mb-12 leading-tight">
+              The 360° sensor ring
+              <span className="text-signal italic font-light"> + layered construction.</span>
+            </h3>
+
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
+              {/* Top-down sensor ring */}
+              <div>
+                <div className="font-mono-tag text-ivory/30 mb-6">TOP-DOWN VIEW — 360° SENSOR RING</div>
+                <div className="relative aspect-[4/3] bg-ivory/[0.02] border border-ivory/10 p-4">
+                  <svg viewBox="0 0 400 300" className="w-full h-full" aria-hidden>
+                    <ellipse cx="200" cy="150" rx="160" ry="80" fill="rgba(245,158,11,0.07)" stroke="rgba(245,158,11,0.45)" strokeWidth="1.5" />
+                    <ellipse cx="200" cy="150" rx="55" ry="28" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1" strokeDasharray="3 3" />
+                    <rect x="195" y="146" width="10" height="10" fill="rgba(245,158,11,0.75)" />
+                    <text x="200" y="142" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="ui-monospace, monospace">user</text>
+                    <text x="200" y="172" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="ui-monospace, monospace">waist</text>
+
+                    <circle cx="200" cy="70" r="7" fill="#3b82f6" />
+                    <circle cx="200" cy="230" r="7" fill="#3b82f6" />
+                    <circle cx="40" cy="150" r="7" fill="#3b82f6" />
+                    <circle cx="360" cy="150" r="7" fill="#3b82f6" />
+
+                    <circle cx="85" cy="95" r="6" fill="#f59e0b" />
+                    <circle cx="315" cy="95" r="6" fill="#f59e0b" />
+                    <circle cx="85" cy="205" r="6" fill="#f59e0b" />
+                    <circle cx="315" cy="205" r="6" fill="#f59e0b" />
+
+                    <text x="200" y="55" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="ui-monospace, monospace">front — LiDAR 8×8</text>
+                    <text x="200" y="258" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="ui-monospace, monospace">rear — LiDAR</text>
+                    <text x="370" y="135" textAnchor="end" fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="ui-monospace, monospace">right — ToF</text>
+                    <text x="30" y="135" textAnchor="start" fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="ui-monospace, monospace">left — ToF</text>
+                    <text x="345" y="80" textAnchor="end" fill="rgba(245,158,11,0.7)" fontSize="9" fontFamily="ui-monospace, monospace">diagonal ToF ×4</text>
+                  </svg>
+                </div>
+              </div>
+
+              {/* Cross-section */}
+              <div>
+                <div className="font-mono-tag text-ivory/30 mb-6">CROSS-SECTION — LAYERED CONSTRUCTION</div>
+                <div className="space-y-1">
+                  <div className="bg-graphite border border-ivory/25 p-5">
+                    <div className="font-display text-base md:text-lg text-ivory tracking-[-0.02em]">Design shell — swappable outer layer</div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-1">
+                    <div className="bg-signal/10 border border-signal/40 p-4">
+                      <div className="font-display text-xs md:text-sm text-ivory tracking-[-0.02em] mb-1 leading-tight">Sensor + compute core</div>
+                      <div className="text-[10px] md:text-xs text-ivory/55">LiDAR, ToF, ESP32-S3+</div>
+                    </div>
+                    <div className="bg-ivory/[0.06] border border-ivory/20 p-4">
+                      <div className="font-display text-xs md:text-sm text-ivory tracking-[-0.02em] mb-1 leading-tight">Power + comms</div>
+                      <div className="text-[10px] md:text-xs text-ivory/55">LiPo, BLE, USB-C</div>
+                    </div>
+                    <div className="bg-signal/20 border border-signal/50 p-4">
+                      <div className="font-display text-xs md:text-sm text-ivory tracking-[-0.02em] mb-1 leading-tight">Haptic array</div>
+                      <div className="text-[10px] md:text-xs text-ivory/55">5+ motors, 360° mapped</div>
+                    </div>
+                  </div>
+                  <div className="font-mono-tag text-ivory/30 pt-4 text-center">
+                    INFRASTRUCTURE FIXED — SHELL SWAPS INDEPENDENTLY
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Open edge cases — subordinate */}
+            <div className="border-t border-ivory/10 pt-16">
+              <div className="grid lg:grid-cols-12 gap-12">
+                <div className="lg:col-span-5">
+                  <div className="font-mono-tag text-ivory/40 mb-4">STILL OPEN</div>
+                  <h3 className="font-display text-3xl md:text-4xl text-ivory leading-[0.95] tracking-[-0.03em] mb-6">
+                    What we haven't
+                    <br />
+                    <span className="text-signal italic font-light">solved yet.</span>
+                  </h3>
+                  <p className="text-base text-ivory/70 leading-relaxed text-pretty">
+                    Even with the architecture above, real-world navigation stays full of contextual ambiguity. Objects the user wants to interact with vs. objects to avoid — these remain open design problems.
                   </p>
+                </div>
+                <div className="lg:col-span-6 lg:col-start-7">
+                  <div className="font-mono-tag text-ivory/40 mb-5">OPEN EDGE CASES</div>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        title: "Intentional objects",
+                        body: "How does the system distinguish a chair the user wants to sit in from an obstacle to avoid? Proximity alone is insufficient.",
+                      },
+                      {
+                        title: "Crosswalk crowds",
+                        body: "Dense pedestrian environments create sensor noise. Multiple moving objects at varying velocities can produce conflicting alerts.",
+                      },
+                      {
+                        title: "Semantic context",
+                        body: "Rule-based alerts don't understand intent or environment. A doorway is an opening, not an obstacle — but the sensor doesn't know the difference yet.",
+                      },
+                    ].map((item, i) => (
+                      <div key={i} className="border-l-2 border-signal/40 pl-5 py-1">
+                        <div className="font-mono-tag text-signal/80 mb-1">{item.title}</div>
+                        <p className="text-sm text-ivory/60 leading-relaxed">{item.body}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

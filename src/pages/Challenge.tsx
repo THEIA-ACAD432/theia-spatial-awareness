@@ -25,7 +25,7 @@ const Overview = () => {
                 <h1 className="font-display text-[11vw] sm:text-[8vw] lg:text-[6.5vw] text-graphite leading-[0.88] tracking-[-0.04em]">
                   The case
                   <br />
-                  for <span className="text-signal italic font-light">Halo.</span>
+                  for <span className="text-signal italic font-light">Theia.</span>
                 </h1>
               </div>
               <div className="lg:col-span-4 lg:pb-4">
@@ -45,35 +45,38 @@ const Overview = () => {
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               <div className="lg:col-span-6">
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
-                  The cane only
+                  The cane has
                   <br />
-                  sees the ground.
+                  <span className="text-graphite-soft italic font-light">a hard ceiling.</span>
                 </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  The white cane is one of the most effective mobility tools ever designed, providing essential tactile navigation and physical obstacle detection. But it only protects from the ground up. Overhead obstacles, approaching people, and spatial hazards above waist height remain completely invisible.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
+                  The white cane is one of the most effective mobility tools ever designed — real-time tactile feedback, trusted for decades. But it has a hard ceiling, literally. Everything above waist height is invisible to it.
                 </p>
-                <p className="text-base md:text-lg text-graphite-soft leading-relaxed text-pretty">
-                  Beyond physical navigation, users also lack access to social interpretation, digital interaction, and environmental context.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
+                  The cane also occupies one hand, requires direct contact with the environment, and carries social stigma — and the stigma matters. User comfort and integration into daily routines determine whether assistive tech actually gets used.
+                </p>
+                <p className="text-base text-graphite-soft leading-relaxed text-pretty">
+                  The gap isn't only physical. Navigating public spaces blind means missing the social and environmental context sighted people absorb automatically — who's nearby, what's approaching, where hazards are forming. What users want from assistive tools isn't just safer movement. It's independence, dignity, and inclusion.
                 </p>
               </div>
 
               <div className="lg:col-span-6 space-y-5">
-                <div className="font-mono-tag text-graphite-soft/60 mb-4">CITATIONS — OVERHEAD HAZARDS</div>
+                <div className="font-mono-tag text-graphite-soft/60 mb-4">EVIDENCE — THE FULL GAP</div>
                 <Citation
                   quote="Upward-pointing sensors see chest- and face-level obstacles, such as branches and overhanging ledges, that are even more of a danger to a blind person."
                   source="Katzschmann et al., p. 10"
                 />
                 <Citation
-                  quote="White canes have several flaws. They are often stigmatized, require physical exertion, occupy one hand, need physical contact with the environment, and can only detect obstacles by point contact at heights up to the users' chests."
-                  source="Katzschmann et al., p. 1"
-                />
-                <Citation
-                  quote="A key problem for white cane users is their inability to detect high obstacles hanging above the ground, e.g. tree branches."
-                  source="Katzschmann et al., p. 10"
-                />
-                <Citation
                   quote="White canes are unable to detect obstacles beyond their range."
                   source="Xu et al., p. 1"
+                />
+                <Citation
+                  quote="User comfort and ease of integration into daily routines significantly impact usability and adoption."
+                  source="Naidoo & Ghaziasgar, 2025"
+                />
+                <Citation
+                  quote="Solutions must respect users' individuality and contribute to empowerment and inclusion."
+                  source="Duckett & Pratt, 2001"
                 />
               </div>
             </div>
@@ -136,15 +139,15 @@ const Overview = () => {
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-5">
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
-                  Complete it.
+                  The cane owns
                   <br />
-                  <span className="text-graphite-soft italic font-light">Don't replace it.</span>
+                  <span className="text-graphite-soft italic font-light">the ground.</span>
                 </h2>
                 <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  The white cane is irreplaceable for ground-level navigation, but leaves a clear gap above waist height. Halo is a belt with sensors and haptic motors built in — it covers what the cane can't, detecting hazards above ground and communicating them passively, in real time, without disrupting existing routines or requiring a new tool to learn.
+                  That role is settled and irreplaceable. The opportunity is everything above it. A belt-worn wearable that detects above-waist hazards and communicates them passively — without disrupting existing habits or requiring a new behavior to learn — fills that gap directly.
                 </p>
                 <p className="text-lg md:text-xl text-graphite font-medium leading-relaxed border-l-2 border-signal pl-4">
-                  Halo doesn't replace the white cane. It completes it.
+                  Theia doesn't replace the cane. It completes it.
                 </p>
                 <Link
                   to="/product"
@@ -203,61 +206,66 @@ const Overview = () => {
                   <span className="text-signal italic font-light">One system.</span>
                 </h2>
                 <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty">
-                  Halo is a belt-worn wearable built around three core functions, each addressing a distinct failure mode of the white cane in the spatial layer above the ground.
+                  Theia is a belt-worn wearable built around three core functions, each addressing a distinct failure mode of the white cane in the spatial layer above the ground.
                 </p>
               </div>
             </div>
 
-            {/* Three function cards */}
+            {/* Three function cards with embedded evidence */}
             <div className="grid md:grid-cols-3 gap-px bg-ivory/10 border border-ivory/10 mb-16">
               {[
                 {
                   n: "01",
                   title: "Proximity Detection",
-                  body: "Onboard cameras continuously scan for static, overhead, and approaching obstacles, covering the spatial blind spot above the cane's reach.",
+                  body: "Onboard cameras and ToF sensors scan continuously for static, overhead, and approaching obstacles above the cane's reach.",
+                  stat: "93.1%",
+                  statLabel: "RECOGNITION ACCURACY · FP RATE < 3%",
+                  cite: "Chai & Lau",
                 },
                 {
                   n: "02",
                   title: "Haptic Intelligence",
-                  body: "Vibration patterns communicate hazard direction and proximity in real time, hands-free, without interrupting focus.",
+                  body: "Vibration patterns communicate hazard direction and proximity in real time. No audio distraction, no screen, no second tool to manage.",
+                  stat: "70%",
+                  statLabel: "FELT COMFORTABLE WEARING A HANDS-FREE, DISCREET SYSTEM",
+                  cite: "Katzschmann et al.",
                 },
                 {
                   n: "03",
-                  title: "Cane Compatible",
-                  body: "Layers on top of the existing white cane ecosystem without disrupting how users already move.",
+                  title: "Cane Compatibility",
+                  body: "Theia doesn't replace the cane. It layers on top of the existing white cane ecosystem without changing how users already move.",
+                  stat: "Both",
+                  statLabel: "BELT-WORN HAPTIC DESIGNED FOR SIMULTANEOUS CANE USE",
+                  cite: "Katzschmann et al.",
                 },
               ].map((s) => (
-                <div key={s.n} className="group bg-graphite p-7 lg:p-10 hover:bg-graphite-soft/20 transition-colors duration-500">
+                <div key={s.n} className="group bg-graphite p-7 lg:p-10 hover:bg-graphite-soft/20 transition-colors duration-500 flex flex-col">
                   <div className="flex items-start justify-between mb-10">
                     <span className="font-mono-tag text-signal">{s.n}</span>
                   </div>
                   <h3 className="font-display text-3xl md:text-4xl text-ivory mb-5 tracking-[-0.03em]">
                     {s.title}
                   </h3>
-                  <p className="text-ivory/60 leading-relaxed text-pretty">
+                  <p className="text-ivory/60 leading-relaxed text-pretty mb-8">
                     {s.body}
                   </p>
-                  <div className="mt-8 h-px w-12 bg-ivory/20 group-hover:w-24 group-hover:bg-signal transition-all duration-500" />
+                  <div className="mt-auto pt-6 border-t border-ivory/10">
+                    <div className="font-display text-3xl text-signal tracking-[-0.03em] leading-none mb-2">{s.stat}</div>
+                    <div className="font-mono-tag text-ivory/40 leading-relaxed mb-2">{s.statLabel}</div>
+                    <div className="font-mono-tag text-ivory/30">— {s.cite}</div>
+                  </div>
+                  <div className="mt-6 h-px w-12 bg-ivory/20 group-hover:w-24 group-hover:bg-signal transition-all duration-500" />
                 </div>
               ))}
             </div>
 
-            {/* Solution citations */}
-            <div className="grid lg:grid-cols-2 gap-8 pt-8 border-t border-ivory/10">
-              <div>
-                <div className="font-mono-tag text-ivory/40 mb-4">DETECTION ACCURACY BENCHMARK</div>
-                <blockquote className="border-l-2 border-signal pl-5 py-1">
-                  <p className="text-ivory/60 leading-relaxed italic">&ldquo;The ground plane checking system succeeded in achieving an overall recognition rate of 93.10%, with an overall false positive rate of 2.72% and average false negative rate of 4.25%.&rdquo;</p>
-                  <cite className="font-mono-tag text-signal not-italic mt-3 block">Chai and Lau, p. 1 (Abstract)</cite>
-                </blockquote>
-              </div>
-              <div>
-                <div className="font-mono-tag text-ivory/40 mb-4">CANE COMPATIBILITY CONFIRMED</div>
-                <blockquote className="border-l-2 border-signal pl-5 py-1">
-                  <p className="text-ivory/60 leading-relaxed italic">&ldquo;If a user desires direct haptic feedback from the ground in front, ALVU's design allows a white cane to be used simultaneously.&rdquo;</p>
-                  <cite className="font-mono-tag text-signal not-italic mt-3 block">Katzschmann et al., p. 10</cite>
-                </blockquote>
-              </div>
+            {/* Closing line */}
+            <div className="pt-12 border-t border-ivory/10">
+              <p className="font-display text-[6vw] sm:text-[4.5vw] lg:text-[3.5vw] text-ivory leading-[1.05] tracking-[-0.03em] max-w-5xl">
+                The white cane owns the ground.
+                <br />
+                <span className="text-signal italic font-light">Theia owns everything else.</span>
+              </p>
             </div>
           </div>
         </section>
