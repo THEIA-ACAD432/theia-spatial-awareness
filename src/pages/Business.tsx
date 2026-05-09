@@ -36,35 +36,35 @@ const roadmap = [
     years: "2026",
     name: "Prove It",
     description:
-      "Build and validate the core product. Lock down hardware, run first user testing, and confirm that haptic spatial awareness meaningfully increases navigation confidence without disrupting cane-based routines. Form factor must pass the dignity test — it has to blend in socially before it can scale anywhere.",
+      "Lock down hardware. First user testing. Pass the dignity test before anything else.",
   },
   {
     n: "02",
-    years: "2027–2030",
+    years: "2027 / 2030",
     name: "Clinical Validation",
     description:
-      "Transition from prototype to evidence-based medical device. Run a longitudinal real-world study, build the clinician dashboard, and initiate FDA and EU regulatory pathways. This is the era of proof — building the evidence stack that earns trust from health systems, OTs, and insurers.",
+      "Move from prototype to medical device. Longitudinal study. FDA and EU pathways.",
   },
   {
     n: "03",
-    years: "2030–2035",
+    years: "2030 / 2035",
     name: "Go to Market",
     description:
-      "First commercial launch through institutional channels — rehab centers, schools for the blind, VA programs. Pursue insurance reimbursement. Ship Gen 2 hardware with improved battery life and reduced false positives. Begin opening a developer API so the broader ecosystem can build on top of Halo's sensing layer.",
+      "Launch through rehab centers, schools, VA programs. Insurance reimbursement. Ship Gen 2. Open the API.",
   },
   {
     n: "04",
-    years: "2035–2043",
+    years: "2035 / 2043",
     name: "Mainstream",
     description:
-      "Halo becomes a standard-of-care recommendation for newly diagnosed patients. Launch a consumer line that looks like an accessory, not an aid. Expand into pediatric and aging populations. Introduce AI-augmented sensing for semantic scene understanding — moving from rule-based alerts to contextually intelligent awareness.",
+      "Standard-of-care recommendation. Consumer line that reads as accessory. AI-augmented scene understanding.",
   },
   {
     n: "05",
-    years: "2043–2051",
+    years: "2043 / 2051",
     name: "Globalize",
     description:
-      "Over 80% of visually impaired people live in low- and middle-income countries with near-zero access to assistive tech. Engineer a sub-$150 device, train community health workers as the distribution layer, and partner with WHO for procurement. Close the decade by embedding Halo into smart city infrastructure and publishing the largest real-world mobility outcomes dataset ever assembled — 500,000+ users, open-access.",
+      "Sub-$150 device. Community health worker distribution. WHO procurement. Largest open-access mobility dataset ever assembled.",
   },
 ];
 
@@ -101,10 +101,10 @@ const metrics = [
 ];
 
 const risks = [
-  { risk: "Over-reliance on automation", mitigation: "Cane-first design — Halo augments, never leads" },
-  { risk: "Privacy concerns", mitigation: "Sensor-only detection — no cameras, no data stored or transmitted" },
-  { risk: "Clinical liability", mitigation: "No real-time decision-making — alerts only, user acts" },
-  { risk: "Adoption barriers", mitigation: "Institutional deployment through clinicians and OTs" },
+  { risk: "Over-reliance on automation", mitigation: "Cane-first design. Halo augments, never leads." },
+  { risk: "Privacy concerns", mitigation: "Sensor-only detection. No cameras, no data stored or transmitted." },
+  { risk: "Clinical liability", mitigation: "No real-time decision-making. Alerts only, the user acts." },
+  { risk: "Adoption barriers", mitigation: "Institutional deployment through clinicians and OTs." },
 ];
 
 const Business = () => {
@@ -114,13 +114,13 @@ const Business = () => {
       <main className="pt-14">
 
         {/* Page Header */}
-        <section className="relative py-20 lg:py-28 border-b border-hairline overflow-hidden">
+        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top_left,black_30%,transparent_70%)]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-8">Business / 05</div>
+            <div className="font-mono-tag text-signal mb-8">Business / 04</div>
             <div className="grid lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-8">
-                <h1 className="font-display text-[11vw] sm:text-[8vw] lg:text-[6.5vw] text-graphite leading-[0.88] tracking-[-0.04em]">
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em]">
                   Strategy &
                   <br />
                   <span className="text-signal italic font-light">long game.</span>
@@ -128,7 +128,7 @@ const Business = () => {
               </div>
               <div className="lg:col-span-4 lg:pb-4">
                 <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-                  Value proposition, market position, a 25-year roadmap, and the metrics that define success.
+                  Value, market, model, roadmap, metrics.
                 </p>
               </div>
             </div>
@@ -136,28 +136,25 @@ const Business = () => {
         </section>
 
         {/* 01 / Value Proposition */}
-        <section className="py-20 lg:py-28 border-b border-hairline">
+        <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">01 / Value Proposition</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-6">
-                <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em] mb-6">
+                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
                   A health innovation,
                   <br />
                   <span className="text-graphite-soft italic font-light">not a gadget.</span>
                 </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-4">
-                  This is an assistive health innovation that prioritizes safety, dignity, and long-term adoption. A wearable mobility aid that augments white cane use with passive spatial awareness — reducing uncertainty while preserving user control.
-                </p>
-                <p className="text-base text-graphite-soft leading-relaxed text-pretty">
-                  The value proposition is not more technology. It's less friction, less fear, and more of the world accessible on the user's own terms.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                  Less friction. Less fear. More of the world on the user&rsquo;s own terms.
                 </p>
                 <Link
                   to="/challenge"
                   className="inline-flex items-center gap-2 mt-6 text-sm text-signal hover:underline underline-offset-2 transition-colors"
                 >
-                  Read the research case <span aria-hidden>→</span>
+                  Read the research case <span aria-hidden>&rarr;</span>
                 </Link>
               </div>
 
@@ -166,17 +163,17 @@ const Business = () => {
                   {
                     n: "01",
                     title: "Situational awareness",
-                    body: "Extends spatial sensing beyond what tactile feedback alone can provide — the air above the cane's reach.",
+                    body: "Extends sensing beyond what touch can reach. The air above the cane.",
                   },
                   {
                     n: "02",
-                    title: "Reduced cognitive load",
-                    body: "Passive, ambient alerts reduce the mental overhead of navigating unfamiliar environments.",
+                    title: "Lower cognitive load",
+                    body: "Passive, ambient alerts. Less mental overhead in unfamiliar environments.",
                   },
                   {
                     n: "03",
                     title: "Independence preserved",
-                    body: "No automation takeover. The user always decides — Halo informs, never instructs.",
+                    body: "The user always decides. Theia informs, never instructs.",
                   },
                 ].map((item) => (
                   <div key={item.n} className="bg-ivory border border-hairline p-6 flex gap-5">
@@ -191,33 +188,30 @@ const Business = () => {
             </div>
 
             {/* Business Model */}
-            <div className="border border-hairline bg-ivory p-6 lg:p-10 mb-px">
-              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            <div className="border border-hairline bg-ivory p-8 lg:p-12 mb-px">
+              <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
                 <div className="lg:col-span-5">
-                  <div className="font-mono-tag text-signal mb-4">BUSINESS MODEL</div>
-                  <h3 className="font-display text-3xl md:text-4xl text-graphite tracking-[-0.03em] leading-[0.95] mb-5">
+                  <div className="font-mono-tag text-signal mb-5">BUSINESS MODEL</div>
+                  <h3 className="font-display text-3xl md:text-4xl text-graphite tracking-[-0.03em] leading-[0.95] mb-6">
                     Subscription, not <span className="italic font-light text-graphite-soft">one-and-done.</span>
                   </h3>
-                  <p className="text-base text-graphite leading-relaxed text-pretty mb-4">
-                    Theia runs on a subscription model. Like Whoop, the hardware is the entry point and the membership is the relationship.
-                  </p>
-                  <p className="text-sm text-graphite-soft leading-relaxed text-pretty">
-                    Mobility aids are lived in, not bought once. Sensors drift, firmware needs updates, components wear, and the spatial intelligence layer only gets smarter as the model retrains. A subscription keeps the device current, keeps software and detection improvements flowing to existing users, and lets us replace hardware on a service cadence instead of asking people to repurchase. It also lowers the upfront barrier for users and creates predictable revenue for the longitudinal evidence work that earns reimbursement later.
+                  <p className="text-base text-graphite leading-relaxed text-pretty">
+                    Like Whoop. Hardware is the entry point. Membership is the relationship. Software, sensor calibration, and hardware refreshes all flow through the subscription.
                   </p>
                 </div>
 
                 <div className="lg:col-span-7 grid sm:grid-cols-3 gap-px bg-hairline border border-hairline">
-                  <div className="bg-ivory p-5 lg:p-6">
-                    <div className="font-mono-tag text-signal mb-3">PRIMARY USERS</div>
-                    <p className="text-sm text-graphite leading-relaxed">Blind and visually impaired white cane users.</p>
+                  <div className="bg-ivory p-6">
+                    <div className="font-mono-tag text-signal mb-3">USERS</div>
+                    <p className="text-sm text-graphite leading-relaxed">Blind and visually impaired cane users.</p>
                   </div>
-                  <div className="bg-ivory p-5 lg:p-6">
-                    <div className="font-mono-tag text-signal mb-3">PRIMARY CHANNEL</div>
-                    <p className="text-sm text-graphite leading-relaxed">Direct sales through healthcare providers: rehab centers, occupational therapists, mobility specialists.</p>
+                  <div className="bg-ivory p-6">
+                    <div className="font-mono-tag text-signal mb-3">PRIMARY</div>
+                    <p className="text-sm text-graphite leading-relaxed">Direct sales through rehab centers, OTs, and mobility specialists.</p>
                   </div>
-                  <div className="bg-ivory p-5 lg:p-6">
-                    <div className="font-mono-tag text-signal mb-3">SECONDARY CHANNEL</div>
-                    <p className="text-sm text-graphite leading-relaxed">Bulk purchasing by schools for the blind, VA programs, and insurers.</p>
+                  <div className="bg-ivory p-6">
+                    <div className="font-mono-tag text-signal mb-3">SECONDARY</div>
+                    <p className="text-sm text-graphite leading-relaxed">Schools for the blind, VA programs, and insurers.</p>
                   </div>
                 </div>
               </div>
@@ -226,11 +220,11 @@ const Business = () => {
         </section>
 
         {/* 02 / Market Landscape */}
-        <section className="py-20 lg:py-28 border-b border-hairline bg-ivory-deep/40">
+        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-4">02 / Market Landscape</div>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-              <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em]">
+              <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em]">
                 What exists,
                 <br />
                 <span className="text-graphite-soft italic font-light">and where it falls short.</span>
@@ -264,13 +258,13 @@ const Business = () => {
         </section>
 
         {/* 03 / Roadmap */}
-        <section className="relative py-20 lg:py-28 border-b border-hairline bg-graphite text-ivory overflow-hidden">
+        <section className="relative py-28 lg:py-40 border-b border-hairline bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">03 / 25-Year Roadmap</div>
 
             <div className="mb-16">
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory leading-[0.92] tracking-[-0.035em]">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-ivory leading-[1.05] tracking-[-0.022em]">
                 Five segments.
                 <br />
                 <span className="text-signal italic font-light">One direction.</span>
@@ -308,13 +302,13 @@ const Business = () => {
         </section>
 
         {/* 04 / Success Metrics */}
-        <section className="py-20 lg:py-28 border-b border-hairline">
+        <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">04 / Success Metrics</div>
 
             <div className="grid lg:grid-cols-12 gap-8 mb-12">
               <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em]">
+                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em]">
                   What
                   <br />
                   <span className="text-graphite-soft italic font-light">winning looks like.</span>
@@ -329,7 +323,7 @@ const Business = () => {
                   <ul className="space-y-3">
                     {group.items.map((item, i) => (
                       <li key={i} className="flex gap-3 text-sm text-graphite leading-relaxed">
-                        <span className="text-signal shrink-0 mt-0.5">—</span>
+                        <span className="text-signal shrink-0 mt-0.5">/</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -341,13 +335,13 @@ const Business = () => {
         </section>
 
         {/* 05 / Feasibility & Risks */}
-        <section className="py-20 lg:py-28 border-b border-hairline bg-ivory-deep/40">
+        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">05 / Feasibility & Risks</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
+                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-8">
                   Known risks,
                   <br />
                   <span className="text-graphite-soft italic font-light">deliberate responses.</span>
@@ -362,7 +356,7 @@ const Business = () => {
                       "Accessibility compliance",
                     ].map((item) => (
                       <li key={item} className="flex gap-3 text-sm">
-                        <span className="text-signal shrink-0">—</span>
+                        <span className="text-signal shrink-0">/</span>
                         {item}
                       </li>
                     ))}
@@ -392,23 +386,20 @@ const Business = () => {
         </section>
 
         {/* 06 / Future of the Product */}
-        <section className="relative py-20 lg:py-28 bg-graphite text-ivory overflow-hidden">
+        <section className="relative py-28 lg:py-40 bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">06 / Future of the Product</div>
 
-            <div className="grid lg:grid-cols-12 gap-12 mb-16">
+            <div className="grid lg:grid-cols-12 gap-12 mb-20">
               <div className="lg:col-span-6">
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory leading-[0.92] tracking-[-0.035em] mb-8">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-ivory leading-[1.05] tracking-[-0.022em] mb-10">
                   A foundation,
                   <br />
                   <span className="text-signal italic font-light">not a finish line.</span>
                 </h2>
-                <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty mb-5">
-                  The first iteration of Theia is a strong foundation, but it&rsquo;s just that. A foundation. Every layer above this version is already mapped, and each one moves the product closer to behaving less like a sensor and more like a sense.
-                </p>
-                <p className="text-base text-ivory/55 leading-relaxed text-pretty">
-                  These aren&rsquo;t ideas for someday. They&rsquo;re the next builds.
+                <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty">
+                  Each layer moves Theia closer to behaving less like a sensor and more like a sense. Not someday ideas. The next builds.
                 </p>
               </div>
             </div>
@@ -419,25 +410,25 @@ const Business = () => {
                   n: "01",
                   tag: "COVERAGE",
                   title: "180° to 360°",
-                  body: "The current build covers 180 degrees in front of the user. Full 360 wraps the user completely, closing the blind spot behind them where a lot of real-world hazards actually come from.",
+                  body: "Wrap the user completely. Close the blind spot behind them.",
                 },
                 {
                   n: "02",
                   tag: "OUTPUT CHANNEL",
                   title: "Paired bone conduction",
-                  body: "Haptics stay the primary feedback. Silent, private, no learning curve. Bone conduction adds a second layer for richer, more nuanced alerts without blocking ambient sound. The user hears the world and Theia at the same time.",
+                  body: "Haptics stay primary. Bone conduction adds richer alerts without blocking ambient sound.",
                 },
                 {
                   n: "03",
                   tag: "SPATIAL INTELLIGENCE",
                   title: "From reaction to understanding",
-                  body: "Right now Theia reacts to proximity. The future version understands space. LiDAR combined with ToF generates a continuous 3D point cloud around the user. A cloud-assisted ML model trained on millions of pedestrian environment samples learns to label that geometry. Not just “obstacle close, left,” but “person approaching from behind” or “doorway ahead, step up.” Like a cat reading a dark room from an internalized, constantly updated spatial model.",
+                  body: "LiDAR + ToF generates a 3D point cloud. A cloud ML model labels the geometry. Not “obstacle close, left.” Doorway ahead, step up.",
                 },
                 {
                   n: "04",
                   tag: "DESIGN PHILOSOPHY",
                   title: "Fixed core, evolving shell",
-                  body: "Theia’s infrastructure (sensors, compute, haptics) lives in a fixed core layer. The outer shell sits on top of that and evolves independently. That separation means the design can grow without touching the hardware. Pockets, different materials, fashion finishes. The belt starts looking like something you’d wear anyway, not something you have to wear.",
+                  body: "Sensors, compute, haptics in a fixed core. The outer shell evolves on its own. Pockets, materials, finishes.",
                 },
               ].map((item) => (
                 <div key={item.n} className="bg-graphite p-7 lg:p-10">

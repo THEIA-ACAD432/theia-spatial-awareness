@@ -128,7 +128,7 @@ const References = () => {
       <Nav />
       <main className="pt-14">
         {/* Page Header */}
-        <section className="relative py-20 lg:py-28 border-b border-hairline overflow-hidden">
+        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div
             className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top_left,black_30%,transparent_70%)]"
             aria-hidden
@@ -137,7 +137,7 @@ const References = () => {
             <div className="font-mono-tag text-signal mb-8">References / 06</div>
             <div className="grid lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-8">
-                <h1 className="font-display text-[11vw] sm:text-[8vw] lg:text-[6.5vw] text-graphite leading-[0.88] tracking-[-0.04em]">
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em]">
                   Works
                   <br />
                   <span className="text-signal italic font-light">cited.</span>
@@ -145,7 +145,7 @@ const References = () => {
               </div>
               <div className="lg:col-span-4 lg:pb-4">
                 <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-                  Every research source that shaped Theia&rsquo;s design decisions, in MLA format.
+                  Every source that shaped Theia. MLA.
                 </p>
               </div>
             </div>
@@ -153,7 +153,7 @@ const References = () => {
         </section>
 
         {/* References list */}
-        <section className="py-20 lg:py-28 border-b border-hairline">
+        <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-3">

@@ -5,29 +5,29 @@ const steps = [
   {
     n: "01",
     title: "Sense",
-    body: "Upward and forward-facing sensors scan the volume above the cane — the chest, face, and overhead arc.",
+    body: "Upward and forward-facing sensors scan the volume above the cane. Chest, face, and overhead arc.",
   },
   {
     n: "02",
     title: "Interpret",
-    body: "Distance readings from the sensor array are compared against proximity thresholds in real time. When something enters the detection zone, a signal fires.",
+    body: "Distance readings are checked against proximity thresholds in real time. When something enters the zone, a signal fires.",
   },
   {
     n: "03",
     title: "Vibrate",
-    body: "Directional haptic pulses at the waist communicate hazard location in under 60 milliseconds.",
+    body: "Directional pulses at the waist communicate hazard location in under 60 milliseconds.",
   },
 ];
 
 const HowItWorks = () => {
   return (
-    <section id="how" className="relative py-24 lg:py-32 border-t border-hairline">
+    <section id="how" className="relative py-32 lg:py-44 border-t border-hairline">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         {/* Header */}
         <div className="grid lg:grid-cols-12 gap-8 mb-16">
           <div className="lg:col-span-7">
             <div className="font-mono-tag text-signal mb-4">02 / How it works</div>
-            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-graphite leading-[0.92] tracking-[-0.035em]">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-graphite leading-[1.02] tracking-[-0.025em]">
               Built around how
               <br />
               people <span className="italic font-light text-graphite-soft">already</span> move.
@@ -35,8 +35,7 @@ const HowItWorks = () => {
           </div>
           <div className="lg:col-span-4 lg:col-start-9 lg:pt-6">
             <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-              Halo doesn&apos;t replace the cane. It extends it — silently, in the
-              background, through the language the body already understands.
+              Halo extends the cane. Silently, through the language the body already understands.
             </p>
           </div>
         </div>

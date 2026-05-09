@@ -60,18 +60,18 @@ const SensorField = () => {
   const graphite = "hsl(220 15% 14%)";
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" aria-label="Sensor field coverage — top-down belt view">
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" aria-label="Sensor field coverage, top-down belt view">
 
       {/* DETECTION FILLS */}
-      {/* Side lunas — point 90° left / right along belt */}
+      {/* Side lunas: 90° left / right along belt */}
       <path d={fan(72,  cy, -90, 8, 8 * s)} fill="hsl(220 15% 14% / 0.04)" />
       <path d={fan(628, cy,  90, 8, 8 * s)} fill="hsl(220 15% 14% / 0.04)" />
-      {/* Angled ToF linears — ±45° forward */}
+      {/* Angled ToF linears: ±45° forward */}
       <path d={fan(196, cy, -45, 14, 2 * s)} fill="hsl(220 15% 14% / 0.08)" />
       <path d={fan(504, cy,  45, 14, 2 * s)} fill="hsl(220 15% 14% / 0.08)" />
-      {/* Center 8×8 — 45° FOV, 4 m */}
+      {/* Center 8×8: 45° FOV, 4 m */}
       <path d={fan(350, cy, 0, 22.5, 4 * s)} fill="hsl(35 95% 52% / 0.10)" />
-      {/* Center Luna-tf — narrow forward, 8 m */}
+      {/* Center Luna-tf: narrow forward, 8 m */}
       <path d={fan(350, cy, 0,    8, 8 * s)} fill="hsl(35 95% 52% / 0.06)" />
 
       {/* ARC OUTLINES */}
@@ -82,7 +82,7 @@ const SensorField = () => {
       <path d={arc(350, cy,   0, 22.5, 4 * s)} fill="none" stroke={amber} strokeWidth={2} />
       <path d={arc(350, cy,   0,  8,   8 * s)} fill="none" stroke={amberMid} strokeWidth={1.5} strokeDasharray="5 3" />
 
-      {/* RANGE LABELS — near each arc tip */}
+      {/* RANGE LABELS near each arc tip */}
       {/* Luna-tf forward: tip at y = 252-160 = 92 */}
       <text x={358} y={98}  fontSize={7.5} fontFamily={mono} fill={amberMid} letterSpacing="0.07em">8M</text>
       {/* 8×8 forward: tip at y = 252-80 = 172 */}
@@ -133,13 +133,13 @@ const Product = () => {
       <main className="pt-14">
 
         {/* Page Header */}
-        <section className="relative py-20 lg:py-28 border-b border-hairline overflow-hidden">
+        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top_left,black_30%,transparent_70%)]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-8">Product / 02</div>
+            <div className="font-mono-tag text-signal mb-8">Product / 03</div>
             <div className="grid lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-8">
-                <h1 className="font-display text-[11vw] sm:text-[8vw] lg:text-[6.5vw] text-graphite leading-[0.88] tracking-[-0.04em]">
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em]">
                   Designed to
                   <br />
                   <span className="text-signal italic font-light">disappear.</span>
@@ -147,7 +147,7 @@ const Product = () => {
               </div>
               <div className="lg:col-span-4 lg:pb-4">
                 <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-                  A belt-worn wearable engineered around discretion, reliability, and the body's natural sense of touch.
+                  Built around discretion, reliability, and the body&rsquo;s own sense of touch.
                 </p>
               </div>
             </div>
@@ -155,7 +155,7 @@ const Product = () => {
         </section>
 
         {/* 01 / Design */}
-        <section className="py-20 lg:py-28 border-b border-hairline">
+        <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">01 / Design</div>
 
@@ -164,7 +164,7 @@ const Product = () => {
               <figure className="col-span-12 md:col-span-8 relative aspect-[4/3] overflow-hidden bg-ivory-deep group">
                 <img
                   src={contextImg}
-                  alt="Halo worn in context — belt device on person walking with white cane"
+                  alt="Halo worn in context. Belt device on person walking with white cane."
                   className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
                 />
                 <figcaption className="absolute top-4 left-4 right-4 flex items-start justify-between font-mono-tag text-ivory mix-blend-difference">
@@ -177,7 +177,7 @@ const Product = () => {
                 <figure className="relative aspect-square md:aspect-auto overflow-hidden bg-ivory-deep group">
                   <img
                     src={deviceHeroImg}
-                    alt="Halo belt — sensor array front view"
+                    alt="Halo belt sensor array, front view"
                     className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
                   />
                   <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-ivory mix-blend-difference">
@@ -212,17 +212,14 @@ const Product = () => {
 
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-6">
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-4">
-                  The design brief was simple: something you'd forget you were wearing. Halo is the belt — sensors and haptic motors are built directly into the band, which wraps the waist and fastens with a buckle. No add-ons, no clip points, nothing to mount or remove.
-                </p>
-                <p className="text-base text-graphite-soft leading-relaxed text-pretty">
-                  Form followed function at every stage. The enclosure was sized around the sensor array and PCB footprint, with the haptic motors distributed to provide directional clarity across the waist.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                  The brief: something you&rsquo;d forget you were wearing. Sensors and haptic motors built into the band. No add-ons, no clip points, nothing to mount.
                 </p>
                 <Link
                   to="/challenge"
-                  className="inline-flex items-center gap-2 mt-4 text-sm text-signal hover:underline underline-offset-2 transition-colors"
+                  className="inline-flex items-center gap-2 mt-6 text-sm text-signal hover:underline underline-offset-2 transition-colors"
                 >
-                  Why this device exists <span aria-hidden>→</span>
+                  Why this device exists <span aria-hidden>&rarr;</span>
                 </Link>
               </div>
             </div>
@@ -230,30 +227,27 @@ const Product = () => {
         </section>
 
         {/* 02 / Hardware Architecture */}
-        <section className="py-20 lg:py-28 border-b border-hairline bg-ivory-deep/40">
+        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">02 / Hardware Architecture</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               {/* MCU overview */}
               <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em] mb-6">
+                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-6">
                   ESP32-S3
                   <br />
                   <span className="text-graphite-soft italic font-light">at the core.</span>
                 </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
-                  Built on an ESP32-S3 microcontroller with dual I²C buses and 5× PWM outputs. The dual-bus architecture allows sensors to run independently, preventing I²C contention under load.
-                </p>
-                <p className="text-base text-graphite-soft leading-relaxed text-pretty mb-8">
-                  I²C address conflicts — a common problem when stacking multiple sensors of the same type — were resolved by waking sensors sequentially at boot and assigning each a unique address before normal operation begins.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-8">
+                  ESP32-S3 with dual I²C buses and 5× PWM outputs. Sensors run independently. No contention under load.
                 </p>
 
                 {/* Software mapping */}
                 <div className="bg-ivory border border-hairline p-6">
                   <div className="font-mono-tag text-signal mb-4">SOFTWARE LOGIC</div>
                   <p className="text-sm text-graphite-soft leading-relaxed mb-5">
-                    Sensor distance readings are translated directly into haptic pulse speed. Each motor maps 1:1 to its paired sensor — no shared state, no latency stacking.
+                    Sensor distance translates directly into pulse speed. Each motor maps 1:1 to its paired sensor. No shared state, no latency stacking.
                   </p>
                   <div className="space-y-2">
                     {[
@@ -292,7 +286,7 @@ const Product = () => {
                     <div className="flex items-start gap-4 mb-3">
                       <span className="font-mono-tag text-signal shrink-0 mt-0.5">3×</span>
                       <div>
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">Benewake TF-Luna — LiDAR</div>
+                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">Benewake TF-Luna LiDAR</div>
                         <p className="text-sm text-graphite-soft leading-relaxed">Two on the far ends of the belt pointing directly sideways (8m lateral). One at center pointing forward alongside the 8×8 for long-range (8m) obstacle detection.</p>
                       </div>
                     </div>
@@ -302,7 +296,7 @@ const Product = () => {
                     <div className="flex items-start gap-4 mb-4">
                       <span className="font-mono-tag text-signal shrink-0 mt-0.5">2×</span>
                       <div>
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">TOF Linear — Single-Zone</div>
+                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">TOF Linear, Single-Zone</div>
                         <p className="text-sm text-graphite-soft leading-relaxed mb-4">Positioned at ±45° from center. Short-range (2m) angled coverage bridging between the forward sensors and the side-facing Lunas.</p>
                         <Citation
                           quote="Time-of-Flight sensors are more precise and quicker in measuring the distances."
@@ -316,8 +310,8 @@ const Product = () => {
                     <div className="flex items-start gap-4 mb-4">
                       <span className="font-mono-tag text-signal shrink-0 mt-0.5">1×</span>
                       <div>
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">VL53L8CX — 8×8 Multi-Zone ToF</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed mb-4">Front/center sensor with an 8×8 zone matrix. Covers forward, above, and below at hip level — the primary overhead hazard detector.</p>
+                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">VL53L8CX 8×8 Multi-Zone ToF</div>
+                        <p className="text-sm text-graphite-soft leading-relaxed mb-4">Front-center sensor with an 8×8 zone matrix. Covers forward, above, and below at hip level. The primary overhead hazard detector.</p>
                         <div className="space-y-4">
                           <Citation
                             quote="A single sensor configuration from one vantage point is insufficient to gather the necessary environmental information."
@@ -338,7 +332,7 @@ const Product = () => {
 
             {/* Sensor field diagram */}
             <div className="mb-12">
-              <div className="font-mono-tag text-graphite-soft/60 mb-4">FIG. / SENSOR COVERAGE — TOP-DOWN VIEW AT HIP LEVEL</div>
+              <div className="font-mono-tag text-graphite-soft/60 mb-4">FIG. / SENSOR COVERAGE / TOP-DOWN VIEW AT HIP LEVEL</div>
               <div className="bg-ivory border border-hairline p-6 lg:p-8">
                 <SensorField />
               </div>
@@ -368,14 +362,14 @@ const Product = () => {
         </section>
 
         {/* 03 / Haptic Feedback */}
-        <section className="relative py-20 lg:py-28 bg-graphite text-ivory overflow-hidden">
+        <section className="relative py-28 lg:py-40 bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">03 / Haptic Feedback</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-7">
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory leading-[0.92] tracking-[-0.035em]">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-ivory leading-[1.05] tracking-[-0.022em]">
                   Three modes.
                   <br />
                   <span className="text-signal italic font-light">One language.</span>
@@ -383,7 +377,7 @@ const Product = () => {
               </div>
               <div className="lg:col-span-4 lg:col-start-9 lg:pt-4">
                 <p className="text-base text-ivory/60 leading-relaxed">
-                  Each hazard type produces a distinct haptic pattern — learned intuitively through use, without instruction.
+                  Each hazard type has a distinct haptic pattern. Learned intuitively, without instruction.
                 </p>
               </div>
             </div>
@@ -401,7 +395,7 @@ const Product = () => {
                 </h3>
                 <p className="text-sm text-ivory/50 mb-2">e.g. wall, post, door</p>
                 <p className="text-ivory/60 leading-relaxed text-sm mb-10">
-                  Pulse speed reflects distance — slow rhythm for a far object, faster pulses as it draws nearer. The forward-center sensor activates the center motor only.
+                  Pulse speed tracks distance. Slow for far, faster as it closes. The forward-center sensor activates the center motor only.
                 </p>
                 {/* Visualization: slow pulse (far) → fast pulse (near) */}
                 <div className="flex items-end gap-1.5 h-12">
@@ -413,7 +407,7 @@ const Product = () => {
                     <HapticBar key={`f${i}`} height={h} duration={380} delay={0} />
                   ))}
                 </div>
-                <div className="mt-4 font-mono-tag text-ivory/30">FAR — SLOW &nbsp;→&nbsp; NEAR — FAST</div>
+                <div className="mt-4 font-mono-tag text-ivory/30">FAR / SLOW &nbsp;&rarr;&nbsp; NEAR / FAST</div>
               </div>
 
               {/* Mode 2: Approaching */}
@@ -427,19 +421,19 @@ const Product = () => {
                 </h3>
                 <p className="text-sm text-ivory/50 mb-2">speed-aware</p>
                 <p className="text-ivory/60 leading-relaxed text-sm mb-10">
-                  Pulse rate escalates as the object closes. If approach speed exceeds the threshold, pulsing gives way to a sustained hold at maximum — a continuous signal that demands attention.
+                  Pulse rate escalates as the object closes. If approach speed crosses the threshold, pulsing gives way to a sustained hold at maximum. A continuous signal that demands attention.
                 </p>
                 {/* Visualization: fast pulse → sustained hold */}
                 <div className="flex items-end gap-1.5 h-12">
                   {[28, 44, 28].map((h, i) => (
                     <HapticBar key={i} height={h} duration={260} delay={0} />
                   ))}
-                  <span className="font-mono-tag text-ivory/20 self-center px-1.5">→</span>
+                  <span className="font-mono-tag text-ivory/20 self-center px-1.5">&rarr;</span>
                   {[44, 44, 44].map((h, i) => (
                     <div key={`s${i}`} className="w-2.5 rounded-sm bg-signal" style={{ height: `${h}px` }} />
                   ))}
                 </div>
-                <div className="mt-4 font-mono-tag text-ivory/30">FAST PULSE &nbsp;→&nbsp; HOLD — MAX</div>
+                <div className="mt-4 font-mono-tag text-ivory/30">FAST PULSE &nbsp;&rarr;&nbsp; HOLD / MAX</div>
               </div>
 
               {/* Mode 3: Overhead */}
@@ -453,11 +447,11 @@ const Product = () => {
                 </h3>
                 <p className="text-sm text-ivory/50 mb-2">e.g. branch, awning, beam</p>
                 <p className="text-ivory/60 leading-relaxed text-sm mb-10">
-                  The 8×8 multi-zone sensor detects objects above waist height. The center motors — physically elevated on the belt — activate to communicate vertical position, distinct from forward or side detections.
+                  The 8×8 multi-zone sensor detects objects above waist height. The center motors are physically elevated on the belt and activate together to signal vertical position, distinct from forward or side detections.
                 </p>
                 {/* Visualization: belt motor map */}
                 <div className="space-y-3">
-                  <div className="font-mono-tag text-ivory/30 mb-2">MOTOR MAP — BELT VIEW</div>
+                  <div className="font-mono-tag text-ivory/30 mb-2">MOTOR MAP / BELT VIEW</div>
                   <div className="flex items-center gap-2">
                     {[false, false, true, true, false].map((active, i) => (
                       <div key={i} className="flex flex-col items-center gap-1.5">

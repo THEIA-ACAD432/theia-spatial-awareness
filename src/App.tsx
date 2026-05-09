@@ -11,6 +11,7 @@ import Team from "./pages/Team.tsx";
 import Business from "./pages/Business.tsx";
 import References from "./pages/References.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/challenge" element={<Challenge />} />

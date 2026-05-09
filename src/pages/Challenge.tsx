@@ -16,13 +16,13 @@ const Overview = () => {
       <main className="pt-14">
 
         {/* Page Header */}
-        <section className="relative py-20 lg:py-28 border-b border-hairline overflow-hidden">
+        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top_left,black_30%,transparent_70%)]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-8">Overview / 00</div>
+            <div className="font-mono-tag text-signal mb-8">Challenge / 01</div>
             <div className="grid lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-8">
-                <h1 className="font-display text-[11vw] sm:text-[8vw] lg:text-[6.5vw] text-graphite leading-[0.88] tracking-[-0.04em]">
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em]">
                   The case
                   <br />
                   for <span className="text-signal italic font-light">Halo.</span>
@@ -30,7 +30,7 @@ const Overview = () => {
               </div>
               <div className="lg:col-span-4 lg:pb-4">
                 <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-                  From the gap in the cane's reach to a belt-worn solution — the problem, the evidence, and the opportunity.
+                  The gap in the cane&rsquo;s reach. The evidence behind it. The opportunity above it.
                 </p>
               </div>
             </div>
@@ -38,25 +38,19 @@ const Overview = () => {
         </section>
 
         {/* 01 / Challenge */}
-        <section className="py-20 lg:py-28 border-b border-hairline">
+        <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">01 / Challenge</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               <div className="lg:col-span-6">
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
                   The cane only
                   <br />
                   sees the ground.
                 </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  We started by spending time with the tool that already works. The white cane has earned its place. It gives real-time tactile feedback, it has decades of trust behind it, and we never intended to compete with it. The problem isn&rsquo;t the cane. It&rsquo;s the ceiling above it.
-                </p>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  Everything above waist height is invisible to it. Katzschmann and his team put it directly when they noted that &ldquo;upward-pointing sensors see chest- and face-level obstacles, such as branches and overhanging ledges, that are even more of a danger to a blind person.&rdquo; Xu and his team confirmed the same limitation in their own work. The cane simply cannot detect what it can&rsquo;t reach.
-                </p>
-                <p className="text-base md:text-lg text-graphite-soft leading-relaxed text-pretty">
-                  The gap isn&rsquo;t only physical. Navigating public spaces while blind means missing the social and environmental context sighted people absorb without thinking. Duckett and Pratt&rsquo;s research with visually impaired users made the priority clear. What people want from assistive tools isn&rsquo;t only safer movement. It&rsquo;s independence, dignity, and inclusion.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                  The white cane is the best mobility tool ever built. It has one ceiling. Anything above the waist stays invisible to it.
                 </p>
               </div>
 
@@ -80,23 +74,23 @@ const Overview = () => {
         </section>
 
         {/* 02 / Problem Statement */}
-        <section className="py-20 lg:py-28 border-b border-hairline bg-ivory-deep/40">
+        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">02 / Problem Statement</div>
 
             {/* Full-width pull quote */}
             <div className="mb-16 pb-16 border-b border-hairline">
-              <p className="font-display text-[5.5vw] sm:text-[4vw] lg:text-[3vw] text-graphite leading-[1.15] tracking-[-0.03em] max-w-5xl">
-                "The barrier isn't physical navigation — it's the{" "}
-                <span className="text-signal italic font-light">invisible layer of context</span>{" "}
-                that surrounds every journey."
+              <p className="font-display text-2xl md:text-3xl lg:text-4xl text-graphite leading-[1.3] tracking-[-0.018em] max-w-4xl font-light">
+                &ldquo;The barrier isn&rsquo;t physical navigation. It&rsquo;s the{" "}
+                <span className="text-signal italic">invisible layer of context</span>{" "}
+                that surrounds every journey.&rdquo;
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-12 gap-12">
+            <div className="grid lg:grid-cols-12 gap-16">
               <div className="lg:col-span-6 lg:col-start-1">
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  Blind cane users can physically navigate their environment using tactile feedback, but they lack access to the visual and social context that sighted people rely on. This gap creates uncertainty in public spaces, diminishes social dignity, and increases cognitive load — ultimately limiting true independence in everyday life.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                  Touch covers the ground. The context sighted people take for granted is missing. Uncertainty, dignity, cognitive load. The cap on independence isn&rsquo;t physical.
                 </p>
               </div>
 
@@ -124,28 +118,22 @@ const Overview = () => {
         </section>
 
         {/* 03 / Opportunity */}
-        <section className="py-20 lg:py-28 border-b border-hairline">
+        <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">03 / Opportunity</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
                   Complete it.
                   <br />
                   <span className="text-graphite-soft italic font-light">Don&rsquo;t replace it.</span>
                 </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  The cane owns the ground. That role is settled and irreplaceable. Our job became easy to describe and harder to execute. Build something for everything above it.
-                </p>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  We anchored on the waist for a specific reason. Katzschmann&rsquo;s team showed that the waist moves minimally during walking, which makes it the most stable point on the body for consistent sensing. The communication channel followed from the same research. Haptic feedback through the abdomen turned out to be fast to learn. In the ALVU study, 93% of users found vibratory feedback easy to understand and 91% got comfortable with the system quickly.
-                </p>
-                <p className="text-base md:text-lg text-graphite-soft leading-relaxed text-pretty mb-6">
-                  Halo is a belt with sensors and haptic motors built in. It covers what the cane can&rsquo;t, detecting hazards above ground and communicating them passively in real time. No new tool to learn. No existing habits to disrupt.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-8">
+                  The cane owns the ground. We build for everything above it.
                 </p>
                 <p className="text-lg md:text-xl text-graphite font-medium leading-relaxed border-l-2 border-signal pl-4">
-                  Halo doesn&rsquo;t replace the white cane. It completes it.
+                  Halo doesn&rsquo;t replace the cane. It completes it.
                 </p>
                 <Link
                   to="/product"
@@ -191,20 +179,20 @@ const Overview = () => {
         </section>
 
         {/* 04 / Solution */}
-        <section className="relative py-20 lg:py-28 bg-graphite text-ivory overflow-hidden">
+        <section className="relative py-28 lg:py-40 bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">04 / Solution</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-7">
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory leading-[0.92] tracking-[-0.035em] mb-8">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-ivory leading-[1.05] tracking-[-0.022em] mb-8">
                   Three functions.
                   <br />
                   <span className="text-signal italic font-light">One system.</span>
                 </h2>
-                <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty">
-                  Halo is a belt-worn wearable built around three core functions. Each one came out of a specific failure mode we kept seeing in the research, and each one is backed by evidence that the approach holds up in practice.
+                <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty max-w-xl">
+                  A belt-worn wearable built around three functions. Each addresses a specific gap above the cane.
                 </p>
               </div>
             </div>
@@ -215,17 +203,17 @@ const Overview = () => {
                 {
                   n: "01",
                   title: "Proximity Detection",
-                  body: "Onboard cameras scan continuously for static, overhead, and approaching obstacles above the cane's reach. Chai and Lau validated a comparable vision system at 93.1% recognition accuracy with a false positive rate under 3%.",
+                  body: "Continuous scan for static, overhead, and approaching obstacles above the cane.",
                 },
                 {
                   n: "02",
                   title: "Haptic Intelligence",
-                  body: "Vibration patterns communicate hazard direction and proximity in real time. No audio distraction, no screen, no second tool to manage. Comfort is what drives adoption over time.",
+                  body: "Vibration patterns carry direction and proximity. No audio, no screen, hands free.",
                 },
                 {
                   n: "03",
                   title: "Cane Compatible",
-                  body: "Halo layers on top of the existing white cane ecosystem without changing how users already move. Designed to be worn alongside the cane, not in place of it.",
+                  body: "Layers on top of the white cane. Worn alongside, never in place of it.",
                 },
               ].map((s) => (
                 <div key={s.n} className="group bg-graphite p-7 lg:p-10 hover:bg-graphite-soft/20 transition-colors duration-500">

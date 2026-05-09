@@ -22,7 +22,7 @@ const Hero = () => {
         {/* Headline grid */}
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-end mb-12 lg:mb-16">
           <div className="lg:col-span-8 animate-fade-up">
-            <h1 className="font-display text-[14vw] sm:text-[11vw] lg:text-[9.5vw] text-graphite leading-[0.88] tracking-[-0.04em]">
+            <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl text-graphite leading-[1.0] tracking-[-0.03em]">
               See what
               <br />
               the cane
@@ -33,16 +33,14 @@ const Hero = () => {
 
           <div className="lg:col-span-4 lg:pb-6 animate-fade-up" style={{ animationDelay: "0.15s" }}>
             <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty max-w-md">
-              Halo is a belt-worn wearable that detects overhead and approaching
-              hazards — the persistent blind spot above the cane — and translates
-              them into <span className="text-signal font-medium">haptic vibration</span> in real time.
+              A belt-worn wearable that catches the hazards a white cane misses. Overhead, approaching, above the waist. Translated into <span className="text-signal font-medium">haptic vibration</span> in real time.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href="#product"
                 className="inline-flex items-center gap-2 px-4 py-2.5 bg-graphite text-ivory text-sm font-medium hover:bg-signal hover:text-graphite transition-all duration-300"
               >
-                Meet Halo <span aria-hidden>→</span>
+                Meet Halo <span aria-hidden>&rarr;</span>
               </a>
               <a
                 href="#how"
@@ -79,7 +77,7 @@ const Hero = () => {
             <figure className="relative aspect-square md:aspect-auto overflow-hidden bg-ivory-deep group">
               <img
                 src={deviceImg}
-                alt="Halo — a belt with sensors and haptic feedback built in, worn at the waist"
+                alt="Halo, a belt with sensors and haptic feedback built in, worn at the waist"
                 width={1280}
                 height={1280}
                 className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"

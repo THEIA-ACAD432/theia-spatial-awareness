@@ -2,19 +2,20 @@ import { Link } from "react-router-dom";
 
 const sections = [
   {
-    label: "Product",
+    label: "Case Study",
     links: [
-      { label: "Design", to: "/product" },
-      { label: "Hardware Architecture", to: "/product" },
-      { label: "Haptic Feedback", to: "/product" },
+      { label: "Challenge", to: "/challenge" },
+      { label: "Process", to: "/process" },
+      { label: "Product", to: "/product" },
+      { label: "Business", to: "/business" },
     ],
   },
   {
-    label: "Research & Strategy",
+    label: "Project",
     links: [
-      { label: "The Challenge", to: "/challenge" },
-      { label: "Process & Validation", to: "/process" },
-      { label: "Business Model", to: "/business" },
+      { label: "Team", to: "/team" },
+      { label: "References", to: "/references" },
+      { label: "Home", to: "/" },
     ],
   },
   {
@@ -36,8 +37,8 @@ const Footer = () => {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-20 pb-10">
         {/* Big closing statement */}
         <div className="mb-20">
-          <div className="font-mono-tag text-signal mb-6">END / 06</div>
-          <h2 className="font-display text-[12vw] sm:text-[9vw] lg:text-[7.5vw] text-graphite leading-[0.88] tracking-[-0.04em] max-w-6xl">
+          <div className="font-mono-tag text-signal mb-6">END / 07</div>
+          <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em] max-w-6xl">
             The cane gives the ground.
             <br />
             <span className="text-signal italic font-light">Halo gives the air.</span>
@@ -46,16 +47,17 @@ const Footer = () => {
 
         <div className="grid lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="relative w-2.5 h-2.5">
+            <div className="flex items-baseline gap-3 mb-5">
+              <div className="relative w-2.5 h-2.5 self-center">
                 <span className="absolute inset-0 rounded-full bg-signal" />
                 <span className="absolute inset-0 rounded-full bg-signal animate-radar-sweep" />
               </div>
-              <span className="font-display text-xl">Halo</span>
+              <span className="font-display text-xl text-graphite italic font-light tracking-[-0.02em] leading-none">
+                halo<span className="text-signal not-italic">&middot;</span>
+              </span>
             </div>
             <p className="text-graphite-soft text-sm leading-relaxed max-w-md">
-              A wearable spatial awareness system designed to augment white cane
-              use for visually impaired users.
+              A wearable spatial awareness system that augments the white cane.
             </p>
             <p className="mt-4 font-mono-tag text-graphite-soft/60">
               USC ACAD-432 · Spring 2026
@@ -64,7 +66,7 @@ const Footer = () => {
               to="/"
               className="inline-flex items-center gap-2 mt-6 px-3.5 py-1.5 text-xs font-medium font-mono uppercase tracking-wider text-ivory bg-graphite hover:bg-signal hover:text-graphite transition-all duration-300"
             >
-              Back to home <span aria-hidden>→</span>
+              Back to home <span aria-hidden>&rarr;</span>
             </Link>
           </div>
 

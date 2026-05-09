@@ -117,13 +117,13 @@ const Process = () => {
       <main className="pt-14">
 
         {/* Page Header */}
-        <section className="relative py-20 lg:py-28 border-b border-hairline overflow-hidden">
+        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top_left,black_30%,transparent_70%)]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-8">Process / 03</div>
+            <div className="font-mono-tag text-signal mb-8">Process / 02</div>
             <div className="grid lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-8">
-                <h1 className="font-display text-[11vw] sm:text-[8vw] lg:text-[6.5vw] text-graphite leading-[0.88] tracking-[-0.04em]">
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em]">
                   How we
                   <br />
                   <span className="text-signal italic font-light">got here.</span>
@@ -131,7 +131,7 @@ const Process = () => {
               </div>
               <div className="lg:col-span-4 lg:pb-4">
                 <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-                  Stakeholder mapping, user research, detection scenarios, and the literature that shaped every decision.
+                  Stakeholders, research, scenarios, literature.
                 </p>
               </div>
             </div>
@@ -139,25 +139,19 @@ const Process = () => {
         </section>
 
         {/* 01 / Discern Stakeholders */}
-        <section className="py-20 lg:py-28 border-b border-hairline">
+        <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">01 / Discern Stakeholders</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
               <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
+                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
                   Map the system
                   <br />
                   <span className="text-graphite-soft italic font-light">before building in it.</span>
                 </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
-                  Before any design work, we mapped the full ecosystem surrounding visually impaired mobility. Four groups surfaced: visually impaired end users, clinicians and mobility specialists, insurance and payers, and designers and innovators. Each one carries different needs, constraints, and incentives.
-                </p>
-                <p className="text-base text-graphite-soft leading-relaxed text-pretty mb-5">
-                  This matters because adoption doesn&rsquo;t happen in a vacuum. Naidoo and Ghaziasgar (2025) found that &ldquo;user comfort and ease of integration into daily routines significantly impact usability and adoption.&rdquo; Mapping every stakeholder early kept the product direction grounded in real-world context instead of assumptions.
-                </p>
-                <p className="text-base text-graphite-soft leading-relaxed text-pretty">
-                  When the rest of the system is in view, the trade-offs stop being abstract. We could weigh dignity for end users against billing logic for payers, or fitting requirements for clinicians against manufacturability for engineers, without losing sight of any one group.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                  Four groups surround visually impaired mobility. Users, clinicians, payers, designers. Each carries different incentives. We mapped all four before drawing a single line.
                 </p>
               </div>
 
@@ -191,35 +185,27 @@ const Process = () => {
         </section>
 
         {/* 02 / User Research & Validation */}
-        <section className="relative py-20 lg:py-28 border-b border-hairline bg-graphite text-ivory overflow-hidden">
+        <section className="relative py-28 lg:py-40 border-b border-hairline bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">02 / User Research & Validation</div>
 
             {/* Pull quote */}
             <div className="mb-16 pb-16 border-b border-ivory/10">
-              <p className="font-display text-[5.5vw] sm:text-[4vw] lg:text-[3vw] text-ivory leading-[1.1] tracking-[-0.03em] max-w-5xl">
-                "Sometimes it's not about a device —
-                <br />it's about{" "}
-                <span className="text-signal italic font-light">feeling normal.</span>"
+              <p className="font-display text-2xl md:text-3xl lg:text-4xl text-ivory leading-[1.3] tracking-[-0.018em] max-w-4xl font-light">
+                &ldquo;Sometimes it isn&rsquo;t about a device.
+                <br />It&rsquo;s about{" "}
+                <span className="text-signal italic">feeling normal.</span>&rdquo;
               </p>
-              <div className="mt-6 font-mono-tag text-ivory/30">USER INTERVIEW — DIRECT QUOTE</div>
+              <div className="mt-6 font-mono-tag text-ivory/30">USER INTERVIEW / DIRECT QUOTE</div>
             </div>
 
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-5">
                 <div className="font-mono-tag text-ivory/40 mb-5">KEY INSIGHT</div>
-                <p className="text-base md:text-lg text-ivory/80 leading-relaxed text-pretty mb-6">
-                  Direct interviews with visually impaired users surfaced the insight that reframed everything. Sometimes it isn&rsquo;t about a device. It&rsquo;s about feeling normal. One user said outright they wouldn&rsquo;t wear a harness, and that one sentence shifted the design brief.
+                <p className="text-base md:text-lg text-ivory/80 leading-relaxed text-pretty">
+                  One user said outright they wouldn&rsquo;t wear a harness. That sentence shifted the brief. Dignity isn&rsquo;t a soft requirement. It&rsquo;s as load-bearing as the detection system.
                 </p>
-                <p className="text-sm md:text-base text-ivory/60 leading-relaxed text-pretty mb-6">
-                  Duckett and Pratt&rsquo;s research reinforces why. Visually impaired users want solutions that &ldquo;respect their individuality and contribute to empowerment and inclusion,&rdquo; not devices that signal disability louder than they solve it. Bouteraa (2021) puts it just as plainly: &ldquo;the assistive device should be light and easy to use.&rdquo; Dignity and social normalcy aren&rsquo;t soft requirements. They&rsquo;re as load-bearing as the detection system itself.
-                </p>
-                <div className="border-l-2 border-signal pl-5 py-1 mt-8">
-                  <p className="text-ivory/60 italic leading-relaxed">
-                    &ldquo;The barrier isn&rsquo;t physical navigation. It&rsquo;s the invisible layer of context that surrounds every journey.&rdquo;
-                  </p>
-                </div>
               </div>
 
               <div className="lg:col-span-5 lg:col-start-8">
@@ -236,7 +222,7 @@ const Process = () => {
                 </ul>
                 <div className="mt-8 pt-6 border-t border-ivory/10">
                   <p className="text-sm text-ivory/50 leading-relaxed">
-                    Katzschmann and his team set the benchmark: 93% of users found vibratory feedback easy to understand and 91% familiarized themselves quickly. That&rsquo;s the bar Theia&rsquo;s validation is designed to meet or exceed.
+                    Benchmark: 93% of ALVU users found vibratory feedback easy to understand. 91% familiarized quickly. The bar Theia is designed to meet.
                   </p>
                 </div>
               </div>
@@ -245,44 +231,38 @@ const Process = () => {
         </section>
 
         {/* 03 / Detection Matrix */}
-        <section className="py-20 lg:py-28 border-b border-hairline bg-ivory-deep/40">
+        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-4">03 / Detection Matrix</div>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-              <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em]">
+              <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em]">
                 Full detection
                 <br />
                 <span className="text-graphite-soft italic font-light">scenario mapping.</span>
               </h2>
               <p className="text-sm text-graphite-soft max-w-xs leading-relaxed">
-                Every class of real-world hazard, its sensor properties, the triggering event, and the haptic response.
+                Hazard, sensor profile, trigger, response.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-12">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               <div className="lg:col-span-7">
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
-                  This matrix is how Theia&rsquo;s sensing system was designed. Every real-world hazard type is mapped to a spatial profile and a specific haptic response. Nothing is generic. Each scenario has defined parameters and a distinct feedback pattern.
-                </p>
-                <p className="text-base text-graphite-soft leading-relaxed text-pretty">
-                  The matrix does two things. It proves the detection system was built around real navigation scenarios, not lab conditions. And it shows that haptic feedback isn&rsquo;t one-size-fits-all. Each hazard type gets a distinct signal so users can act immediately without having to interpret what they feel.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                  Every hazard type mapped to a spatial profile and a distinct haptic response. Built around real navigation, not lab conditions.
                 </p>
               </div>
               <div className="lg:col-span-4 lg:col-start-9">
-                <div className="font-mono-tag text-graphite-soft/60 mb-4">DETECTION ACCURACY BENCHMARK</div>
+                <div className="font-mono-tag text-graphite-soft/60 mb-4">DETECTION BENCHMARK</div>
                 <blockquote className="border-l-2 border-signal pl-5 py-1">
                   <p className="text-graphite-soft leading-relaxed text-pretty italic">
-                    &ldquo;The ground plane checking system succeeded in achieving an overall recognition rate of 93.10%, with an overall false positive rate of 2.72% and average false negative rate of 4.25%.&rdquo;
+                    &ldquo;Overall recognition rate of 93.10%, false positive rate 2.72%, false negative 4.25%.&rdquo;
                   </p>
                   <cite className="font-mono-tag text-signal not-italic mt-3 block">Chai and Lau, p. 1</cite>
                 </blockquote>
-                <p className="text-sm text-graphite-soft leading-relaxed mt-4">
-                  Confirms this level of scenario-specific detection is achievable in practice.
-                </p>
               </div>
             </div>
 
-            {/* Table — scrolls on mobile */}
+            {/* Table scrolls on mobile */}
             <div className="overflow-x-auto">
               <table className="w-full min-w-[900px] border-collapse border border-hairline bg-ivory text-sm">
                 <thead>
@@ -328,24 +308,21 @@ const Process = () => {
         </section>
 
         {/* 04 / Process Innovation Analysis */}
-        <section className="py-20 lg:py-28 border-b border-hairline">
+        <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">04 / Process Innovation Analysis</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
+                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
                   Measuring
                   <br />
                   <span className="text-graphite-soft italic font-light">what matters.</span>
                 </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
-                  Theia&rsquo;s process innovation is measured across four variables. Users are the primary unit. Stakeholder classes wrap the system around them. The unit of service is one mobility event, like a trip to the grocery store. The success signal is fewer collisions, lower injury costs, and reduced caregiver dependency over time.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                  Does Theia improve health outcomes faster than it adds cost? Every decision held against that bar.
                 </p>
-                <p className="text-base text-graphite-soft leading-relaxed text-pretty">
-                  The core equation is simple. Does Theia improve health outcomes faster than it adds cost? Every design and business decision is held against that bar.
-                </p>
-                <div className="mt-8 space-y-6">
+                <div className="mt-10 space-y-6">
                   <div>
                     <div className="font-mono-tag text-signal mb-3">INPUT VARIABLES</div>
                     <ul className="space-y-2 text-graphite-soft leading-relaxed">
@@ -425,22 +402,22 @@ const Process = () => {
                   {
                     group: "Visually Impaired Users",
                     role: "PRIMARY",
-                    body: "Safety, independence, and low cognitive load. Theia is built cane-first. It augments existing behavior rather than introducing new complexity. Haptic alerts are designed to inform, not overwhelm.",
+                    body: "Cane-first. Augments existing behavior. Haptics inform, never overwhelm.",
                   },
                   {
                     group: "Clinicians & Mobility Specialists",
                     role: "PROVIDERS",
-                    body: "Providers need clinical validity and workflow fit. Theia supports clinical expertise rather than replacing it. The goal is a product providers can confidently recommend without undermining their role in care.",
+                    body: "Supports clinical expertise. A product providers can confidently recommend.",
                   },
                   {
                     group: "Insurance & Payers",
                     role: "PAYERS",
-                    body: "Fewer collisions means fewer injury-related healthcare costs. Reduced caregiver dependency lowers long-term utilization. Theia frames itself as preventive infrastructure, not elective technology.",
+                    body: "Preventive infrastructure. Fewer collisions, lower long-term healthcare costs.",
                   },
                   {
                     group: "Designers & Innovators",
                     role: "INNOVATORS",
-                    body: "Modular architecture and realistic material costs make Theia buildable now and expandable later. The fixed-core, evolving-shell separation keeps the hardware roadmap independent from design iteration.",
+                    body: "Modular architecture. Buildable now, expandable later. Fixed core, evolving shell.",
                   },
                 ].map((s) => (
                   <div key={s.group} className="bg-ivory p-6 lg:p-7">
@@ -457,20 +434,20 @@ const Process = () => {
         </section>
 
         {/* 05 / Research & Findings */}
-        <section className="relative py-20 lg:py-28 bg-graphite text-ivory overflow-hidden">
+        <section className="relative py-28 lg:py-40 bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">05 / Research & Findings</div>
 
             <div className="grid lg:grid-cols-12 gap-12 items-end">
               <div className="lg:col-span-7">
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory leading-[0.92] tracking-[-0.035em] mb-6">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-ivory leading-[1.05] tracking-[-0.022em] mb-6">
                   The literature
                   <br />
                   <span className="text-signal italic font-light">behind Theia.</span>
                 </h2>
                 <p className="text-base md:text-lg text-ivory/65 leading-relaxed text-pretty max-w-2xl">
-                  Every quote on this site traces back to a peer-reviewed source. The full bibliography lives on the references page in MLA format with DOIs.
+                  Every quote traces back to a peer-reviewed source. Full bibliography in MLA.
                 </p>
               </div>
               <div className="lg:col-span-5 flex lg:justify-end">
