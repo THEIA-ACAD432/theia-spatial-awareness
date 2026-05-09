@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Nav from "@/components/theia/Nav";
 import Footer from "@/components/theia/Footer";
 
@@ -29,10 +30,11 @@ const stakeholders = [
 ];
 
 const testingPlan = [
+  "Wizard-of-Oz testing",
   "Cognitive load testing",
   "Alert usefulness validation",
-  "Wearability — stairs, crowds, sitting",
-  "Real-world route completion test",
+  "Wearability in real conditions: stairs, crowds, sitting",
+  "End-to-end route completion in an uncontrolled environment",
 ];
 
 const matrix = [
@@ -108,33 +110,6 @@ const matrix = [
   },
 ];
 
-const references = [
-  {
-    n: "01",
-    authors: "Katzschmann, Araki, & Rus",
-    year: "2018",
-    title: "Safe Local Navigation for Visually Impaired Users With a Time-of-Flight and Haptic Feedback Device",
-    journal: "IEEE Trans. Neural Syst. Rehabil. Eng.",
-    volume: "26(3), 583–593",
-  },
-  {
-    n: "02",
-    authors: "Bala, Vasundhara, Haritha, & Moorthy",
-    year: "2023",
-    title: "Design, Development and Performance Analysis of Cognitive Assisting Aid with Multi Sensor Fused Navigation",
-    journal: "Journal of Big Data",
-    volume: "10, Article 28",
-  },
-  {
-    n: "03",
-    authors: "Xu et al.",
-    year: "2023",
-    title: "Intelligent Head-Mounted Obstacle Avoidance Wearable for the Blind and Visually Impaired",
-    journal: "Sensors",
-    volume: "23(23), 9598",
-  },
-];
-
 const Process = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -176,13 +151,13 @@ const Process = () => {
                   <span className="text-graphite-soft italic font-light">before building in it.</span>
                 </h2>
                 <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
-                  In the discern phase, we identified and mapped key stakeholders to understand the broader system surrounding visually impaired mobility before moving into user testing and validation.
+                  Before any design work, we mapped the full ecosystem surrounding visually impaired mobility. Four groups surfaced: visually impaired end users, clinicians and mobility specialists, insurance and payers, and designers and innovators. Each one carries different needs, constraints, and incentives.
                 </p>
                 <p className="text-base text-graphite-soft leading-relaxed text-pretty mb-5">
-                  We categorized stakeholders into four primary groups to capture different perspectives on needs, constraints, and incentives — from day-to-day usability to reimbursement and adoption.
+                  This matters because adoption doesn&rsquo;t happen in a vacuum. Naidoo and Ghaziasgar (2025) found that &ldquo;user comfort and ease of integration into daily routines significantly impact usability and adoption.&rdquo; Mapping every stakeholder early kept the product direction grounded in real-world context instead of assumptions.
                 </p>
                 <p className="text-base text-graphite-soft leading-relaxed text-pretty">
-                  By engaging with a range of stakeholders early, we established a clear problem space and ensured that our project direction was grounded in real-world context rather than assumptions.
+                  When the rest of the system is in view, the trade-offs stop being abstract. We could weigh dignity for end users against billing logic for payers, or fitting requirements for clinicians against manufacturability for engineers, without losing sight of any one group.
                 </p>
               </div>
 
@@ -235,11 +210,14 @@ const Process = () => {
               <div className="lg:col-span-5">
                 <div className="font-mono-tag text-ivory/40 mb-5">KEY INSIGHT</div>
                 <p className="text-base md:text-lg text-ivory/80 leading-relaxed text-pretty mb-6">
-                  One user directly said they wouldn't wear a harness. The team's takeaway: the product must combine fashion and technology so visually impaired users blend in — dignity and social normalcy are as important as function.
+                  Direct interviews with visually impaired users surfaced the insight that reframed everything. Sometimes it isn&rsquo;t about a device. It&rsquo;s about feeling normal. One user said outright they wouldn&rsquo;t wear a harness, and that one sentence shifted the design brief.
+                </p>
+                <p className="text-sm md:text-base text-ivory/60 leading-relaxed text-pretty mb-6">
+                  Duckett and Pratt&rsquo;s research reinforces why. Visually impaired users want solutions that &ldquo;respect their individuality and contribute to empowerment and inclusion,&rdquo; not devices that signal disability louder than they solve it. Bouteraa (2021) puts it just as plainly: &ldquo;the assistive device should be light and easy to use.&rdquo; Dignity and social normalcy aren&rsquo;t soft requirements. They&rsquo;re as load-bearing as the detection system itself.
                 </p>
                 <div className="border-l-2 border-signal pl-5 py-1 mt-8">
                   <p className="text-ivory/60 italic leading-relaxed">
-                    "The barrier isn't physical navigation — it's the invisible layer of context that surrounds every journey."
+                    &ldquo;The barrier isn&rsquo;t physical navigation. It&rsquo;s the invisible layer of context that surrounds every journey.&rdquo;
                   </p>
                 </div>
               </div>
@@ -256,6 +234,11 @@ const Process = () => {
                     </li>
                   ))}
                 </ul>
+                <div className="mt-8 pt-6 border-t border-ivory/10">
+                  <p className="text-sm text-ivory/50 leading-relaxed">
+                    Katzschmann and his team set the benchmark: 93% of users found vibratory feedback easy to understand and 91% familiarized themselves quickly. That&rsquo;s the bar Theia&rsquo;s validation is designed to meet or exceed.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -274,6 +257,29 @@ const Process = () => {
               <p className="text-sm text-graphite-soft max-w-xs leading-relaxed">
                 Every class of real-world hazard, its sensor properties, the triggering event, and the haptic response.
               </p>
+            </div>
+
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-12">
+              <div className="lg:col-span-7">
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
+                  This matrix is how Theia&rsquo;s sensing system was designed. Every real-world hazard type is mapped to a spatial profile and a specific haptic response. Nothing is generic. Each scenario has defined parameters and a distinct feedback pattern.
+                </p>
+                <p className="text-base text-graphite-soft leading-relaxed text-pretty">
+                  The matrix does two things. It proves the detection system was built around real navigation scenarios, not lab conditions. And it shows that haptic feedback isn&rsquo;t one-size-fits-all. Each hazard type gets a distinct signal so users can act immediately without having to interpret what they feel.
+                </p>
+              </div>
+              <div className="lg:col-span-4 lg:col-start-9">
+                <div className="font-mono-tag text-graphite-soft/60 mb-4">DETECTION ACCURACY BENCHMARK</div>
+                <blockquote className="border-l-2 border-signal pl-5 py-1">
+                  <p className="text-graphite-soft leading-relaxed text-pretty italic">
+                    &ldquo;The ground plane checking system succeeded in achieving an overall recognition rate of 93.10%, with an overall false positive rate of 2.72% and average false negative rate of 4.25%.&rdquo;
+                  </p>
+                  <cite className="font-mono-tag text-signal not-italic mt-3 block">Chai and Lau, p. 1</cite>
+                </blockquote>
+                <p className="text-sm text-graphite-soft leading-relaxed mt-4">
+                  Confirms this level of scenario-specific detection is achievable in practice.
+                </p>
+              </div>
             </div>
 
             {/* Table — scrolls on mobile */}
@@ -321,34 +327,40 @@ const Process = () => {
           </div>
         </section>
 
-        {/* 04 / Process Innovation Variables */}
+        {/* 04 / Process Innovation Analysis */}
         <section className="py-20 lg:py-28 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">04 / Process Innovation Variables</div>
+            <div className="font-mono-tag text-signal mb-12">04 / Process Innovation Analysis</div>
 
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               <div className="lg:col-span-5">
                 <h2 className="font-display text-4xl md:text-5xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
                   Measuring
                   <br />
                   <span className="text-graphite-soft italic font-light">what matters.</span>
                 </h2>
-                <div className="space-y-6">
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-5">
+                  Theia&rsquo;s process innovation is measured across four variables. Users are the primary unit. Stakeholder classes wrap the system around them. The unit of service is one mobility event, like a trip to the grocery store. The success signal is fewer collisions, lower injury costs, and reduced caregiver dependency over time.
+                </p>
+                <p className="text-base text-graphite-soft leading-relaxed text-pretty">
+                  The core equation is simple. Does Theia improve health outcomes faster than it adds cost? Every design and business decision is held against that bar.
+                </p>
+                <div className="mt-8 space-y-6">
                   <div>
                     <div className="font-mono-tag text-signal mb-3">INPUT VARIABLES</div>
                     <ul className="space-y-2 text-graphite-soft leading-relaxed">
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Number of users</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Classes of stakeholders (CS)</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Number of sessions</li>
+                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">·</span> Number of users</li>
+                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">·</span> Classes of stakeholders (CS)</li>
+                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">·</span> Number of sessions</li>
                     </ul>
                   </div>
                   <div>
                     <div className="font-mono-tag text-signal mb-3">POPULATION FACTORS</div>
                     <ul className="space-y-2 text-graphite-soft leading-relaxed">
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Individual readiness</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Interoperability</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Market penetration</li>
-                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">—</span> Population</li>
+                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">·</span> Individual readiness</li>
+                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">·</span> Interoperability</li>
+                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">·</span> Market penetration</li>
+                      <li className="flex gap-3"><span className="font-mono-tag text-graphite-soft/40 shrink-0">·</span> Population</li>
                     </ul>
                   </div>
                 </div>
@@ -377,9 +389,68 @@ const Process = () => {
                     </div>
                   </div>
                   <p className="text-xs text-graphite-soft/60 font-mono-tag mt-8 leading-relaxed">
-                    A proxy measure of functional independence — the net benefit per unit of everyday-life improvement.
+                    A proxy measure of functional independence. The net benefit per unit of everyday-life improvement.
                   </p>
                 </div>
+
+                {/* Managing competing needs */}
+                <div className="mt-10">
+                  <div className="font-mono-tag text-graphite-soft/60 mb-5">MANAGING COMPETING NEEDS</div>
+                  <div className="border border-hairline bg-ivory divide-y divide-hairline">
+                    {[
+                      { tension: "Autonomy vs. Safety", response: "Theia assists, it doesn't control. Users stay in charge." },
+                      { tension: "Cost vs. Functionality", response: "The MVP prioritizes essential sensors and haptics. Nothing extraneous at launch." },
+                      { tension: "Innovation vs. Adoption", response: "The product aligns with existing cane behavior. No new habits required." },
+                      { tension: "Clinical Validation vs. Speed to Market", response: "Incremental validation allows early deployment while evidence builds over time." },
+                    ].map((row) => (
+                      <div key={row.tension} className="grid grid-cols-5 gap-0">
+                        <div className="col-span-2 px-5 py-4 border-r border-hairline">
+                          <p className="text-sm text-graphite font-medium leading-snug">{row.tension}</p>
+                        </div>
+                        <div className="col-span-3 px-5 py-4">
+                          <p className="text-sm text-graphite-soft leading-relaxed">{row.response}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Stakeholder Engagement */}
+            <div className="pt-12 border-t border-hairline">
+              <div className="font-mono-tag text-signal mb-8">STAKEHOLDER ENGAGEMENT</div>
+              <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+                {[
+                  {
+                    group: "Visually Impaired Users",
+                    role: "PRIMARY",
+                    body: "Safety, independence, and low cognitive load. Theia is built cane-first. It augments existing behavior rather than introducing new complexity. Haptic alerts are designed to inform, not overwhelm.",
+                  },
+                  {
+                    group: "Clinicians & Mobility Specialists",
+                    role: "PROVIDERS",
+                    body: "Providers need clinical validity and workflow fit. Theia supports clinical expertise rather than replacing it. The goal is a product providers can confidently recommend without undermining their role in care.",
+                  },
+                  {
+                    group: "Insurance & Payers",
+                    role: "PAYERS",
+                    body: "Fewer collisions means fewer injury-related healthcare costs. Reduced caregiver dependency lowers long-term utilization. Theia frames itself as preventive infrastructure, not elective technology.",
+                  },
+                  {
+                    group: "Designers & Innovators",
+                    role: "INNOVATORS",
+                    body: "Modular architecture and realistic material costs make Theia buildable now and expandable later. The fixed-core, evolving-shell separation keeps the hardware roadmap independent from design iteration.",
+                  },
+                ].map((s) => (
+                  <div key={s.group} className="bg-ivory p-6 lg:p-7">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="font-display text-xl text-graphite tracking-[-0.02em]">{s.group}</div>
+                      <span className="font-mono-tag text-signal">{s.role}</span>
+                    </div>
+                    <p className="text-sm text-graphite-soft leading-relaxed text-pretty">{s.body}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -391,33 +462,25 @@ const Process = () => {
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">05 / Research & Findings</div>
 
-            <div className="grid lg:grid-cols-12 gap-8 mb-16">
-              <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl md:text-5xl text-ivory leading-[0.92] tracking-[-0.035em]">
+            <div className="grid lg:grid-cols-12 gap-12 items-end">
+              <div className="lg:col-span-7">
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory leading-[0.92] tracking-[-0.035em] mb-6">
                   The literature
                   <br />
-                  <span className="text-signal italic font-light">behind Halo.</span>
+                  <span className="text-signal italic font-light">behind Theia.</span>
                 </h2>
+                <p className="text-base md:text-lg text-ivory/65 leading-relaxed text-pretty max-w-2xl">
+                  Every quote on this site traces back to a peer-reviewed source. The full bibliography lives on the references page in MLA format with DOIs.
+                </p>
               </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-px bg-ivory/10 border border-ivory/10">
-              {references.map((ref) => (
-                <div key={ref.n} className="bg-graphite p-7 lg:p-10">
-                  <div className="flex items-start justify-between mb-8">
-                    <span className="font-mono-tag text-signal">[{ref.n}]</span>
-                    <span className="font-mono-tag text-ivory/30">{ref.year}</span>
-                  </div>
-                  <div className="font-mono-tag text-ivory/40 mb-3">{ref.authors}</div>
-                  <p className="text-ivory/90 leading-snug font-medium mb-5 text-pretty">
-                    {ref.title}
-                  </p>
-                  <div className="mt-auto pt-5 border-t border-ivory/10">
-                    <div className="font-mono-tag text-signal/70">{ref.journal}</div>
-                    <div className="font-mono-tag text-ivory/30 mt-1">{ref.volume}</div>
-                  </div>
-                </div>
-              ))}
+              <div className="lg:col-span-5 flex lg:justify-end">
+                <Link
+                  to="/references"
+                  className="inline-flex items-center gap-3 px-6 py-3.5 bg-signal text-graphite text-sm font-medium hover:bg-ivory transition-all duration-300"
+                >
+                  See full Works Cited <span aria-hidden>&rarr;</span>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

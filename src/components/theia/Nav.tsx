@@ -45,6 +45,12 @@ const Nav = () => {
           >
             Research
           </Link>
+          <Link
+            to="/references"
+            className={`hover:text-graphite transition-colors ${pathname === "/references" ? "text-graphite font-medium" : ""}`}
+          >
+            References
+          </Link>
         </nav>
         <Link
           to="/challenge"

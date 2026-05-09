@@ -190,23 +190,36 @@ const Business = () => {
               </div>
             </div>
 
-            {/* Revenue model from slide */}
-            <div className="grid md:grid-cols-3 gap-px bg-hairline border border-hairline">
-              <div className="bg-ivory p-6 lg:p-8">
-                <div className="font-mono-tag text-signal mb-4">PRIMARY USERS</div>
-                <p className="text-graphite leading-relaxed">Blind and visually impaired white cane users</p>
-              </div>
-              <div className="bg-ivory p-6 lg:p-8">
-                <div className="font-mono-tag text-signal mb-4">PRIMARY REVENUE</div>
-                <p className="text-graphite leading-relaxed">One-time assistive device purchase</p>
-              </div>
-              <div className="bg-ivory p-6 lg:p-8">
-                <div className="font-mono-tag text-signal mb-4">SECONDARY (OPTIONAL)</div>
-                <ul className="space-y-1 text-graphite-soft text-sm leading-relaxed">
-                  <li>Companion app — free core features</li>
-                  <li>Paid advanced configuration (non-essential)</li>
-                  <li>Accessories / hardware upgrades</li>
-                </ul>
+            {/* Business Model */}
+            <div className="border border-hairline bg-ivory p-6 lg:p-10 mb-px">
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                <div className="lg:col-span-5">
+                  <div className="font-mono-tag text-signal mb-4">BUSINESS MODEL</div>
+                  <h3 className="font-display text-3xl md:text-4xl text-graphite tracking-[-0.03em] leading-[0.95] mb-5">
+                    Subscription, not <span className="italic font-light text-graphite-soft">one-and-done.</span>
+                  </h3>
+                  <p className="text-base text-graphite leading-relaxed text-pretty mb-4">
+                    Theia runs on a subscription model. Like Whoop, the hardware is the entry point and the membership is the relationship.
+                  </p>
+                  <p className="text-sm text-graphite-soft leading-relaxed text-pretty">
+                    Mobility aids are lived in, not bought once. Sensors drift, firmware needs updates, components wear, and the spatial intelligence layer only gets smarter as the model retrains. A subscription keeps the device current, keeps software and detection improvements flowing to existing users, and lets us replace hardware on a service cadence instead of asking people to repurchase. It also lowers the upfront barrier for users and creates predictable revenue for the longitudinal evidence work that earns reimbursement later.
+                  </p>
+                </div>
+
+                <div className="lg:col-span-7 grid sm:grid-cols-3 gap-px bg-hairline border border-hairline">
+                  <div className="bg-ivory p-5 lg:p-6">
+                    <div className="font-mono-tag text-signal mb-3">PRIMARY USERS</div>
+                    <p className="text-sm text-graphite leading-relaxed">Blind and visually impaired white cane users.</p>
+                  </div>
+                  <div className="bg-ivory p-5 lg:p-6">
+                    <div className="font-mono-tag text-signal mb-3">PRIMARY CHANNEL</div>
+                    <p className="text-sm text-graphite leading-relaxed">Direct sales through healthcare providers: rehab centers, occupational therapists, mobility specialists.</p>
+                  </div>
+                  <div className="bg-ivory p-5 lg:p-6">
+                    <div className="font-mono-tag text-signal mb-3">SECONDARY CHANNEL</div>
+                    <p className="text-sm text-graphite leading-relaxed">Bulk purchasing by schools for the blind, VA programs, and insurers.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -378,55 +391,74 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 06 / Future Iterations */}
+        {/* 06 / Future of the Product */}
         <section className="relative py-20 lg:py-28 bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">06 / Future Iterations</div>
+            <div className="font-mono-tag text-signal mb-12">06 / Future of the Product</div>
 
-            <div className="grid lg:grid-cols-12 gap-12">
-              <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl md:text-5xl text-ivory leading-[0.92] tracking-[-0.035em] mb-8">
-                  What we haven't
+            <div className="grid lg:grid-cols-12 gap-12 mb-16">
+              <div className="lg:col-span-6">
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory leading-[0.92] tracking-[-0.035em] mb-8">
+                  A foundation,
                   <br />
-                  <span className="text-signal italic font-light">solved yet.</span>
+                  <span className="text-signal italic font-light">not a finish line.</span>
                 </h2>
-                <p className="text-base text-ivory/70 leading-relaxed text-pretty">
-                  Every edge case is a design problem. The current detection model works well for clear hazards, but real-world navigation is full of contextual ambiguity — objects the user wants to interact with vs. objects to avoid.
+                <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty mb-5">
+                  The first iteration of Theia is a strong foundation, but it&rsquo;s just that. A foundation. Every layer above this version is already mapped, and each one moves the product closer to behaving less like a sensor and more like a sense.
+                </p>
+                <p className="text-base text-ivory/55 leading-relaxed text-pretty">
+                  These aren&rsquo;t ideas for someday. They&rsquo;re the next builds.
                 </p>
               </div>
+            </div>
 
-              <div className="lg:col-span-6 lg:col-start-7">
-                <div className="font-mono-tag text-ivory/40 mb-5">OPEN EDGE CASES</div>
-                <div className="space-y-4">
-                  {[
-                    {
-                      title: "Intentional objects",
-                      body: "How does the system distinguish a chair the user wants to sit in from an obstacle to avoid? Proximity alone is insufficient.",
-                    },
-                    {
-                      title: "Crosswalk crowds",
-                      body: "Dense pedestrian environments create sensor noise. Multiple moving objects at varying velocities can produce conflicting alerts.",
-                    },
-                    {
-                      title: "Semantic context",
-                      body: "Rule-based alerts don't understand intent or environment. A doorway is an opening, not an obstacle — but the sensor doesn't know the difference yet.",
-                    },
-                  ].map((item, i) => (
-                    <div key={i} className="border-l-2 border-signal/40 pl-5 py-1">
-                      <div className="font-mono-tag text-signal/80 mb-1">{item.title}</div>
-                      <p className="text-sm text-ivory/60 leading-relaxed">{item.body}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-10 pt-8 border-t border-ivory/10">
-                  <div className="font-mono-tag text-ivory/30 mb-3">NEXT STEP</div>
-                  <p className="text-sm text-ivory/50 leading-relaxed">
-                    Diagrams and scenario breakdowns for edge case handling are in progress and will be added here as the detection model matures.
+            <div className="grid md:grid-cols-2 gap-px bg-ivory/10 border border-ivory/10">
+              {[
+                {
+                  n: "01",
+                  tag: "COVERAGE",
+                  title: "180° to 360°",
+                  body: "The current build covers 180 degrees in front of the user. Full 360 wraps the user completely, closing the blind spot behind them where a lot of real-world hazards actually come from.",
+                },
+                {
+                  n: "02",
+                  tag: "OUTPUT CHANNEL",
+                  title: "Paired bone conduction",
+                  body: "Haptics stay the primary feedback. Silent, private, no learning curve. Bone conduction adds a second layer for richer, more nuanced alerts without blocking ambient sound. The user hears the world and Theia at the same time.",
+                },
+                {
+                  n: "03",
+                  tag: "SPATIAL INTELLIGENCE",
+                  title: "From reaction to understanding",
+                  body: "Right now Theia reacts to proximity. The future version understands space. LiDAR combined with ToF generates a continuous 3D point cloud around the user. A cloud-assisted ML model trained on millions of pedestrian environment samples learns to label that geometry. Not just “obstacle close, left,” but “person approaching from behind” or “doorway ahead, step up.” Like a cat reading a dark room from an internalized, constantly updated spatial model.",
+                },
+                {
+                  n: "04",
+                  tag: "DESIGN PHILOSOPHY",
+                  title: "Fixed core, evolving shell",
+                  body: "Theia’s infrastructure (sensors, compute, haptics) lives in a fixed core layer. The outer shell sits on top of that and evolves independently. That separation means the design can grow without touching the hardware. Pockets, different materials, fashion finishes. The belt starts looking like something you’d wear anyway, not something you have to wear.",
+                },
+              ].map((item) => (
+                <div key={item.n} className="bg-graphite p-7 lg:p-10">
+                  <div className="flex items-start justify-between mb-8">
+                    <span className="font-mono-tag text-signal">{item.n}</span>
+                    <span className="font-mono-tag text-ivory/30">{item.tag}</span>
+                  </div>
+                  <h3 className="font-display text-2xl md:text-3xl text-ivory mb-4 tracking-[-0.025em] leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-ivory/60 leading-relaxed text-pretty">
+                    {item.body}
                   </p>
                 </div>
-              </div>
+              ))}
+            </div>
+
+            <div className="mt-12 pt-8 border-t border-ivory/10">
+              <p className="font-display text-2xl md:text-3xl text-ivory/90 leading-snug tracking-[-0.025em] max-w-3xl">
+                Today Theia detects. Tomorrow it&rsquo;ll <span className="text-signal italic font-light">read the room.</span>
+              </p>
             </div>
           </div>
         </section>

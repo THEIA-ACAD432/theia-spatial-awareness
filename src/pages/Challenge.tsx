@@ -50,19 +50,18 @@ const Overview = () => {
                   sees the ground.
                 </h2>
                 <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  The white cane is one of the most effective mobility tools ever designed, providing essential tactile navigation and physical obstacle detection. But it only protects from the ground up. Overhead obstacles, approaching people, and spatial hazards above waist height remain completely invisible.
+                  We started by spending time with the tool that already works. The white cane has earned its place. It gives real-time tactile feedback, it has decades of trust behind it, and we never intended to compete with it. The problem isn&rsquo;t the cane. It&rsquo;s the ceiling above it.
+                </p>
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
+                  Everything above waist height is invisible to it. Katzschmann and his team put it directly when they noted that &ldquo;upward-pointing sensors see chest- and face-level obstacles, such as branches and overhanging ledges, that are even more of a danger to a blind person.&rdquo; Xu and his team confirmed the same limitation in their own work. The cane simply cannot detect what it can&rsquo;t reach.
                 </p>
                 <p className="text-base md:text-lg text-graphite-soft leading-relaxed text-pretty">
-                  Beyond physical navigation, users also lack access to social interpretation, digital interaction, and environmental context.
+                  The gap isn&rsquo;t only physical. Navigating public spaces while blind means missing the social and environmental context sighted people absorb without thinking. Duckett and Pratt&rsquo;s research with visually impaired users made the priority clear. What people want from assistive tools isn&rsquo;t only safer movement. It&rsquo;s independence, dignity, and inclusion.
                 </p>
               </div>
 
               <div className="lg:col-span-6 space-y-5">
-                <div className="font-mono-tag text-graphite-soft/60 mb-4">CITATIONS — OVERHEAD HAZARDS</div>
-                <Citation
-                  quote="Upward-pointing sensors see chest- and face-level obstacles, such as branches and overhanging ledges, that are even more of a danger to a blind person."
-                  source="Katzschmann et al., p. 10"
-                />
+                <div className="font-mono-tag text-graphite-soft/60 mb-4">CITATIONS &mdash; OVERHEAD HAZARDS</div>
                 <Citation
                   quote="White canes have several flaws. They are often stigmatized, require physical exertion, occupy one hand, need physical contact with the environment, and can only detect obstacles by point contact at heights up to the users' chests."
                   source="Katzschmann et al., p. 1"
@@ -106,10 +105,6 @@ const Overview = () => {
                   <div className="font-mono-tag text-signal mb-6">DIGNITY + SOCIAL STIGMA</div>
                   <div className="space-y-6">
                     <Citation
-                      quote="White canes have several flaws. They are often stigmatized."
-                      source="Katzschmann et al., p. 1"
-                    />
-                    <Citation
                       quote="Subjects felt overall comfortable wearing the hands-free and discreet system (70%)."
                       source="Katzschmann et al., p. 10"
                     />
@@ -138,13 +133,19 @@ const Overview = () => {
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-graphite leading-[0.92] tracking-[-0.035em] mb-8">
                   Complete it.
                   <br />
-                  <span className="text-graphite-soft italic font-light">Don't replace it.</span>
+                  <span className="text-graphite-soft italic font-light">Don&rsquo;t replace it.</span>
                 </h2>
                 <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
-                  The white cane is irreplaceable for ground-level navigation, but leaves a clear gap above waist height. Halo is a belt with sensors and haptic motors built in — it covers what the cane can't, detecting hazards above ground and communicating them passively, in real time, without disrupting existing routines or requiring a new tool to learn.
+                  The cane owns the ground. That role is settled and irreplaceable. Our job became easy to describe and harder to execute. Build something for everything above it.
+                </p>
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-6">
+                  We anchored on the waist for a specific reason. Katzschmann&rsquo;s team showed that the waist moves minimally during walking, which makes it the most stable point on the body for consistent sensing. The communication channel followed from the same research. Haptic feedback through the abdomen turned out to be fast to learn. In the ALVU study, 93% of users found vibratory feedback easy to understand and 91% got comfortable with the system quickly.
+                </p>
+                <p className="text-base md:text-lg text-graphite-soft leading-relaxed text-pretty mb-6">
+                  Halo is a belt with sensors and haptic motors built in. It covers what the cane can&rsquo;t, detecting hazards above ground and communicating them passively in real time. No new tool to learn. No existing habits to disrupt.
                 </p>
                 <p className="text-lg md:text-xl text-graphite font-medium leading-relaxed border-l-2 border-signal pl-4">
-                  Halo doesn't replace the white cane. It completes it.
+                  Halo doesn&rsquo;t replace the white cane. It completes it.
                 </p>
                 <Link
                   to="/product"
@@ -203,7 +204,7 @@ const Overview = () => {
                   <span className="text-signal italic font-light">One system.</span>
                 </h2>
                 <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty">
-                  Halo is a belt-worn wearable built around three core functions, each addressing a distinct failure mode of the white cane in the spatial layer above the ground.
+                  Halo is a belt-worn wearable built around three core functions. Each one came out of a specific failure mode we kept seeing in the research, and each one is backed by evidence that the approach holds up in practice.
                 </p>
               </div>
             </div>
@@ -214,17 +215,17 @@ const Overview = () => {
                 {
                   n: "01",
                   title: "Proximity Detection",
-                  body: "Onboard cameras continuously scan for static, overhead, and approaching obstacles, covering the spatial blind spot above the cane's reach.",
+                  body: "Onboard cameras scan continuously for static, overhead, and approaching obstacles above the cane's reach. Chai and Lau validated a comparable vision system at 93.1% recognition accuracy with a false positive rate under 3%.",
                 },
                 {
                   n: "02",
                   title: "Haptic Intelligence",
-                  body: "Vibration patterns communicate hazard direction and proximity in real time, hands-free, without interrupting focus.",
+                  body: "Vibration patterns communicate hazard direction and proximity in real time. No audio distraction, no screen, no second tool to manage. Comfort is what drives adoption over time.",
                 },
                 {
                   n: "03",
                   title: "Cane Compatible",
-                  body: "Layers on top of the existing white cane ecosystem without disrupting how users already move.",
+                  body: "Halo layers on top of the existing white cane ecosystem without changing how users already move. Designed to be worn alongside the cane, not in place of it.",
                 },
               ].map((s) => (
                 <div key={s.n} className="group bg-graphite p-7 lg:p-10 hover:bg-graphite-soft/20 transition-colors duration-500">

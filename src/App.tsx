@@ -9,6 +9,7 @@ import Product from "./components/theia/Product";
 import Process from "./pages/Process.tsx";
 import Team from "./pages/Team.tsx";
 import Business from "./pages/Business.tsx";
+import References from "./pages/References.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/process" element={<Process />} />
           <Route path="/team" element={<Team />} />
           <Route path="/business" element={<Business />} />
+          <Route path="/references" element={<References />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
