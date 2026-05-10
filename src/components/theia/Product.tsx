@@ -85,7 +85,7 @@ const SensorField = () => {
   const beltPath = "M 80 410 Q 400 340 720 410";
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" aria-label="Sensor field coverage, top-down view of belt">
+    <svg viewBox={`0 170 ${W} 295`} className="w-full h-auto" aria-label="Sensor field coverage, top-down view of belt">
       <defs>
         <radialGradient id="beltGlow" cx="50%" cy="78%" r="55%">
           <stop offset="0%" stopColor="hsl(212 95% 62%)" stopOpacity="0.22" />
@@ -101,8 +101,8 @@ const SensorField = () => {
       {/* Ambient radial glow */}
       <rect width={W} height={H} fill="url(#beltGlow)" />
 
-      {/* FORWARD label at top */}
-      <text x={W / 2} y={28} fontSize={9} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.25em">↑ FORWARD</text>
+      {/* FORWARD label */}
+      <text x={W / 2} y={188} fontSize={9} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.25em">↑ FORWARD</text>
 
       {/* SENSOR FIELDS (below belt visually because z order) */}
       {/* Center: 8×8 wide cone (4m) + Luna-tf narrow beam (8m) */}

@@ -4,7 +4,7 @@ const sections = [
   {
     label: "Case Study",
     links: [
-      { label: "Challenge", to: "/challenge" },
+      { label: "Overview", to: "/challenge" },
       { label: "Process", to: "/process" },
       { label: "Product", to: "/product" },
       { label: "Business", to: "/business" },
