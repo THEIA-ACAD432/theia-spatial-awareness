@@ -16,7 +16,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
-        display: ['Inter Tight', 'Inter', 'sans-serif'],
+        display: ['Space Grotesk', 'Inter', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-signal': 'var(--gradient-signal)',

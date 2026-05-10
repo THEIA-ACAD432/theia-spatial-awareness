@@ -86,29 +86,6 @@ const Team = () => {
       <Nav />
       <main className="pt-14">
 
-        {/* Page Header */}
-        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top_left,black_30%,transparent_70%)]" aria-hidden />
-          <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-8">Team / 05</div>
-            <div className="grid lg:grid-cols-12 gap-8 items-end">
-              <div className="lg:col-span-8">
-                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em]">
-                  The people
-                  <br />
-                  <span className="text-signal italic font-light">behind it.</span>
-                </h1>
-              </div>
-              <div className="lg:col-span-4 lg:pb-4">
-                <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-                  Six students from USC. One shared problem.
-                </p>
-                <p className="font-mono-tag text-graphite-soft/50 mt-4">USC ACAD-432 · Spring 2026</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Team members */}
         {members.map((member, i) => {
           const photoLeft = i % 2 === 0;

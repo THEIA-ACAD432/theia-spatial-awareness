@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import Nav from "@/components/theia/Nav";
 import Footer from "@/components/theia/Footer";
-import deviceImg from "@/assets/theia-device.jpg";
 import deviceHeroImg from "@/assets/theia-device-hero.jpg";
-import hapticImg from "@/assets/theia-haptic.jpg";
-import diagramImg from "@/assets/theia-diagram.jpg";
 import contextImg from "@/assets/halobelt.png";
 
 const Citation = ({ quote, source }: { quote: string; source: string }) => (
@@ -14,84 +11,27 @@ const Citation = ({ quote, source }: { quote: string; source: string }) => (
   </blockquote>
 );
 
+const prototypeStages = [
+  { v: "V01", label: "First belt mock", note: "Foam form-factor study" },
+  { v: "V02", label: "Sensor wiring", note: "Breadboard + ultrasonic" },
+  { v: "TEST", label: "Indoor obstacle", note: "Latency + clarity check" },
+  { v: "RESULT", label: "Calibration data", note: "False alerts logged" },
+  { v: "V03", label: "Redesign", note: "Sensor angle revision" },
+];
+
+const qbtrd: [string, string][] = [
+  ["Question", "Can a waist-level wearable detect nearby obstacles clearly enough to support spatial awareness?"],
+  ["Build", "Belt-mounted sensor module with haptic or audio feedback."],
+  ["Test", "Controlled obstacle detection, fit testing, feedback clarity, walking scenarios."],
+  ["Result", "Detection accuracy, false alerts, missed obstacles, comfort, latency, user interpretation."],
+  ["Decision", "Refine sensor angle, feedback pattern, belt placement, enclosure, and onboarding flow."],
+];
+
 const powerChain = [
   { label: "LiPo Battery", sub: "3.7V cell" },
   { label: "TP4056", sub: "USB-C charging" },
   { label: "MT3608", sub: "Boost converter" },
   { label: "5V Rail", sub: "System power" },
-];
-
-const detectionMatrix = [
-  {
-    n: "01",
-    element: "Obstacles at head/torso height",
-    examples: "Signs, branches, shelves",
-    relation: [
-      "Height: above waist",
-      "Direction: ahead / lateral",
-      "Velocity: 0 (static)",
-      "Distance: 0–2m",
-      "Depth: N/A",
-    ],
-    event: "Static obstacle detected within ~2m in walking path",
-    feedback: "Haptic alert indicating direction and urgency (stronger = closer)",
-  },
-  {
-    n: "02",
-    element: "Ground-level hazards",
-    examples: "Curbs, steps, potholes, uneven surfaces",
-    relation: [
-      "Height: ground level",
-      "Direction: ahead",
-      "Velocity: 0",
-      "Distance: 0–2m",
-      "Depth: depth of change (10–20cm)",
-    ],
-    event: "Elevation change detected in walking path",
-    feedback: "Distinct haptic pattern for \"step up\" vs \"step down\" vs \"uneven\"",
-  },
-  {
-    n: "03",
-    element: "Moving objects",
-    examples: "People, bikes, cars",
-    relation: [
-      "Height: variable",
-      "Direction: any relative to user",
-      "Velocity: >0 (tracking speed + trajectory)",
-      "Distance: 0–5m",
-      "Depth: N/A",
-    ],
-    event: "Moving object on collision course within ~3–10m",
-    feedback: "Directional haptic pulse tracking the object's approach side",
-  },
-  {
-    n: "04",
-    element: "Open spaces / doorways / passageways",
-    examples: "",
-    relation: [
-      "Height: user height or taller",
-      "Direction: relative to heading",
-      "Velocity: 0",
-      "Distance: 0–3m",
-      "Depth: gap width",
-    ],
-    event: "Navigable opening detected while user is scanning",
-    feedback: "Gentle confirmation buzz guiding toward the opening",
-  },
-  {
-    n: "05",
-    element: "Walls / large static boundaries",
-    examples: "",
-    relation: [
-      "Height: variable",
-      "Direction: left / right / ahead",
-      "Velocity: 0",
-      "Distance: 0–1m",
-      "Depth: N/A",
-    ],
-    event: "User approaching boundary within ~1m",
-    feedback: "Sustained low vibration on nearest side",
-  },
 ];
 
 const HapticBar = ({ duration, delay, height }: { duration: number; delay: number; height: number }) => (
@@ -105,96 +45,124 @@ const HapticBar = ({ duration, delay, height }: { duration: number; delay: numbe
 );
 
 const SensorField = () => {
-  const W = 700, H = 312;
-  const cy = 252; // belt y
-  const s  = 20;  // px per meter
+  const W = 800;
+  const H = 480;
+  const mono = "'JetBrains Mono', monospace";
+
+  const signal     = "hsl(212 95% 62%)";
+  const signalSoft = "hsl(212 95% 62% / 0.55)";
+  const signalDim  = "hsl(212 95% 62% / 0.25)";
+  const fg         = "hsl(220 5% 96%)";
+  const fgSoft     = "hsl(220 8% 65%)";
+  const fgFaint    = "hsl(220 8% 65% / 0.5)";
+  const surface    = "hsl(220 15% 10%)";
+
+  // Sensor positions along curved belt (computed from quadratic bezier)
+  const sensors = [
+    { x: 112, y: 403, dir: -90, range: 8, half: 6,  fill: 0.04, label: "LUNA-TF",  sub: "8M ← SIDE",  rangeLabelX: 50,  rangeLabelY: 405 },
+    { x: 256, y: 382, dir: -45, range: 2, half: 14, fill: 0.10, label: "TOF LINEAR", sub: "2M · −45°", rangeLabelX: 218, rangeLabelY: 348 },
+    { x: 400, y: 375, dir:   0, range: 4, half: 22, fill: 0.18, label: "8×8 + LUNA-TF", sub: "FORWARD", rangeLabelX: 410, rangeLabelY: 305 },
+    { x: 544, y: 382, dir:  45, range: 2, half: 14, fill: 0.10, label: "TOF LINEAR", sub: "2M · +45°", rangeLabelX: 568, rangeLabelY: 348 },
+    { x: 688, y: 403, dir:  90, range: 8, half: 6,  fill: 0.04, label: "LUNA-TF",  sub: "8M · SIDE →", rangeLabelX: 720, rangeLabelY: 405 },
+  ];
+  const s = 18; // px per meter
 
   const fan = (ox: number, oy: number, deg: number, half: number, r: number, n = 60) => {
     const pts = Array.from({ length: n + 1 }, (_, i) => {
-      const a = ((deg - half) + 2 * half * i / n - 90) * Math.PI / 180;
+      const a = ((deg - half) + (2 * half * i) / n - 90) * Math.PI / 180;
       return `${(ox + r * Math.cos(a)).toFixed(1)},${(oy + r * Math.sin(a)).toFixed(1)}`;
     });
     return `M ${ox},${oy} L ${pts.join(" L ")} Z`;
   };
-
   const arc = (ox: number, oy: number, deg: number, half: number, r: number, n = 60) => {
     const pts = Array.from({ length: n + 1 }, (_, i) => {
-      const a = ((deg - half) + 2 * half * i / n - 90) * Math.PI / 180;
+      const a = ((deg - half) + (2 * half * i) / n - 90) * Math.PI / 180;
       return `${(ox + r * Math.cos(a)).toFixed(1)},${(oy + r * Math.sin(a)).toFixed(1)}`;
     });
     return `M ${pts.join(" L ")}`;
   };
 
-  const mono = "'JetBrains Mono', monospace";
-  const fgFaint  = "hsl(220 12% 28% / 0.38)";
-  const fgMid    = "hsl(220 12% 28% / 0.62)";
-  const amber    = "hsl(35 95% 52%)";
-  const amberMid = "hsl(35 95% 52% / 0.65)";
-  const graphite = "hsl(220 15% 14%)";
+  const beltPath = "M 80 410 Q 400 340 720 410";
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" aria-label="Sensor field coverage, top-down belt view">
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" aria-label="Sensor field coverage, top-down view of belt">
+      <defs>
+        <radialGradient id="beltGlow" cx="50%" cy="78%" r="55%">
+          <stop offset="0%" stopColor="hsl(212 95% 62%)" stopOpacity="0.22" />
+          <stop offset="60%" stopColor="hsl(212 95% 62%)" stopOpacity="0.04" />
+          <stop offset="100%" stopColor="hsl(212 95% 62%)" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="beltStrip" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="hsl(220 15% 18%)" />
+          <stop offset="100%" stopColor="hsl(220 15% 10%)" />
+        </linearGradient>
+      </defs>
 
-      {/* DETECTION FILLS */}
-      {/* Side lunas: 90° left / right along belt */}
-      <path d={fan(72,  cy, -90, 8, 8 * s)} fill="hsl(220 15% 14% / 0.04)" />
-      <path d={fan(628, cy,  90, 8, 8 * s)} fill="hsl(220 15% 14% / 0.04)" />
-      {/* Angled ToF linears: ±45° forward */}
-      <path d={fan(196, cy, -45, 14, 2 * s)} fill="hsl(220 15% 14% / 0.08)" />
-      <path d={fan(504, cy,  45, 14, 2 * s)} fill="hsl(220 15% 14% / 0.08)" />
-      {/* Center 8×8: 45° FOV, 4 m */}
-      <path d={fan(350, cy, 0, 22.5, 4 * s)} fill="hsl(35 95% 52% / 0.10)" />
-      {/* Center Luna-tf: narrow forward, 8 m */}
-      <path d={fan(350, cy, 0,    8, 8 * s)} fill="hsl(35 95% 52% / 0.06)" />
+      {/* Ambient radial glow */}
+      <rect width={W} height={H} fill="url(#beltGlow)" />
 
-      {/* ARC OUTLINES */}
-      <path d={arc(72,  cy, -90,  8, 8 * s)} fill="none" stroke="hsl(220 15% 14% / 0.28)" strokeWidth={1.5} />
-      <path d={arc(628, cy,  90,  8, 8 * s)} fill="none" stroke="hsl(220 15% 14% / 0.28)" strokeWidth={1.5} />
-      <path d={arc(196, cy, -45, 14, 2 * s)} fill="none" stroke="hsl(220 15% 14% / 0.48)" strokeWidth={1.5} />
-      <path d={arc(504, cy,  45, 14, 2 * s)} fill="none" stroke="hsl(220 15% 14% / 0.48)" strokeWidth={1.5} />
-      <path d={arc(350, cy,   0, 22.5, 4 * s)} fill="none" stroke={amber} strokeWidth={2} />
-      <path d={arc(350, cy,   0,  8,   8 * s)} fill="none" stroke={amberMid} strokeWidth={1.5} strokeDasharray="5 3" />
+      {/* FORWARD label at top */}
+      <text x={W / 2} y={28} fontSize={9} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.25em">↑ FORWARD</text>
 
-      {/* RANGE LABELS near each arc tip */}
-      {/* Luna-tf forward: tip at y = 252-160 = 92 */}
-      <text x={358} y={98}  fontSize={7.5} fontFamily={mono} fill={amberMid} letterSpacing="0.07em">8M</text>
-      {/* 8×8 forward: tip at y = 252-80 = 172 */}
-      <text x={358} y={178} fontSize={7.5} fontFamily={mono} fill={amber}    letterSpacing="0.07em">4M</text>
-      {/* Left linear: arc tip ≈ (168, 224) */}
-      <text x={155} y={221} fontSize={7}   fontFamily={mono} fill={fgMid}    letterSpacing="0.06em">2M</text>
-      {/* Right linear: arc tip ≈ (532, 224) */}
-      <text x={537} y={221} fontSize={7}   fontFamily={mono} fill={fgMid}    letterSpacing="0.06em">2M</text>
+      {/* SENSOR FIELDS (below belt visually because z order) */}
+      {/* Center: 8×8 wide cone (4m) + Luna-tf narrow beam (8m) */}
+      <path d={fan(400, 375, 0, 8,  8 * s)} fill="hsl(212 95% 62% / 0.06)" />
+      <path d={fan(400, 375, 0, 22, 4 * s)} fill="hsl(212 95% 62% / 0.16)" />
+      <path d={arc(400, 375, 0, 8,  8 * s)} fill="none" stroke={signalSoft} strokeWidth={1.2} strokeDasharray="5 4" />
+      <path d={arc(400, 375, 0, 22, 4 * s)} fill="none" stroke={signal}     strokeWidth={2} />
 
-      {/* BELT LINE */}
-      <line x1={22} y1={cy} x2={W - 22} y2={cy} stroke="hsl(220 15% 14% / 0.4)" strokeWidth={2.5} />
+      {/* Side and angled sensors */}
+      {sensors.filter((s) => s.dir !== 0).map((sn) => (
+        <g key={`field-${sn.x}`}>
+          <path d={fan(sn.x, sn.y, sn.dir, sn.half, sn.range * s)} fill={`hsl(212 95% 62% / ${sn.fill})`} />
+          <path d={arc(sn.x, sn.y, sn.dir, sn.half, sn.range * s)} fill="none" stroke={signalSoft} strokeWidth={1} />
+        </g>
+      ))}
 
-      {/* SENSOR DOTS */}
-      <circle cx={72}  cy={cy} r={5}   fill={graphite} />
-      <circle cx={196} cy={cy} r={4.5} fill="hsl(220 15% 14% / 0.65)" />
-      <circle cx={350} cy={cy} r={6}   fill={amber} />
-      <circle cx={504} cy={cy} r={4.5} fill="hsl(220 15% 14% / 0.65)" />
-      <circle cx={628} cy={cy} r={5}   fill={graphite} />
+      {/* Range labels */}
+      <text x={420} y={195} fontSize={9} fontFamily={mono} fill={signalSoft} letterSpacing="0.1em">8M</text>
+      <text x={418} y={275} fontSize={9} fontFamily={mono} fill={signal}     letterSpacing="0.1em">4M</text>
+      <text x={218} y={348} fontSize={8} fontFamily={mono} fill={signalSoft} letterSpacing="0.08em">2M</text>
+      <text x={568} y={348} fontSize={8} fontFamily={mono} fill={signalSoft} letterSpacing="0.08em">2M</text>
 
-      {/* FORWARD LABEL */}
-      <text x={350} y={13} fontSize={7} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.1em">↑ FORWARD</text>
+      {/* CURVED BELT STRIP */}
+      <path d={beltPath} fill="none" stroke="hsl(220 15% 18%)" strokeWidth={36} strokeLinecap="round" />
+      <path d={beltPath} fill="none" stroke="url(#beltStrip)" strokeWidth={30} strokeLinecap="round" />
+      <path d={beltPath} fill="none" stroke={signalDim} strokeWidth={0.8} strokeDasharray="3 5" />
 
-      {/* SENSOR LABELS BELOW BELT */}
-      {/* Luna Left */}
-      <text x={72}  y={cy + 15} fontSize={7}   fontFamily={mono} fill={fgMid}   textAnchor="middle" letterSpacing="0.06em">LUNA-TF</text>
-      <text x={72}  y={cy + 25} fontSize={6.5} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.06em">8M · ← SIDE</text>
-      {/* Linear Left */}
-      <text x={196} y={cy + 15} fontSize={7}   fontFamily={mono} fill={fgMid}   textAnchor="middle" letterSpacing="0.06em">TOF LINEAR</text>
-      <text x={196} y={cy + 25} fontSize={6.5} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.06em">2M · -45°</text>
-      {/* Center */}
-      <text x={350} y={cy + 15} fontSize={7}   fontFamily={mono} fill={amber}   textAnchor="middle" letterSpacing="0.06em">8×8 · 4M + LUNA-TF · 8M</text>
-      <text x={350} y={cy + 25} fontSize={6.5} fontFamily={mono} fill={amberMid} textAnchor="middle" letterSpacing="0.06em">FORWARD</text>
-      {/* Linear Right */}
-      <text x={504} y={cy + 15} fontSize={7}   fontFamily={mono} fill={fgMid}   textAnchor="middle" letterSpacing="0.06em">TOF LINEAR</text>
-      <text x={504} y={cy + 25} fontSize={6.5} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.06em">2M · +45°</text>
-      {/* Luna Right */}
-      <text x={628} y={cy + 15} fontSize={7}   fontFamily={mono} fill={fgMid}   textAnchor="middle" letterSpacing="0.06em">LUNA-TF</text>
-      <text x={628} y={cy + 25} fontSize={6.5} fontFamily={mono} fill={fgFaint} textAnchor="middle" letterSpacing="0.06em">8M · SIDE →</text>
+      {/* SENSOR MODULES on belt */}
+      {sensors.map((sn) => {
+        const isMain = sn.dir === 0;
+        const w = isMain ? 36 : 24;
+        const h = isMain ? 22 : 16;
+        return (
+          <g key={`mod-${sn.x}`}>
+            {/* glow under module */}
+            <circle cx={sn.x} cy={sn.y} r={isMain ? 14 : 10} fill={signal} opacity={0.25} />
+            {/* module body */}
+            <rect
+              x={sn.x - w / 2} y={sn.y - h / 2}
+              width={w} height={h}
+              rx={3}
+              fill={surface}
+              stroke={signal}
+              strokeWidth={1}
+            />
+            {/* sensor dot */}
+            <circle cx={sn.x} cy={sn.y} r={isMain ? 3 : 2.4} fill={signal} />
+            {/* highlight rim */}
+            <circle cx={sn.x} cy={sn.y} r={isMain ? 3 : 2.4} fill="none" stroke={signal} strokeWidth={0.6} opacity={0.6} />
+          </g>
+        );
+      })}
 
+      {/* SENSOR LABELS below belt */}
+      {sensors.map((sn) => (
+        <g key={`lbl-${sn.x}`}>
+          <text x={sn.x} y={sn.y + 38} fontSize={8} fontFamily={mono} fill={fg} textAnchor="middle" letterSpacing="0.08em">{sn.label}</text>
+          <text x={sn.x} y={sn.y + 50} fontSize={7.5} fontFamily={mono} fill={fgSoft} textAnchor="middle" letterSpacing="0.06em">{sn.sub}</text>
+        </g>
+      ))}
     </svg>
   );
 };
@@ -205,39 +173,110 @@ const Product = () => {
       <Nav />
       <main className="pt-14">
 
-        {/* Page Header */}
-        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top_left,black_30%,transparent_70%)]" aria-hidden />
-          <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-8">Product / 03</div>
-            <div className="grid lg:grid-cols-12 gap-8 items-end">
-              <div className="lg:col-span-8">
-                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em]">
-                  A belt that
+        {/* 01 / Video */}
+        <section className="py-28 lg:py-40 border-b border-hairline">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">01 / Walkthrough</div>
+
+            <div className="grid lg:grid-cols-12 gap-10 mb-16">
+              <div className="lg:col-span-7">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
+                  See it
                   <br />
-                  <span className="text-signal italic font-light">walks with you.</span>
-                </h1>
+                  in <span className="text-signal">motion.</span>
+                </h2>
               </div>
-              <div className="lg:col-span-4 lg:pb-4">
-                <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-                  A wearable that looks like fashion and works like infrastructure. Built to give blind users confidence in public &mdash; not single them out.
-                </p>
+              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
+                A short walkthrough of the belt &mdash; how it sits, how it senses, how it speaks back to the body.
+              </p>
+            </div>
+
+            <div className="relative aspect-video border border-hairline bg-ivory-deep/40 grid-bg flex items-center justify-center group cursor-pointer">
+              <div className="absolute top-4 left-4 font-mono-tag text-graphite-soft/60">FIG. 00 / WALKTHROUGH</div>
+              <div className="absolute top-4 right-4 font-mono-tag text-graphite-soft/40">VIDEO PENDING</div>
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-16 h-16 rounded-full border border-signal/40 bg-background/60 flex items-center justify-center group-hover:border-signal group-hover:bg-signal/10 transition-colors">
+                  <span className="font-display text-2xl text-signal ml-1">&#9654;</span>
+                </div>
+                <div className="font-mono-tag text-graphite-soft/60">PLACEHOLDER &middot; 16:9</div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 01 / Design */}
+        {/* 02 / Prototype Evidence */}
         <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">01 / Design</div>
+            <div className="font-mono-tag text-signal mb-12">02 / Prototype Evidence</div>
 
-            {/* Primary image grid */}
-            <div className="grid grid-cols-12 gap-3 md:gap-4 mb-6">
+            <div className="grid lg:grid-cols-12 gap-10">
+              <div className="lg:col-span-7">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
+                  From concept
+                  <br />
+                  to <span className="text-signal">physical testing.</span>
+                </h2>
+                <p className="mt-8 text-[18px] md:text-[20px] leading-relaxed text-graphite-soft max-w-2xl">
+                  Theia is being developed through iterative prototyping: building, testing, observing failure points, and redesigning around what the prototype reveals.
+                </p>
+              </div>
+            </div>
+
+            {/* Process timeline */}
+            <div className="mt-20">
+              <div className="micro-label mb-6">Process timeline</div>
+              <div className="grid md:grid-cols-5 gap-px bg-hairline border border-hairline">
+                {prototypeStages.map((s) => (
+                  <div key={s.v} className="bg-background p-5">
+                    <div className="aspect-[4/3] border border-hairline mb-4 grid-bg flex items-center justify-center text-graphite-soft/50 text-xs font-mono">
+                      IMG / {s.v}
+                    </div>
+                    <div className="text-signal font-mono text-[11px] mb-1">{s.v}</div>
+                    <div className="font-display text-[15px] leading-tight text-graphite">{s.label}</div>
+                    <div className="text-[12px] text-graphite-soft mt-1">{s.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* QBTRD */}
+            <div className="mt-16 grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+              {qbtrd.map(([k, v], i) => (
+                <div key={k} className="bg-background p-7">
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="text-signal font-mono text-[11px]">0{i + 1}</span>
+                    <span className="micro-label">{k}</span>
+                  </div>
+                  <p className="text-[16px] leading-relaxed text-graphite">{v}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 03 / Design */}
+        <section className="py-28 lg:py-40 border-b border-hairline">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">03 / Design</div>
+
+            <div className="grid lg:grid-cols-12 gap-10 mb-16">
+              <div className="lg:col-span-7">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
+                  A belt people
+                  <br />
+                  would <span className="text-signal">actually wear.</span>
+                </h2>
+              </div>
+              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
+                Sensors and haptic motors built into the band &mdash; no add-ons, no clip points, nothing that reads as medical. Confidence, worn at the waist.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-12 gap-3 md:gap-4">
               <figure className="col-span-12 md:col-span-8 relative aspect-[4/3] overflow-hidden bg-ivory-deep group">
                 <img
                   src={contextImg}
-                  alt="Halo worn in context. Belt device on person walking with white cane."
+                  alt="Theia worn in context"
                   className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
                 />
                 <figcaption className="absolute top-4 left-4 right-4 flex items-start justify-between font-mono-tag text-ivory mix-blend-difference">
@@ -246,63 +285,32 @@ const Product = () => {
                 </figcaption>
               </figure>
 
-              <div className="col-span-12 md:col-span-4 grid grid-rows-2 gap-3 md:gap-4">
-                <figure className="relative aspect-square md:aspect-auto overflow-hidden bg-ivory-deep group">
-                  <img
-                    src={deviceHeroImg}
-                    alt="Halo belt sensor array, front view"
-                    className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
-                  />
-                  <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-ivory mix-blend-difference">
-                    <span>FIG. 02 / DEVICE</span>
-                    <span className="opacity-70">42 × 58MM</span>
-                  </figcaption>
-                </figure>
-                <figure className="relative aspect-square md:aspect-auto overflow-hidden bg-ivory-deep group">
-                  <img
-                    src={deviceImg}
-                    alt="Halo device detail"
-                    className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
-                  />
-                  <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-ivory mix-blend-difference">
-                    <span>FIG. 03 / DETAIL</span>
-                  </figcaption>
-                </figure>
-              </div>
+              <figure className="col-span-12 md:col-span-4 relative aspect-[4/3] md:aspect-auto overflow-hidden bg-ivory-deep group">
+                <img
+                  src={deviceHeroImg}
+                  alt="Theia belt sensor array"
+                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
+                />
+                <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-ivory mix-blend-difference">
+                  <span>FIG. 02 / DEVICE</span>
+                  <span className="opacity-70">42 &times; 58MM</span>
+                </figcaption>
+              </figure>
             </div>
 
-            {/* Placeholder row for 3D model + physical photos */}
-            <div className="grid grid-cols-12 gap-3 md:gap-4 mb-16">
-              <div className="col-span-12 md:col-span-5 aspect-[4/3] border border-dashed border-hairline bg-ivory-deep/40 flex flex-col items-center justify-center gap-3 p-8">
-                <span className="font-mono-tag text-graphite-soft/40">FIG. 04 / 3D MODEL</span>
-                <span className="font-mono-tag text-graphite-soft/30">RENDER PENDING</span>
-              </div>
-              <div className="col-span-12 md:col-span-7 aspect-[4/3] border border-dashed border-hairline bg-ivory-deep/40 flex flex-col items-center justify-center gap-3 p-8">
-                <span className="font-mono-tag text-graphite-soft/40">FIG. 05 / PHYSICAL PRODUCT</span>
-                <span className="font-mono-tag text-graphite-soft/30">PHOTOGRAPHY PENDING</span>
-              </div>
-            </div>
-
-            <div className="grid lg:grid-cols-12 gap-12">
-              <div className="lg:col-span-6">
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
-                  The brief: a belt people would actually want to wear. Sensors and haptic motors built into the band &mdash; no add-ons, no clip points, nothing that reads as medical. Confidence, worn at the waist.
-                </p>
-                <Link
-                  to="/challenge"
-                  className="inline-flex items-center gap-2 mt-6 text-sm text-signal hover:underline underline-offset-2 transition-colors"
-                >
-                  Why this device exists <span aria-hidden>&rarr;</span>
-                </Link>
-              </div>
-            </div>
+            <Link
+              to="/challenge"
+              className="inline-flex items-center gap-2 mt-10 text-sm text-signal hover:underline underline-offset-2 transition-colors"
+            >
+              Why this device exists <span aria-hidden>&rarr;</span>
+            </Link>
           </div>
         </section>
 
-        {/* 02 / Hardware Architecture */}
+        {/* 04 / Hardware Architecture */}
         <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">02 / Hardware Architecture</div>
+            <div className="font-mono-tag text-signal mb-12">04 / Hardware Architecture</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               {/* MCU overview */}
@@ -443,14 +451,14 @@ const Product = () => {
         </section>
 
         {/* 03 / Haptic Feedback */}
-        <section className="relative py-28 lg:py-40 bg-graphite text-ivory overflow-hidden">
+        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">03 / Haptic Feedback</div>
+            <div className="font-mono-tag text-signal mb-12">05 / Haptic Feedback</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-7">
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-ivory leading-[1.05] tracking-[-0.022em]">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.05] tracking-[-0.022em]">
                   Three modes.
                   <br />
                   <span className="text-signal italic font-light">One language.</span>
@@ -458,76 +466,73 @@ const Product = () => {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-px bg-ivory/10 border border-ivory/10">
+            <div className="grid md:grid-cols-3 gap-px bg-hairline border border-hairline">
 
               {/* Mode 1: Forward / Static */}
-              <div className="bg-graphite p-7 lg:p-10 group hover:bg-graphite-soft/20 transition-colors duration-500">
+              <div className="bg-ivory p-7 lg:p-10 group hover:bg-ivory-deep transition-colors duration-500">
                 <div className="flex items-start justify-between mb-10">
                   <span className="font-mono-tag text-signal">01</span>
-                  <span className="font-mono-tag text-ivory/30">STATIC</span>
+                  <span className="font-mono-tag text-foreground/30">STATIC</span>
                 </div>
-                <h3 className="font-display text-3xl md:text-4xl text-ivory tracking-[-0.03em] mb-3">
+                <h3 className="font-display text-3xl md:text-4xl text-foreground tracking-[-0.03em] mb-3">
                   Forward Object
                 </h3>
-                <p className="text-sm text-ivory/50 mb-2">e.g. wall, post, door</p>
-                <p className="text-ivory/60 leading-relaxed text-sm mb-10">
+                <p className="text-sm text-foreground/50 mb-2">e.g. wall, post, door</p>
+                <p className="text-foreground/60 leading-relaxed text-sm mb-10">
                   Pulse speed tracks distance. Slow for far, faster as it closes. The forward-center sensor activates the center motor only.
                 </p>
-                {/* Visualization: slow pulse (far) → fast pulse (near) */}
                 <div className="flex items-end gap-1.5 h-12">
                   {[28, 44, 28].map((h, i) => (
                     <HapticBar key={i} height={h} duration={1000} delay={0} />
                   ))}
-                  <span className="font-mono-tag text-ivory/20 self-center px-1.5">→</span>
+                  <span className="font-mono-tag text-foreground/20 self-center px-1.5">&rarr;</span>
                   {[28, 44, 28].map((h, i) => (
                     <HapticBar key={`f${i}`} height={h} duration={380} delay={0} />
                   ))}
                 </div>
-                <div className="mt-4 font-mono-tag text-ivory/30">FAR / SLOW &nbsp;&rarr;&nbsp; NEAR / FAST</div>
+                <div className="mt-4 font-mono-tag text-foreground/30">FAR / SLOW &nbsp;&rarr;&nbsp; NEAR / FAST</div>
               </div>
 
               {/* Mode 2: Approaching */}
-              <div className="bg-graphite p-7 lg:p-10 group hover:bg-graphite-soft/20 transition-colors duration-500">
+              <div className="bg-ivory p-7 lg:p-10 group hover:bg-ivory-deep transition-colors duration-500">
                 <div className="flex items-start justify-between mb-10">
                   <span className="font-mono-tag text-signal">02</span>
-                  <span className="font-mono-tag text-ivory/30">DYNAMIC</span>
+                  <span className="font-mono-tag text-foreground/30">DYNAMIC</span>
                 </div>
-                <h3 className="font-display text-3xl md:text-4xl text-ivory tracking-[-0.03em] mb-3">
+                <h3 className="font-display text-3xl md:text-4xl text-foreground tracking-[-0.03em] mb-3">
                   Approaching Object
                 </h3>
-                <p className="text-sm text-ivory/50 mb-2">speed-aware</p>
-                <p className="text-ivory/60 leading-relaxed text-sm mb-10">
+                <p className="text-sm text-foreground/50 mb-2">speed-aware</p>
+                <p className="text-foreground/60 leading-relaxed text-sm mb-10">
                   Pulse rate escalates as the object closes. If approach speed crosses the threshold, pulsing gives way to a sustained hold at maximum. A continuous signal that demands attention.
                 </p>
-                {/* Visualization: fast pulse → sustained hold */}
                 <div className="flex items-end gap-1.5 h-12">
                   {[28, 44, 28].map((h, i) => (
                     <HapticBar key={i} height={h} duration={260} delay={0} />
                   ))}
-                  <span className="font-mono-tag text-ivory/20 self-center px-1.5">&rarr;</span>
+                  <span className="font-mono-tag text-foreground/20 self-center px-1.5">&rarr;</span>
                   {[44, 44, 44].map((h, i) => (
                     <div key={`s${i}`} className="w-2.5 rounded-sm bg-signal" style={{ height: `${h}px` }} />
                   ))}
                 </div>
-                <div className="mt-4 font-mono-tag text-ivory/30">FAST PULSE &nbsp;&rarr;&nbsp; HOLD / MAX</div>
+                <div className="mt-4 font-mono-tag text-foreground/30">FAST PULSE &nbsp;&rarr;&nbsp; HOLD / MAX</div>
               </div>
 
               {/* Mode 3: Overhead */}
-              <div className="bg-graphite p-7 lg:p-10 group hover:bg-graphite-soft/20 transition-colors duration-500">
+              <div className="bg-ivory p-7 lg:p-10 group hover:bg-ivory-deep transition-colors duration-500">
                 <div className="flex items-start justify-between mb-10">
                   <span className="font-mono-tag text-signal">03</span>
-                  <span className="font-mono-tag text-ivory/30">OVERHEAD</span>
+                  <span className="font-mono-tag text-foreground/30">OVERHEAD</span>
                 </div>
-                <h3 className="font-display text-3xl md:text-4xl text-ivory tracking-[-0.03em] mb-3">
+                <h3 className="font-display text-3xl md:text-4xl text-foreground tracking-[-0.03em] mb-3">
                   Overhead Hazard
                 </h3>
-                <p className="text-sm text-ivory/50 mb-2">e.g. branch, awning, beam</p>
-                <p className="text-ivory/60 leading-relaxed text-sm mb-10">
-                  The 8×8 multi-zone sensor detects objects above waist height. The center motors are physically elevated on the belt and activate together to signal vertical position, distinct from forward or side detections.
+                <p className="text-sm text-foreground/50 mb-2">e.g. branch, awning, beam</p>
+                <p className="text-foreground/60 leading-relaxed text-sm mb-10">
+                  The 8&times;8 multi-zone sensor detects objects above waist height. The center motors are physically elevated on the belt and activate together to signal vertical position, distinct from forward or side detections.
                 </p>
-                {/* Visualization: belt motor map */}
                 <div className="space-y-3">
-                  <div className="font-mono-tag text-ivory/30 mb-2">MOTOR MAP / BELT VIEW</div>
+                  <div className="font-mono-tag text-foreground/30 mb-2">MOTOR MAP / BELT VIEW</div>
                   <div className="flex items-center gap-2">
                     {[false, false, true, true, false].map((active, i) => (
                       <div key={i} className="flex flex-col items-center gap-1.5">
@@ -535,148 +540,38 @@ const Product = () => {
                           className={`w-5 h-5 rounded-full border transition-colors ${
                             active
                               ? "bg-signal border-signal"
-                              : "bg-transparent border-ivory/20"
+                              : "bg-transparent border-foreground/20"
                           }`}
                           style={active ? { animationName: "signal-pulse", animationDuration: "700ms", animationTimingFunction: "ease-in-out", animationIterationCount: "infinite" } : undefined}
                         />
-                        <span className="font-mono-tag text-ivory/20" style={{ fontSize: "0.55rem" }}>
+                        <span className="font-mono-tag text-foreground/20" style={{ fontSize: "0.55rem" }}>
                           {["L", "ML", "C", "MR", "R"][i]}
                         </span>
                       </div>
                     ))}
                   </div>
-                  <div className="font-mono-tag text-signal/60 text-[0.6rem] tracking-wider">● ACTIVE &nbsp; ○ STANDBY</div>
+                  <div className="font-mono-tag text-signal/60 text-[0.6rem] tracking-wider">&bull; ACTIVE &nbsp; &#9675; STANDBY</div>
                 </div>
               </div>
 
             </div>
 
             {/* Spatial mapping principle */}
-            <div className="border border-t-0 border-ivory/10 bg-ivory/5 px-7 lg:px-10 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
+            <div className="border border-t-0 border-hairline bg-ivory/40 px-7 lg:px-10 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
               <div className="font-mono-tag text-signal shrink-0">SPATIAL MAPPING</div>
-              <div className="w-px h-4 bg-ivory/10 shrink-0 hidden sm:block" />
-              <p className="text-ivory/45 text-sm leading-relaxed">
+              <div className="w-px h-4 bg-hairline shrink-0 hidden sm:block" />
+              <p className="text-foreground/55 text-sm leading-relaxed">
                 Each sensor maps directly to the motor at its belt position. A right-side detection activates only the right motor. An overhead detection activates only the elevated center motors. Direction is felt, not interpreted.
               </p>
             </div>
 
-            {/* Haptic image + principle */}
-            <div className="grid lg:grid-cols-12 gap-6 mt-12">
-              <figure className="lg:col-span-4 relative aspect-square overflow-hidden bg-ivory-deep/10">
-                <img
-                  src={hapticImg}
-                  alt="Macro detail of vibration motor module"
-                  className="w-full h-full object-cover"
-                />
-                <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-ivory mix-blend-difference">
-                  <span>FIG. 06 / HAPTIC MODULE</span>
-                  <span className="opacity-70">ERM CUTAWAY</span>
-                </figcaption>
-              </figure>
-              <figure className="lg:col-span-4 relative aspect-square overflow-hidden bg-ivory-deep/10">
-                <img
-                  src={diagramImg}
-                  alt="Sensor field cone diagram"
-                  className="w-full h-full object-cover"
-                />
-                <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-graphite-soft">
-                  <span>FIG. 07 / SENSOR FIELD</span>
-                  <span className="opacity-70">180° ARC</span>
-                </figcaption>
-              </figure>
-              <div className="lg:col-span-4 flex flex-col justify-center">
-                <div className="font-mono-tag text-signal mb-4">DESIGN PRINCIPLE</div>
-                <p className="font-display text-2xl md:text-3xl text-ivory leading-tight tracking-[-0.025em]">
-                  Augment, never replace.
-                  <br />
-                  <span className="text-ivory/40 italic font-light">Inform, never instruct.</span>
-                </p>
-              </div>
-            </div>
-
           </div>
         </section>
 
-        {/* 05 / Detection Matrix */}
-        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-4">04 / Detection Matrix</div>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-graphite leading-[1.05] tracking-[-0.022em]">
-                Full detection
-                <br />
-                <span className="text-graphite-soft italic font-light">scenario mapping.</span>
-              </h2>
-              <p className="text-sm text-graphite-soft max-w-xs leading-relaxed">
-                Hazard, sensor profile, trigger, response.
-              </p>
-            </div>
-
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
-              <div className="lg:col-span-7">
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
-                  Every hazard type mapped to a spatial profile and a distinct haptic response. Built around real navigation, not lab conditions.
-                </p>
-              </div>
-              <div className="lg:col-span-4 lg:col-start-9">
-                <div className="font-mono-tag text-graphite-soft/60 mb-4">DETECTION BENCHMARK</div>
-                <blockquote className="border-l-2 border-signal pl-5 py-1">
-                  <p className="text-graphite-soft leading-relaxed text-pretty italic">
-                    &ldquo;Overall recognition rate of 93.10%, false positive rate 2.72%, false negative 4.25%.&rdquo;
-                  </p>
-                  <cite className="font-mono-tag text-signal not-italic mt-3 block">Chai and Lau, p. 1</cite>
-                </blockquote>
-              </div>
-            </div>
-
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[900px] border-collapse border border-hairline bg-ivory text-sm">
-                <thead>
-                  <tr className="bg-graphite text-ivory">
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-8">#</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[22%]">Element</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[26%]">Sensor Properties</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[24%]">Trigger Event</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal">Haptic Feedback</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {detectionMatrix.map((row, i) => (
-                    <tr key={row.n} className={`border-t border-hairline align-top ${i % 2 === 1 ? "bg-ivory-deep/50" : "bg-ivory"}`}>
-                      <td className="px-5 py-5 border-r border-hairline">
-                        <span className="font-mono-tag text-signal">{row.n}</span>
-                      </td>
-                      <td className="px-5 py-5 border-r border-hairline">
-                        <div className="text-graphite font-medium leading-snug mb-1">{row.element}</div>
-                        {row.examples && (
-                          <div className="font-mono-tag text-graphite-soft/60 mt-1">{row.examples}</div>
-                        )}
-                      </td>
-                      <td className="px-5 py-5 border-r border-hairline">
-                        <ul className="space-y-1">
-                          {row.relation.map((r) => (
-                            <li key={r} className="text-graphite-soft leading-snug">{r}</li>
-                          ))}
-                        </ul>
-                      </td>
-                      <td className="px-5 py-5 border-r border-hairline text-graphite leading-relaxed">
-                        {row.event}
-                      </td>
-                      <td className="px-5 py-5 text-graphite leading-relaxed">
-                        {row.feedback}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* 06 / Product Considerations */}
+        {/* 06 / Considerations */}
         <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">05 / Considerations</div>
+            <div className="font-mono-tag text-signal mb-12">06 / Considerations</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
               <div className="lg:col-span-5">
@@ -698,7 +593,7 @@ const Product = () => {
                       <span className="font-mono-tag text-signal">UX RISK</span>
                     </div>
                     <p className="text-sm text-graphite-soft leading-relaxed text-pretty">
-                      <span className="text-graphite font-medium">Mitigation:</span> Cane-first design. Halo augments, never leads. Alerts inform; the user always acts. The device is silent by default and never instructs a turn or step.
+                      <span className="text-graphite font-medium">Mitigation:</span> Cane-first design. Theia augments, never leads. Alerts inform; the user always acts. The device is silent by default and never instructs a turn or step.
                     </p>
                   </div>
                   <div className="p-6 lg:p-7">
@@ -715,6 +610,75 @@ const Product = () => {
                   Commercial risks (adoption, reimbursement, pricing) live on the <Link to="/business" className="text-signal underline decoration-signal/40 underline-offset-2">Business page</Link>. Clinical &amp; regulatory considerations are in <Link to="/process" className="text-signal underline decoration-signal/40 underline-offset-2">Process</Link>.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 07 / Future of the Product */}
+        <section className="relative py-28 lg:py-40 overflow-hidden">
+          <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
+          <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">07 / Future of the Product</div>
+
+            <div className="grid lg:grid-cols-12 gap-12 mb-20">
+              <div className="lg:col-span-6">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.05] tracking-[-0.022em] mb-10">
+                  A foundation,
+                  <br />
+                  <span className="text-signal italic font-light">not a finish line.</span>
+                </h2>
+                <p className="text-base md:text-lg text-foreground/70 leading-relaxed text-pretty">
+                  Each layer moves Theia closer to behaving less like a sensor and more like a sense. Not someday ideas. The next builds.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+              {[
+                {
+                  n: "01",
+                  tag: "COVERAGE",
+                  title: "180° to 360°",
+                  body: "Wrap the user completely. Close the blind spot behind them.",
+                },
+                {
+                  n: "02",
+                  tag: "OUTPUT CHANNEL",
+                  title: "Paired bone conduction",
+                  body: "Haptics stay primary. Bone conduction adds richer alerts without blocking ambient sound.",
+                },
+                {
+                  n: "03",
+                  tag: "SPATIAL INTELLIGENCE",
+                  title: "From reaction to understanding",
+                  body: "LiDAR + ToF generates a 3D point cloud. A cloud ML model labels the geometry. Not “obstacle close, left.” Doorway ahead, step up.",
+                },
+                {
+                  n: "04",
+                  tag: "DESIGN PHILOSOPHY",
+                  title: "Fixed core, evolving shell",
+                  body: "Sensors, compute, haptics in a fixed core. The outer shell evolves on its own. Pockets, materials, finishes.",
+                },
+              ].map((item) => (
+                <div key={item.n} className="bg-ivory p-7 lg:p-10">
+                  <div className="flex items-start justify-between mb-8">
+                    <span className="font-mono-tag text-signal">{item.n}</span>
+                    <span className="font-mono-tag text-foreground/30">{item.tag}</span>
+                  </div>
+                  <h3 className="font-display text-2xl md:text-3xl text-foreground mb-4 tracking-[-0.025em] leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-foreground/60 leading-relaxed text-pretty">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 pt-8 border-t border-hairline">
+              <p className="font-display text-2xl md:text-3xl text-foreground/90 leading-snug tracking-[-0.025em] max-w-3xl">
+                Today Theia detects. Tomorrow it&rsquo;ll <span className="text-signal italic font-light">read the room.</span>
+              </p>
             </div>
           </div>
         </section>

@@ -35,25 +35,12 @@ const Footer = () => {
   return (
     <footer className="relative bg-ivory-deep text-graphite border-t border-hairline">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-20 pb-10">
-        {/* Big closing statement */}
-        <div className="mb-20">
-          <div className="font-mono-tag text-signal mb-6">END / 07</div>
-          <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em] max-w-6xl">
-            The cane gives the ground.
-            <br />
-            <span className="text-signal italic font-light">Halo gives the air.</span>
-          </h2>
-        </div>
-
         <div className="grid lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-4">
-            <div className="flex items-baseline gap-3 mb-5">
-              <div className="relative w-2.5 h-2.5 self-center">
-                <span className="absolute inset-0 rounded-full bg-signal" />
-                <span className="absolute inset-0 rounded-full bg-signal animate-radar-sweep" />
-              </div>
-              <span className="font-display text-xl text-graphite italic font-light tracking-[-0.02em] leading-none">
-                halo<span className="text-signal not-italic">&middot;</span>
+            <div className="flex items-center gap-3 mb-5">
+              <span className="block w-2.5 h-2.5 rounded-full bg-signal" />
+              <span className="font-display text-xl font-medium tracking-tight text-foreground leading-none">
+                theia<span className="text-signal">.</span>
               </span>
             </div>
             <p className="text-graphite-soft text-sm leading-relaxed max-w-md">
@@ -64,7 +51,7 @@ const Footer = () => {
             </p>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 mt-6 px-3.5 py-1.5 text-xs font-medium font-mono uppercase tracking-wider text-ivory bg-graphite hover:bg-signal hover:text-graphite transition-all duration-300"
+              className="inline-flex items-center gap-2 mt-6 px-3.5 py-1.5 text-xs font-medium font-mono uppercase tracking-wider text-foreground border border-hairline hover:border-signal hover:text-signal transition-all duration-300"
             >
               Back to home <span aria-hidden>&rarr;</span>
             </Link>
@@ -92,7 +79,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-8 border-t border-hairline flex flex-col sm:flex-row justify-between gap-4 text-xs text-graphite-soft/60 font-mono uppercase tracking-wider">
-          <div>© 2026 Halo · USC Class Project</div>
+          <div>&copy; 2026 Theia &middot; USC Class Project</div>
           <div className="flex items-center gap-2">
             <span className="signal-dot" /> System online
           </div>

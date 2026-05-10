@@ -81,28 +81,6 @@ const Business = () => {
       <Nav />
       <main className="pt-14">
 
-        {/* Page Header */}
-        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top_left,black_30%,transparent_70%)]" aria-hidden />
-          <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-8">Business / 04</div>
-            <div className="grid lg:grid-cols-12 gap-8 items-end">
-              <div className="lg:col-span-8">
-                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em]">
-                  Strategy &
-                  <br />
-                  <span className="text-signal italic font-light">long game.</span>
-                </h1>
-              </div>
-              <div className="lg:col-span-4 lg:pb-4">
-                <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-                  Value, market, model, roadmap, metrics.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* 01 / Value Proposition */}
         <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -202,9 +180,9 @@ const Business = () => {
             <div className="overflow-x-auto">
               <table className="w-full min-w-[700px] border-collapse border border-hairline bg-ivory text-sm">
                 <thead>
-                  <tr className="bg-graphite text-ivory">
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[25%]">Substitute</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[37%]">What it does well</th>
+                  <tr className="bg-ivory-deep text-foreground">
+                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-hairline w-[25%]">Substitute</th>
+                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-hairline w-[37%]">What it does well</th>
                     <th className="font-mono-tag text-left px-5 py-4 font-normal">Weaknesses & limitations</th>
                   </tr>
                 </thead>
@@ -223,13 +201,13 @@ const Business = () => {
         </section>
 
         {/* 03 / Roadmap */}
-        <section className="relative py-28 lg:py-40 border-b border-hairline bg-graphite text-ivory overflow-hidden">
+        <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">03 / 25-Year Roadmap</div>
 
             <div className="mb-16">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-ivory leading-[1.05] tracking-[-0.022em]">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.05] tracking-[-0.022em]">
                 Five segments.
                 <br />
                 <span className="text-signal italic font-light">One direction.</span>
@@ -238,11 +216,11 @@ const Business = () => {
 
             {/* Timeline track (desktop) */}
             <div className="hidden lg:block relative mb-12">
-              <div className="absolute top-[9px] left-0 right-0 h-px bg-ivory/15" />
+              <div className="absolute top-[9px] left-0 right-0 h-px bg-hairline" />
               <div className="flex">
                 {roadmap.map((seg) => (
                   <div key={seg.n} className="flex-1 relative">
-                    <div className="w-4 h-4 rounded-full border-2 border-signal bg-graphite relative z-10 mb-4" />
+                    <div className="w-4 h-4 rounded-full border-2 border-signal bg-background relative z-10 mb-4" />
                   </div>
                 ))}
               </div>
@@ -251,13 +229,13 @@ const Business = () => {
             {/* Segment columns */}
             <div className="grid lg:grid-cols-5 gap-6 lg:gap-4">
               {roadmap.map((seg) => (
-                <div key={seg.n} className="border-t border-ivory/10 pt-6 lg:border-t-0 lg:pt-0">
+                <div key={seg.n} className="border-t border-hairline pt-6 lg:border-t-0 lg:pt-0">
                   <div className="font-mono-tag text-signal mb-2">{seg.n}</div>
-                  <div className="font-mono-tag text-ivory/40 mb-3">{seg.years}</div>
-                  <h3 className="font-display text-2xl text-ivory tracking-[-0.025em] mb-4 leading-tight">
+                  <div className="font-mono-tag text-foreground/40 mb-3">{seg.years}</div>
+                  <h3 className="font-display text-2xl text-foreground tracking-[-0.025em] mb-4 leading-tight">
                     {seg.name}
                   </h3>
-                  <p className="text-ivory/55 text-sm leading-relaxed text-pretty">
+                  <p className="text-foreground/55 text-sm leading-relaxed text-pretty">
                     {seg.description}
                   </p>
                 </div>
@@ -320,75 +298,6 @@ const Business = () => {
                   Product-level risks (privacy, over-reliance) are addressed on the <Link to="/product" className="text-signal underline decoration-signal/40 underline-offset-2">Product page</Link>. Clinical and regulatory considerations live in <Link to="/process" className="text-signal underline decoration-signal/40 underline-offset-2">Process</Link>.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 05 / Future of the Product */}
-        <section className="relative py-28 lg:py-40 bg-graphite text-ivory overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
-          <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">05 / Future of the Product</div>
-
-            <div className="grid lg:grid-cols-12 gap-12 mb-20">
-              <div className="lg:col-span-6">
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-ivory leading-[1.05] tracking-[-0.022em] mb-10">
-                  A foundation,
-                  <br />
-                  <span className="text-signal italic font-light">not a finish line.</span>
-                </h2>
-                <p className="text-base md:text-lg text-ivory/70 leading-relaxed text-pretty">
-                  Each layer moves Theia closer to behaving less like a sensor and more like a sense. Not someday ideas. The next builds.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-px bg-ivory/10 border border-ivory/10">
-              {[
-                {
-                  n: "01",
-                  tag: "COVERAGE",
-                  title: "180° to 360°",
-                  body: "Wrap the user completely. Close the blind spot behind them.",
-                },
-                {
-                  n: "02",
-                  tag: "OUTPUT CHANNEL",
-                  title: "Paired bone conduction",
-                  body: "Haptics stay primary. Bone conduction adds richer alerts without blocking ambient sound.",
-                },
-                {
-                  n: "03",
-                  tag: "SPATIAL INTELLIGENCE",
-                  title: "From reaction to understanding",
-                  body: "LiDAR + ToF generates a 3D point cloud. A cloud ML model labels the geometry. Not “obstacle close, left.” Doorway ahead, step up.",
-                },
-                {
-                  n: "04",
-                  tag: "DESIGN PHILOSOPHY",
-                  title: "Fixed core, evolving shell",
-                  body: "Sensors, compute, haptics in a fixed core. The outer shell evolves on its own. Pockets, materials, finishes.",
-                },
-              ].map((item) => (
-                <div key={item.n} className="bg-graphite p-7 lg:p-10">
-                  <div className="flex items-start justify-between mb-8">
-                    <span className="font-mono-tag text-signal">{item.n}</span>
-                    <span className="font-mono-tag text-ivory/30">{item.tag}</span>
-                  </div>
-                  <h3 className="font-display text-2xl md:text-3xl text-ivory mb-4 tracking-[-0.025em] leading-tight">
-                    {item.title}
-                  </h3>
-                  <p className="text-ivory/60 leading-relaxed text-pretty">
-                    {item.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12 pt-8 border-t border-ivory/10">
-              <p className="font-display text-2xl md:text-3xl text-ivory/90 leading-snug tracking-[-0.025em] max-w-3xl">
-                Today Theia detects. Tomorrow it&rsquo;ll <span className="text-signal italic font-light">read the room.</span>
-              </p>
             </div>
           </div>
         </section>
