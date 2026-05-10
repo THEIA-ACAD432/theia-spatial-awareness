@@ -302,6 +302,184 @@ const Business = () => {
           </div>
         </section>
 
+        {/* 05 / Partnerships & Future Support */}
+        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">05 / Partnerships & Future Support</div>
+
+            <div className="grid lg:grid-cols-12 gap-10 mb-16">
+              <div className="lg:col-span-7">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
+                  Theia doesn&rsquo;t
+                  <br />
+                  ship <span className="text-signal">alone.</span>
+                </h2>
+              </div>
+              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
+                Adoption depends on the support system around the device. Below is an honest snapshot of who&rsquo;s currently engaged, who we&rsquo;re in conversation with, and who we&rsquo;re targeting next.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-px bg-hairline border border-hairline mb-12">
+
+              {/* ENGAGED */}
+              <div className="bg-ivory p-6 lg:p-7">
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="w-1.5 h-1.5 rounded-full bg-signal" />
+                  <span className="font-mono-tag text-signal">ENGAGED</span>
+                </div>
+                <ul className="space-y-5">
+                  <li>
+                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">USC ACAD-432 Faculty</div>
+                    <p className="text-xs text-graphite-soft leading-relaxed">Course advisor providing innovation systems guidance, rubric review, and project feedback.</p>
+                  </li>
+                  <li>
+                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">USC Viterbi (MDDE)</div>
+                    <p className="text-xs text-graphite-soft leading-relaxed">Medical Device & Diagnostic Engineering program supporting Jose&rsquo;s hardware integration work and electrical bench testing.</p>
+                  </li>
+                  <li>
+                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">USC Iovine and Young Academy</div>
+                    <p className="text-xs text-graphite-soft leading-relaxed">Design and prototyping infrastructure &mdash; CAD, fabrication, soldering, iteration cycles.</p>
+                  </li>
+                </ul>
+              </div>
+
+              {/* IN CONVERSATION */}
+              <div className="bg-ivory p-6 lg:p-7">
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="w-1.5 h-1.5 rounded-full bg-signal/50" />
+                  <span className="font-mono-tag text-signal/70">IN CONVERSATION</span>
+                </div>
+                <ul className="space-y-5">
+                  <li>
+                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">Mobility & Orientation specialists</div>
+                    <p className="text-xs text-graphite-soft leading-relaxed">Early user research interviews on cane-first design and where the device should not interfere with training.</p>
+                  </li>
+                  <li>
+                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">Local low-vision community</div>
+                    <p className="text-xs text-graphite-soft leading-relaxed">Recruiting test users for Wizard-of-Oz sessions and wearability validation through USC accessibility networks.</p>
+                  </li>
+                  <li>
+                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">Occupational therapy advisors</div>
+                    <p className="text-xs text-graphite-soft leading-relaxed">Informal review of haptic alert patterns and cognitive load thresholds before structured pilots.</p>
+                  </li>
+                </ul>
+              </div>
+
+              {/* TARGETED */}
+              <div className="bg-ivory p-6 lg:p-7">
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="w-1.5 h-1.5 rounded-full bg-graphite-soft/40" />
+                  <span className="font-mono-tag text-graphite-soft/70">TARGETED NEXT</span>
+                </div>
+                <ul className="space-y-5">
+                  <li>
+                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">VA Blind Rehabilitation Service</div>
+                    <p className="text-xs text-graphite-soft leading-relaxed">Federal channel for veteran vision-loss populations. Clear procurement pathway once clinical validation lands.</p>
+                  </li>
+                  <li>
+                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">American Foundation for the Blind</div>
+                    <p className="text-xs text-graphite-soft leading-relaxed">Distribution + advocacy partner. Validates user-centered evidence for downstream institutional adoption.</p>
+                  </li>
+                  <li>
+                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">Schools for the Blind (state-level)</div>
+                    <p className="text-xs text-graphite-soft leading-relaxed">Early-career user cohort. Long-term relationship value as users transition from training to independent mobility.</p>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+            {/* Future support tracks */}
+            <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+              <div className="bg-ivory p-6 lg:p-7">
+                <div className="font-mono-tag text-signal mb-4">FUTURE FUNDING PATHS</div>
+                <ul className="space-y-2 text-sm text-graphite-soft leading-relaxed">
+                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>USC student-research grants for prototype iteration</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Accessibility-focused foundations (Lavelle Fund, Lighthouse Guild)</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>SBIR Phase I (assistive tech medical device track)</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Strategic corporate partners in mobility / wearables</li>
+                </ul>
+              </div>
+              <div className="bg-ivory p-6 lg:p-7">
+                <div className="font-mono-tag text-signal mb-4">LONG-TERM SUPPORT</div>
+                <ul className="space-y-2 text-sm text-graphite-soft leading-relaxed">
+                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Insurance reimbursement (post-FDA pathway)</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>WHO assistive technology procurement (global tier)</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Community health worker distribution networks</li>
+                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Open API for third-party haptic / sensor integration</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 06 / Societal Sustainability */}
+        <section className="py-28 lg:py-40 border-b border-hairline">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">06 / Societal Sustainability</div>
+
+            <div className="grid lg:grid-cols-12 gap-10 mb-16">
+              <div className="lg:col-span-7">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
+                  A product that earns
+                  <br />
+                  its <span className="text-signal">place over time.</span>
+                </h2>
+              </div>
+              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
+                Sustainability for Theia means more than runtime hours. It means a device that respects dignity, scales equitably, and lowers the long-term cost of vision-related healthcare.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
+              {[
+                {
+                  n: "01",
+                  tag: "DIGNITY",
+                  title: "Non-stigmatizing by design",
+                  body: "The belt reads as fashion, not medical equipment. Sensors and motors live inside the band. Users get spatial awareness without signaling disability to bystanders.",
+                },
+                {
+                  n: "02",
+                  tag: "EQUITY",
+                  title: "Accessible at every income tier",
+                  body: "Roadmap targets a sub-$150 device by 2043 distributed through community health workers and WHO procurement. Premium tier funds the accessible tier.",
+                },
+                {
+                  n: "03",
+                  tag: "HEALTH SYSTEM",
+                  title: "Preventive infrastructure",
+                  body: "Fewer collisions and falls means fewer ER visits, lower fracture rates, and reduced long-term care costs. Theia pays back the health system over years, not transactions.",
+                },
+                {
+                  n: "04",
+                  tag: "LIFECYCLE",
+                  title: "Fixed core, evolving shell",
+                  body: "The electronics core stays. The shell (fabric, color, fit) evolves separately. Reduces e-waste, extends device lifespan, and lets users update aesthetics without buying new hardware.",
+                },
+              ].map((s) => (
+                <div key={s.n} className="bg-ivory p-6 lg:p-7">
+                  <div className="flex items-start justify-between mb-6">
+                    <span className="font-mono-tag text-signal">{s.n}</span>
+                    <span className="font-mono-tag text-graphite-soft/40">{s.tag}</span>
+                  </div>
+                  <h3 className="font-display text-xl text-graphite mb-3 tracking-[-0.02em] leading-tight">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm text-graphite-soft leading-relaxed text-pretty">{s.body}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 pt-8 border-t border-hairline max-w-3xl">
+              <p className="font-display text-2xl md:text-3xl text-graphite leading-snug tracking-[-0.025em]">
+                Independence is the metric. <span className="text-signal italic font-light">Not units sold.</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
       </main>
       <Footer />
     </div>

@@ -120,7 +120,7 @@ const SensorField = () => {
       ))}
 
       {/* Range labels */}
-      <text x={420} y={195} fontSize={9} fontFamily={mono} fill={signalSoft} letterSpacing="0.1em">8M</text>
+      <text x={420} y={225} fontSize={9} fontFamily={mono} fill={signalSoft} letterSpacing="0.1em">8M</text>
       <text x={418} y={275} fontSize={9} fontFamily={mono} fill={signal}     letterSpacing="0.1em">4M</text>
       <text x={218} y={348} fontSize={8} fontFamily={mono} fill={signalSoft} letterSpacing="0.08em">2M</text>
       <text x={568} y={348} fontSize={8} fontFamily={mono} fill={signalSoft} letterSpacing="0.08em">2M</text>
@@ -312,28 +312,29 @@ const Product = () => {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">04 / Hardware Architecture</div>
 
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
-              {/* MCU overview */}
+            {/* BLOCK 1: ESP32 + Software Logic — balanced 2-col */}
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-20">
               <div className="lg:col-span-5">
                 <h3 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-6">
                   ESP32-S3
                   <br />
                   <span className="text-graphite-soft italic font-light">at the core.</span>
                 </h3>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-3">
-                  ESP32-S3 with dual I²C buses and 5× PWM outputs. Sensors run independently. No contention under load.
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-4">
+                  ESP32-S3 with dual I&sup2;C buses and 5&times; PWM outputs. Sensors run independently. No contention under load.
                 </p>
-                <p className="text-sm text-graphite-soft leading-relaxed text-pretty mb-8">
+                <p className="text-sm text-graphite-soft leading-relaxed text-pretty">
                   <span className="font-mono-tag text-signal mr-2">WHY</span>Headroom for v2, plus built-in BLE so the companion app costs us nothing extra.
                 </p>
+              </div>
 
-                {/* Software mapping */}
-                <div className="bg-ivory border border-hairline p-6">
+              <div className="lg:col-span-7">
+                <div className="bg-ivory border border-hairline p-6 lg:p-8">
                   <div className="font-mono-tag text-signal mb-4">SOFTWARE LOGIC</div>
-                  <p className="text-sm text-graphite-soft leading-relaxed mb-5">
+                  <p className="text-sm text-graphite-soft leading-relaxed mb-6">
                     Sensor distance translates directly into pulse speed. Each motor maps 1:1 to its paired sensor. No shared state, no latency stacking.
                   </p>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {[
                       { label: "Near object", value: "Fast pulse", fill: "w-full" },
                       { label: "Mid-range", value: "Moderate pulse", fill: "w-3/5" },
@@ -350,81 +351,61 @@ const Product = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Sensor suite */}
-              <div className="lg:col-span-6 lg:col-start-7">
-                <div className="font-mono-tag text-graphite-soft/60 mb-4">SENSOR + ACTUATOR SUITE</div>
-                <div className="border border-hairline bg-ivory divide-y divide-hairline">
-
-                  <div className="p-6">
-                    <div className="flex items-start gap-4 mb-3">
-                      <span className="font-mono-tag text-signal shrink-0 mt-0.5">5×</span>
-                      <div className="flex-1">
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">NFP-FLAT-C1030 Coin Motors</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed mb-3">Independently PWM-controlled. Each motor maps 1:1 to a sensor zone. Driven by P2N2222A + 1k&Omega; resistor + 1N4001 flyback diode so they fire simultaneously without rail sag.</p>
-                        <p className="text-xs text-graphite leading-relaxed">
-                          <span className="font-mono-tag text-signal mr-2">WHY</span>Same form factor MIT&rsquo;s ALVU used on the abdomen &mdash; 80%+ satisfaction in minutes.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    <div className="flex items-start gap-4 mb-3">
-                      <span className="font-mono-tag text-signal shrink-0 mt-0.5">3×</span>
-                      <div className="flex-1">
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">Benewake TF-Luna LiDAR</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed mb-3">Two on the far ends of the belt pointing sideways (8m lateral). One at center pointing forward alongside the 8&times;8 for long-range detection.</p>
-                        <p className="text-xs text-graphite leading-relaxed">
-                          <span className="font-mono-tag text-signal mr-2">WHY</span>Our reflex layer. 250 Hz catches the fast close-range threats the wide-FOV sensor is too slow to see.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <span className="font-mono-tag text-signal shrink-0 mt-0.5">2×</span>
-                      <div className="flex-1">
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">VL53L1X TOF Linear</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed mb-3">Positioned at &plusmn;45&deg; from center. Short-range (2m) angled coverage bridging between the forward sensors and the side-facing Lunas.</p>
-                        <p className="text-xs text-graphite leading-relaxed">
-                          <span className="font-mono-tag text-signal mr-2">WHY</span>Bridges forward and side coverage. ToF beats ultrasonic on speed and precision indoors (Bala et al., 2023).
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <span className="font-mono-tag text-signal shrink-0 mt-0.5">1×</span>
-                      <div className="flex-1">
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">VL53L8CX 8&times;8 Multi-Zone ToF</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed mb-3">Front-center sensor with an 8&times;8 zone matrix at 60 Hz. Covers forward, above, and below at hip level. The primary overhead hazard detector.</p>
-                        <p className="text-xs text-graphite leading-relaxed mb-3">
-                          <span className="font-mono-tag text-signal mr-2">WHY</span>The brain of the sensing layer. 64 zones at 60 Hz delivers the multi-height, real-time detection no existing device offers.
-                        </p>
-                        <Citation
-                          quote="A single sensor configuration from one vantage point is insufficient to gather the necessary environmental information."
-                          source="Naidoo & Ghaziasgar, 2025, p. 17"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
             </div>
 
-            {/* Sensor field diagram */}
-            <div className="mb-12">
+            {/* BLOCK 2: Sensor field diagram (full width) */}
+            <div className="mb-8">
               <div className="font-mono-tag text-graphite-soft/60 mb-4">FIG. / SENSOR COVERAGE / TOP-DOWN VIEW AT HIP LEVEL</div>
               <div className="bg-ivory border border-hairline p-6 lg:p-8">
                 <SensorField />
               </div>
             </div>
 
-            {/* Power chain */}
+            {/* BLOCK 3: Sensor suite cards (2×2 grid below diagram) */}
+            <div className="mb-20">
+              <div className="font-mono-tag text-graphite-soft/60 mb-4">SENSOR + ACTUATOR SUITE</div>
+              <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+                {[
+                  {
+                    count: "5×",
+                    name: "NFP-FLAT-C1030 Coin Motors",
+                    desc: "Independently PWM-controlled. Each motor maps 1:1 to a sensor zone. Driven by P2N2222A + 1kΩ resistor + 1N4001 flyback diode so they fire simultaneously without rail sag.",
+                    why: "Same form factor MIT's ALVU used on the abdomen — 80%+ satisfaction in minutes.",
+                  },
+                  {
+                    count: "3×",
+                    name: "Benewake TF-Luna LiDAR",
+                    desc: "Two on the far ends of the belt pointing sideways (8m lateral). One at center pointing forward alongside the 8×8 for long-range detection.",
+                    why: "Our reflex layer. 250 Hz catches the fast close-range threats the wide-FOV sensor is too slow to see.",
+                  },
+                  {
+                    count: "2×",
+                    name: "VL53L1X TOF Linear",
+                    desc: "Positioned at ±45° from center. Short-range (2m) angled coverage bridging between the forward sensors and the side-facing Lunas.",
+                    why: "Bridges forward and side coverage. ToF beats ultrasonic on speed and precision indoors (Bala et al., 2023).",
+                  },
+                  {
+                    count: "1×",
+                    name: "VL53L8CX 8×8 Multi-Zone ToF",
+                    desc: "Front-center sensor with an 8×8 zone matrix at 60 Hz. Covers forward, above, and below at hip level. The primary overhead hazard detector.",
+                    why: "The brain of the sensing layer. 64 zones at 60 Hz delivers multi-height, real-time detection no existing device offers.",
+                  },
+                ].map((s) => (
+                  <div key={s.name} className="bg-ivory p-6 lg:p-7">
+                    <div className="flex items-start gap-4 mb-3">
+                      <span className="font-mono-tag text-signal shrink-0 mt-0.5">{s.count}</span>
+                      <div className="font-display text-xl text-graphite tracking-[-0.02em]">{s.name}</div>
+                    </div>
+                    <p className="text-sm text-graphite-soft leading-relaxed mb-4">{s.desc}</p>
+                    <p className="text-xs text-graphite leading-relaxed">
+                      <span className="font-mono-tag text-signal mr-2">WHY</span>{s.why}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* BLOCK 4: Power chain */}
             <div>
               <div className="font-mono-tag text-graphite-soft/60 mb-6">POWER CHAIN</div>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-0 mb-6">
@@ -436,7 +417,7 @@ const Product = () => {
                     </div>
                     {i < powerChain.length - 1 && (
                       <div className="flex items-center justify-center w-8 h-8 sm:h-auto shrink-0 self-center">
-                        <span className="font-mono-tag text-signal text-base rotate-90 sm:rotate-0">→</span>
+                        <span className="font-mono-tag text-signal text-base rotate-90 sm:rotate-0">&rarr;</span>
                       </div>
                     )}
                   </div>

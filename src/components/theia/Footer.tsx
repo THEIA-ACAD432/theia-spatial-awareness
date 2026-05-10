@@ -8,6 +8,7 @@ const sections = [
       { label: "Process", to: "/process" },
       { label: "Product", to: "/product" },
       { label: "Business", to: "/business" },
+      { label: "System", to: "/system" },
     ],
   },
   {
