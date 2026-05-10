@@ -21,6 +21,79 @@ const powerChain = [
   { label: "5V Rail", sub: "System power" },
 ];
 
+const detectionMatrix = [
+  {
+    n: "01",
+    element: "Obstacles at head/torso height",
+    examples: "Signs, branches, shelves",
+    relation: [
+      "Height: above waist",
+      "Direction: ahead / lateral",
+      "Velocity: 0 (static)",
+      "Distance: 0–2m",
+      "Depth: N/A",
+    ],
+    event: "Static obstacle detected within ~2m in walking path",
+    feedback: "Haptic alert indicating direction and urgency (stronger = closer)",
+  },
+  {
+    n: "02",
+    element: "Ground-level hazards",
+    examples: "Curbs, steps, potholes, uneven surfaces",
+    relation: [
+      "Height: ground level",
+      "Direction: ahead",
+      "Velocity: 0",
+      "Distance: 0–2m",
+      "Depth: depth of change (10–20cm)",
+    ],
+    event: "Elevation change detected in walking path",
+    feedback: "Distinct haptic pattern for \"step up\" vs \"step down\" vs \"uneven\"",
+  },
+  {
+    n: "03",
+    element: "Moving objects",
+    examples: "People, bikes, cars",
+    relation: [
+      "Height: variable",
+      "Direction: any relative to user",
+      "Velocity: >0 (tracking speed + trajectory)",
+      "Distance: 0–5m",
+      "Depth: N/A",
+    ],
+    event: "Moving object on collision course within ~3–10m",
+    feedback: "Directional haptic pulse tracking the object's approach side",
+  },
+  {
+    n: "04",
+    element: "Open spaces / doorways / passageways",
+    examples: "",
+    relation: [
+      "Height: user height or taller",
+      "Direction: relative to heading",
+      "Velocity: 0",
+      "Distance: 0–3m",
+      "Depth: gap width",
+    ],
+    event: "Navigable opening detected while user is scanning",
+    feedback: "Gentle confirmation buzz guiding toward the opening",
+  },
+  {
+    n: "05",
+    element: "Walls / large static boundaries",
+    examples: "",
+    relation: [
+      "Height: variable",
+      "Direction: left / right / ahead",
+      "Velocity: 0",
+      "Distance: 0–1m",
+      "Depth: N/A",
+    ],
+    event: "User approaching boundary within ~1m",
+    feedback: "Sustained low vibration on nearest side",
+  },
+];
+
 const HapticBar = ({ duration, delay, height }: { duration: number; delay: number; height: number }) => (
   <div
     className="w-2.5 rounded-sm bg-signal origin-bottom"
@@ -140,14 +213,14 @@ const Product = () => {
             <div className="grid lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-8">
                 <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-graphite leading-[1.02] tracking-[-0.025em]">
-                  Designed to
+                  A belt that
                   <br />
-                  <span className="text-signal italic font-light">disappear.</span>
+                  <span className="text-signal italic font-light">walks with you.</span>
                 </h1>
               </div>
               <div className="lg:col-span-4 lg:pb-4">
                 <p className="text-base md:text-lg text-graphite-soft leading-relaxed">
-                  Built around discretion, reliability, and the body&rsquo;s own sense of touch.
+                  A wearable that looks like fashion and works like infrastructure. Built to give blind users confidence in public &mdash; not single them out.
                 </p>
               </div>
             </div>
@@ -213,7 +286,7 @@ const Product = () => {
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-6">
                 <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
-                  The brief: something you&rsquo;d forget you were wearing. Sensors and haptic motors built into the band. No add-ons, no clip points, nothing to mount.
+                  The brief: a belt people would actually want to wear. Sensors and haptic motors built into the band &mdash; no add-ons, no clip points, nothing that reads as medical. Confidence, worn at the waist.
                 </p>
                 <Link
                   to="/challenge"
@@ -234,13 +307,16 @@ const Product = () => {
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               {/* MCU overview */}
               <div className="lg:col-span-5">
-                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-6">
+                <h3 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-6">
                   ESP32-S3
                   <br />
                   <span className="text-graphite-soft italic font-light">at the core.</span>
-                </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-8">
+                </h3>
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-3">
                   ESP32-S3 with dual I²C buses and 5× PWM outputs. Sensors run independently. No contention under load.
+                </p>
+                <p className="text-sm text-graphite-soft leading-relaxed text-pretty mb-8">
+                  <span className="font-mono-tag text-signal mr-2">WHY</span>Headroom for v2, plus built-in BLE so the companion app costs us nothing extra.
                 </p>
 
                 {/* Software mapping */}
@@ -275,9 +351,12 @@ const Product = () => {
                   <div className="p-6">
                     <div className="flex items-start gap-4 mb-3">
                       <span className="font-mono-tag text-signal shrink-0 mt-0.5">5×</span>
-                      <div>
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">Vibration Motor Drivers</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed">ERM motors + 2N2222 transistor + 1N4001 flyback diode. Each independently PWM-controlled for variable pulse speed.</p>
+                      <div className="flex-1">
+                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">NFP-FLAT-C1030 Coin Motors</div>
+                        <p className="text-sm text-graphite-soft leading-relaxed mb-3">Independently PWM-controlled. Each motor maps 1:1 to a sensor zone. Driven by P2N2222A + 1k&Omega; resistor + 1N4001 flyback diode so they fire simultaneously without rail sag.</p>
+                        <p className="text-xs text-graphite leading-relaxed">
+                          <span className="font-mono-tag text-signal mr-2">WHY</span>Same form factor MIT&rsquo;s ALVU used on the abdomen &mdash; 80%+ satisfaction in minutes.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -285,9 +364,12 @@ const Product = () => {
                   <div className="p-6">
                     <div className="flex items-start gap-4 mb-3">
                       <span className="font-mono-tag text-signal shrink-0 mt-0.5">3×</span>
-                      <div>
+                      <div className="flex-1">
                         <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">Benewake TF-Luna LiDAR</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed">Two on the far ends of the belt pointing directly sideways (8m lateral). One at center pointing forward alongside the 8×8 for long-range (8m) obstacle detection.</p>
+                        <p className="text-sm text-graphite-soft leading-relaxed mb-3">Two on the far ends of the belt pointing sideways (8m lateral). One at center pointing forward alongside the 8&times;8 for long-range detection.</p>
+                        <p className="text-xs text-graphite leading-relaxed">
+                          <span className="font-mono-tag text-signal mr-2">WHY</span>Our reflex layer. 250 Hz catches the fast close-range threats the wide-FOV sensor is too slow to see.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -295,13 +377,12 @@ const Product = () => {
                   <div className="p-6">
                     <div className="flex items-start gap-4 mb-4">
                       <span className="font-mono-tag text-signal shrink-0 mt-0.5">2×</span>
-                      <div>
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">TOF Linear, Single-Zone</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed mb-4">Positioned at ±45° from center. Short-range (2m) angled coverage bridging between the forward sensors and the side-facing Lunas.</p>
-                        <Citation
-                          quote="Time-of-Flight sensors are more precise and quicker in measuring the distances."
-                          source="Bala et al., 2023, p. 7"
-                        />
+                      <div className="flex-1">
+                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">VL53L1X TOF Linear</div>
+                        <p className="text-sm text-graphite-soft leading-relaxed mb-3">Positioned at &plusmn;45&deg; from center. Short-range (2m) angled coverage bridging between the forward sensors and the side-facing Lunas.</p>
+                        <p className="text-xs text-graphite leading-relaxed">
+                          <span className="font-mono-tag text-signal mr-2">WHY</span>Bridges forward and side coverage. ToF beats ultrasonic on speed and precision indoors (Bala et al., 2023).
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -309,19 +390,16 @@ const Product = () => {
                   <div className="p-6">
                     <div className="flex items-start gap-4 mb-4">
                       <span className="font-mono-tag text-signal shrink-0 mt-0.5">1×</span>
-                      <div>
-                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">VL53L8CX 8×8 Multi-Zone ToF</div>
-                        <p className="text-sm text-graphite-soft leading-relaxed mb-4">Front-center sensor with an 8×8 zone matrix. Covers forward, above, and below at hip level. The primary overhead hazard detector.</p>
-                        <div className="space-y-4">
-                          <Citation
-                            quote="A single sensor configuration from one vantage point is insufficient to gather the necessary environmental information."
-                            source="Naidoo & Ghaziasgar, 2025, p. 17"
-                          />
-                          <Citation
-                            quote="An effective ETA solution must incorporate multiple sensor modalities strategically distributed across different regions of the body."
-                            source="Naidoo & Ghaziasgar, 2025, p. 17"
-                          />
-                        </div>
+                      <div className="flex-1">
+                        <div className="font-display text-xl text-graphite tracking-[-0.02em] mb-1">VL53L8CX 8&times;8 Multi-Zone ToF</div>
+                        <p className="text-sm text-graphite-soft leading-relaxed mb-3">Front-center sensor with an 8&times;8 zone matrix at 60 Hz. Covers forward, above, and below at hip level. The primary overhead hazard detector.</p>
+                        <p className="text-xs text-graphite leading-relaxed mb-3">
+                          <span className="font-mono-tag text-signal mr-2">WHY</span>The brain of the sensing layer. 64 zones at 60 Hz delivers the multi-height, real-time detection no existing device offers.
+                        </p>
+                        <Citation
+                          quote="A single sensor configuration from one vantage point is insufficient to gather the necessary environmental information."
+                          source="Naidoo & Ghaziasgar, 2025, p. 17"
+                        />
                       </div>
                     </div>
                   </div>
@@ -341,7 +419,7 @@ const Product = () => {
             {/* Power chain */}
             <div>
               <div className="font-mono-tag text-graphite-soft/60 mb-6">POWER CHAIN</div>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-0">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-0 mb-6">
                 {powerChain.map((node, i) => (
                   <div key={node.label} className="flex flex-col sm:flex-row items-stretch sm:items-center flex-1">
                     <div className="flex-1 bg-ivory border border-hairline p-5 lg:p-6">
@@ -356,6 +434,9 @@ const Product = () => {
                   </div>
                 ))}
               </div>
+              <p className="text-xs text-graphite leading-relaxed max-w-3xl">
+                <span className="font-mono-tag text-signal mr-2">WHY</span>4&ndash;6 hr runtime, load-sharing so it charges while in use, MT3608 keeps the rail stable when motors fire together.
+              </p>
             </div>
 
           </div>
@@ -374,11 +455,6 @@ const Product = () => {
                   <br />
                   <span className="text-signal italic font-light">One language.</span>
                 </h2>
-              </div>
-              <div className="lg:col-span-4 lg:col-start-9 lg:pt-4">
-                <p className="text-base text-ivory/60 leading-relaxed">
-                  Each hazard type has a distinct haptic pattern. Learned intuitively, without instruction.
-                </p>
               </div>
             </div>
 
@@ -518,6 +594,128 @@ const Product = () => {
               </div>
             </div>
 
+          </div>
+        </section>
+
+        {/* 05 / Detection Matrix */}
+        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-4">04 / Detection Matrix</div>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-graphite leading-[1.05] tracking-[-0.022em]">
+                Full detection
+                <br />
+                <span className="text-graphite-soft italic font-light">scenario mapping.</span>
+              </h2>
+              <p className="text-sm text-graphite-soft max-w-xs leading-relaxed">
+                Hazard, sensor profile, trigger, response.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
+              <div className="lg:col-span-7">
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                  Every hazard type mapped to a spatial profile and a distinct haptic response. Built around real navigation, not lab conditions.
+                </p>
+              </div>
+              <div className="lg:col-span-4 lg:col-start-9">
+                <div className="font-mono-tag text-graphite-soft/60 mb-4">DETECTION BENCHMARK</div>
+                <blockquote className="border-l-2 border-signal pl-5 py-1">
+                  <p className="text-graphite-soft leading-relaxed text-pretty italic">
+                    &ldquo;Overall recognition rate of 93.10%, false positive rate 2.72%, false negative 4.25%.&rdquo;
+                  </p>
+                  <cite className="font-mono-tag text-signal not-italic mt-3 block">Chai and Lau, p. 1</cite>
+                </blockquote>
+              </div>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[900px] border-collapse border border-hairline bg-ivory text-sm">
+                <thead>
+                  <tr className="bg-graphite text-ivory">
+                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-8">#</th>
+                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[22%]">Element</th>
+                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[26%]">Sensor Properties</th>
+                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[24%]">Trigger Event</th>
+                    <th className="font-mono-tag text-left px-5 py-4 font-normal">Haptic Feedback</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {detectionMatrix.map((row, i) => (
+                    <tr key={row.n} className={`border-t border-hairline align-top ${i % 2 === 1 ? "bg-ivory-deep/50" : "bg-ivory"}`}>
+                      <td className="px-5 py-5 border-r border-hairline">
+                        <span className="font-mono-tag text-signal">{row.n}</span>
+                      </td>
+                      <td className="px-5 py-5 border-r border-hairline">
+                        <div className="text-graphite font-medium leading-snug mb-1">{row.element}</div>
+                        {row.examples && (
+                          <div className="font-mono-tag text-graphite-soft/60 mt-1">{row.examples}</div>
+                        )}
+                      </td>
+                      <td className="px-5 py-5 border-r border-hairline">
+                        <ul className="space-y-1">
+                          {row.relation.map((r) => (
+                            <li key={r} className="text-graphite-soft leading-snug">{r}</li>
+                          ))}
+                        </ul>
+                      </td>
+                      <td className="px-5 py-5 border-r border-hairline text-graphite leading-relaxed">
+                        {row.event}
+                      </td>
+                      <td className="px-5 py-5 text-graphite leading-relaxed">
+                        {row.feedback}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* 06 / Product Considerations */}
+        <section className="py-28 lg:py-40 border-b border-hairline">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">05 / Considerations</div>
+
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+              <div className="lg:col-span-5">
+                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-6">
+                  Designed around
+                  <br />
+                  <span className="text-graphite-soft italic font-light">trust.</span>
+                </h2>
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                  Two design risks that shaped the architecture from day one. Both are answered in the product itself, not in policy.
+                </p>
+              </div>
+
+              <div className="lg:col-span-6 lg:col-start-7">
+                <div className="border border-hairline bg-ivory divide-y divide-hairline">
+                  <div className="p-6 lg:p-7">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="font-display text-xl text-graphite tracking-[-0.02em]">Over-reliance on automation</div>
+                      <span className="font-mono-tag text-signal">UX RISK</span>
+                    </div>
+                    <p className="text-sm text-graphite-soft leading-relaxed text-pretty">
+                      <span className="text-graphite font-medium">Mitigation:</span> Cane-first design. Halo augments, never leads. Alerts inform; the user always acts. The device is silent by default and never instructs a turn or step.
+                    </p>
+                  </div>
+                  <div className="p-6 lg:p-7">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="font-display text-xl text-graphite tracking-[-0.02em]">Privacy concerns</div>
+                      <span className="font-mono-tag text-signal">DATA RISK</span>
+                    </div>
+                    <p className="text-sm text-graphite-soft leading-relaxed text-pretty">
+                      <span className="text-graphite font-medium">Mitigation:</span> Sensor-only detection. No cameras, no microphones. ToF and LiDAR return distance values only &mdash; never images of bystanders or environments. Nothing stored or transmitted off-device by default.
+                    </p>
+                  </div>
+                </div>
+                <p className="text-xs text-graphite-soft/60 mt-4 leading-relaxed">
+                  Commercial risks (adoption, reimbursement, pricing) live on the <Link to="/business" className="text-signal underline decoration-signal/40 underline-offset-2">Business page</Link>. Clinical &amp; regulatory considerations are in <Link to="/process" className="text-signal underline decoration-signal/40 underline-offset-2">Process</Link>.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 

@@ -68,43 +68,11 @@ const roadmap = [
   },
 ];
 
-const metrics = [
-  {
-    category: "Detection",
-    items: [
-      "Obstacle detection accuracy ≥ 90%",
-      "False positive rate ≤ 2 per minute",
-      "Hazard warning delivered ≥ 2 seconds before potential contact",
-    ],
-  },
-  {
-    category: "Comprehension",
-    items: [
-      "Users correctly interpret haptic cues ≥ 80% of the time",
-      "Users reach that threshold within 15 minutes of first use",
-    ],
-  },
-  {
-    category: "Wearability",
-    items: [
-      "Users wear the belt for full session without removing it (≥ 30 min)",
-      "80% of testers rate fit and comfort as acceptable or better",
-    ],
-  },
-  {
-    category: "Real-World Navigation",
-    items: [
-      "Users successfully complete a test route with product assistance",
-      "≥ 75% report feeling more confident navigating unfamiliar spaces",
-    ],
-  },
-];
-
 const risks = [
-  { risk: "Over-reliance on automation", mitigation: "Cane-first design. Halo augments, never leads." },
-  { risk: "Privacy concerns", mitigation: "Sensor-only detection. No cameras, no data stored or transmitted." },
-  { risk: "Clinical liability", mitigation: "No real-time decision-making. Alerts only, the user acts." },
-  { risk: "Adoption barriers", mitigation: "Institutional deployment through clinicians and OTs." },
+  { risk: "Adoption barriers", mitigation: "Institutional deployment through clinicians, OTs, and rehab centers. Subscription absorbs upfront cost." },
+  { risk: "Reimbursement timeline", mitigation: "Phased FDA + EU pathway. Direct-pay early, insurance reimbursement post-validation." },
+  { risk: "Pricing pressure", mitigation: "Subscription model amortizes hardware cost. Hardware refreshes baked into membership." },
+  { risk: "Distribution scale", mitigation: "Start with rehab + VA channels. Expand to schools and consumer once unit economics prove out." },
 ];
 
 const Business = () => {
@@ -223,15 +191,12 @@ const Business = () => {
         <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-4">02 / Market Landscape</div>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+            <div className="mb-12">
               <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em]">
                 What exists,
                 <br />
                 <span className="text-graphite-soft italic font-light">and where it falls short.</span>
               </h2>
-              <p className="text-sm text-graphite-soft max-w-xs leading-relaxed">
-                As of today, nothing in the market effectively addresses spatial and contextual awareness for visually impaired users.
-              </p>
             </div>
 
             <div className="overflow-x-auto">
@@ -301,59 +266,30 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 04 / Success Metrics */}
-        <section className="py-28 lg:py-40 border-b border-hairline">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">04 / Success Metrics</div>
-
-            <div className="grid lg:grid-cols-12 gap-8 mb-12">
-              <div className="lg:col-span-5">
-                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em]">
-                  What
-                  <br />
-                  <span className="text-graphite-soft italic font-light">winning looks like.</span>
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
-              {metrics.map((group) => (
-                <div key={group.category} className="bg-ivory p-6 lg:p-7">
-                  <div className="font-mono-tag text-signal mb-5">{group.category.toUpperCase()}</div>
-                  <ul className="space-y-3">
-                    {group.items.map((item, i) => (
-                      <li key={i} className="flex gap-3 text-sm text-graphite leading-relaxed">
-                        <span className="text-signal shrink-0 mt-0.5">/</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 05 / Feasibility & Risks */}
+        {/* 04 / Cost Drivers & Commercial Risks */}
         <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">05 / Feasibility & Risks</div>
+            <div className="font-mono-tag text-signal mb-12">04 / Cost Drivers & Commercial Risks</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-5">
                 <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-8">
-                  Known risks,
+                  Where the money
                   <br />
-                  <span className="text-graphite-soft italic font-light">deliberate responses.</span>
+                  <span className="text-graphite-soft italic font-light">comes and goes.</span>
                 </h2>
+                <p className="text-base text-graphite-soft leading-relaxed text-pretty mb-10">
+                  Hardware is the entry point. The subscription absorbs cost over time and funds clinical validation, distribution, and refresh cycles.
+                </p>
                 <div>
                   <div className="font-mono-tag text-signal mb-4">HIGH-LEVEL COST DRIVERS</div>
                   <ul className="space-y-2 text-graphite-soft leading-relaxed">
                     {[
                       "Hardware manufacturing",
                       "Sensors & embedded microcontroller",
-                      "Testing & validation",
+                      "Clinical testing & validation",
                       "Accessibility compliance",
+                      "Channel partnerships (rehab, VA)",
                     ].map((item) => (
                       <li key={item} className="flex gap-3 text-sm">
                         <span className="text-signal shrink-0">/</span>
@@ -365,7 +301,7 @@ const Business = () => {
               </div>
 
               <div className="lg:col-span-6 lg:col-start-7">
-                <div className="font-mono-tag text-graphite-soft/60 mb-4">RISK → MITIGATION</div>
+                <div className="font-mono-tag text-graphite-soft/60 mb-4">COMMERCIAL RISK &rarr; MITIGATION</div>
                 <div className="border border-hairline bg-ivory divide-y divide-hairline">
                   {risks.map((r) => (
                     <div key={r.risk} className="grid grid-cols-2 gap-0">
@@ -380,16 +316,19 @@ const Business = () => {
                     </div>
                   ))}
                 </div>
+                <p className="text-xs text-graphite-soft/60 mt-4 leading-relaxed">
+                  Product-level risks (privacy, over-reliance) are addressed on the <Link to="/product" className="text-signal underline decoration-signal/40 underline-offset-2">Product page</Link>. Clinical and regulatory considerations live in <Link to="/process" className="text-signal underline decoration-signal/40 underline-offset-2">Process</Link>.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 06 / Future of the Product */}
+        {/* 05 / Future of the Product */}
         <section className="relative py-28 lg:py-40 bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">06 / Future of the Product</div>
+            <div className="font-mono-tag text-signal mb-12">05 / Future of the Product</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-20">
               <div className="lg:col-span-6">

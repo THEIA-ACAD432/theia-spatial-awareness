@@ -5,26 +5,30 @@ import Footer from "@/components/theia/Footer";
 const stakeholders = [
   {
     role: "End Users",
-    label: "Visually impaired patients",
-    detail: "Day-to-day usability, dignity, cognitive load, independence.",
+    label: "Visually impaired users",
+    interest: "Day-to-day usability, dignity, cognitive load, independence.",
+    engagement: "Cane-first. Augments existing behavior. Haptics inform, never overwhelm.",
     primary: true,
   },
   {
     role: "Providers",
     label: "Clinicians & mobility specialists",
-    detail: "Prescription, clinical outcomes, fitting, training.",
+    interest: "Prescription, clinical outcomes, fitting, training.",
+    engagement: "Supports clinical expertise. A product providers can confidently recommend.",
     primary: false,
   },
   {
     role: "Payers",
     label: "Insurance & reimbursement bodies",
-    detail: "Coverage criteria, cost-benefit analysis, billing codes.",
+    interest: "Coverage criteria, cost-benefit analysis, billing codes.",
+    engagement: "Preventive infrastructure. Fewer collisions, lower long-term healthcare costs.",
     primary: false,
   },
   {
     role: "Innovators",
     label: "Designers & engineers",
-    detail: "Technical feasibility, form factor, manufacturing constraints.",
+    interest: "Technical feasibility, form factor, manufacturing constraints.",
+    engagement: "Modular architecture. Buildable now, expandable later. Fixed core, evolving shell.",
     primary: false,
   },
 ];
@@ -37,76 +41,35 @@ const testingPlan = [
   "End-to-end route completion in an uncontrolled environment",
 ];
 
-const matrix = [
+const validationTargets = [
   {
-    n: "01",
-    element: "Obstacles at head/torso height",
-    examples: "Signs, branches, shelves",
-    relation: [
-      "Height: above waist",
-      "Direction: ahead / lateral",
-      "Velocity: 0 (static)",
-      "Distance: 0–2m",
-      "Depth: N/A",
+    category: "Detection",
+    items: [
+      "Obstacle detection accuracy ≥ 90%",
+      "False positive rate ≤ 2 per minute",
+      "Hazard warning ≥ 2 seconds before potential contact",
     ],
-    event: "Static obstacle detected within ~2m in walking path",
-    feedback: "Haptic alert indicating direction and urgency (stronger = closer)",
   },
   {
-    n: "02",
-    element: "Ground-level hazards",
-    examples: "Curbs, steps, potholes, uneven surfaces",
-    relation: [
-      "Height: ground level",
-      "Direction: ahead",
-      "Velocity: 0",
-      "Distance: 0–2m",
-      "Depth: depth of change (10–20cm)",
+    category: "Comprehension",
+    items: [
+      "Users correctly interpret haptic cues ≥ 80% of the time",
+      "Users reach that threshold within 15 minutes of first use",
     ],
-    event: "Elevation change detected in walking path",
-    feedback: "Distinct haptic pattern for \"step up\" vs \"step down\" vs \"uneven\"",
   },
   {
-    n: "03",
-    element: "Moving objects",
-    examples: "People, bikes, cars",
-    relation: [
-      "Height: variable",
-      "Direction: any relative to user",
-      "Velocity: >0 (tracking speed + trajectory)",
-      "Distance: 0–5m",
-      "Depth: N/A",
+    category: "Wearability",
+    items: [
+      "Users wear the belt for full session without removing it (≥ 30 min)",
+      "80% of testers rate fit and comfort as acceptable or better",
     ],
-    event: "Moving object on collision course within ~3–10m",
-    feedback: "Directional haptic pulse tracking the object's approach side",
   },
   {
-    n: "04",
-    element: "Open spaces / doorways / passageways",
-    examples: "",
-    relation: [
-      "Height: user height or taller",
-      "Direction: relative to heading",
-      "Velocity: 0",
-      "Distance: 0–3m",
-      "Depth: gap width",
+    category: "Real-World Navigation",
+    items: [
+      "Users successfully complete a test route with product assistance",
+      "≥ 75% report feeling more confident navigating unfamiliar spaces",
     ],
-    event: "Navigable opening detected while user is scanning",
-    feedback: "Gentle confirmation buzz guiding toward the opening",
-  },
-  {
-    n: "05",
-    element: "Walls / large static boundaries",
-    examples: "",
-    relation: [
-      "Height: variable",
-      "Direction: left / right / ahead",
-      "Velocity: 0",
-      "Distance: 0–1m",
-      "Depth: N/A",
-    ],
-    event: "User approaching boundary within ~1m",
-    feedback: "Sustained low vibration on nearest side",
   },
 ];
 
@@ -138,12 +101,12 @@ const Process = () => {
           </div>
         </section>
 
-        {/* 01 / Discern Stakeholders */}
+        {/* 01 / Stakeholders */}
         <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">01 / Discern Stakeholders</div>
+            <div className="font-mono-tag text-signal mb-12">01 / Stakeholders</div>
 
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               <div className="lg:col-span-5">
                 <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
                   Map the system
@@ -151,35 +114,60 @@ const Process = () => {
                   <span className="text-graphite-soft italic font-light">before building in it.</span>
                 </h2>
                 <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
-                  Four groups surround visually impaired mobility. Users, clinicians, payers, designers. Each carries different incentives. We mapped all four before drawing a single line.
+                  Four groups surround visually impaired mobility. Users, clinicians, payers, designers. Each carries different incentives. We mapped all four &mdash; and decided how to engage each &mdash; before drawing a single line.
                 </p>
               </div>
 
-              {/* Stakeholder grid */}
               <div className="lg:col-span-6 lg:col-start-7">
-                <div className="font-mono-tag text-graphite-soft/60 mb-4">STAKEHOLDER MAP</div>
-                <div className="grid grid-cols-2 gap-px bg-hairline border border-hairline">
-                  {stakeholders.map((s) => (
-                    <div
-                      key={s.role}
-                      className={`p-6 lg:p-7 ${s.primary ? "bg-graphite text-ivory" : "bg-ivory"}`}
-                    >
-                      <div className={`font-mono-tag mb-3 ${s.primary ? "text-signal" : "text-signal"}`}>
-                        {s.role}
-                      </div>
-                      <div className={`font-display text-lg tracking-[-0.02em] mb-2 ${s.primary ? "text-ivory" : "text-graphite"}`}>
-                        {s.label}
-                      </div>
-                      <p className={`text-xs leading-relaxed ${s.primary ? "text-ivory/60" : "text-graphite-soft"}`}>
-                        {s.detail}
-                      </p>
-                      {s.primary && (
-                        <div className="mt-4 font-mono-tag text-signal/70">PRIMARY</div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                <div className="font-mono-tag text-graphite-soft/60 mb-4">PRINCIPLE</div>
+                <blockquote className="border-l-2 border-signal pl-5 py-1">
+                  <p className="text-graphite leading-relaxed text-pretty italic">
+                    &ldquo;Sometimes it isn&rsquo;t about a device. It&rsquo;s about feeling normal.&rdquo;
+                  </p>
+                  <cite className="font-mono-tag text-signal not-italic mt-3 block">User interview / direct quote</cite>
+                </blockquote>
+                <p className="text-sm text-graphite-soft mt-6 leading-relaxed">
+                  Every engagement strategy below traces back to that line. Dignity, autonomy, and continuity of habit are non-negotiable.
+                </p>
               </div>
+            </div>
+
+            {/* Combined stakeholder cards */}
+            <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+              {stakeholders.map((s) => (
+                <div
+                  key={s.role}
+                  className={`p-7 lg:p-8 ${s.primary ? "bg-graphite text-ivory" : "bg-ivory"}`}
+                >
+                  <div className="flex items-start justify-between mb-5">
+                    <div className={`font-display text-xl tracking-[-0.02em] ${s.primary ? "text-ivory" : "text-graphite"}`}>
+                      {s.label}
+                    </div>
+                    <span className="font-mono-tag text-signal shrink-0">
+                      {s.primary ? "PRIMARY" : s.role.toUpperCase()}
+                    </span>
+                  </div>
+
+                  <div className="space-y-5">
+                    <div>
+                      <div className={`font-mono-tag mb-2 ${s.primary ? "text-ivory/40" : "text-graphite-soft/60"}`}>
+                        THEIR INTEREST
+                      </div>
+                      <p className={`text-sm leading-relaxed text-pretty ${s.primary ? "text-ivory/75" : "text-graphite-soft"}`}>
+                        {s.interest}
+                      </p>
+                    </div>
+                    <div>
+                      <div className={`font-mono-tag mb-2 ${s.primary ? "text-ivory/40" : "text-graphite-soft/60"}`}>
+                        OUR ENGAGEMENT
+                      </div>
+                      <p className={`text-sm leading-relaxed text-pretty ${s.primary ? "text-ivory" : "text-graphite"}`}>
+                        {s.engagement}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -227,90 +215,48 @@ const Process = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* 03 / Detection Matrix */}
-        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-4">03 / Detection Matrix</div>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-              <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em]">
-                Full detection
-                <br />
-                <span className="text-graphite-soft italic font-light">scenario mapping.</span>
-              </h2>
-              <p className="text-sm text-graphite-soft max-w-xs leading-relaxed">
-                Hazard, sensor profile, trigger, response.
-              </p>
-            </div>
-
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
-              <div className="lg:col-span-7">
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
-                  Every hazard type mapped to a spatial profile and a distinct haptic response. Built around real navigation, not lab conditions.
-                </p>
-              </div>
-              <div className="lg:col-span-4 lg:col-start-9">
-                <div className="font-mono-tag text-graphite-soft/60 mb-4">DETECTION BENCHMARK</div>
-                <blockquote className="border-l-2 border-signal pl-5 py-1">
-                  <p className="text-graphite-soft leading-relaxed text-pretty italic">
-                    &ldquo;Overall recognition rate of 93.10%, false positive rate 2.72%, false negative 4.25%.&rdquo;
+            {/* Validation Targets */}
+            <div className="mt-20 pt-16 border-t border-ivory/10">
+              <div className="grid lg:grid-cols-12 gap-8 mb-10">
+                <div className="lg:col-span-5">
+                  <div className="font-mono-tag text-signal mb-4">VALIDATION TARGETS</div>
+                  <h3 className="font-display text-3xl md:text-4xl text-ivory leading-[1.05] tracking-[-0.022em]">
+                    What
+                    <br />
+                    <span className="text-ivory/40 italic font-light">winning looks like.</span>
+                  </h3>
+                </div>
+                <div className="lg:col-span-6 lg:col-start-7">
+                  <p className="text-base text-ivory/65 leading-relaxed text-pretty">
+                    Concrete benchmarks for each round of testing. These are how we know the prototype is meeting users&rsquo; needs &mdash; not just functioning.
                   </p>
-                  <cite className="font-mono-tag text-signal not-italic mt-3 block">Chai and Lau, p. 1</cite>
-                </blockquote>
+                </div>
               </div>
-            </div>
 
-            {/* Table scrolls on mobile */}
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[900px] border-collapse border border-hairline bg-ivory text-sm">
-                <thead>
-                  <tr className="bg-graphite text-ivory">
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-8">#</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[22%]">Element</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[26%]">Sensor Properties</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-ivory/10 w-[24%]">Trigger Event</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal">Haptic Feedback</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {matrix.map((row, i) => (
-                    <tr key={row.n} className={`border-t border-hairline align-top ${i % 2 === 1 ? "bg-ivory-deep/50" : "bg-ivory"}`}>
-                      <td className="px-5 py-5 border-r border-hairline">
-                        <span className="font-mono-tag text-signal">{row.n}</span>
-                      </td>
-                      <td className="px-5 py-5 border-r border-hairline">
-                        <div className="text-graphite font-medium leading-snug mb-1">{row.element}</div>
-                        {row.examples && (
-                          <div className="font-mono-tag text-graphite-soft/60 mt-1">{row.examples}</div>
-                        )}
-                      </td>
-                      <td className="px-5 py-5 border-r border-hairline">
-                        <ul className="space-y-1">
-                          {row.relation.map((r) => (
-                            <li key={r} className="text-graphite-soft leading-snug">{r}</li>
-                          ))}
-                        </ul>
-                      </td>
-                      <td className="px-5 py-5 border-r border-hairline text-graphite leading-relaxed">
-                        {row.event}
-                      </td>
-                      <td className="px-5 py-5 text-graphite leading-relaxed">
-                        {row.feedback}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-ivory/10 border border-ivory/10">
+                {validationTargets.map((group) => (
+                  <div key={group.category} className="bg-graphite p-6 lg:p-7">
+                    <div className="font-mono-tag text-signal mb-5">{group.category.toUpperCase()}</div>
+                    <ul className="space-y-3">
+                      {group.items.map((item, i) => (
+                        <li key={i} className="flex gap-3 text-sm text-ivory/80 leading-relaxed">
+                          <span className="text-signal shrink-0 mt-0.5">/</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* 04 / Process Innovation Analysis */}
+        {/* 03 / Process Innovation Analysis */}
         <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">04 / Process Innovation Analysis</div>
+            <div className="font-mono-tag text-signal mb-12">03 / Process Innovation Analysis</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
               <div className="lg:col-span-5">
@@ -378,6 +324,7 @@ const Process = () => {
                       { tension: "Autonomy vs. Safety", response: "Theia assists, it doesn't control. Users stay in charge." },
                       { tension: "Cost vs. Functionality", response: "The MVP prioritizes essential sensors and haptics. Nothing extraneous at launch." },
                       { tension: "Innovation vs. Adoption", response: "The product aligns with existing cane behavior. No new habits required." },
+                      { tension: "Clinical Liability vs. Utility", response: "No real-time decision-making. Theia issues alerts only. The user acts. Liability sits with the user, not the device." },
                       { tension: "Clinical Validation vs. Speed to Market", response: "Incremental validation allows early deployment while evidence builds over time." },
                     ].map((row) => (
                       <div key={row.tension} className="grid grid-cols-5 gap-0">
@@ -394,50 +341,14 @@ const Process = () => {
               </div>
             </div>
 
-            {/* Stakeholder Engagement */}
-            <div className="pt-12 border-t border-hairline">
-              <div className="font-mono-tag text-signal mb-8">STAKEHOLDER ENGAGEMENT</div>
-              <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
-                {[
-                  {
-                    group: "Visually Impaired Users",
-                    role: "PRIMARY",
-                    body: "Cane-first. Augments existing behavior. Haptics inform, never overwhelm.",
-                  },
-                  {
-                    group: "Clinicians & Mobility Specialists",
-                    role: "PROVIDERS",
-                    body: "Supports clinical expertise. A product providers can confidently recommend.",
-                  },
-                  {
-                    group: "Insurance & Payers",
-                    role: "PAYERS",
-                    body: "Preventive infrastructure. Fewer collisions, lower long-term healthcare costs.",
-                  },
-                  {
-                    group: "Designers & Innovators",
-                    role: "INNOVATORS",
-                    body: "Modular architecture. Buildable now, expandable later. Fixed core, evolving shell.",
-                  },
-                ].map((s) => (
-                  <div key={s.group} className="bg-ivory p-6 lg:p-7">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="font-display text-xl text-graphite tracking-[-0.02em]">{s.group}</div>
-                      <span className="font-mono-tag text-signal">{s.role}</span>
-                    </div>
-                    <p className="text-sm text-graphite-soft leading-relaxed text-pretty">{s.body}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* 05 / Research & Findings */}
+        {/* 04 / Research & Findings */}
         <section className="relative py-28 lg:py-40 bg-graphite text-ivory overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">05 / Research & Findings</div>
+            <div className="font-mono-tag text-signal mb-12">04 / Research & Findings</div>
 
             <div className="grid lg:grid-cols-12 gap-12 items-end">
               <div className="lg:col-span-7">

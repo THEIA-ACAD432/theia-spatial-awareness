@@ -52,8 +52,8 @@ const members = [
     initials: "J",
     img: joseImg,
     bio: [
-      <>Designed and integrated the <Link to="/product" className={lnk}>core hardware</Link>. Sensing, circuitry, power, and the architecture that holds them together.</>,
-      <>Ran <Link to="/product" className={lnk}>bench prototyping</Link> for range and latency. Proved real-time spatial awareness was feasible.</>,
+      <>Led the electrical design and <Link to="/product" className={lnk}>hardware integration</Link> for THEIA. Architected the full system in KiCad &mdash; power distribution, sensor bus topology, motor driver circuits, and microcontroller integration. Schematic capture, component selection, soldering of the wearable assembly, and end-to-end bring-up testing of the six time-of-flight and LiDAR sensors and eight haptic motors that drive THEIA&rsquo;s perception and feedback.</>,
+      <>Holds a B.S. in Computer Engineering from Cal Poly Pomona and is currently completing an M.S. in Medical Device and Diagnostic Engineering at USC Viterbi, where his work focuses on the intersection of hardware engineering and <Link to="/challenge" className={lnk}>assistive medical technology</Link>.</>,
     ],
   },
   {

@@ -42,32 +42,26 @@ const Overview = () => {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">01 / Challenge</div>
 
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
-              <div className="lg:col-span-6">
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
-                  The cane only
-                  <br />
-                  sees the ground.
-                </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
-                  The white cane is the best mobility tool ever built. It has one ceiling. Anything above the waist stays invisible to it.
-                </p>
-              </div>
+            <div className="max-w-3xl">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
+                The cane only
+                <br />
+                sees the ground.
+              </h2>
 
-              <div className="lg:col-span-6 space-y-5">
-                <div className="font-mono-tag text-graphite-soft/60 mb-4">CITATIONS &mdash; OVERHEAD HAZARDS</div>
-                <Citation
-                  quote="White canes have several flaws. They are often stigmatized, require physical exertion, occupy one hand, need physical contact with the environment, and can only detect obstacles by point contact at heights up to the users' chests."
-                  source="Katzschmann et al., p. 1"
-                />
+              <div className="space-y-7 text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                <p>
+                  The white cane is the best mobility tool ever built. It has one ceiling: anything above the waist stays invisible to it. Katzschmann and the MIT ALVU team put the gap directly:
+                </p>
+
                 <Citation
                   quote="A key problem for white cane users is their inability to detect high obstacles hanging above the ground, e.g. tree branches."
                   source="Katzschmann et al., p. 10"
                 />
-                <Citation
-                  quote="White canes are unable to detect obstacles beyond their range."
-                  source="Xu et al., p. 1"
-                />
+
+                <p>
+                  That&rsquo;s the problem worth solving. Touch covers the ground. Chest- and head-level obstacles don&rsquo;t get caught until contact.
+                </p>
               </div>
             </div>
           </div>
@@ -78,40 +72,31 @@ const Overview = () => {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">02 / Problem Statement</div>
 
-            {/* Full-width pull quote */}
-            <div className="mb-16 pb-16 border-b border-hairline">
-              <p className="font-display text-2xl md:text-3xl lg:text-4xl text-graphite leading-[1.3] tracking-[-0.018em] max-w-4xl font-light">
+            <div className="max-w-3xl">
+              {/* Pull quote */}
+              <p className="font-display text-2xl md:text-3xl lg:text-4xl text-graphite leading-[1.3] tracking-[-0.018em] font-light mb-12 pb-12 border-b border-hairline">
                 &ldquo;The barrier isn&rsquo;t physical navigation. It&rsquo;s the{" "}
                 <span className="text-signal italic">invisible layer of context</span>{" "}
                 that surrounds every journey.&rdquo;
               </p>
-            </div>
 
-            <div className="grid lg:grid-cols-12 gap-16">
-              <div className="lg:col-span-6 lg:col-start-1">
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
-                  Touch covers the ground. The context sighted people take for granted is missing. Uncertainty, dignity, cognitive load. The cap on independence isn&rsquo;t physical.
+              <div className="space-y-7 text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                <p>
+                  Touch covers the ground. The context sighted people take for granted &mdash; uncertainty, dignity, cognitive load &mdash; is missing. The cap on independence isn&rsquo;t physical.
                 </p>
-              </div>
 
-              <div className="lg:col-span-5 lg:col-start-8">
-                <div className="bg-ivory border border-hairline p-6 lg:p-8">
-                  <div className="font-mono-tag text-signal mb-6">DIGNITY + SOCIAL STIGMA</div>
-                  <div className="space-y-6">
-                    <Citation
-                      quote="Subjects felt overall comfortable wearing the hands-free and discreet system (70%)."
-                      source="Katzschmann et al., p. 10"
-                    />
-                    <Citation
-                      quote="User comfort and ease of integration into daily routines significantly impact usability and adoption."
-                      source="Naidoo & Ghaziasgar, 2025, p. 21"
-                    />
-                    <Citation
-                      quote="The assistive device should be light and easy to use."
-                      source="Bouteraa, 2021, p. 5"
-                    />
-                  </div>
-                </div>
+                <p>
+                  And whatever closes that gap has to feel okay to wear. Katzschmann&rsquo;s user study confirmed exactly that bar:
+                </p>
+
+                <Citation
+                  quote="Subjects felt overall comfortable wearing the hands-free and discreet system (70%)."
+                  source="Katzschmann et al., p. 10"
+                />
+
+                <p>
+                  Discreet matters. The product can&rsquo;t read as medical. If it does, users won&rsquo;t wear it &mdash; and detection performance is irrelevant if the device sits in a drawer.
+                </p>
               </div>
             </div>
           </div>
@@ -122,58 +107,47 @@ const Overview = () => {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">03 / Opportunity</div>
 
-            <div className="grid lg:grid-cols-12 gap-12 mb-16">
-              <div className="lg:col-span-5">
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
-                  Complete it.
-                  <br />
-                  <span className="text-graphite-soft italic font-light">Don&rsquo;t replace it.</span>
-                </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-8">
-                  The cane owns the ground. We build for everything above it.
+            <div className="max-w-3xl">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
+                Complete it.
+                <br />
+                <span className="text-graphite-soft italic font-light">Don&rsquo;t replace it.</span>
+              </h2>
+
+              <div className="space-y-7 text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                <p>
+                  The cane owns the ground. Theia builds for everything above it. The most direct evidence that this gap is worth solving comes from the same MIT ALVU paper:
                 </p>
-                <p className="text-lg md:text-xl text-graphite font-medium leading-relaxed border-l-2 border-signal pl-4">
+
+                <Citation
+                  quote="Downward-pointing sensors see not just obstacles but also distinct changes in elevation, such as sidewalks and stairs, that are hard for white cane users to easily detect. In a similar manner, upward-pointing sensors see chest- and face-level obstacles, such as branches and overhanging ledges, that are even more of a danger to a blind person."
+                  source="Katzschmann et al., p. 10"
+                />
+
+                <p>
+                  The same study showed users picked up the haptic language quickly &mdash; 93% found it easy to understand and 91% familiarized themselves with the device almost immediately. The learning curve isn&rsquo;t the barrier some assume it to be.
+                </p>
+
+                <p>
+                  Where to put the sensors is also settled by the literature. The waist is the right place &mdash; not for aesthetics, but for body mechanics:
+                </p>
+
+                <Citation
+                  quote="The waist is located close to the body's center of mass and it functions like a hinge for the legs and the upper body, so it moves relatively little while a person is walking, unlike the legs or upper body."
+                  source="Katzschmann et al., p. 4"
+                />
+
+                <p className="text-graphite font-medium border-l-2 border-signal pl-4 not-italic">
                   Halo doesn&rsquo;t replace the cane. It completes it.
                 </p>
-                <Link
-                  to="/product"
-                  className="inline-flex items-center gap-2 mt-6 px-4 py-2.5 bg-graphite text-ivory text-sm font-medium hover:bg-signal hover:text-graphite transition-all duration-300"
-                >
-                  See the device <span aria-hidden>→</span>
-                </Link>
               </div>
 
-              <div className="lg:col-span-6 lg:col-start-7 space-y-6">
-                <div>
-                  <div className="font-mono-tag text-graphite-soft/60 mb-4">OVERHEAD HAZARDS ARE THE REAL GAP</div>
-                  <Citation
-                    quote="Downward-pointing sensors see not just obstacles but also distinct changes in elevation, such as sidewalks and stairs, that are hard for white cane users to easily detect. In a similar manner, upward-pointing sensors see chest- and face-level obstacles, such as branches and overhanging ledges, that are even more of a danger to a blind person."
-                    source="Katzschmann et al., p. 10"
-                  />
-                </div>
-
-                <div>
-                  <div className="font-mono-tag text-graphite-soft/60 mb-4">HAPTIC FEEDBACK IS INTUITIVE AND FAST TO LEARN</div>
-                  <Citation
-                    quote="93% of the subjects viewed ALVU's vibratory feedback easy to understand... They were able to quickly familiarize themselves with ALVU (91%)."
-                    source="Katzschmann et al., p. 10"
-                  />
-                </div>
-
-                <div className="bg-ivory-deep border border-hairline p-6">
-                  <div className="font-mono-tag text-signal mb-5">BELT PLACEMENT RATIONALE</div>
-                  <div className="space-y-5">
-                    <Citation
-                      quote="The waist is located close to the body's center of mass and it functions like a hinge for the legs and the upper body, so it moves relatively little while a person is walking, unlike the legs or upper body."
-                      source="Katzschmann et al., p. 4"
-                    />
-                    <Citation
-                      quote="Fitting more than three sensors in a discreet manner into a gender-neutral hat was not possible."
-                      source="Katzschmann et al., p. 4"
-                    />
-                  </div>
-                </div>
-              </div>
+              <Link
+                to="/product"
+                className="inline-flex items-center gap-2 mt-10 px-4 py-2.5 bg-graphite text-ivory text-sm font-medium hover:bg-signal hover:text-graphite transition-all duration-300"
+              >
+                See the device <span aria-hidden>&rarr;</span>
+              </Link>
             </div>
           </div>
         </section>
