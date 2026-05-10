@@ -126,8 +126,8 @@ const SystemDiagram = () => {
         <rect x={680} y={420} width={360} height={150} rx={4} fill={surface} stroke={signal} strokeWidth={1.2} />
         <text x={700} y={450} fontSize={11} fontFamily={mono} fill={signal} letterSpacing="0.2em">04 / COMMERCIAL & SOCIETAL</text>
         <text x={700} y={488} fontSize={26} fontFamily="Space Grotesk, sans-serif" fill={fg} fontWeight={500} letterSpacing="-0.02em">How it reaches users</text>
-        <text x={700} y={520} fontSize={13} fontFamily="Inter, sans-serif" fill={fgSoft}>Market, partnerships, sustainability,</text>
-        <text x={700} y={538} fontSize={13} fontFamily="Inter, sans-serif" fill={fgSoft}>long-term commercial roadmap.</text>
+        <text x={700} y={520} fontSize={13} fontFamily="Inter, sans-serif" fill={fgSoft}>Market, roadmap, cost,</text>
+        <text x={700} y={538} fontSize={13} fontFamily="Inter, sans-serif" fill={fgSoft}>societal sustainability.</text>
         <text x={700} y={558} fontSize={10} fontFamily={mono} fill={signalSoft} letterSpacing="0.1em">&rarr; /business</text>
       </g>
 
@@ -268,10 +268,9 @@ const System = () => {
 
             <div className="grid lg:grid-cols-12 gap-10 mb-16">
               <div className="lg:col-span-7">
-                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
-                  Every challenge domain
-                  <br />
-                  has <span className="text-signal">a name on it.</span>
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.5rem,3.4vw,3rem)] leading-[1.1] text-graphite">
+                  <span className="block whitespace-nowrap">Every challenge domain</span>
+                  <span className="block whitespace-nowrap">has <span className="text-signal">a name on it.</span></span>
                 </h2>
               </div>
               <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
@@ -331,7 +330,7 @@ const System = () => {
                 { n: "01", title: "Overview", body: "The challenge and the solution, with citations woven in.", to: "/challenge" },
                 { n: "02", title: "Process", body: "Stakeholders, research, prototyping, trade-offs.", to: "/process" },
                 { n: "03", title: "Product", body: "Walkthrough, prototype evidence, design, hardware, haptic feedback, future evolution.", to: "/product" },
-                { n: "04", title: "Business", body: "Value, market, roadmap, cost, partnerships, societal sustainability.", to: "/business" },
+                { n: "04", title: "Business", body: "Value, market, 25-year roadmap, cost, societal sustainability.", to: "/business" },
                 { n: "05", title: "Team", body: "Six members mapped to challenge domains.", to: "/team" },
                 { n: "06", title: "References", body: "Every quote on the site traces back to a peer-reviewed source.", to: "/references" },
               ].map((node) => (

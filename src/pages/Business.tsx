@@ -86,14 +86,14 @@ const Business = () => {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">01 / Value Proposition</div>
 
-            <div className="grid lg:grid-cols-12 gap-12 mb-16">
-              <div className="lg:col-span-6">
-                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-10">
+            <div className="grid lg:grid-cols-12 gap-10 mb-12">
+              <div className="lg:col-span-7">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.75rem,3.8vw,3.25rem)] leading-[1.05] text-graphite mb-8">
                   A health innovation,
                   <br />
                   <span className="text-graphite-soft italic font-light">not a gadget.</span>
                 </h2>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty">
+                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty max-w-xl">
                   Less friction. Less fear. More of the world on the user&rsquo;s own terms.
                 </p>
                 <Link
@@ -103,34 +103,32 @@ const Business = () => {
                   Read the research case <span aria-hidden>&rarr;</span>
                 </Link>
               </div>
+            </div>
 
-              <div className="lg:col-span-5 lg:col-start-8 space-y-4">
-                {[
-                  {
-                    n: "01",
-                    title: "Situational awareness",
-                    body: "Extends sensing beyond what touch can reach. The air above the cane.",
-                  },
-                  {
-                    n: "02",
-                    title: "Lower cognitive load",
-                    body: "Passive, ambient alerts. Less mental overhead in unfamiliar environments.",
-                  },
-                  {
-                    n: "03",
-                    title: "Independence preserved",
-                    body: "The user always decides. Theia informs, never instructs.",
-                  },
-                ].map((item) => (
-                  <div key={item.n} className="bg-ivory border border-hairline p-6 flex gap-5">
-                    <span className="font-mono-tag text-signal shrink-0 mt-0.5">{item.n}</span>
-                    <div>
-                      <div className="font-display text-lg text-graphite tracking-[-0.02em] mb-1">{item.title}</div>
-                      <p className="text-sm text-graphite-soft leading-relaxed">{item.body}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="grid md:grid-cols-3 gap-px bg-hairline border border-hairline mb-16">
+              {[
+                {
+                  n: "01",
+                  title: "Situational awareness",
+                  body: "Extends sensing beyond what touch can reach. The air above the cane.",
+                },
+                {
+                  n: "02",
+                  title: "Lower cognitive load",
+                  body: "Passive, ambient alerts. Less mental overhead in unfamiliar environments.",
+                },
+                {
+                  n: "03",
+                  title: "Independence preserved",
+                  body: "The user always decides. Theia informs, never instructs.",
+                },
+              ].map((item) => (
+                <div key={item.n} className="bg-ivory p-6 lg:p-7 flex flex-col">
+                  <span className="font-mono-tag text-signal mb-5">{item.n}</span>
+                  <div className="font-display text-lg text-graphite tracking-[-0.02em] mb-2 leading-tight">{item.title}</div>
+                  <p className="text-sm text-graphite-soft leading-relaxed text-pretty">{item.body}</p>
+                </div>
+              ))}
             </div>
 
             {/* Business Model */}
@@ -138,8 +136,10 @@ const Business = () => {
               <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
                 <div className="lg:col-span-5">
                   <div className="font-mono-tag text-signal mb-5">BUSINESS MODEL</div>
-                  <h3 className="font-display text-3xl md:text-4xl text-graphite tracking-[-0.03em] leading-[0.95] mb-6">
-                    Subscription, not <span className="italic font-light text-graphite-soft">one-and-done.</span>
+                  <h3 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.05] text-graphite mb-6">
+                    Subscription, not
+                    <br />
+                    <span className="italic font-light text-graphite-soft">one-and-done.</span>
                   </h3>
                   <p className="text-base text-graphite leading-relaxed text-pretty">
                     Like Whoop. Hardware is the entry point. Membership is the relationship. Software, sensor calibration, and hardware refreshes all flow through the subscription.
@@ -170,7 +170,7 @@ const Business = () => {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-4">02 / Market Landscape</div>
             <div className="mb-12">
-              <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em]">
+              <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.75rem,3.8vw,3.25rem)] leading-[1.05] text-graphite">
                 What exists,
                 <br />
                 <span className="text-graphite-soft italic font-light">and where it falls short.</span>
@@ -207,7 +207,7 @@ const Business = () => {
             <div className="font-mono-tag text-signal mb-12">03 / 25-Year Roadmap</div>
 
             <div className="mb-16">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.05] tracking-[-0.022em]">
+              <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.75rem,3.8vw,3.25rem)] leading-[1.05] text-foreground">
                 Five segments.
                 <br />
                 <span className="text-signal italic font-light">One direction.</span>
@@ -251,7 +251,7 @@ const Business = () => {
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-5">
-                <h2 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-8">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.75rem,3.8vw,3.25rem)] leading-[1.05] text-graphite mb-8">
                   Where the money
                   <br />
                   <span className="text-graphite-soft italic font-light">comes and goes.</span>
@@ -302,129 +302,17 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 05 / Partnerships & Future Support */}
+        {/* 05 / Societal Sustainability */}
         <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">05 / Partnerships & Future Support</div>
+            <div className="font-mono-tag text-signal mb-12">05 / Societal Sustainability</div>
 
             <div className="grid lg:grid-cols-12 gap-10 mb-16">
               <div className="lg:col-span-7">
-                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
-                  Theia doesn&rsquo;t
-                  <br />
-                  ship <span className="text-signal">alone.</span>
-                </h2>
-              </div>
-              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
-                Adoption depends on the support system around the device. Below is an honest snapshot of who&rsquo;s currently engaged, who we&rsquo;re in conversation with, and who we&rsquo;re targeting next.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-px bg-hairline border border-hairline mb-12">
-
-              {/* ENGAGED */}
-              <div className="bg-ivory p-6 lg:p-7">
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-signal" />
-                  <span className="font-mono-tag text-signal">ENGAGED</span>
-                </div>
-                <ul className="space-y-5">
-                  <li>
-                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">USC ACAD-432 Faculty</div>
-                    <p className="text-xs text-graphite-soft leading-relaxed">Course advisor providing innovation systems guidance, rubric review, and project feedback.</p>
-                  </li>
-                  <li>
-                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">USC Viterbi (MDDE)</div>
-                    <p className="text-xs text-graphite-soft leading-relaxed">Medical Device & Diagnostic Engineering program supporting Jose&rsquo;s hardware integration work and electrical bench testing.</p>
-                  </li>
-                  <li>
-                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">USC Iovine and Young Academy</div>
-                    <p className="text-xs text-graphite-soft leading-relaxed">Design and prototyping infrastructure &mdash; CAD, fabrication, soldering, iteration cycles.</p>
-                  </li>
-                </ul>
-              </div>
-
-              {/* IN CONVERSATION */}
-              <div className="bg-ivory p-6 lg:p-7">
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-signal/50" />
-                  <span className="font-mono-tag text-signal/70">IN CONVERSATION</span>
-                </div>
-                <ul className="space-y-5">
-                  <li>
-                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">Mobility & Orientation specialists</div>
-                    <p className="text-xs text-graphite-soft leading-relaxed">Early user research interviews on cane-first design and where the device should not interfere with training.</p>
-                  </li>
-                  <li>
-                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">Local low-vision community</div>
-                    <p className="text-xs text-graphite-soft leading-relaxed">Recruiting test users for Wizard-of-Oz sessions and wearability validation through USC accessibility networks.</p>
-                  </li>
-                  <li>
-                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">Occupational therapy advisors</div>
-                    <p className="text-xs text-graphite-soft leading-relaxed">Informal review of haptic alert patterns and cognitive load thresholds before structured pilots.</p>
-                  </li>
-                </ul>
-              </div>
-
-              {/* TARGETED */}
-              <div className="bg-ivory p-6 lg:p-7">
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-graphite-soft/40" />
-                  <span className="font-mono-tag text-graphite-soft/70">TARGETED NEXT</span>
-                </div>
-                <ul className="space-y-5">
-                  <li>
-                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">VA Blind Rehabilitation Service</div>
-                    <p className="text-xs text-graphite-soft leading-relaxed">Federal channel for veteran vision-loss populations. Clear procurement pathway once clinical validation lands.</p>
-                  </li>
-                  <li>
-                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">American Foundation for the Blind</div>
-                    <p className="text-xs text-graphite-soft leading-relaxed">Distribution + advocacy partner. Validates user-centered evidence for downstream institutional adoption.</p>
-                  </li>
-                  <li>
-                    <div className="font-display text-base text-graphite tracking-[-0.02em] mb-1">Schools for the Blind (state-level)</div>
-                    <p className="text-xs text-graphite-soft leading-relaxed">Early-career user cohort. Long-term relationship value as users transition from training to independent mobility.</p>
-                  </li>
-                </ul>
-              </div>
-
-            </div>
-
-            {/* Future support tracks */}
-            <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
-              <div className="bg-ivory p-6 lg:p-7">
-                <div className="font-mono-tag text-signal mb-4">FUTURE FUNDING PATHS</div>
-                <ul className="space-y-2 text-sm text-graphite-soft leading-relaxed">
-                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>USC student-research grants for prototype iteration</li>
-                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Accessibility-focused foundations (Lavelle Fund, Lighthouse Guild)</li>
-                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>SBIR Phase I (assistive tech medical device track)</li>
-                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Strategic corporate partners in mobility / wearables</li>
-                </ul>
-              </div>
-              <div className="bg-ivory p-6 lg:p-7">
-                <div className="font-mono-tag text-signal mb-4">LONG-TERM SUPPORT</div>
-                <ul className="space-y-2 text-sm text-graphite-soft leading-relaxed">
-                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Insurance reimbursement (post-FDA pathway)</li>
-                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>WHO assistive technology procurement (global tier)</li>
-                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Community health worker distribution networks</li>
-                  <li className="flex gap-3"><span className="text-signal shrink-0">/</span>Open API for third-party haptic / sensor integration</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 06 / Societal Sustainability */}
-        <section className="py-28 lg:py-40 border-b border-hairline">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">06 / Societal Sustainability</div>
-
-            <div className="grid lg:grid-cols-12 gap-10 mb-16">
-              <div className="lg:col-span-7">
-                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.75rem,3.8vw,3.25rem)] leading-[1.05] text-graphite">
                   A product that earns
                   <br />
-                  its <span className="text-signal">place over time.</span>
+                  <span className="text-graphite-soft italic font-light">its place over time.</span>
                 </h2>
               </div>
               <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">

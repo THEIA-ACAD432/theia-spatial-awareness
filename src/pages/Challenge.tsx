@@ -33,34 +33,119 @@ const solutionTiles = [
 const archNodes = ["Environment", "Sensors", "Logic", "Cue", "User response"];
 
 const SpatialDiagram = () => (
-  <div className="border border-hairline bg-ivory/40 p-6 relative">
-    <div className="micro-label mb-4">Sensing layers</div>
-    <svg viewBox="0 0 400 320" className="w-full h-auto">
-      {/* user silhouette */}
-      <circle cx="200" cy="180" r="14" fill="hsl(var(--foreground))" />
-      <rect x="186" y="194" width="28" height="80" rx="6" fill="hsl(var(--foreground))" />
+  <div className="border border-hairline bg-ivory/40 p-6 relative overflow-hidden">
+    <div className="flex items-center justify-between mb-5">
+      <div className="micro-label">Sensing layers</div>
+      <div className="font-mono-tag text-graphite-soft text-[10px] tracking-[0.18em] opacity-70">SIDE VIEW</div>
+    </div>
+    <svg viewBox="0 0 480 400" className="w-full h-auto" role="img" aria-label="Diagram comparing Theia's body-level sensing field with a white cane's ground-only reach">
+      <defs>
+        <radialGradient id="theia-field" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="hsl(var(--signal))" stopOpacity="0.22" />
+          <stop offset="55%" stopColor="hsl(var(--signal))" stopOpacity="0.06" />
+          <stop offset="100%" stopColor="hsl(var(--signal))" stopOpacity="0" />
+        </radialGradient>
+        <pattern id="diagram-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+          <path d="M 24 0 L 0 0 0 24" fill="none" stroke="hsl(var(--signal))" strokeWidth="0.3" opacity="0.08" />
+        </pattern>
+      </defs>
 
-      {/* Theia body-level field */}
-      <ellipse
-        cx="200" cy="220" rx="160" ry="50"
-        fill="none" stroke="hsl(var(--signal))" strokeWidth="1" strokeDasharray="3 4"
-      />
-      <ellipse
-        cx="200" cy="220" rx="120" ry="38"
-        fill="none" stroke="hsl(var(--signal))" strokeWidth="1" opacity="0.6"
-      />
+      <rect width="480" height="400" fill="url(#diagram-grid)" />
 
-      {/* cane */}
-      <line x1="220" y1="240" x2="290" y2="295" stroke="hsl(var(--foreground))" strokeWidth="2" />
-      <path d="M 250 300 Q 290 285 330 300" fill="none" stroke="hsl(var(--graphite-soft))" strokeWidth="1" strokeDasharray="2 4" />
+      {/* Ground reference */}
+      <line x1="20" y1="340" x2="460" y2="340" stroke="hsl(var(--graphite-soft))" strokeWidth="0.5" opacity="0.5" />
+      <text x="22" y="354" fontSize="8" fill="hsl(var(--graphite-soft))" fontFamily="JetBrains Mono" letterSpacing="1.5" opacity="0.6">GROUND</text>
 
-      {/* labels */}
-      <text x="200" y="40" textAnchor="middle" fontSize="10" fill="hsl(var(--signal))" fontFamily="JetBrains Mono">
-        THEIA — BODY-LEVEL FIELD
-      </text>
-      <text x="330" y="316" textAnchor="end" fontSize="10" fill="hsl(var(--graphite-soft))" fontFamily="JetBrains Mono">
-        CANE — GROUND CONTACT
-      </text>
+      {/* Theia body-level field — radial proximity rings */}
+      <circle cx="180" cy="215" r="135" fill="url(#theia-field)" />
+      <circle cx="180" cy="215" r="65" fill="none" stroke="hsl(var(--signal))" strokeWidth="0.6" opacity="0.55" />
+      <circle cx="180" cy="215" r="100" fill="none" stroke="hsl(var(--signal))" strokeWidth="0.5" strokeDasharray="2 4" opacity="0.4" />
+      <circle cx="180" cy="215" r="130" fill="none" stroke="hsl(var(--signal))" strokeWidth="0.5" strokeDasharray="1 5" opacity="0.3" />
+
+      {/* Range markers */}
+      <text x="180" y="80" textAnchor="middle" fontSize="7" fill="hsl(var(--signal))" fontFamily="JetBrains Mono" opacity="0.65" letterSpacing="1.2">2.0 M</text>
+      <text x="180" y="110" textAnchor="middle" fontSize="7" fill="hsl(var(--signal))" fontFamily="JetBrains Mono" opacity="0.65" letterSpacing="1.2">1.5 M</text>
+      <text x="180" y="143" textAnchor="middle" fontSize="7" fill="hsl(var(--signal))" fontFamily="JetBrains Mono" opacity="0.65" letterSpacing="1.2">1.0 M</text>
+
+      {/* Person — side silhouette */}
+      <g>
+        <circle cx="180" cy="158" r="11" fill="hsl(var(--foreground))" />
+        <rect x="170" y="170" width="20" height="62" rx="3" fill="hsl(var(--foreground))" />
+        <rect x="170" y="232" width="8" height="88" rx="2" fill="hsl(var(--foreground))" />
+        <rect x="182" y="232" width="8" height="88" rx="2" fill="hsl(var(--foreground))" />
+      </g>
+
+      {/* Theia sensor (waist) with pulse */}
+      <circle cx="180" cy="215" r="4" fill="hsl(var(--signal))" />
+      <circle cx="180" cy="215" r="6" fill="none" stroke="hsl(var(--signal))" strokeWidth="0.8">
+        <animate attributeName="r" values="6;16;6" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.85;0;0.85" dur="3s" repeatCount="indefinite" />
+      </circle>
+
+      {/* White cane */}
+      <line x1="192" y1="228" x2="275" y2="338" stroke="hsl(var(--foreground))" strokeWidth="1.6" strokeLinecap="round" />
+      <circle cx="275" cy="338" r="2.5" fill="hsl(var(--foreground))" />
+      {/* Cane sweep — limited ground arc */}
+      <path d="M 240 338 Q 275 327 310 338" fill="none" stroke="hsl(var(--graphite-soft))" strokeWidth="0.6" strokeDasharray="2 3" opacity="0.7" />
+
+      {/* Overhead obstacle — tree branch (the canonical cane blind spot) */}
+      <g>
+        <path d="M 395 45 Q 350 75 320 115 Q 302 140 295 168" fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" strokeLinecap="round" opacity="0.85" />
+        <path d="M 345 80 L 328 98" stroke="hsl(var(--foreground))" strokeWidth="1.2" strokeLinecap="round" opacity="0.75" />
+        <path d="M 322 108 L 302 122" stroke="hsl(var(--foreground))" strokeWidth="1.2" strokeLinecap="round" opacity="0.75" />
+        <path d="M 308 138 L 288 150" stroke="hsl(var(--foreground))" strokeWidth="1" strokeLinecap="round" opacity="0.7" />
+      </g>
+
+      {/* Detection ping on branch */}
+      <g>
+        <circle cx="295" cy="168" r="3.5" fill="hsl(var(--signal))" />
+        <circle cx="295" cy="168" r="6" fill="none" stroke="hsl(var(--signal))" strokeWidth="0.7">
+          <animate attributeName="r" values="5;18;5" dur="2.2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.9;0;0.9" dur="2.2s" repeatCount="indefinite" />
+        </circle>
+      </g>
+
+      {/* Detection vector from sensor to obstacle */}
+      <line x1="184" y1="213" x2="292" y2="168" stroke="hsl(var(--signal))" strokeWidth="0.6" strokeDasharray="2 3" opacity="0.65" />
+
+      {/* Cane blind-zone callout (overhead range cane cannot reach) */}
+      <g opacity="0.45">
+        <rect x="235" y="178" width="80" height="14" fill="none" stroke="hsl(var(--graphite-soft))" strokeWidth="0.5" strokeDasharray="2 2" />
+        <text x="275" y="188" textAnchor="middle" fontSize="7" fill="hsl(var(--graphite-soft))" fontFamily="JetBrains Mono" letterSpacing="0.8">CANE BLIND ZONE</text>
+      </g>
+
+      {/* Label — Theia field */}
+      <g>
+        <line x1="48" y1="215" x2="115" y2="215" stroke="hsl(var(--signal))" strokeWidth="0.5" opacity="0.55" />
+        <circle cx="48" cy="215" r="1.5" fill="hsl(var(--signal))" />
+        <text x="44" y="212" textAnchor="end" fontSize="9" fill="hsl(var(--signal))" fontFamily="JetBrains Mono" letterSpacing="1.3">THEIA</text>
+        <text x="44" y="224" textAnchor="end" fontSize="7" fill="hsl(var(--graphite-soft))" fontFamily="JetBrains Mono" letterSpacing="0.6">body-level field</text>
+      </g>
+
+      {/* Label — detected obstacle */}
+      <g>
+        <line x1="295" y1="168" x2="395" y2="168" stroke="hsl(var(--signal))" strokeWidth="0.5" opacity="0.55" />
+        <circle cx="395" cy="168" r="1.5" fill="hsl(var(--signal))" />
+        <text x="400" y="165" fontSize="9" fill="hsl(var(--signal))" fontFamily="JetBrains Mono" letterSpacing="1.3">DETECTED</text>
+        <text x="400" y="177" fontSize="7" fill="hsl(var(--graphite-soft))" fontFamily="JetBrains Mono" letterSpacing="0.6">overhead obstacle</text>
+      </g>
+
+      {/* Label — cane */}
+      <g>
+        <line x1="285" y1="345" x2="395" y2="358" stroke="hsl(var(--graphite-soft))" strokeWidth="0.5" opacity="0.55" />
+        <circle cx="395" cy="358" r="1.5" fill="hsl(var(--graphite-soft))" />
+        <text x="400" y="356" fontSize="9" fill="hsl(var(--graphite-soft))" fontFamily="JetBrains Mono" letterSpacing="1.3">CANE</text>
+        <text x="400" y="368" fontSize="7" fill="hsl(var(--graphite-soft))" fontFamily="JetBrains Mono" letterSpacing="0.6">ground contact only</text>
+      </g>
+
+      {/* Coverage comparison footer */}
+      <g>
+        <line x1="20" y1="380" x2="460" y2="380" stroke="hsl(var(--hairline))" strokeWidth="0.5" opacity="0.6" />
+        <circle cx="30" cy="392" r="2.5" fill="hsl(var(--signal))" />
+        <text x="40" y="395" fontSize="8" fill="hsl(var(--signal))" fontFamily="JetBrains Mono" letterSpacing="1">360° BODY-LEVEL</text>
+        <circle cx="250" cy="392" r="2.5" fill="hsl(var(--graphite-soft))" />
+        <text x="260" y="395" fontSize="8" fill="hsl(var(--graphite-soft))" fontFamily="JetBrains Mono" letterSpacing="1">~1M GROUND ARC</text>
+      </g>
     </svg>
   </div>
 );
@@ -116,10 +201,9 @@ const Overview = () => {
 
             <div className="grid lg:grid-cols-12 gap-10 items-start">
               <div className="lg:col-span-7">
-                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02]">
-                  Mobility is not only direction.
-                  <br />
-                  <span className="text-graphite-soft">It is spatial confidence.</span>
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.5rem,3.4vw,3rem)] leading-[1.1]">
+                  <span className="block whitespace-nowrap">Mobility is not only direction.</span>
+                  <span className="block whitespace-nowrap text-graphite-soft">It is spatial confidence.</span>
                 </h2>
                 <p className="mt-8 text-[18px] md:text-[20px] leading-relaxed text-graphite-soft max-w-2xl">
                   For blind and low-vision users, moving through space often means managing uncertainty: what is beside me, how close is the obstacle, and whether the environment has changed.
