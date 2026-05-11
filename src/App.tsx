@@ -4,12 +4,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
-import Challenge from "./pages/Challenge.tsx";
-import Product from "./components/theia/Product";
-import Process from "./pages/Process.tsx";
-import Team from "./pages/Team.tsx";
-import Business from "./pages/Business.tsx";
-import References from "./pages/References.tsx";
+import NothingInspired from "./pages/NothingInspired.tsx";
+import NothingReplica from "./pages/NothingReplica.tsx";
+import WRKReplica from "./pages/WRKReplica.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -22,13 +19,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/challenge" element={<Challenge />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/process" element={<Process />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/business" element={<Business />} />
-          <Route path="/references" element={<References />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/nothing-inspired" element={<NothingInspired />} />
+          <Route path="/nothing" element={<NothingReplica />} />
+          <Route path="/wrk" element={<WRKReplica />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
