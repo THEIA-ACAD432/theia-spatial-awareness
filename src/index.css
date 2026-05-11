@@ -4,97 +4,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theia design system — dark hardware aesthetic + accent blue.
-   All colors HSL.
-
-   Note on token semantics after the dark-mode swap:
-   - --graphite is now LIGHT (used for primary text + "inverted" light callout blocks)
-   - --ivory / --ivory-deep are DARK surfaces (cards, slightly elevated cards)
-   - --signal is now ACCENT BLUE (was amber)
-   - bg-graphite text-ivory pairs flip to "light block w/ dark text" — an inverted callout in the dark site.
-*/
+/* Theia design system — light, soft, approachable.
+   HSL tokens. --graphite* = body/heading ink; --ivory* = warm surfaces. */
 
 @layer base {
   :root {
-    --background: 220 15% 8%;
-    --foreground: 220 5% 96%;
+    --background: 40 33% 99%;
+    --foreground: 220 20% 16%;
 
-    --card: 220 15% 12%;
-    --card-foreground: 220 5% 96%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 16%;
 
-    --popover: 220 15% 12%;
-    --popover-foreground: 220 5% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 16%;
 
-    /* Primary / inverted light tone */
-    --primary: 220 5% 96%;
-    --primary-foreground: 220 15% 8%;
+    --primary: 220 22% 18%;
+    --primary-foreground: 40 30% 98%;
 
-    --secondary: 220 12% 16%;
-    --secondary-foreground: 220 5% 96%;
+    --secondary: 220 14% 95%;
+    --secondary-foreground: 220 22% 20%;
 
-    --muted: 220 12% 16%;
-    --muted-foreground: 220 8% 65%;
+    --muted: 220 16% 94%;
+    --muted-foreground: 220 10% 42%;
 
-    /* Accent blue */
-    --accent: 212 95% 62%;
-    --accent-foreground: 220 15% 8%;
+    --accent: 211 72% 48%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 220 5% 96%;
+    --destructive: 0 72% 46%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 10% 24%;
-    --input: 220 10% 24%;
-    --ring: 212 95% 62%;
+    --border: 220 12% 88%;
+    --input: 220 12% 88%;
+    --ring: 211 72% 48%;
 
-    --radius: 0.25rem;
+    --radius: 0.45rem;
 
-    /* Theia tokens (semantically flipped — see header note) */
-    --graphite: 220 5% 96%;        /* now LIGHT — primary text */
-    --graphite-soft: 220 8% 65%;   /* muted light text */
-    --ivory: 220 15% 12%;          /* now DARK — card surface */
-    --ivory-deep: 220 15% 16%;     /* slightly elevated dark surface */
-    --signal: 212 95% 62%;         /* accent BLUE */
-    --signal-glow: 212 100% 72%;
-    --hairline: 220 10% 24%;
+    --graphite: 220 22% 16%;
+    --graphite-soft: 220 11% 40%;
+    --ivory: 40 28% 98%;
+    --ivory-deep: 220 14% 94%;
+    --signal: 211 70% 46%;
+    --signal-glow: 211 78% 58%;
+    --hairline: 220 10% 86%;
 
     --gradient-signal: linear-gradient(135deg, hsl(var(--signal)) 0%, hsl(var(--signal-glow)) 100%);
-    --gradient-radar: radial-gradient(circle at center, hsl(var(--signal) / 0.18) 0%, transparent 60%);
+    --gradient-radar: radial-gradient(circle at center, hsl(var(--signal) / 0.12) 0%, transparent 62%);
 
-    --shadow-soft: 0 1px 2px hsl(0 0% 0% / 0.4), 0 8px 24px hsl(0 0% 0% / 0.3);
-    --shadow-elevated: 0 2px 4px hsl(0 0% 0% / 0.4), 0 24px 60px hsl(0 0% 0% / 0.5);
+    --shadow-soft: 0 1px 2px hsl(220 25% 20% / 0.04), 0 8px 28px hsl(220 25% 20% / 0.06);
+    --shadow-elevated: 0 2px 8px hsl(220 25% 20% / 0.05), 0 20px 48px hsl(220 25% 20% / 0.08);
 
     --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 
-    --sidebar-background: 220 15% 8%;
-    --sidebar-foreground: 220 5% 96%;
-    --sidebar-primary: 212 95% 62%;
-    --sidebar-primary-foreground: 220 15% 8%;
-    --sidebar-accent: 220 12% 16%;
-    --sidebar-accent-foreground: 220 5% 96%;
-    --sidebar-border: 220 10% 24%;
-    --sidebar-ring: 212 95% 62%;
+    --sidebar-background: 40 33% 99%;
+    --sidebar-foreground: 220 20% 16%;
+    --sidebar-primary: 211 70% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 95%;
+    --sidebar-accent-foreground: 220 22% 20%;
+    --sidebar-border: 220 12% 88%;
+    --sidebar-ring: 211 72% 48%;
   }
 
   .dark {
-    --background: 220 15% 8%;
-    --foreground: 220 5% 96%;
-    --card: 220 15% 12%;
-    --card-foreground: 220 5% 96%;
-    --popover: 220 15% 12%;
-    --popover-foreground: 220 5% 96%;
-    --primary: 220 5% 96%;
-    --primary-foreground: 220 15% 8%;
-    --secondary: 220 12% 16%;
-    --secondary-foreground: 220 5% 96%;
-    --muted: 220 12% 16%;
-    --muted-foreground: 220 8% 65%;
-    --accent: 212 95% 62%;
-    --accent-foreground: 220 15% 8%;
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 220 5% 96%;
-    --border: 220 10% 24%;
-    --input: 220 10% 24%;
-    --ring: 212 95% 62%;
+    --background: 40 33% 99%;
+    --foreground: 220 20% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 16%;
+    --primary: 220 22% 18%;
+    --primary-foreground: 40 30% 98%;
+    --secondary: 220 14% 95%;
+    --secondary-foreground: 220 22% 20%;
+    --muted: 220 16% 94%;
+    --muted-foreground: 220 10% 42%;
+    --accent: 211 72% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 12% 88%;
+    --input: 220 12% 88%;
+    --ring: 211 72% 48%;
   }
 }
 
@@ -114,7 +104,7 @@
   }
 
   ::selection {
-    background: hsl(var(--signal) / 0.4);
+    background: hsl(var(--signal) / 0.2);
     color: hsl(var(--foreground));
   }
 }
@@ -139,7 +129,7 @@
     font-size: 11px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: hsl(var(--foreground) / 0.55);
+    color: hsl(var(--foreground) / 0.5);
   }
 
   .hairline {
@@ -149,15 +139,15 @@
 
   .grid-bg {
     background-image:
-      linear-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+      linear-gradient(hsl(var(--foreground) / 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.028) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
   .accent-glow {
     box-shadow:
-      0 0 0 1px hsl(var(--signal) / 0.3),
-      0 0 40px -8px hsl(var(--signal) / 0.6);
+      0 0 0 1px hsl(var(--signal) / 0.22),
+      0 0 36px -8px hsl(var(--signal) / 0.35);
   }
 
   .signal-dot {
@@ -165,7 +155,7 @@
     height: 6px;
     border-radius: 9999px;
     background: hsl(var(--signal));
-    box-shadow: 0 0 0 0 hsl(var(--signal) / 0.6);
+    box-shadow: 0 0 0 0 hsl(var(--signal) / 0.45);
     animation: signal-pulse 2s ease-out infinite;
   }
 }
@@ -190,7 +180,7 @@
 }
 
 @keyframes signal-pulse {
-  0% { box-shadow: 0 0 0 0 hsl(var(--signal) / 0.55); }
+  0% { box-shadow: 0 0 0 0 hsl(var(--signal) / 0.45); }
   70% { box-shadow: 0 0 0 14px hsl(var(--signal) / 0); }
   100% { box-shadow: 0 0 0 0 hsl(var(--signal) / 0); }
 }

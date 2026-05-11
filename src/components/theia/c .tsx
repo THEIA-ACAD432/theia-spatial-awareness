@@ -65,14 +65,14 @@ const Product = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-signal opacity-60" />
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-signal" />
                 </span>
-                <div className="font-mono-tag text-ivory bg-graphite px-2 py-1">SENSOR ARRAY</div>
+                <div className="font-mono-tag text-background bg-foreground px-2 py-1">SENSOR ARRAY</div>
               </div>
               <div className="absolute top-[55%] left-[38%] flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full border-2 border-signal" />
-                <div className="font-mono-tag text-ivory bg-graphite px-2 py-1">STATUS LED</div>
+                <div className="font-mono-tag text-background bg-foreground px-2 py-1">STATUS LED</div>
               </div>
 
-              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between font-mono-tag text-ivory mix-blend-difference">
+              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between font-mono-tag text-white/95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">
                 <span>HALO / UNIT 001</span>
                 <span className="opacity-70">SCALE 1:1</span>
               </div>

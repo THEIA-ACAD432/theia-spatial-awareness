@@ -49,13 +49,13 @@ const SensorField = () => {
   const H = 480;
   const mono = "'JetBrains Mono', monospace";
 
-  const signal     = "hsl(212 95% 62%)";
-  const signalSoft = "hsl(212 95% 62% / 0.55)";
-  const signalDim  = "hsl(212 95% 62% / 0.25)";
-  const fg         = "hsl(220 5% 96%)";
-  const fgSoft     = "hsl(220 8% 65%)";
-  const fgFaint    = "hsl(220 8% 65% / 0.5)";
-  const surface    = "hsl(220 15% 10%)";
+  const signal     = "hsl(211 70% 46%)";
+  const signalSoft = "hsl(211 70% 46% / 0.5)";
+  const signalDim  = "hsl(211 70% 46% / 0.22)";
+  const fg         = "hsl(220 22% 16%)";
+  const fgSoft     = "hsl(220 11% 40%)";
+  const fgFaint    = "hsl(220 11% 40% / 0.45)";
+  const surface    = "hsl(220 14% 96%)";
 
   // Sensor positions along curved belt (computed from quadratic bezier)
   const sensors = [
@@ -88,13 +88,13 @@ const SensorField = () => {
     <svg viewBox={`0 170 ${W} 295`} className="w-full h-auto" aria-label="Sensor field coverage, top-down view of belt">
       <defs>
         <radialGradient id="beltGlow" cx="50%" cy="78%" r="55%">
-          <stop offset="0%" stopColor="hsl(212 95% 62%)" stopOpacity="0.22" />
-          <stop offset="60%" stopColor="hsl(212 95% 62%)" stopOpacity="0.04" />
-          <stop offset="100%" stopColor="hsl(212 95% 62%)" stopOpacity="0" />
+          <stop offset="0%" stopColor="hsl(211 70% 46%)" stopOpacity="0.14" />
+          <stop offset="60%" stopColor="hsl(211 70% 46%)" stopOpacity="0.03" />
+          <stop offset="100%" stopColor="hsl(211 70% 46%)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="beltStrip" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="hsl(220 15% 18%)" />
-          <stop offset="100%" stopColor="hsl(220 15% 10%)" />
+          <stop offset="0%" stopColor="hsl(220 12% 88%)" />
+          <stop offset="100%" stopColor="hsl(220 10% 78%)" />
         </linearGradient>
       </defs>
 
@@ -106,8 +106,8 @@ const SensorField = () => {
 
       {/* SENSOR FIELDS (below belt visually because z order) */}
       {/* Center: 8×8 wide cone (4m) + Luna-tf narrow beam (8m) */}
-      <path d={fan(400, 375, 0, 8,  8 * s)} fill="hsl(212 95% 62% / 0.06)" />
-      <path d={fan(400, 375, 0, 22, 4 * s)} fill="hsl(212 95% 62% / 0.16)" />
+      <path d={fan(400, 375, 0, 8,  8 * s)} fill="hsl(211 70% 46% / 0.05)" />
+      <path d={fan(400, 375, 0, 22, 4 * s)} fill="hsl(211 70% 46% / 0.12)" />
       <path d={arc(400, 375, 0, 8,  8 * s)} fill="none" stroke={signalSoft} strokeWidth={1.2} strokeDasharray="5 4" />
       <path d={arc(400, 375, 0, 22, 4 * s)} fill="none" stroke={signal}     strokeWidth={2} />
 
@@ -126,7 +126,7 @@ const SensorField = () => {
       <text x={568} y={348} fontSize={8} fontFamily={mono} fill={signalSoft} letterSpacing="0.08em">2M</text>
 
       {/* CURVED BELT STRIP */}
-      <path d={beltPath} fill="none" stroke="hsl(220 15% 18%)" strokeWidth={36} strokeLinecap="round" />
+      <path d={beltPath} fill="none" stroke="hsl(220 12% 82%)" strokeWidth={36} strokeLinecap="round" />
       <path d={beltPath} fill="none" stroke="url(#beltStrip)" strokeWidth={30} strokeLinecap="round" />
       <path d={beltPath} fill="none" stroke={signalDim} strokeWidth={0.8} strokeDasharray="3 5" />
 
@@ -279,7 +279,7 @@ const Product = () => {
                   alt="Theia worn in context"
                   className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
                 />
-                <figcaption className="absolute top-4 left-4 right-4 flex items-start justify-between font-mono-tag text-ivory mix-blend-difference">
+                <figcaption className="absolute top-4 left-4 right-4 flex items-start justify-between font-mono-tag text-white/95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">
                   <span>FIG. 01 / IN SITU</span>
                   <span className="opacity-70">WORN AT WAIST</span>
                 </figcaption>
@@ -291,7 +291,7 @@ const Product = () => {
                   alt="Theia belt sensor array"
                   className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
                 />
-                <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-ivory mix-blend-difference">
+                <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-white/95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">
                   <span>FIG. 02 / DEVICE</span>
                   <span className="opacity-70">42 &times; 58MM</span>
                 </figcaption>

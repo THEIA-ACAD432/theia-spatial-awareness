@@ -75,7 +75,7 @@ const HowItWorks = () => {
               loading="lazy"
               className="w-full h-full object-cover"
             />
-            <figcaption className="absolute top-3 left-3 right-3 flex items-start justify-between font-mono-tag text-ivory mix-blend-difference">
+            <figcaption className="absolute top-3 left-3 right-3 flex items-start justify-between font-mono-tag text-white/95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">
               <span>FIG. 04 / HAPTIC MODULE</span>
               <span className="opacity-70">CUTAWAY</span>
             </figcaption>
