@@ -36,35 +36,35 @@ const roadmap = [
     years: "2026",
     name: "Prove It",
     description:
-      "Lock down hardware. First user testing. Pass the dignity test before anything else.",
+      "Lock down the core hardware at 180° coverage. First user testing. Pass the dignity test before anything else.",
   },
   {
     n: "02",
     years: "2027 / 2030",
     name: "Clinical Validation",
     description:
-      "Move from prototype to medical device. Longitudinal study. FDA and EU pathways.",
+      "Prototype to medical device. Longitudinal study. FDA and EU pathways. Pilot the membership with the first user cohort.",
   },
   {
     n: "03",
     years: "2030 / 2035",
     name: "Go to Market",
     description:
-      "Launch through rehab centers, schools, VA programs. Insurance reimbursement. Ship Gen 2. Open the API.",
+      "Launch through rehab centers, schools, and VA programs. Membership tiers go live — hardware entry plus monthly access to software, sensor calibration, and refresh cycles. Insurance reimbursement opens. Open the API.",
   },
   {
     n: "04",
     years: "2035 / 2043",
-    name: "Mainstream",
+    name: "Expand the Sense",
     description:
-      "Standard-of-care recommendation. Consumer line that reads as accessory. AI-augmented scene understanding.",
+      "Coverage scales from 180° to a full 360°. Paired bone conduction joins haptics. LiDAR + ToF + cloud ML turn proximity into context — “doorway ahead, step up.” Fixed core, evolving shell: members refresh fabric and finish without replacing the device.",
   },
   {
     n: "05",
     years: "2043 / 2051",
     name: "Globalize",
     description:
-      "Sub-$150 device. Community health worker distribution. WHO procurement. Largest open-access mobility dataset ever assembled.",
+      "An accessible membership tier opens globally — underwritten through WHO procurement and community health worker programs. Premium tier funds the accessible one. Largest open-access mobility dataset ever assembled.",
   },
 ];
 
@@ -332,7 +332,7 @@ const Business = () => {
                   n: "02",
                   tag: "EQUITY",
                   title: "Accessible at every income tier",
-                  body: "Roadmap targets a sub-$150 device by 2043 distributed through community health workers and WHO procurement. Premium tier funds the accessible tier.",
+                  body: "An accessible membership tier, underwritten through WHO procurement and community health worker programs, reaches users premium markets cannot. Premium tier funds the accessible one.",
                 },
                 {
                   n: "03",

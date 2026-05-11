@@ -601,65 +601,32 @@ const Product = () => {
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">07 / Future of the Product</div>
 
-            <div className="grid lg:grid-cols-12 gap-12 mb-20">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               <div className="lg:col-span-6">
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.05] tracking-[-0.022em] mb-10">
-                  A foundation,
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.75rem,3.8vw,3.25rem)] leading-[1.05] text-foreground mb-8">
+                  Scalability
                   <br />
-                  <span className="text-signal italic font-light">not a finish line.</span>
+                  <span className="text-signal italic font-light">first.</span>
                 </h2>
-                <p className="text-base md:text-lg text-foreground/70 leading-relaxed text-pretty">
-                  Each layer moves Theia closer to behaving less like a sensor and more like a sense. Not someday ideas. The next builds.
+                <p className="text-base md:text-lg text-foreground/70 leading-relaxed text-pretty max-w-xl">
+                  The next build closes the blind spot behind the user &mdash; coverage from 180° to a full 360°.
                 </p>
               </div>
-            </div>
 
-            <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
-              {[
-                {
-                  n: "01",
-                  tag: "COVERAGE",
-                  title: "180° to 360°",
-                  body: "Wrap the user completely. Close the blind spot behind them.",
-                },
-                {
-                  n: "02",
-                  tag: "OUTPUT CHANNEL",
-                  title: "Paired bone conduction",
-                  body: "Haptics stay primary. Bone conduction adds richer alerts without blocking ambient sound.",
-                },
-                {
-                  n: "03",
-                  tag: "SPATIAL INTELLIGENCE",
-                  title: "From reaction to understanding",
-                  body: "LiDAR + ToF generates a 3D point cloud. A cloud ML model labels the geometry. Not “obstacle close, left.” Doorway ahead, step up.",
-                },
-                {
-                  n: "04",
-                  tag: "DESIGN PHILOSOPHY",
-                  title: "Fixed core, evolving shell",
-                  body: "Sensors, compute, haptics in a fixed core. The outer shell evolves on its own. Pockets, materials, finishes.",
-                },
-              ].map((item) => (
-                <div key={item.n} className="bg-ivory p-7 lg:p-10">
+              <div className="lg:col-span-6">
+                <div className="border border-hairline bg-ivory p-7 lg:p-10">
                   <div className="flex items-start justify-between mb-8">
-                    <span className="font-mono-tag text-signal">{item.n}</span>
-                    <span className="font-mono-tag text-foreground/30">{item.tag}</span>
+                    <span className="font-mono-tag text-signal">01</span>
+                    <span className="font-mono-tag text-foreground/30">COVERAGE</span>
                   </div>
                   <h3 className="font-display text-2xl md:text-3xl text-foreground mb-4 tracking-[-0.025em] leading-tight">
-                    {item.title}
+                    180° to 360°
                   </h3>
                   <p className="text-foreground/60 leading-relaxed text-pretty">
-                    {item.body}
+                    Wrap the user completely. Close the blind spot behind them.
                   </p>
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-12 pt-8 border-t border-hairline">
-              <p className="font-display text-2xl md:text-3xl text-foreground/90 leading-snug tracking-[-0.025em] max-w-3xl">
-                Today Theia detects. Tomorrow it&rsquo;ll <span className="text-signal italic font-light">read the room.</span>
-              </p>
+              </div>
             </div>
           </div>
         </section>
