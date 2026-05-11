@@ -19,8 +19,8 @@ const members = [
     initials: "B",
     img: brianImg,
     bio: [
-      <>Led product strategy and shaped the <Link to="/business" className={lnk}>business model</Link>. Owned the principle: augment the cane, never replace it.</>,
-      <>Drove commercial viability. <Link to="/business" className={lnk}>TAM/SAM/SOM</Link>, pricing, risk, and the subscription model that made Theia fundable.</>,
+      <>Conducted foundational <Link to="/challenge" className={lnk}>user research</Link> with a visually impaired individual, synthesizing insights that shaped the product&rsquo;s core direction around wearability, social inclusion, and real-world navigation gaps. Served as the primary test subject for the wearable, informing usability and form factor decisions from firsthand experience. Built out the majority of the website&rsquo;s content structure and research foundation.</>,
+      <>Holds a B.S. in Computer Science and is currently completing an M.S. in Integrated Design, Business, and Technology at USC, with two years of PM experience focused on <Link to="/business" className={lnk}>0-to-1 product development</Link>.</>,
     ],
   },
   {
