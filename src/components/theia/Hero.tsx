@@ -116,7 +116,7 @@ const Hero = () => {
   const headlineStyle = reduceMotion
     ? undefined
     : {
-        opacity: lerp(1, 0.45, t),
+        opacity: lerp(0.3, 1, t),
         transform: `translate3d(0, ${lerp(0, -36, t)}px, 0)`,
       };
 
@@ -124,8 +124,8 @@ const Hero = () => {
     ? undefined
     : {
         transform: [
-          `translate3d(${lerp(6, -4, t)}%, ${lerp(4, -10, t)}vh, 0)`,
-          `scale(${lerp(1.38, 1.08, t)})`,
+          `translate3d(${lerp(-6, 4, t)}%, ${lerp(4, -10, t)}vh, 0)`,
+          `scale(${lerp(1.08, 1.0, t)})`,
         ].join(" "),
       };
 
@@ -142,15 +142,7 @@ const Hero = () => {
             </div>
 
             <div className="grid flex-1 grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-6">
-              <div className="lg:col-span-6" style={headlineStyle}>
-                <h1 className="font-display font-medium tracking-[-0.03em] text-[clamp(2.5rem,7.5vw,6.25rem)] leading-[0.96] text-foreground max-w-[14ch]">
-                  A second layer
-                  <br />
-                  of <span className="text-signal">spatial</span> awareness.
-                </h1>
-              </div>
-
-              <div className="relative flex justify-center lg:col-span-6 lg:justify-end">
+              <div className="relative flex justify-center lg:col-span-6 lg:justify-start order-1">
                 <div
                   className="relative w-full max-w-[min(100%,720px)] sm:max-w-[44rem] lg:max-w-[min(100%,880px)] xl:max-w-[min(1100px,92vw)] will-change-transform"
                   style={productStyle}
@@ -170,6 +162,14 @@ const Hero = () => {
                     />
                   </div>
                 </div>
+              </div>
+
+              <div className="lg:col-span-6 order-2" style={headlineStyle}>
+                <h1 className="font-display font-medium tracking-[-0.03em] text-[clamp(2.25rem,6.2vw,5.5rem)] leading-[1.02] text-foreground">
+                  <span className="block whitespace-nowrap">A second layer</span>
+                  <span className="block whitespace-nowrap">of <span className="text-signal">spatial</span></span>
+                  <span className="block whitespace-nowrap">awareness.</span>
+                </h1>
               </div>
             </div>
 

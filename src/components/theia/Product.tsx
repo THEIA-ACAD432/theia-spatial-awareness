@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Nav from "@/components/theia/Nav";
 import Footer from "@/components/theia/Footer";
-import deviceHeroImg from "@/assets/theia-device-hero.jpg";
-import contextImg from "@/assets/halobelt.png";
+import beltImg from "@/assets/belt.png";
+import belt2Img from "@/assets/belt2.png";
 import beltAnimationSrc from "@/assets/Belt Animation.12.mov?url";
+import theiaVideoSrc from "@/assets/TheiaVideo.mov?url";
 import proto1Img from "@/assets/prototimeline1.jpeg";
 import proto3Img from "@/assets/prototimeline3.jpeg";
 import proto4Img from "@/assets/prototimeline4.jpeg";
@@ -144,12 +145,7 @@ const ScrollScrubVideo = ({ src, label }: { src: string; label: string }) => {
           preload="auto"
           disablePictureInPicture
           className="absolute inset-0 w-full h-full object-contain"
-          style={{
-            opacity: videoOpacity,
-            transition: "opacity 300ms ease",
-            transform: "scale(0.78)",
-            transformOrigin: "center center",
-          }}
+          style={{ opacity: videoOpacity, transition: "opacity 300ms ease" }}
         />
 
         {/* Motor X-ray markers (visible only when toggled) */}
@@ -684,10 +680,10 @@ const Product = () => {
           </div>
         </section>
 
-        {/* 04 / Walkthrough */}
+        {/* 04 / Demo */}
         <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">04 / Walkthrough</div>
+            <div className="font-mono-tag text-signal mb-12">04 / Demo</div>
 
             <div className="grid lg:grid-cols-12 gap-10 mb-16">
               <div className="lg:col-span-7">
@@ -698,19 +694,20 @@ const Product = () => {
                 </h2>
               </div>
               <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
-                A short walkthrough of the belt &mdash; how it sits, how it senses, how it speaks back to the body.
+                A short demo of the belt &mdash; how it sits, how it senses, how it speaks back to the body.
               </p>
             </div>
 
-            <div className="relative aspect-video border border-hairline bg-ivory-deep/40 grid-bg flex items-center justify-center group cursor-pointer">
-              <div className="absolute top-4 left-4 font-mono-tag text-graphite-soft/60">FIG. 00 / WALKTHROUGH</div>
-              <div className="absolute top-4 right-4 font-mono-tag text-graphite-soft/40">VIDEO PENDING</div>
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-16 h-16 rounded-full border border-signal/40 bg-background/60 flex items-center justify-center group-hover:border-signal group-hover:bg-signal/10 transition-colors">
-                  <span className="font-display text-2xl text-signal ml-1">&#9654;</span>
-                </div>
-                <div className="font-mono-tag text-graphite-soft/60">PLACEHOLDER &middot; 16:9</div>
-              </div>
+            <div className="relative aspect-video border border-hairline bg-ivory-deep/40 overflow-hidden">
+              <div className="absolute top-4 left-4 font-mono-tag text-graphite-soft/70 z-10">FIG. 00 / DEMO</div>
+              <video
+                src={theiaVideoSrc}
+                controls
+                loop
+                playsInline
+                preload="metadata"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
           </div>
         </section>
@@ -782,7 +779,7 @@ const Product = () => {
             <div className="grid grid-cols-12 gap-3 md:gap-4">
               <figure className="col-span-12 md:col-span-8 relative aspect-[4/3] overflow-hidden bg-ivory-deep group">
                 <img
-                  src={contextImg}
+                  src={beltImg}
                   alt="Theia worn in context"
                   className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
                 />
@@ -794,7 +791,7 @@ const Product = () => {
 
               <figure className="col-span-12 md:col-span-4 relative aspect-[4/3] md:aspect-auto overflow-hidden bg-ivory-deep group">
                 <img
-                  src={deviceHeroImg}
+                  src={belt2Img}
                   alt="Theia belt sensor array"
                   className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
                 />
@@ -811,6 +808,34 @@ const Product = () => {
             >
               Why this device exists <span aria-hidden>&rarr;</span>
             </Link>
+          </div>
+        </section>
+
+        {/* User Voices — quotes after Design */}
+        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">USER VOICES</div>
+
+            <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+              <blockquote className="bg-ivory p-8 lg:p-10 flex flex-col">
+                <p className="font-display text-2xl md:text-3xl text-graphite leading-snug tracking-[-0.018em] italic font-light flex-1">
+                  &ldquo;Sometimes it isn&rsquo;t about a device. It&rsquo;s about feeling normal.&rdquo;
+                </p>
+                <footer className="mt-8 pt-6 border-t border-hairline">
+                  <cite className="font-mono-tag text-signal not-italic">CONNIE</cite>
+                </footer>
+              </blockquote>
+
+              <blockquote className="bg-ivory p-8 lg:p-10 flex flex-col">
+                <p className="font-display text-2xl md:text-3xl text-graphite leading-snug tracking-[-0.018em] italic font-light flex-1">
+                  &ldquo;I like the idea of a wearable feeling like it&rsquo;s part of my everyday wear.&rdquo;
+                </p>
+                <footer className="mt-8 pt-6 border-t border-hairline">
+                  <cite className="font-mono-tag text-signal not-italic block">MOKSH JHAVERI</cite>
+                  <span className="font-mono-tag text-graphite-soft/70 mt-1 block">UNDERGRADUATE STUDENT &middot; USC</span>
+                </footer>
+              </blockquote>
+            </div>
           </div>
         </section>
 
