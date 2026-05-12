@@ -60,9 +60,9 @@ const SensorField = () => {
   // Sensor positions along curved belt (computed from quadratic bezier)
   const sensors = [
     { x: 112, y: 403, dir: -90, range: 8, half: 6,  fill: 0.04, label: "LUNA-TF",  sub: "8M ← SIDE",  rangeLabelX: 50,  rangeLabelY: 405 },
-    { x: 256, y: 382, dir: -45, range: 2, half: 14, fill: 0.10, label: "TOF LINEAR", sub: "2M · −45°", rangeLabelX: 218, rangeLabelY: 348 },
+    { x: 256, y: 382, dir: -45, range: 2, half: 14, fill: 0.10, label: "TOF LINEAR", sub: "4M · −45°", rangeLabelX: 218, rangeLabelY: 348 },
     { x: 400, y: 375, dir:   0, range: 4, half: 22, fill: 0.18, label: "8×8 + LUNA-TF", sub: "FORWARD", rangeLabelX: 410, rangeLabelY: 305 },
-    { x: 544, y: 382, dir:  45, range: 2, half: 14, fill: 0.10, label: "TOF LINEAR", sub: "2M · +45°", rangeLabelX: 568, rangeLabelY: 348 },
+    { x: 544, y: 382, dir:  45, range: 2, half: 14, fill: 0.10, label: "TOF LINEAR", sub: "4M · +45°", rangeLabelX: 568, rangeLabelY: 348 },
     { x: 688, y: 403, dir:  90, range: 8, half: 6,  fill: 0.04, label: "LUNA-TF",  sub: "8M · SIDE →", rangeLabelX: 720, rangeLabelY: 405 },
   ];
   const s = 18; // px per meter

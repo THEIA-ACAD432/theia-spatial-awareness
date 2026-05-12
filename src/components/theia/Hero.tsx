@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-const beltFrameModules = import.meta.glob<string>("../../assets/BeltFramesWebp/*.webp", {
+const beltFrameModules = import.meta.glob<string>("../../assets/frames/*.png", {
   eager: true,
   import: "default",
 });
 
 const BELT_FRAME_URLS = Object.entries(beltFrameModules)
   .sort(([pathA], [pathB]) => {
-    // Expected filename: "Belt Animation.469.226.webp" → sort key = 226
-    const na = parseInt(pathA.match(/\.([0-9]+)\.webp$/i)?.[1] ?? "0", 10);
-    const nb = parseInt(pathB.match(/\.([0-9]+)\.webp$/i)?.[1] ?? "0", 10);
+    // e.g. "Belt Animation.12.193.png" → sort key = 193
+    const na = parseInt(pathA.match(/\.([0-9]+)\.png$/i)?.[1] ?? "0", 10);
+    const nb = parseInt(pathB.match(/\.([0-9]+)\.png$/i)?.[1] ?? "0", 10);
     return na - nb;
   })
   .map(([, url]) => url);
