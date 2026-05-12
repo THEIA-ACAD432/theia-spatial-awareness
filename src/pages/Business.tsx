@@ -5,39 +5,29 @@ import Footer from "@/components/theia/Footer";
 const roadmap = [
   {
     n: "01",
-    years: "2026",
-    name: "Prove It",
+    name: "Visually Impaired Patients",
     description:
       "Lock down the core hardware at 180° coverage. First user testing. Pass the dignity test before anything else.",
   },
   {
     n: "02",
-    years: "2027 / 2030",
-    name: "Clinical Validation",
+    name: "Providers (Clinicians & Mobility Specialists)",
     description:
       "Prototype to medical device. Longitudinal study. FDA and EU pathways. Pilot direct sales with the first user cohort.",
   },
   {
     n: "03",
-    years: "2030 / 2035",
-    name: "Go to Market",
+    name: "Insurance and Payers",
     description:
       "Direct hardware sales through rehab centers, schools, and VA programs. Software updates and sensor calibration bundled into the one-time purchase. Insurance reimbursement opens. Open the API.",
   },
   {
     n: "04",
-    years: "2035 / 2043",
-    name: "Expand the Sense",
+    name: "Designers and Innovators",
     description:
       "Coverage scales from 180° to a full 360°. Paired bone conduction joins haptics. LiDAR + ToF + cloud ML turn proximity into context — “doorway ahead, step up.” Fixed core, evolving shell: members refresh fabric and finish without replacing the device.",
   },
-  {
-    n: "05",
-    years: "2043 / 2051",
-    name: "Globalize",
-    description:
-      "An accessible hardware tier opens globally — subsidized through WHO procurement and community health worker programs. Premium hardware tier funds the accessible one. Largest open-access mobility dataset ever assembled.",
-  },
+ 
 ];
 
 const risks = [
@@ -141,34 +131,36 @@ const Business = () => {
         <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">02 / 25-Year Roadmap</div>
+            <div className="font-mono-tag text-signal mb-12">02 / Stakeholder Engagement</div>
 
             <div className="mb-16">
               <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.75rem,3.8vw,3.25rem)] leading-[1.05] text-foreground">
-                Five segments.
+                Stakeholder Engagement
                 <br />
-                <span className="text-signal italic font-light">One direction.</span>
+                <span className="text-signal italic font-light">Four Key Groups</span>
               </h2>
             </div>
 
-            {/* Timeline track (desktop) */}
+            {/* Timeline track (desktop) — dots at line ends + even spacing (no empty tail) */}
             <div className="hidden lg:block relative mb-12">
-              <div className="absolute top-[9px] left-0 right-0 h-px bg-hairline" />
-              <div className="flex">
+              <div
+                className="absolute top-[7px] left-[7px] right-[7px] h-px bg-hairline"
+                aria-hidden
+              />
+              <div className="relative flex justify-between">
                 {roadmap.map((seg) => (
-                  <div key={seg.n} className="flex-1 relative">
-                    <div className="w-4 h-4 rounded-full border-2 border-signal bg-background relative z-10 mb-4" />
+                  <div key={seg.n} className="flex flex-col items-center">
+                    <div className="h-4 w-4 shrink-0 rounded-full border-2 border-signal bg-background relative z-10" />
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Segment columns */}
-            <div className="grid lg:grid-cols-5 gap-6 lg:gap-4">
+            {/* Segment columns — four groups across full width */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
               {roadmap.map((seg) => (
                 <div key={seg.n} className="border-t border-hairline pt-6 lg:border-t-0 lg:pt-0">
                   <div className="font-mono-tag text-signal mb-2">{seg.n}</div>
-                  <div className="font-mono-tag text-foreground/40 mb-3">{seg.years}</div>
                   <h3 className="font-display text-2xl text-foreground tracking-[-0.025em] mb-4 leading-tight">
                     {seg.name}
                   </h3>
@@ -184,7 +176,7 @@ const Business = () => {
         {/* 03 / Cost Drivers & Commercial Risks */}
         <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">03 / Cost Drivers & Commercial Risks</div>
+            <div className="font-mono-tag text-signal mb-12">03 / Financial Plan and Cost Drivers</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-5">

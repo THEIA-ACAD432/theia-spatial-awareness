@@ -41,10 +41,8 @@ const stakeholders = [
 ];
 
 const testingPlan = [
-  "Wizard-of-Oz testing",
   "Cognitive load testing",
   "Alert usefulness validation",
-  "Wearability in real conditions: stairs, crowds, sitting",
   "End-to-end route completion in an uncontrolled environment",
 ];
 

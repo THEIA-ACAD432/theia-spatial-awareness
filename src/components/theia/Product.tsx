@@ -424,7 +424,7 @@ const Product = () => {
                 ))}
               </div>
               <p className="text-xs text-graphite leading-relaxed max-w-3xl">
-                <span className="font-mono-tag text-signal mr-2">WHY</span>4&ndash;6 hr runtime, load-sharing so it charges while in use, MT3608 keeps the rail stable when motors fire together.
+                <span className="font-mono-tag text-signal mr-2">WHY</span>3 hr runtime under peak load, 4–6 hr typical use with wifi on, load-sharing so it charges while in use, PiSugar+ keeps the 5V rail stable when motors fire together. esp32 being idle with wifi off 12 hours. with fully off it is 40hours
               </p>
             </div>
 
