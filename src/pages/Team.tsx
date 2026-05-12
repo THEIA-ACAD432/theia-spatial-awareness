@@ -27,8 +27,8 @@ const members = [
     initials: "K",
     img: kenImg,
     bio: [
-      "Translated concept into manufacturable form through 3D modeling and iteration. Balanced ergonomics, internal layout, and fabrication.",
-      "Took the product from idea to a buildable prototype.",
+      "Led the product design, form development, and presentation website structure for THEIA. Translated the electronic architecture into a refined wearable form through CAD modeling, ergonomic iteration, internal component packaging, and fabrication planning. Balanced sensor placement, belt construction, wearability, manufacturability, and visual communication while producing high-fidelity 3D renderings that helped move THEIA from concept into a buildable prototype and presentation-ready product system.",
+      "Holds a B.S. in Product Design from ArtCenter College of Design and is currently completing an M.S. in Integrated Design, Business, and Technology at USC’s Iovine and Young Academy. His work focuses on the intersection of product design, hardware prototyping, brand strategy, and health innovation, with an emphasis on translating technical concepts into human-centered, manufacturable product experiences.",
     ],
   },
   {
@@ -38,13 +38,8 @@ const members = [
     initials: "K",
     img: kenzieImg,
     bio: [
-<<<<<<< HEAD
-      "Led software for the product and the website. Mapped the cane user journey to find gaps in spatial awareness.",
-      "Built the cane-first safety principles, alert hierarchies, and the choice of haptic over audio.",
-=======
-      <>Led software for the product and the website. Owned the coding and code hierarchy decisions for THEIA, defining what each <Link to="/product" className={lnk}>haptic signal</Link> communicates to the user across four dimensions (pulse, intensity, location, and velocity) so every cue maps to a specific spatial meaning the user can interpret without cognitive load.</>,
-      <>Currently completing a B.S. in Art, Technology, and the Business of Innovation at USC, where her work focuses on accessible user experience design.</>,
->>>>>>> c2e7a9ac8d3059227762e3753c13944e3f274c6e
+      "Led software for the product and the website. Owned the coding and code hierarchy decisions for THEIA, defining what each haptic signal communicates to the user across four dimensions (pulse, intensity, location, and velocity) so every cue maps to a specific spatial meaning the user can interpret without cognitive load.",
+      "Currently completing a B.S. in Art, Technology, and the Business of Innovation at USC, where her work focuses on accessible user experience design.",
     ],
   },
   {

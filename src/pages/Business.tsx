@@ -2,34 +2,6 @@ import { Link } from "react-router-dom";
 import Nav from "@/components/theia/Nav";
 import Footer from "@/components/theia/Footer";
 
-const marketRows = [
-  {
-    substitute: "White canes",
-    strengths: "Reliable, low-cost, intuitive, user-controlled",
-    weaknesses: "Limited to physical obstacle detection in small immediate radius",
-  },
-  {
-    substitute: "Guide dogs",
-    strengths: "Context-aware navigation, can dynamically adapt",
-    weaknesses: "High cost, long training, limited availability, lifestyle constraints",
-  },
-  {
-    substitute: "Smart glasses",
-    strengths: "Object recognition, text reading, voice assistance",
-    weaknesses: "High cognitive load, active interaction required, socially intrusive",
-  },
-  {
-    substitute: "Seeing AI app",
-    strengths: "Digital navigation and wayfinding, voice assistant",
-    weaknesses: "Device/screen reliant, low real-time spatial context, interferes with cane use",
-  },
-  {
-    substitute: "Smart canes (WeWALK)",
-    strengths: "Obstacle alerts, route guidance",
-    weaknesses: "Limited contextual information, relies on active smartphone interaction",
-  },
-];
-
 const roadmap = [
   {
     n: "01",
@@ -43,14 +15,14 @@ const roadmap = [
     years: "2027 / 2030",
     name: "Clinical Validation",
     description:
-      "Prototype to medical device. Longitudinal study. FDA and EU pathways. Pilot the membership with the first user cohort.",
+      "Prototype to medical device. Longitudinal study. FDA and EU pathways. Pilot direct sales with the first user cohort.",
   },
   {
     n: "03",
     years: "2030 / 2035",
     name: "Go to Market",
     description:
-      "Launch through rehab centers, schools, and VA programs. Membership tiers go live — hardware entry plus monthly access to software, sensor calibration, and refresh cycles. Insurance reimbursement opens. Open the API.",
+      "Direct hardware sales through rehab centers, schools, and VA programs. Software updates and sensor calibration bundled into the one-time purchase. Insurance reimbursement opens. Open the API.",
   },
   {
     n: "04",
@@ -64,14 +36,14 @@ const roadmap = [
     years: "2043 / 2051",
     name: "Globalize",
     description:
-      "An accessible membership tier opens globally — underwritten through WHO procurement and community health worker programs. Premium tier funds the accessible one. Largest open-access mobility dataset ever assembled.",
+      "An accessible hardware tier opens globally — subsidized through WHO procurement and community health worker programs. Premium hardware tier funds the accessible one. Largest open-access mobility dataset ever assembled.",
   },
 ];
 
 const risks = [
-  { risk: "Adoption barriers", mitigation: "Institutional deployment through clinicians, OTs, and rehab centers. Subscription absorbs upfront cost." },
+  { risk: "Adoption barriers", mitigation: "Institutional deployment through clinicians, OTs, and rehab centers. Reimbursement absorbs upfront cost for end users." },
   { risk: "Reimbursement timeline", mitigation: "Phased FDA + EU pathway. Direct-pay early, insurance reimbursement post-validation." },
-  { risk: "Pricing pressure", mitigation: "Subscription model amortizes hardware cost. Hardware refreshes baked into membership." },
+  { risk: "Pricing pressure", mitigation: "Volume manufacturing and clinical reimbursement bring per-unit costs down. Tiered hardware lineup serves premium and accessible price points." },
   { risk: "Distribution scale", mitigation: "Start with rehab + VA channels. Expand to schools and consumer once unit economics prove out." },
 ];
 
@@ -137,12 +109,12 @@ const Business = () => {
                 <div className="lg:col-span-5">
                   <div className="font-mono-tag text-signal mb-5">BUSINESS MODEL</div>
                   <h3 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.05] text-graphite mb-6">
-                    Subscription, not
+                    Buy once.
                     <br />
-                    <span className="italic font-light text-graphite-soft">one-and-done.</span>
+                    <span className="italic font-light text-graphite-soft">Own it outright.</span>
                   </h3>
                   <p className="text-base text-graphite leading-relaxed text-pretty">
-                    Like Whoop. Hardware is the entry point. Membership is the relationship. Software, sensor calibration, and hardware refreshes all flow through the subscription.
+                    A single hardware purchase. Software updates and sensor calibration are bundled in. The device belongs to the user from day one.
                   </p>
                 </div>
 
@@ -165,46 +137,11 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 02 / Market Landscape */}
-        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-4">02 / Market Landscape</div>
-            <div className="mb-12">
-              <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.75rem,3.8vw,3.25rem)] leading-[1.05] text-graphite">
-                What exists,
-                <br />
-                <span className="text-graphite-soft italic font-light">and where it falls short.</span>
-              </h2>
-            </div>
-
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[700px] border-collapse border border-hairline bg-ivory text-sm">
-                <thead>
-                  <tr className="bg-ivory-deep text-foreground">
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-hairline w-[25%]">Substitute</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal border-r border-hairline w-[37%]">What it does well</th>
-                    <th className="font-mono-tag text-left px-5 py-4 font-normal">Weaknesses & limitations</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {marketRows.map((row, i) => (
-                    <tr key={row.substitute} className={`border-t border-hairline align-top ${i % 2 === 1 ? "bg-ivory-deep/50" : "bg-ivory"}`}>
-                      <td className="px-5 py-5 border-r border-hairline font-medium text-graphite">{row.substitute}</td>
-                      <td className="px-5 py-5 border-r border-hairline text-graphite-soft leading-relaxed">{row.strengths}</td>
-                      <td className="px-5 py-5 text-graphite-soft leading-relaxed">{row.weaknesses}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* 03 / Roadmap */}
+        {/* 02 / Roadmap */}
         <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">03 / 25-Year Roadmap</div>
+            <div className="font-mono-tag text-signal mb-12">02 / 25-Year Roadmap</div>
 
             <div className="mb-16">
               <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(1.75rem,3.8vw,3.25rem)] leading-[1.05] text-foreground">
@@ -244,10 +181,10 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 04 / Cost Drivers & Commercial Risks */}
+        {/* 03 / Cost Drivers & Commercial Risks */}
         <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">04 / Cost Drivers & Commercial Risks</div>
+            <div className="font-mono-tag text-signal mb-12">03 / Cost Drivers & Commercial Risks</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-5">
@@ -257,7 +194,7 @@ const Business = () => {
                   <span className="text-graphite-soft italic font-light">comes and goes.</span>
                 </h2>
                 <p className="text-base text-graphite-soft leading-relaxed text-pretty mb-10">
-                  Hardware is the entry point. The subscription absorbs cost over time and funds clinical validation, distribution, and refresh cycles.
+                  A single hardware purchase funded by reimbursement, institutional channels, and direct sales. Manufacturing scale and clinical reimbursement determine whether unit economics hold.
                 </p>
                 <div>
                   <div className="font-mono-tag text-signal mb-4">HIGH-LEVEL COST DRIVERS</div>
@@ -302,10 +239,10 @@ const Business = () => {
           </div>
         </section>
 
-        {/* 05 / Societal Sustainability */}
+        {/* 04 / Societal Sustainability */}
         <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">05 / Societal Sustainability</div>
+            <div className="font-mono-tag text-signal mb-12">04 / Societal Sustainability</div>
 
             <div className="grid lg:grid-cols-12 gap-10 mb-16">
               <div className="lg:col-span-7">
@@ -332,7 +269,7 @@ const Business = () => {
                   n: "02",
                   tag: "EQUITY",
                   title: "Accessible at every income tier",
-                  body: "An accessible membership tier, underwritten through WHO procurement and community health worker programs, reaches users premium markets cannot. Premium tier funds the accessible one.",
+                  body: "An accessible hardware tier, subsidized through WHO procurement and community health worker programs, reaches users premium markets cannot. Premium tier funds the accessible one.",
                 },
                 {
                   n: "03",
