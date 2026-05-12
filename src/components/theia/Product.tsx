@@ -771,9 +771,14 @@ const Product = () => {
                   would <span className="text-signal">actually wear.</span>
                 </h2>
               </div>
-              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
-                Sensors and haptic motors built into the band &mdash; no add-ons, no clip points, nothing that reads as medical. Confidence, worn at the waist.
-              </p>
+              <div className="lg:col-span-5">
+                <p className="text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
+                  Sensors and haptic motors built into the band &mdash; no add-ons, no clip points, nothing that reads as medical. Confidence, worn at the waist.
+                </p>
+                <p className="mt-5 font-mono-tag text-signal tracking-[0.18em]">
+                  MADE WITH PREMIUM LEATHER &middot; CUSTOM SILVER HARDWARE
+                </p>
+              </div>
             </div>
 
             <div className="grid grid-cols-12 gap-3 md:gap-4">
