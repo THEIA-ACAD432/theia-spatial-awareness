@@ -10,7 +10,7 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
 );
 
 const teamAlignment = [
-  { domain: "Translating user dignity into design", member: "Brian Camilo", role: "Product Manager", links: "Overview / Process / Business" },
+  { domain: "Translating user dignity into design", member: "Brian Camilo", role: "Product Manager", links: "Problem / Process / Business" },
   { domain: "Form factor that disappears into daily wear", member: "Ken Chin", role: "Physical Product Design", links: "Product / Design" },
   { domain: "Cane-first cognitive load + haptic mapping", member: "Kenzie Gill", role: "Software Developer & UX Designer", links: "Product / Process" },
   { domain: "Multi-sensor architecture that proves the concept", member: "Jose Hernandez", role: "Electrical Engineer & Systems Integration", links: "Product / Hardware Architecture" },
@@ -70,14 +70,14 @@ const SystemDiagram = () => {
         role="link"
         tabIndex={0}
         onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("/challenge"); }}
-        aria-label="Go to Overview page"
+        aria-label="Go to Problem page"
       >
         <rect x={70} y={70} width={360} height={150} rx={4} fill={surface} stroke={signal} strokeWidth={1.2} />
         <text x={90} y={100} fontSize={11} fontFamily={mono} fill={signal} letterSpacing="0.2em">01 / CHALLENGE</text>
         <text x={90} y={138} fontSize={26} fontFamily="Space Grotesk, sans-serif" fill={fg} fontWeight={500} letterSpacing="-0.02em">The cane&apos;s blind spot</text>
         <text x={90} y={170} fontSize={13} fontFamily="Inter, sans-serif" fill={fgSoft}>Hazards above the waist, social</text>
         <text x={90} y={188} fontSize={13} fontFamily="Inter, sans-serif" fill={fgSoft}>stigma, cognitive load.</text>
-        <text x={90} y={208} fontSize={10} fontFamily={mono} fill={signalSoft} letterSpacing="0.1em">&rarr; /overview</text>
+        <text x={90} y={208} fontSize={10} fontFamily={mono} fill={signalSoft} letterSpacing="0.1em">&rarr; /challenge</text>
       </g>
 
       {/* === NODE 2: PRODUCT (top-right) === */}
@@ -327,7 +327,7 @@ const System = () => {
 
             <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
               {[
-                { n: "01", title: "Overview", body: "The challenge and the solution, with citations woven in.", to: "/challenge" },
+                { n: "01", title: "Problem", body: "The challenge and the solution, with citations woven in.", to: "/challenge" },
                 { n: "02", title: "Process", body: "Stakeholders, research, prototyping, trade-offs.", to: "/process" },
                 { n: "03", title: "Product", body: "Walkthrough, prototype evidence, design, hardware, haptic feedback, future evolution.", to: "/product" },
                 { n: "04", title: "Business", body: "Value, market, 25-year roadmap, cost, societal sustainability.", to: "/business" },

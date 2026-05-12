@@ -11,39 +11,6 @@ import christineImg from "@/assets/team-christine.png";
 const members = [
   {
     n: "01",
-    name: "Brian Camilo",
-    role: "Product Manager",
-    initials: "B",
-    img: brianImg,
-    bio: [
-      "Conducted foundational user research with a visually impaired individual, synthesizing insights that shaped the product’s core direction around wearability, social inclusion, and real-world navigation gaps. Served as the primary test subject for the wearable, informing usability and form factor decisions from firsthand experience. Built out the majority of the website’s content structure and research foundation.",
-      "Holds a B.S. in Computer Science and is currently completing an M.S. in Integrated Design, Business, and Technology at USC, with two years of PM experience focused on 0-to-1 product development.",
-    ],
-  },
-  {
-    n: "02",
-    name: "Ken Chin",
-    role: "Physical Product Design",
-    initials: "K",
-    img: kenImg,
-    bio: [
-      "Led the product design, form development, and presentation website structure for THEIA. Translated the electronic architecture into a refined wearable form through CAD modeling, ergonomic iteration, internal component packaging, and fabrication planning. Balanced sensor placement, belt construction, wearability, manufacturability, and visual communication while producing high-fidelity 3D renderings that helped move THEIA from concept into a buildable prototype and presentation-ready product system.",
-      "Holds a B.S. in Product Design from ArtCenter College of Design and is currently completing an M.S. in Integrated Design, Business, and Technology at USC’s Iovine and Young Academy. His work focuses on the intersection of product design, hardware prototyping, brand strategy, and health innovation, with an emphasis on translating technical concepts into human-centered, manufacturable product experiences.",
-    ],
-  },
-  {
-    n: "03",
-    name: "Kenzie Gill",
-    role: "Software Developer & UX Designer",
-    initials: "K",
-    img: kenzieImg,
-    bio: [
-      "Led software for the product and the website. Owned the coding and code hierarchy decisions for THEIA, defining what each haptic signal communicates to the user across four dimensions (pulse, intensity, location, and velocity) so every cue maps to a specific spatial meaning the user can interpret without cognitive load.",
-      "Currently completing a B.S. in Art, Technology, and the Business of Innovation at USC, where her work focuses on accessible user experience design.",
-    ],
-  },
-  {
-    n: "04",
     name: "Jose Hernandez",
     role: "Electrical Engineer & Systems Integration",
     initials: "J",
@@ -54,25 +21,58 @@ const members = [
     ],
   },
   {
-    n: "05",
-    name: "Esther Ji",
-    role: "Business Strategy",
-    initials: "E",
-    img: estherImg,
+    n: "02",
+    name: "Kenzie Gill",
+    role: "Software Developer & UX Designer",
+    initials: "K",
+    img: kenzieImg,
     bio: [
-      "Led UX research and supported business strategy. Locked in positioning around augmentation, not automation.",
-      "Drove growth and operational planning. TAM/SAM/SOM and the business model framework.",
+      "Led software for the product and the website. Owned the coding and code hierarchy decisions for THEIA, defining what each haptic signal communicates to the user across four dimensions (pulse, intensity, location, and velocity) so every cue maps to a specific spatial meaning the user can interpret without cognitive load.",
+      "Currently completing a B.S. in Art, Technology, and the Business of Innovation at USC, where her work focuses on accessible user experience design.",
     ],
   },
   {
-    n: "06",
+    n: "03",
     name: "Christine Lai",
     role: "Design Engineer",
     initials: "C",
     img: christineImg,
     bio: [
-      "Owned the physical user experience. Belt ergonomics, weight, balance, grip.",
-      "Iterated low-fi mockups into the final enclosure. Holds up to daily use without sacrificing form.",
+      "Led product design engineering for THEIA, prototyping and designing the physical UX of the belt ergonomics and wearability. Combining fashion design and physical computing, led the development of a human-centered, sensor-integrated system by designing the textile, closure, and overall form in close collaboration with electrical engineering. ",
+      "Currently pursuing a B.S. in Arts, Technology, and the Business of Innovation at the University of Southern California - Iovine and Young Academy, with an emphasis on physical and digital design engineering."
+    ],
+  },
+  {
+    n: "04",
+    name: "Ken Chin",
+    role: "Physical Product Design",
+    initials: "K",
+    img: kenImg,
+    bio: [
+      "Led the product design, form development, and presentation website structure for THEIA. Translated the electronic architecture into a refined wearable form through CAD modeling, ergonomic iteration, internal component packaging, and fabrication planning. Balanced sensor placement, belt construction, wearability, manufacturability, and visual communication while producing high-fidelity 3D renderings that helped move THEIA from concept into a buildable prototype and presentation-ready product system.",
+      "Holds a B.S. in Product Design from ArtCenter College of Design and is currently completing an M.S. in Integrated Design, Business, and Technology at USC’s Iovine and Young Academy. His work focuses on the intersection of product design, hardware prototyping, brand strategy, and health innovation, with an emphasis on translating technical concepts into human-centered, manufacturable product experiences.",
+    ],
+  },
+  {
+    n: "05",
+    name: "Brian Camilo",
+    role: "Product Manager",
+    initials: "B",
+    img: brianImg,
+    bio: [
+      "Conducted foundational user research with a visually impaired individual, synthesizing insights that shaped the product’s core direction around wearability, social inclusion, and real-world navigation gaps. Served as the primary test subject for the wearable, informing usability and form factor decisions from firsthand experience. Built out the majority of the website’s content structure and research foundation.",
+      "Holds a B.S. in Computer Science and is currently completing an M.S. in Integrated Design, Business, and Technology at USC, with two years of PM experience focused on 0-to-1 product development.",
+    ],
+  },
+  {
+    n: "06",
+    name: "Esther Ji",
+    role: "Business Strategy",
+    initials: "E",
+    img: estherImg,
+    bio: [
+      "Led end-to-end business strategy, driving initial market sizing, competitive landscape analysis, and early product research to validate problem–solution fit. Supported process innovation analysis and stakeholder engagement, and developed a comprehensive business model and financial plan to support go-to-market strategy and long-term viability.",
+      "Incoming graduate of the USC Marshall School of Business, earning a B.S. in Business Administration with a minor in Health Innovation, with prior experience in consulting, biotechnology, and healthcare software.",
     ],
   },
 ];

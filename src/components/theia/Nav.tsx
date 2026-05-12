@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
-  { to: "/challenge", label: "Overview" },
+  { to: "/challenge", label: "Problem" },
   { to: "/process", label: "Process" },
   { to: "/product", label: "Product" },
   { to: "/business", label: "Business" },
