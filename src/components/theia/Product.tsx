@@ -641,7 +641,7 @@ const Product = () => {
                     why: "Our reflex layer. 250 Hz catches the fast close-range threats the wide-FOV sensor is too slow to see.",
                   },
                   {
-                    count: "2×",
+                    count: "2x",
                     name: "VL53L1X TOF Linear",
                     desc: "Positioned at ±45° from center. Short-range (2m) angled coverage bridging between the forward sensors and the side-facing Lunas.",
                     why: "Bridges forward and side coverage. ToF beats ultrasonic on speed and precision indoors (Bala et al., 2023).",
