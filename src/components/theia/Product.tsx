@@ -144,7 +144,12 @@ const ScrollScrubVideo = ({ src, label }: { src: string; label: string }) => {
           preload="auto"
           disablePictureInPicture
           className="absolute inset-0 w-full h-full object-contain"
-          style={{ opacity: videoOpacity, transition: "opacity 300ms ease" }}
+          style={{
+            opacity: videoOpacity,
+            transition: "opacity 300ms ease",
+            transform: "scale(0.78)",
+            transformOrigin: "center center",
+          }}
         />
 
         {/* Motor X-ray markers (visible only when toggled) */}
@@ -451,144 +456,10 @@ const Product = () => {
         {/* 00 / Scroll-scrubbed belt animation */}
         <ScrollScrubVideo src={beltAnimationSrc} label="FIG. 00 / BELT ANIMATION" />
 
-        {/* 01 / Video */}
-        <section className="py-28 lg:py-40 border-b border-hairline">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">01 / Walkthrough</div>
-
-            <div className="grid lg:grid-cols-12 gap-10 mb-16">
-              <div className="lg:col-span-7">
-                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
-                  See it
-                  <br />
-                  in <span className="text-signal">motion.</span>
-                </h2>
-              </div>
-              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
-                A short walkthrough of the belt &mdash; how it sits, how it senses, how it speaks back to the body.
-              </p>
-            </div>
-
-            <div className="relative aspect-video border border-hairline bg-ivory-deep/40 grid-bg flex items-center justify-center group cursor-pointer">
-              <div className="absolute top-4 left-4 font-mono-tag text-graphite-soft/60">FIG. 00 / WALKTHROUGH</div>
-              <div className="absolute top-4 right-4 font-mono-tag text-graphite-soft/40">VIDEO PENDING</div>
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-16 h-16 rounded-full border border-signal/40 bg-background/60 flex items-center justify-center group-hover:border-signal group-hover:bg-signal/10 transition-colors">
-                  <span className="font-display text-2xl text-signal ml-1">&#9654;</span>
-                </div>
-                <div className="font-mono-tag text-graphite-soft/60">PLACEHOLDER &middot; 16:9</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 02 / Prototype Evidence */}
-        <section className="py-28 lg:py-40 border-b border-hairline">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">02 / Prototype Evidence</div>
-
-            <div className="grid lg:grid-cols-12 gap-10">
-              <div className="lg:col-span-7">
-                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
-                  From concept
-                  <br />
-                  to <span className="text-signal">physical testing.</span>
-                </h2>
-                <p className="mt-8 text-[18px] md:text-[20px] leading-relaxed text-graphite-soft max-w-2xl">
-                  Theia is being developed through iterative prototyping: building, testing, observing failure points, and redesigning around what the prototype reveals.
-                </p>
-              </div>
-            </div>
-
-            {/* Process timeline */}
-            <div className="mt-20">
-              <div className="micro-label mb-6">Process timeline</div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
-                {prototypeStages.map((s) => (
-                  <div key={s.v} className="bg-background p-5">
-                    <div className="aspect-[4/3] border border-hairline mb-4 overflow-hidden bg-ivory-deep">
-                      <img src={s.img} alt={s.label} className="w-full h-full object-cover" />
-                    </div>
-                    <div className="text-signal font-mono text-[11px] mb-1">{s.v}</div>
-                    <div className="font-display text-[15px] leading-tight text-graphite">{s.label}</div>
-                    <div className="text-[12px] text-graphite-soft mt-1">{s.note}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* QBTRD */}
-            <div className="mt-16 grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
-              {qbtrd.map(([k, v], i) => (
-                <div key={k} className="bg-background p-7">
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <span className="text-signal font-mono text-[11px]">0{i + 1}</span>
-                    <span className="micro-label">{k}</span>
-                  </div>
-                  <p className="text-[16px] leading-relaxed text-graphite">{v}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 03 / Design */}
-        <section className="py-28 lg:py-40 border-b border-hairline">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">03 / Design</div>
-
-            <div className="grid lg:grid-cols-12 gap-10 mb-16">
-              <div className="lg:col-span-7">
-                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
-                  A belt people
-                  <br />
-                  would <span className="text-signal">actually wear.</span>
-                </h2>
-              </div>
-              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
-                Sensors and haptic motors built into the band &mdash; no add-ons, no clip points, nothing that reads as medical. Confidence, worn at the waist.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-12 gap-3 md:gap-4">
-              <figure className="col-span-12 md:col-span-8 relative aspect-[4/3] overflow-hidden bg-ivory-deep group">
-                <img
-                  src={contextImg}
-                  alt="Theia worn in context"
-                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
-                />
-                <figcaption className="absolute top-4 left-4 right-4 flex items-start justify-between font-mono-tag text-white/95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">
-                  <span>FIG. 01 / IN SITU</span>
-                  <span className="opacity-70">WORN AT WAIST</span>
-                </figcaption>
-              </figure>
-
-              <figure className="col-span-12 md:col-span-4 relative aspect-[4/3] md:aspect-auto overflow-hidden bg-ivory-deep group">
-                <img
-                  src={deviceHeroImg}
-                  alt="Theia belt sensor array"
-                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
-                />
-                <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-white/95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">
-                  <span>FIG. 02 / DEVICE</span>
-                  <span className="opacity-70">42 &times; 58MM</span>
-                </figcaption>
-              </figure>
-            </div>
-
-            <Link
-              to="/challenge"
-              className="inline-flex items-center gap-2 mt-10 text-sm text-signal hover:underline underline-offset-2 transition-colors"
-            >
-              Why this device exists <span aria-hidden>&rarr;</span>
-            </Link>
-          </div>
-        </section>
-
-        {/* 04 / Hardware Architecture */}
+        {/* 01 / Hardware Architecture */}
         <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">04 / Hardware Architecture</div>
+            <div className="font-mono-tag text-signal mb-12">01 / Hardware Architecture</div>
 
             {/* BLOCK 1: Sensor field diagram (belt 180° coverage) */}
             <div className="mb-20">
@@ -670,11 +541,11 @@ const Product = () => {
           </div>
         </section>
 
-        {/* 05 / Haptic Feedback */}
+        {/* 02 / Haptic Feedback */}
         <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">05 / Haptic Feedback</div>
+            <div className="font-mono-tag text-signal mb-12">02 / Haptic Feedback</div>
 
             <div className="grid lg:grid-cols-12 gap-12 mb-16">
               <div className="lg:col-span-7">
@@ -788,10 +659,10 @@ const Product = () => {
           </div>
         </section>
 
-        {/* 06 / Power Chain */}
+        {/* 03 / Power Chain */}
         <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">06 / Power Chain</div>
+            <div className="font-mono-tag text-signal mb-12">03 / Power Chain</div>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-0 mb-6">
               {powerChain.map((node, i) => (
                 <div key={node.label} className="flex flex-col sm:flex-row items-stretch sm:items-center flex-1">
@@ -813,10 +684,41 @@ const Product = () => {
           </div>
         </section>
 
-        {/* 07 / Considerations */}
+        {/* 04 / Walkthrough */}
         <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">07 / Considerations</div>
+            <div className="font-mono-tag text-signal mb-12">04 / Walkthrough</div>
+
+            <div className="grid lg:grid-cols-12 gap-10 mb-16">
+              <div className="lg:col-span-7">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
+                  See it
+                  <br />
+                  in <span className="text-signal">motion.</span>
+                </h2>
+              </div>
+              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
+                A short walkthrough of the belt &mdash; how it sits, how it senses, how it speaks back to the body.
+              </p>
+            </div>
+
+            <div className="relative aspect-video border border-hairline bg-ivory-deep/40 grid-bg flex items-center justify-center group cursor-pointer">
+              <div className="absolute top-4 left-4 font-mono-tag text-graphite-soft/60">FIG. 00 / WALKTHROUGH</div>
+              <div className="absolute top-4 right-4 font-mono-tag text-graphite-soft/40">VIDEO PENDING</div>
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-16 h-16 rounded-full border border-signal/40 bg-background/60 flex items-center justify-center group-hover:border-signal group-hover:bg-signal/10 transition-colors">
+                  <span className="font-display text-2xl text-signal ml-1">&#9654;</span>
+                </div>
+                <div className="font-mono-tag text-graphite-soft/60">PLACEHOLDER &middot; 16:9</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 05 / Considerations */}
+        <section className="py-28 lg:py-40 border-b border-hairline">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">05 / Considerations</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
               <div className="lg:col-span-5">
@@ -859,11 +761,114 @@ const Product = () => {
           </div>
         </section>
 
-        {/* 07 / Future of the Product */}
+        {/* 06 / Design */}
+        <section className="py-28 lg:py-40 border-b border-hairline">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">06 / Design</div>
+
+            <div className="grid lg:grid-cols-12 gap-10 mb-16">
+              <div className="lg:col-span-7">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
+                  A belt people
+                  <br />
+                  would <span className="text-signal">actually wear.</span>
+                </h2>
+              </div>
+              <p className="lg:col-span-5 text-[18px] md:text-[20px] text-graphite-soft leading-relaxed">
+                Sensors and haptic motors built into the band &mdash; no add-ons, no clip points, nothing that reads as medical. Confidence, worn at the waist.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-12 gap-3 md:gap-4">
+              <figure className="col-span-12 md:col-span-8 relative aspect-[4/3] overflow-hidden bg-ivory-deep group">
+                <img
+                  src={contextImg}
+                  alt="Theia worn in context"
+                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
+                />
+                <figcaption className="absolute top-4 left-4 right-4 flex items-start justify-between font-mono-tag text-white/95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">
+                  <span>FIG. 01 / IN SITU</span>
+                  <span className="opacity-70">WORN AT WAIST</span>
+                </figcaption>
+              </figure>
+
+              <figure className="col-span-12 md:col-span-4 relative aspect-[4/3] md:aspect-auto overflow-hidden bg-ivory-deep group">
+                <img
+                  src={deviceHeroImg}
+                  alt="Theia belt sensor array"
+                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
+                />
+                <figcaption className="absolute top-3 left-3 right-3 flex justify-between font-mono-tag text-white/95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">
+                  <span>FIG. 02 / DEVICE</span>
+                  <span className="opacity-70">42 &times; 58MM</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <Link
+              to="/challenge"
+              className="inline-flex items-center gap-2 mt-10 text-sm text-signal hover:underline underline-offset-2 transition-colors"
+            >
+              Why this device exists <span aria-hidden>&rarr;</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* 07 / Prototype Evidence */}
+        <section className="py-28 lg:py-40 border-b border-hairline">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">07 / Prototype Evidence</div>
+
+            <div className="grid lg:grid-cols-12 gap-10">
+              <div className="lg:col-span-7">
+                <h2 className="font-display font-medium tracking-[-0.025em] text-[clamp(2.25rem,5.5vw,4.5rem)] leading-[1.02] text-graphite">
+                  From concept
+                  <br />
+                  to <span className="text-signal">physical testing.</span>
+                </h2>
+                <p className="mt-8 text-[18px] md:text-[20px] leading-relaxed text-graphite-soft max-w-2xl">
+                  Theia is being developed through iterative prototyping: building, testing, observing failure points, and redesigning around what the prototype reveals.
+                </p>
+              </div>
+            </div>
+
+            {/* Process timeline */}
+            <div className="mt-20">
+              <div className="micro-label mb-6">Process timeline</div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
+                {prototypeStages.map((s) => (
+                  <div key={s.v} className="bg-background p-5">
+                    <div className="aspect-[4/3] border border-hairline mb-4 overflow-hidden bg-ivory-deep">
+                      <img src={s.img} alt={s.label} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="text-signal font-mono text-[11px] mb-1">{s.v}</div>
+                    <div className="font-display text-[15px] leading-tight text-graphite">{s.label}</div>
+                    <div className="text-[12px] text-graphite-soft mt-1">{s.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* QBTRD */}
+            <div className="mt-16 grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
+              {qbtrd.map(([k, v], i) => (
+                <div key={k} className="bg-background p-7">
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="text-signal font-mono text-[11px]">0{i + 1}</span>
+                    <span className="micro-label">{k}</span>
+                  </div>
+                  <p className="text-[16px] leading-relaxed text-graphite">{v}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 08 / Scalability */}
         <section className="relative py-28 lg:py-40 overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">08 / Future of the Product</div>
+            <div className="font-mono-tag text-signal mb-12">08 / Scalability</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               <div className="lg:col-span-6">
