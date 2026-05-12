@@ -1,8 +1,280 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Nav from "@/components/theia/Nav";
 import Footer from "@/components/theia/Footer";
 import deviceHeroImg from "@/assets/theia-device-hero.jpg";
 import contextImg from "@/assets/halobelt.png";
+import beltAnimationSrc from "@/assets/Belt Animation.12.mov?url";
+
+type Callout = {
+  id: string;
+  x: number; y: number;     // dot position, % of stage
+  lx: number; ly: number;   // label anchor, % of stage
+  anchor: "left" | "right";
+  label: string;
+  sub: string;
+  toggleable?: boolean;
+};
+
+const beltCallouts: Callout[] = [
+  { id: "luna1",   x: 26, y: 47, lx: 15,  ly: 70, anchor: "left",  label: "LUNA-TF",     sub: "" },
+  { id: "luna2",   x: 74, y: 47, lx: 84,  ly: 70, anchor: "left",  label: "LUNA-TF",     sub: "" },
+  { id: "ml88",   x: 49, y: 52, lx: 49, ly: 85, anchor: "right", label: "8×8 TOF",     sub: "" },
+  { id: "linear1", x: 62, y: 54, lx: 64, ly: 77, anchor: "left", label: "TOF LINEAR",  sub: "" },
+  { id: "linear2", x: 36, y: 50, lx: 34, ly: 77, anchor: "right", label: "TOF LINEAR",  sub: "" },
+
+];
+
+// Motor positions on the BACK of the belt (visible only with X-RAY toggled on).
+// 4 around the front 8×8 + center Luna-TF zone (2 left, 2 right of center back)
+// 2 under the ToF Linear ±45° pair
+// 2 under the side Luna-TF pair
+const motorMarkers = [
+  { x: 43, y: 48 }, { x: 55, y: 48 },  // 8×8 + center Luna, upper pair
+  { x: 43, y: 58 }, { x: 55, y: 58 },  // 8×8 + center Luna, lower pair
+  { x: 35, y: 52 }, { x: 63, y: 52 },  // ToF Linear ±45°
+  { x: 26, y: 52 }, { x: 74, y: 52 },  // Luna-TF sides
+];
+
+const ScrollScrubVideo = ({ src, label }: { src: string; label: string }) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const rafRef = useRef(0);
+  const targetRef = useRef(0);
+  const smoothRef = useRef(0);
+  const animatingRef = useRef(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [xray, setXray] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mq.matches);
+    const onMq = () => setReduceMotion(mq.matches);
+    mq.addEventListener("change", onMq);
+    return () => mq.removeEventListener("change", onMq);
+  }, []);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    const video = videoRef.current;
+    if (!el || !video) return;
+
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      const range = Math.max(1, el.offsetHeight - window.innerHeight);
+      const scrolled = Math.min(range, Math.max(0, -rect.top));
+      targetRef.current = scrolled / range;
+    };
+
+    const tick = () => {
+      animatingRef.current = true;
+      const alpha = 0.18;
+      const next = smoothRef.current + (targetRef.current - smoothRef.current) * alpha;
+      smoothRef.current = next;
+
+      // Scrub completes at 0.85, leaving the tail of the runway for callouts.
+      const scrubU = Math.min(1, Math.max(0, next / 0.85));
+      const dur = video.duration;
+      if (!isNaN(dur) && isFinite(dur) && dur > 0) {
+        try {
+          video.currentTime = dur * scrubU;
+        } catch {
+          /* seek can throw before metadata is ready — ignored */
+        }
+      }
+
+      setProgress((prev) => (Math.abs(prev - next) > 0.0005 ? next : prev));
+
+      if (Math.abs(targetRef.current - smoothRef.current) > 0.0006) {
+        rafRef.current = requestAnimationFrame(tick);
+      } else {
+        animatingRef.current = false;
+      }
+    };
+
+    const onScroll = () => {
+      if (reduceMotion) return;
+      measure();
+      if (!animatingRef.current) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
+    };
+
+    const onLoaded = () => setReady(true);
+    video.addEventListener("loadedmetadata", onLoaded);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    onScroll();
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      video.removeEventListener("loadedmetadata", onLoaded);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [reduceMotion]);
+
+  // Callouts fade in from progress 0.85 → 0.95, fully visible until end.
+  const baseCalloutOpacity = reduceMotion
+    ? 1
+    : Math.min(1, Math.max(0, (progress - 0.85) / 0.10));
+  // Sensor callouts hide when motors x-ray is on, and vice versa.
+  const sensorCalloutOpacity = xray ? 0 : baseCalloutOpacity;
+  const sensorCalloutsInteractive = sensorCalloutOpacity > 0.5;
+  const motorsButtonInteractive = baseCalloutOpacity > 0.5;
+  const videoOpacity = !ready ? 0 : xray ? 0.22 : 1;
+
+  return (
+    <section ref={sectionRef} className="relative min-h-[280vh] bg-background border-b border-hairline">
+      <div className="sticky top-0 h-[100dvh] overflow-hidden bg-background">
+        <div className="absolute top-6 left-6 lg:top-10 lg:left-10 font-mono-tag text-graphite-soft/60 z-20">{label}</div>
+
+        {/* Video */}
+        <video
+          ref={videoRef}
+          src={src}
+          muted
+          playsInline
+          preload="auto"
+          disablePictureInPicture
+          className="absolute inset-0 w-full h-full object-contain"
+          style={{ opacity: videoOpacity, transition: "opacity 300ms ease" }}
+        />
+
+        {/* Motor X-ray markers (visible only when toggled) */}
+        {xray && (
+          <div className="absolute inset-0 pointer-events-none z-10">
+            {motorMarkers.map((m, i) => (
+              <div
+                key={i}
+                className="absolute"
+                style={{
+                  left: `${m.x}%`,
+                  top: `${m.y}%`,
+                  transform: "translate(-50%, -50%)",
+                  animationDelay: `${i * 120}ms`,
+                }}
+              >
+                <div className="relative flex items-center justify-center">
+                  {/* Outer soft halo */}
+                  <div className="absolute w-20 h-20 rounded-full bg-signal/15 blur-2xl" />
+                  {/* Mid halo */}
+                  <div className="absolute w-10 h-10 rounded-full bg-signal/35 blur-md animate-pulse" />
+                  {/* Pulsing ring */}
+                  <div
+                    className="absolute w-6 h-6 rounded-full border border-signal/80"
+                    style={{ animation: "ping 1.8s cubic-bezier(0,0,0.2,1) infinite", animationDelay: `${i * 120}ms` }}
+                  />
+                  {/* Solid core */}
+                  <div
+                    className="relative w-3.5 h-3.5 rounded-full bg-signal"
+                    style={{
+                      boxShadow:
+                        "0 0 12px hsl(var(--signal)), 0 0 28px hsl(var(--signal) / 0.7), 0 0 48px hsl(var(--signal) / 0.35)",
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Sensor callouts overlay — hidden when MOTORS toggle is active */}
+        <div
+          className="absolute inset-0 z-20"
+          style={{
+            opacity: sensorCalloutOpacity,
+            transition: "opacity 200ms ease",
+            pointerEvents: sensorCalloutsInteractive ? "auto" : "none",
+          }}
+        >
+          {/* Leader lines */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            preserveAspectRatio="none"
+            viewBox="0 0 100 100"
+            aria-hidden
+          >
+            {beltCallouts.map((c) => (
+              <line
+                key={c.id}
+                x1={c.x} y1={c.y} x2={c.lx} y2={c.ly}
+                stroke="hsl(var(--signal))"
+                strokeWidth="1"
+                vectorEffect="non-scaling-stroke"
+                opacity="0.55"
+              />
+            ))}
+          </svg>
+
+          {/* Dots at part positions */}
+          {beltCallouts.map((c) => (
+            <div
+              key={`dot-${c.id}`}
+              className="absolute pointer-events-none"
+              style={{
+                left: `${c.x}%`,
+                top: `${c.y}%`,
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <div className="relative w-2 h-2">
+                <div className="absolute inset-0 rounded-full bg-signal" />
+                <div className="absolute -inset-1.5 rounded-full border border-signal/50" />
+              </div>
+            </div>
+          ))}
+
+          {/* Labels */}
+          {beltCallouts.map((c) => (
+            <div
+              key={`lbl-${c.id}`}
+              className="absolute"
+              style={{
+                left: c.anchor === "left" ? `${c.lx}%` : "auto",
+                right: c.anchor === "right" ? `${100 - c.lx}%` : "auto",
+                top: `${c.ly}%`,
+                transform: "translateY(-50%)",
+                pointerEvents: sensorCalloutsInteractive ? "auto" : "none",
+              }}
+            >
+              <div className={c.anchor === "left" ? "text-left" : "text-right"}>
+                <div className="font-mono-tag text-signal text-[11px] tracking-[0.18em]">{c.label}</div>
+                {c.sub && (
+                  <div className="font-mono-tag text-graphite-soft/70 text-[9px] tracking-[0.15em] mt-1">{c.sub}</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Standalone MOTORS toggle — stays visible whether the sensor callouts are on or hidden */}
+        <div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 lg:bottom-12 z-30"
+          style={{
+            opacity: baseCalloutOpacity,
+            transition: "opacity 200ms ease",
+            pointerEvents: motorsButtonInteractive ? "auto" : "none",
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => setXray((v) => !v)}
+            aria-pressed={xray}
+            className={`px-5 py-2.5 text-[11px] font-mono tracking-[0.22em] border transition-colors backdrop-blur-sm ${
+              xray
+                ? "bg-signal text-background border-signal"
+                : "border-signal/60 text-signal bg-background/40 hover:bg-signal/10"
+            }`}
+          >
+            {xray ? "× HIDE MOTORS" : "MOTORS"}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Citation = ({ quote, source }: { quote: string; source: string }) => (
   <blockquote className="border-l-2 border-signal pl-4 py-0.5">
@@ -29,8 +301,7 @@ const qbtrd: [string, string][] = [
 
 const powerChain = [
   { label: "LiPo Battery", sub: "3.7V cell" },
-  { label: "TP4056", sub: "USB-C charging" },
-  { label: "MT3608", sub: "Boost converter" },
+  { label: "PiSugarS+", sub: "Charging + boost" },
   { label: "5V Rail", sub: "System power" },
 ];
 
@@ -173,6 +444,9 @@ const Product = () => {
       <Nav />
       <main className="pt-14">
 
+        {/* 00 / Scroll-scrubbed belt animation */}
+        <ScrollScrubVideo src={beltAnimationSrc} label="FIG. 00 / BELT ANIMATION" />
+
         {/* 01 / Video */}
         <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -312,43 +586,27 @@ const Product = () => {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">04 / Hardware Architecture</div>
 
-            {/* BLOCK 1: ESP32 + Software Logic — balanced 2-col */}
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-20">
-              <div className="lg:col-span-5">
-                <h3 className="font-display text-3xl md:text-4xl text-graphite leading-[1.05] tracking-[-0.022em] mb-6">
-                  ESP32-S3
-                  <br />
-                  <span className="text-graphite-soft italic font-light">at the core.</span>
-                </h3>
-                <p className="text-base md:text-lg text-graphite leading-relaxed text-pretty mb-4">
-                  ESP32-S3 with dual I&sup2;C buses and 5&times; PWM outputs. Sensors run independently. No contention under load.
+            {/* BLOCK 1: Software Logic */}
+            <div className="max-w-4xl mb-20">
+              <div className="bg-ivory border border-hairline p-6 lg:p-8">
+                <div className="font-mono-tag text-signal mb-4">SOFTWARE LOGIC</div>
+                <p className="text-sm text-graphite-soft leading-relaxed mb-6">
+                  Sensor distance translates directly into pulse speed. Each motor maps 1:1 to its paired sensor. No shared state, no latency stacking.
                 </p>
-                <p className="text-sm text-graphite-soft leading-relaxed text-pretty">
-                  <span className="font-mono-tag text-signal mr-2">WHY</span>Headroom for v2, plus built-in BLE so the companion app costs us nothing extra.
-                </p>
-              </div>
-
-              <div className="lg:col-span-7">
-                <div className="bg-ivory border border-hairline p-6 lg:p-8">
-                  <div className="font-mono-tag text-signal mb-4">SOFTWARE LOGIC</div>
-                  <p className="text-sm text-graphite-soft leading-relaxed mb-6">
-                    Sensor distance translates directly into pulse speed. Each motor maps 1:1 to its paired sensor. No shared state, no latency stacking.
-                  </p>
-                  <div className="space-y-3">
-                    {[
-                      { label: "Near object", value: "Fast pulse", fill: "w-full" },
-                      { label: "Mid-range", value: "Moderate pulse", fill: "w-3/5" },
-                      { label: "Out of range", value: "Slow / silent", fill: "w-1/5" },
-                    ].map((row) => (
-                      <div key={row.label} className="flex items-center gap-4">
-                        <span className="font-mono-tag text-graphite-soft/60 w-24 shrink-0">{row.label}</span>
-                        <div className="flex-1 h-1.5 bg-hairline rounded-full overflow-hidden">
-                          <div className={`${row.fill} h-full bg-signal rounded-full`} />
-                        </div>
-                        <span className="font-mono-tag text-graphite-soft/60 text-right w-32 shrink-0 hidden sm:block">{row.value}</span>
+                <div className="space-y-3">
+                  {[
+                    { label: "Near object", value: "Fast pulse", fill: "w-full" },
+                    { label: "Mid-range", value: "Moderate pulse", fill: "w-3/5" },
+                    { label: "Out of range", value: "Slow / silent", fill: "w-1/5" },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-center gap-4">
+                      <span className="font-mono-tag text-graphite-soft/60 w-24 shrink-0">{row.label}</span>
+                      <div className="flex-1 h-1.5 bg-hairline rounded-full overflow-hidden">
+                        <div className={`${row.fill} h-full bg-signal rounded-full`} />
                       </div>
-                    ))}
-                  </div>
+                      <span className="font-mono-tag text-graphite-soft/60 text-right w-32 shrink-0 hidden sm:block">{row.value}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -424,7 +682,7 @@ const Product = () => {
                 ))}
               </div>
               <p className="text-xs text-graphite leading-relaxed max-w-3xl">
-                <span className="font-mono-tag text-signal mr-2">WHY</span>3 hr runtime under peak load, 4–6 hr typical use with wifi on, load-sharing so it charges while in use, PiSugar+ keeps the 5V rail stable when motors fire together. esp32 being idle with wifi off 12 hours. with fully off it is 40hours
+                <span className="font-mono-tag text-signal mr-2">WHY</span>3 hr runtime under peak load, 4–6 hr typical use with wifi on, load-sharing so it charges while in use. PiSugarS+ keeps the 5V rail stable when motors fire together. 12 hr idle with wifi off, 40 hr fully off.
               </p>
             </div>
 
