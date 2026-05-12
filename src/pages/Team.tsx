@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Nav from "@/components/theia/Nav";
 import Footer from "@/components/theia/Footer";
 
@@ -9,8 +8,6 @@ import joseImg from "@/assets/team-jose.jpg";
 import estherImg from "@/assets/team-esther.jpg";
 import christineImg from "@/assets/team-christine.png";
 
-const lnk = "text-signal underline decoration-signal/40 underline-offset-2 hover:decoration-signal transition-colors";
-
 const members = [
   {
     n: "01",
@@ -19,8 +16,8 @@ const members = [
     initials: "B",
     img: brianImg,
     bio: [
-      <>Conducted foundational <Link to="/challenge" className={lnk}>user research</Link> with a visually impaired individual, synthesizing insights that shaped the product&rsquo;s core direction around wearability, social inclusion, and real-world navigation gaps. Served as the primary test subject for the wearable, informing usability and form factor decisions from firsthand experience. Built out the majority of the website&rsquo;s content structure and research foundation.</>,
-      <>Holds a B.S. in Computer Science and is currently completing an M.S. in Integrated Design, Business, and Technology at USC, with two years of PM experience focused on <Link to="/business" className={lnk}>0-to-1 product development</Link>.</>,
+      "Conducted foundational user research with a visually impaired individual, synthesizing insights that shaped the product’s core direction around wearability, social inclusion, and real-world navigation gaps. Served as the primary test subject for the wearable, informing usability and form factor decisions from firsthand experience. Built out the majority of the website’s content structure and research foundation.",
+      "Holds a B.S. in Computer Science and is currently completing an M.S. in Integrated Design, Business, and Technology at USC, with two years of PM experience focused on 0-to-1 product development.",
     ],
   },
   {
@@ -30,8 +27,8 @@ const members = [
     initials: "K",
     img: kenImg,
     bio: [
-      <>Translated concept into manufacturable form through <Link to="/product" className={lnk}>3D modeling and iteration</Link>. Balanced ergonomics, internal layout, and fabrication.</>,
-      <>Took the product from idea to a <Link to="/product" className={lnk}>buildable prototype</Link>.</>,
+      "Translated concept into manufacturable form through 3D modeling and iteration. Balanced ergonomics, internal layout, and fabrication.",
+      "Took the product from idea to a buildable prototype.",
     ],
   },
   {
@@ -41,8 +38,8 @@ const members = [
     initials: "K",
     img: kenzieImg,
     bio: [
-      <>Led software for the product and the website. Mapped the cane user journey to find <Link to="/challenge" className={lnk}>gaps in spatial awareness</Link>.</>,
-      <>Built the cane-first safety principles, alert hierarchies, and the choice of <Link to="/product" className={lnk}>haptic over audio</Link>.</>,
+      "Led software for the product and the website. Mapped the cane user journey to find gaps in spatial awareness.",
+      "Built the cane-first safety principles, alert hierarchies, and the choice of haptic over audio.",
     ],
   },
   {
@@ -52,8 +49,8 @@ const members = [
     initials: "J",
     img: joseImg,
     bio: [
-      <>Led the electrical design and <Link to="/product" className={lnk}>hardware integration</Link> for THEIA. Architected the full system in KiCad &mdash; power distribution, sensor bus topology, motor driver circuits, and microcontroller integration. Schematic capture, component selection, soldering of the wearable assembly, and end-to-end bring-up testing of the six time-of-flight and LiDAR sensors and eight haptic motors that drive THEIA&rsquo;s perception and feedback.</>,
-      <>Holds a B.S. in Computer Engineering from Cal Poly Pomona and is currently completing an M.S. in Medical Device and Diagnostic Engineering at USC Viterbi, where his work focuses on the intersection of hardware engineering and <Link to="/challenge" className={lnk}>assistive medical technology</Link>.</>,
+      "Led the electrical design and hardware integration for THEIA. Architected the full system in KiCad — power distribution, sensor bus topology, motor driver circuits, and microcontroller integration. Schematic capture, component selection, soldering of the wearable assembly, and end-to-end bring-up testing of the six time-of-flight and LiDAR sensors and eight haptic motors that drive THEIA’s perception and feedback.",
+      "Holds a B.S. in Computer Engineering from Cal Poly Pomona and is currently completing an M.S. in Medical Device and Diagnostic Engineering at USC Viterbi, where his work focuses on the intersection of hardware engineering and assistive medical technology.",
     ],
   },
   {
@@ -63,8 +60,8 @@ const members = [
     initials: "E",
     img: estherImg,
     bio: [
-      <>Led UX research and supported <Link to="/business" className={lnk}>business strategy</Link>. Locked in positioning around augmentation, not automation.</>,
-      <>Drove growth and operational planning. <Link to="/business" className={lnk}>TAM/SAM/SOM</Link> and the business model framework.</>,
+      "Led UX research and supported business strategy. Locked in positioning around augmentation, not automation.",
+      "Drove growth and operational planning. TAM/SAM/SOM and the business model framework.",
     ],
   },
   {
@@ -74,8 +71,8 @@ const members = [
     initials: "C",
     img: christineImg,
     bio: [
-      <>Owned the <Link to="/product" className={lnk}>physical user experience</Link>. Belt ergonomics, weight, balance, grip.</>,
-      <>Iterated low-fi mockups into the final <Link to="/product" className={lnk}>enclosure</Link>. Holds up to daily use without sacrificing form.</>,
+      "Owned the physical user experience. Belt ergonomics, weight, balance, grip.",
+      "Iterated low-fi mockups into the final enclosure. Holds up to daily use without sacrificing form.",
     ],
   },
 ];
