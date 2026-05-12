@@ -675,7 +675,7 @@ const Product = () => {
               ))}
             </div>
             <p className="text-xs text-graphite leading-relaxed max-w-3xl">
-              <span className="font-mono-tag text-signal mr-2">WHY</span>3 hr runtime under peak load, 4–6 hr typical use with wifi on, load-sharing so it charges while in use. PiSugarS+ keeps the 5V rail stable when motors fire together. 12 hr idle with wifi off, 40 hr fully off.
+              <span className="font-mono-tag text-signal mr-2">WHY</span>4–6 hr typical use with wifi on, load-sharing so it charges while in use. PiSugarS+ keeps the 5V rail stable when motors fire together. 12 hr idle with wifi off, 40 hr fully off.
             </p>
           </div>
         </section>
