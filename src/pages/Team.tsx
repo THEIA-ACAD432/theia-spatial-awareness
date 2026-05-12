@@ -38,8 +38,13 @@ const members = [
     initials: "K",
     img: kenzieImg,
     bio: [
+<<<<<<< HEAD
       "Led software for the product and the website. Mapped the cane user journey to find gaps in spatial awareness.",
       "Built the cane-first safety principles, alert hierarchies, and the choice of haptic over audio.",
+=======
+      <>Led software for the product and the website. Owned the coding and code hierarchy decisions for THEIA, defining what each <Link to="/product" className={lnk}>haptic signal</Link> communicates to the user across four dimensions (pulse, intensity, location, and velocity) so every cue maps to a specific spatial meaning the user can interpret without cognitive load.</>,
+      <>Currently completing a B.S. in Art, Technology, and the Business of Innovation at USC, where her work focuses on accessible user experience design.</>,
+>>>>>>> c2e7a9ac8d3059227762e3753c13944e3f274c6e
     ],
   },
   {
