@@ -1,19 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-
-const beltFrameModules = import.meta.glob<string>("../../assets/frames/*.png", {
-  eager: true,
-  import: "default",
-});
-
-const BELT_FRAME_URLS = Object.entries(beltFrameModules)
-  .sort(([pathA], [pathB]) => {
-    // e.g. "Belt Animation.12.193.png" → sort key = 193
-    const na = parseInt(pathA.match(/\.([0-9]+)\.png$/i)?.[1] ?? "0", 10);
-    const nb = parseInt(pathB.match(/\.([0-9]+)\.png$/i)?.[1] ?? "0", 10);
-    return na - nb;
-  })
-  .map(([, url]) => url);
+import beltAnimation13Src from "@/assets/Belt Animation.13.mov?url";
 
 const tiles = [
   ["01", "Proximity sensing"],
@@ -25,19 +12,6 @@ const tiles = [
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
-
-/** Scroll progress [0,1] → adjacent frame indices + blend weights (only two images drawn). */
-const beltFrameBlend = (scrollProgress: number, count: number) => {
-  if (count <= 0) return { i0: 0, i1: 0, w0: 1, w1: 0 };
-  if (count === 1) return { i0: 0, i1: 0, w0: 1, w1: 0 };
-  const u = Math.min(1, Math.max(0, scrollProgress));
-  const floatIndex = u * (count - 1);
-  const i0 = Math.floor(floatIndex);
-  const i1 = Math.min(count - 1, i0 + 1);
-  const w1 = floatIndex - i0;
-  const w0 = 1 - w1;
-  return { i0, i1, w0, w1 };
-};
 
 const MetaStrip = () => (
   <div className="flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
@@ -54,8 +28,10 @@ const MetaStrip = () => (
 
 const Hero = () => {
   const stageRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [progress, setProgress] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const rafRef = useRef(0);
   const animatingRef = useRef(false);
   const targetProgressRef = useRef(0);
@@ -86,6 +62,19 @@ const Hero = () => {
       const alpha = 0.18;
       const next = smoothProgressRef.current + (targetProgressRef.current - smoothProgressRef.current) * alpha;
       smoothProgressRef.current = next;
+
+      // Seek the belt animation video to the matching scroll progress.
+      const video = videoRef.current;
+      if (video) {
+        const dur = video.duration;
+        if (!isNaN(dur) && isFinite(dur) && dur > 0) {
+          try {
+            video.currentTime = dur * Math.min(1, Math.max(0, next));
+          } catch {
+            /* seek can throw before metadata is ready — ignored */
+          }
+        }
+      }
 
       // Avoid excessive React work: only commit when delta is meaningful.
       setProgress((prev) => (Math.abs(prev - next) > 0.0005 ? next : prev));
@@ -121,18 +110,6 @@ const Hero = () => {
       window.removeEventListener("resize", onScroll);
     };
   }, [reduceMotion]);
-
-  const frameCount = BELT_FRAME_URLS.length;
-  const { i0, i1, w0, w1 } = reduceMotion
-    ? { i0: 0, i1: 0, w0: 1, w1: 0 }
-    : beltFrameBlend(progress, frameCount);
-
-  useEffect(() => {
-    for (const src of BELT_FRAME_URLS) {
-      const img = new Image();
-      img.src = src;
-    }
-  }, []);
 
   const t = easeOutCubic(progress);
 
@@ -179,30 +156,18 @@ const Hero = () => {
                   style={productStyle}
                 >
                   <div className="relative z-[1] aspect-square w-full">
-                    {frameCount > 0 && (
-                      <>
-                        <img
-                          src={BELT_FRAME_URLS[i0]}
-                          alt="Theia belt prototype — scroll to rotate through frames"
-                          className="absolute inset-0 h-full w-full object-contain object-center select-none"
-                          style={{ opacity: w0 }}
-                          draggable={false}
-                          decoding="async"
-                          loading="eager"
-                        />
-                        {i0 !== i1 && (
-                          <img
-                            src={BELT_FRAME_URLS[i1]}
-                            alt=""
-                            className="absolute inset-0 h-full w-full object-contain object-center select-none"
-                            style={{ opacity: w1 }}
-                            draggable={false}
-                            decoding="async"
-                            loading="eager"
-                          />
-                        )}
-                      </>
-                    )}
+                    <video
+                      ref={videoRef}
+                      src={beltAnimation13Src}
+                      muted
+                      playsInline
+                      preload="auto"
+                      disablePictureInPicture
+                      aria-label="Theia belt prototype — scroll to rotate"
+                      onLoadedMetadata={() => setVideoReady(true)}
+                      className="absolute inset-0 h-full w-full object-contain object-center select-none"
+                      style={{ opacity: videoReady ? 1 : 0, transition: "opacity 200ms ease" }}
+                    />
                   </div>
                 </div>
               </div>

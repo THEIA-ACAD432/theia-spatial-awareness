@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import iconImg from "@/assets/icon.png";
 
 const sections = [
   {
@@ -39,7 +40,20 @@ const Footer = () => {
         <div className="grid lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-4">
             <div className="flex items-center gap-3 mb-5">
-              <span className="block w-2.5 h-2.5 rounded-full bg-signal" />
+              <span
+                aria-hidden
+                className="block w-6 h-6 bg-signal"
+                style={{
+                  maskImage: `url(${iconImg})`,
+                  maskRepeat: "no-repeat",
+                  maskPosition: "center",
+                  maskSize: "contain",
+                  WebkitMaskImage: `url(${iconImg})`,
+                  WebkitMaskRepeat: "no-repeat",
+                  WebkitMaskPosition: "center",
+                  WebkitMaskSize: "contain",
+                }}
+              />
               <span className="font-display text-xl font-medium tracking-tight text-foreground leading-none">
                 theia<span className="text-signal">.</span>
               </span>

@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import iconImg from "@/assets/icon.png";
 
 const navItems = [
   { to: "/challenge", label: "Problem" },
@@ -17,7 +18,20 @@ const Nav = () => {
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-hairline">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-14 flex items-center justify-between">
         <Link to="/" className="group inline-flex items-center gap-3">
-          <span className="block w-2.5 h-2.5 rounded-full bg-signal transition-transform duration-300 group-hover:scale-125" />
+          <span
+            aria-hidden
+            className="block w-6 h-6 bg-signal transition-transform duration-300 group-hover:scale-125"
+            style={{
+              maskImage: `url(${iconImg})`,
+              maskRepeat: "no-repeat",
+              maskPosition: "center",
+              maskSize: "contain",
+              WebkitMaskImage: `url(${iconImg})`,
+              WebkitMaskRepeat: "no-repeat",
+              WebkitMaskPosition: "center",
+              WebkitMaskSize: "contain",
+            }}
+          />
           <span className="font-display text-xl font-medium tracking-tight text-foreground group-hover:text-signal transition-colors">
             theia<span className="text-signal">.</span>
           </span>

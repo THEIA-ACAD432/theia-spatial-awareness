@@ -21,10 +21,11 @@ type Callout = {
 };
 
 const beltCallouts: Callout[] = [
-  { id: "luna1",   x: 26, y: 47, lx: 15,  ly: 70, anchor: "left",  label: "LUNA-TF",     sub: "" },
+  { id: "luna1",   x: 26, y: 47, lx: 15,  ly: 70, anchor: "right",  label: "LUNA-TF",     sub: "" },
   { id: "luna2",   x: 74, y: 47, lx: 84,  ly: 70, anchor: "left",  label: "LUNA-TF",     sub: "" },
-  { id: "ml88",   x: 49, y: 52, lx: 49, ly: 85, anchor: "right", label: "8×8 TOF",     sub: "" },
-  { id: "linear1", x: 62, y: 54, lx: 64, ly: 77, anchor: "left", label: "TOF LINEAR",  sub: "" },
+  { id: "luna2",   x: 50, y: 51, lx: 52,  ly: 85, anchor: "left",  label: "LUNA-TF",     sub: "" },
+  { id: "ml88",   x: 49, y: 56, lx: 46, ly: 85, anchor: "right", label: "8×8 TOF",     sub: "" },
+  { id: "linear1", x: 63, y: 50, lx: 64, ly: 77, anchor: "left", label: "TOF LINEAR",  sub: "" },
   { id: "linear2", x: 36, y: 50, lx: 34, ly: 77, anchor: "right", label: "TOF LINEAR",  sub: "" },
 
 ];
