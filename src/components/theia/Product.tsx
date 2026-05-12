@@ -590,8 +590,16 @@ const Product = () => {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div className="font-mono-tag text-signal mb-12">04 / Hardware Architecture</div>
 
-            {/* BLOCK 1: Software Logic */}
-            <div className="max-w-4xl mb-20">
+            {/* BLOCK 1: Sensor field diagram (belt 180° coverage) */}
+            <div className="mb-20">
+              <div className="font-mono-tag text-graphite-soft/60 mb-4">FIG. / SENSOR COVERAGE / TOP-DOWN VIEW AT HIP LEVEL</div>
+              <div className="bg-ivory border border-hairline p-6 lg:p-8">
+                <SensorField />
+              </div>
+            </div>
+
+            {/* BLOCK 2: Software Logic */}
+            <div className="mb-20">
               <div className="bg-ivory border border-hairline p-6 lg:p-8">
                 <div className="font-mono-tag text-signal mb-4">SOFTWARE LOGIC</div>
                 <p className="text-sm text-graphite-soft leading-relaxed mb-6">
@@ -615,21 +623,13 @@ const Product = () => {
               </div>
             </div>
 
-            {/* BLOCK 2: Sensor field diagram (full width) */}
-            <div className="mb-8">
-              <div className="font-mono-tag text-graphite-soft/60 mb-4">FIG. / SENSOR COVERAGE / TOP-DOWN VIEW AT HIP LEVEL</div>
-              <div className="bg-ivory border border-hairline p-6 lg:p-8">
-                <SensorField />
-              </div>
-            </div>
-
             {/* BLOCK 3: Sensor suite cards (2×2 grid below diagram) */}
-            <div className="mb-20">
+            <div>
               <div className="font-mono-tag text-graphite-soft/60 mb-4">SENSOR + ACTUATOR SUITE</div>
               <div className="grid md:grid-cols-2 gap-px bg-hairline border border-hairline">
                 {[
                   {
-                    count: "5×",
+                    count: "8×",
                     name: "NFP-FLAT-C1030 Coin Motors",
                     desc: "Independently PWM-controlled. Each motor maps 1:1 to a sensor zone. Driven by P2N2222A + 1kΩ resistor + 1N4001 flyback diode so they fire simultaneously without rail sag.",
                     why: "Same form factor MIT's ALVU used on the abdomen — 80%+ satisfaction in minutes.",
@@ -667,33 +667,10 @@ const Product = () => {
               </div>
             </div>
 
-            {/* BLOCK 4: Power chain */}
-            <div>
-              <div className="font-mono-tag text-graphite-soft/60 mb-6">POWER CHAIN</div>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-0 mb-6">
-                {powerChain.map((node, i) => (
-                  <div key={node.label} className="flex flex-col sm:flex-row items-stretch sm:items-center flex-1">
-                    <div className="flex-1 bg-ivory border border-hairline p-5 lg:p-6">
-                      <div className="font-display text-base text-graphite tracking-[-0.02em]">{node.label}</div>
-                      <div className="font-mono-tag text-graphite-soft/60 mt-1">{node.sub}</div>
-                    </div>
-                    {i < powerChain.length - 1 && (
-                      <div className="flex items-center justify-center w-8 h-8 sm:h-auto shrink-0 self-center">
-                        <span className="font-mono-tag text-signal text-base rotate-90 sm:rotate-0">&rarr;</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs text-graphite leading-relaxed max-w-3xl">
-                <span className="font-mono-tag text-signal mr-2">WHY</span>3 hr runtime under peak load, 4–6 hr typical use with wifi on, load-sharing so it charges while in use. PiSugarS+ keeps the 5V rail stable when motors fire together. 12 hr idle with wifi off, 40 hr fully off.
-              </p>
-            </div>
-
           </div>
         </section>
 
-        {/* 03 / Haptic Feedback */}
+        {/* 05 / Haptic Feedback */}
         <section className="relative py-28 lg:py-40 border-b border-hairline overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -811,10 +788,35 @@ const Product = () => {
           </div>
         </section>
 
-        {/* 06 / Considerations */}
+        {/* 06 / Power Chain */}
+        <section className="py-28 lg:py-40 border-b border-hairline bg-ivory-deep/40">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="font-mono-tag text-signal mb-12">06 / Power Chain</div>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-0 mb-6">
+              {powerChain.map((node, i) => (
+                <div key={node.label} className="flex flex-col sm:flex-row items-stretch sm:items-center flex-1">
+                  <div className="flex-1 bg-ivory border border-hairline p-5 lg:p-6">
+                    <div className="font-display text-base text-graphite tracking-[-0.02em]">{node.label}</div>
+                    <div className="font-mono-tag text-graphite-soft/60 mt-1">{node.sub}</div>
+                  </div>
+                  {i < powerChain.length - 1 && (
+                    <div className="flex items-center justify-center w-8 h-8 sm:h-auto shrink-0 self-center">
+                      <span className="font-mono-tag text-signal text-base rotate-90 sm:rotate-0">&rarr;</span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-graphite leading-relaxed max-w-3xl">
+              <span className="font-mono-tag text-signal mr-2">WHY</span>3 hr runtime under peak load, 4–6 hr typical use with wifi on, load-sharing so it charges while in use. PiSugarS+ keeps the 5V rail stable when motors fire together. 12 hr idle with wifi off, 40 hr fully off.
+            </p>
+          </div>
+        </section>
+
+        {/* 07 / Considerations */}
         <section className="py-28 lg:py-40 border-b border-hairline">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">06 / Considerations</div>
+            <div className="font-mono-tag text-signal mb-12">07 / Considerations</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
               <div className="lg:col-span-5">
@@ -861,7 +863,7 @@ const Product = () => {
         <section className="relative py-28 lg:py-40 overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-[0.04]" aria-hidden />
           <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="font-mono-tag text-signal mb-12">07 / Future of the Product</div>
+            <div className="font-mono-tag text-signal mb-12">08 / Future of the Product</div>
 
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               <div className="lg:col-span-6">

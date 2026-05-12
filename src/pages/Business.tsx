@@ -7,27 +7,26 @@ const roadmap = [
     n: "01",
     name: "Visually Impaired Patients",
     description:
-      "Lock down the core hardware at 180° coverage. First user testing. Pass the dignity test before anything else.",
+      "Patients prioritize safety, independence, and low cognitive load. Our design responds by using “cane-first” principles, ensuring the product augments existing mobility behaviors rather than introducing complexity. We also emphasize intuitive alert systems (haptic/audio hierarchy) to support real-time decision-making without overwhelming the user.",
   },
   {
     n: "02",
     name: "Providers (Clinicians & Mobility Specialists)",
     description:
-      "Prototype to medical device. Longitudinal study. FDA and EU pathways. Pilot direct sales with the first user cohort.",
+      "Providers focus on patient safety, clinical validity, and ease of integration into care workflows. We address this by designing a system that supports—not replaces—clinical expertise, allowing providers to trust and recommend the product while maintaining their role in care delivery.",
   },
   {
     n: "03",
     name: "Insurance and Payers",
     description:
-      "Direct hardware sales through rehab centers, schools, and VA programs. Software updates and sensor calibration bundled into the one-time purchase. Insurance reimbursement opens. Open the API.",
+      "Payers prioritize cost-effectiveness, scalability, and measurable outcomes. Our approach frames value through reduced injury risk (e.g., falls, collisions) and improved independence, which can lower long-term healthcare costs. We align with payer incentives by demonstrating potential cost savings relative to preventable incidents and care utilization.",
   },
   {
     n: "04",
     name: "Designers and Innovators",
     description:
-      "Coverage scales from 180° to a full 360°. Paired bone conduction joins haptics. LiDAR + ToF + cloud ML turn proximity into context — “doorway ahead, step up.” Fixed core, evolving shell: members refresh fabric and finish without replacing the device.",
+      "Prioritizes feasibility, technical performance, and scalability. We address these needs by grounding the design in realistic material costs, modular architecture, and interoperable systems that can evolve over time.",
   },
- 
 ];
 
 const risks = [
