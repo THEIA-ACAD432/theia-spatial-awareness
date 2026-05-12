@@ -5,6 +5,10 @@ import Footer from "@/components/theia/Footer";
 import deviceHeroImg from "@/assets/theia-device-hero.jpg";
 import contextImg from "@/assets/halobelt.png";
 import beltAnimationSrc from "@/assets/Belt Animation.12.mov?url";
+import proto1Img from "@/assets/prototimeline1.jpeg";
+import proto3Img from "@/assets/prototimeline3.jpeg";
+import proto4Img from "@/assets/prototimeline4.jpeg";
+import proto5Img from "@/assets/prototimeline5.jpeg";
 
 type Callout = {
   id: string;
@@ -251,7 +255,7 @@ const ScrollScrubVideo = ({ src, label }: { src: string; label: string }) => {
 
         {/* Standalone MOTORS toggle — stays visible whether the sensor callouts are on or hidden */}
         <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 lg:bottom-12 z-30"
+          className="absolute bottom-3 left-1/2 -translate-x-1/2 lg:bottom-5 z-30"
           style={{
             opacity: baseCalloutOpacity,
             transition: "opacity 200ms ease",
@@ -284,11 +288,10 @@ const Citation = ({ quote, source }: { quote: string; source: string }) => (
 );
 
 const prototypeStages = [
-  { v: "V01", label: "First belt mock", note: "Foam form-factor study" },
-  { v: "V02", label: "Sensor wiring", note: "Breadboard + ultrasonic" },
-  { v: "TEST", label: "Indoor obstacle", note: "Latency + clarity check" },
-  { v: "RESULT", label: "Calibration data", note: "False alerts logged" },
-  { v: "V03", label: "Redesign", note: "Sensor angle revision" },
+  { v: "V01",    label: "Materials selection",         note: "Sourcing components + fabric",            img: proto1Img },
+  { v: "TEST",   label: "Placement validation",        note: "Placement locked — sewn into fabric",     img: proto3Img },
+  { v: "RESULT", label: "Wiring",                      note: "Full wiring — haptics + sensors integrated", img: proto5Img },
+  { v: "V03",    label: "Final assembly + calibration", note: "Live system — bring-up + calibration",   img: proto4Img },
 ];
 
 const qbtrd: [string, string][] = [
@@ -393,8 +396,8 @@ const SensorField = () => {
       {/* Range labels */}
       <text x={420} y={225} fontSize={9} fontFamily={mono} fill={signalSoft} letterSpacing="0.1em">8M</text>
       <text x={418} y={275} fontSize={9} fontFamily={mono} fill={signal}     letterSpacing="0.1em">4M</text>
-      <text x={218} y={348} fontSize={8} fontFamily={mono} fill={signalSoft} letterSpacing="0.08em">2M</text>
-      <text x={568} y={348} fontSize={8} fontFamily={mono} fill={signalSoft} letterSpacing="0.08em">2M</text>
+      <text x={218} y={348} fontSize={8} fontFamily={mono} fill={signalSoft} letterSpacing="0.08em">4M</text>
+      <text x={568} y={348} fontSize={8} fontFamily={mono} fill={signalSoft} letterSpacing="0.08em">4M</text>
 
       {/* CURVED BELT STRIP */}
       <path d={beltPath} fill="none" stroke="hsl(220 12% 82%)" strokeWidth={36} strokeLinecap="round" />
@@ -499,11 +502,11 @@ const Product = () => {
             {/* Process timeline */}
             <div className="mt-20">
               <div className="micro-label mb-6">Process timeline</div>
-              <div className="grid md:grid-cols-5 gap-px bg-hairline border border-hairline">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
                 {prototypeStages.map((s) => (
                   <div key={s.v} className="bg-background p-5">
-                    <div className="aspect-[4/3] border border-hairline mb-4 grid-bg flex items-center justify-center text-graphite-soft/50 text-xs font-mono">
-                      IMG / {s.v}
+                    <div className="aspect-[4/3] border border-hairline mb-4 overflow-hidden bg-ivory-deep">
+                      <img src={s.img} alt={s.label} className="w-full h-full object-cover" />
                     </div>
                     <div className="text-signal font-mono text-[11px] mb-1">{s.v}</div>
                     <div className="font-display text-[15px] leading-tight text-graphite">{s.label}</div>
