@@ -116,7 +116,6 @@ const Hero = () => {
   const headlineStyle = reduceMotion
     ? undefined
     : {
-        opacity: lerp(0.3, 1, t),
         transform: `translate3d(0, ${lerp(0, -36, t)}px, 0)`,
       };
 

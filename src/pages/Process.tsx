@@ -173,7 +173,7 @@ const Process = () => {
                 &ldquo;Sometimes it isn&rsquo;t about a device. It&rsquo;s about{" "}
                 <span className="text-signal">feeling normal.</span>&rdquo;
               </p>
-              <div className="mt-4 font-mono-tag text-graphite-soft/60">User interview &mdash; direct quote</div>
+              <div className="mt-4 font-mono-tag text-graphite-soft/60">CONNIE JOCELYNN CARDONA &middot; User interview</div>
             </div>
 
             {/* Planned testing + Benchmark */}

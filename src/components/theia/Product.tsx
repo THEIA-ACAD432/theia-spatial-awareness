@@ -706,6 +706,10 @@ const Product = () => {
                 loop
                 playsInline
                 preload="metadata"
+                onLoadedMetadata={(e) => {
+                  const v = e.currentTarget;
+                  if (v.duration && v.duration > 0.25) v.currentTime = 0.25;
+                }}
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
@@ -827,7 +831,7 @@ const Product = () => {
                   &ldquo;Sometimes it isn&rsquo;t about a device. It&rsquo;s about feeling normal.&rdquo;
                 </p>
                 <footer className="mt-8 pt-6 border-t border-hairline">
-                  <cite className="font-mono-tag text-signal not-italic">CONNIE</cite>
+                  <cite className="font-mono-tag text-signal not-italic">CONNIE JOCELYNN CARDONA</cite>
                 </footer>
               </blockquote>
 
